@@ -13,10 +13,7 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
     name: "HomePage",
-    setup() {
-        const x: string = "value";
-        console.log(x);
-    }
+    setup() {}
 });
 </script>
 
