@@ -5,7 +5,11 @@
           color="secondary"
           dark
         >
-            <h2 class="ml-4">Unipept</h2>
+            <h2 class="ml-4">
+                <router-link to="/" class="homepage-title">
+                    Unipept
+                </router-link>
+            </h2>
             <v-spacer></v-spacer>
             <v-btn text>
                 Publications
@@ -27,19 +31,22 @@
         </v-app-bar>
 
         <v-main>
+            <router-view></router-view>
         </v-main>
     </v-app>
 </template>
 
 <script>
+import { defineComponent } from "vue";
 
-export default {
-  name: 'App',
-
-  components: {},
-
-  data: () => ({
-    //
-  }),
-};
+export default defineComponent({
+    name: "App"
+});
 </script>
+
+<style>
+.homepage-title {
+    color: white !important;
+    text-decoration: none;
+}
+</style>
