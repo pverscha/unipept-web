@@ -1,57 +1,42 @@
 <template>
-  <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+    <v-app>
+        <v-app-bar
+          app
+          color="secondary"
+          dark
+        >
+            <h2 class="ml-4">Unipept</h2>
+            <v-spacer></v-spacer>
+            <v-btn text>
+                Publications
+            </v-btn>
+            <v-btn text>
+                About
+            </v-btn>
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+            <template v-slot:extension>
+                <v-tabs align-with-title>
+                    <v-tab>Typtic Peptide Analysis</v-tab>
+                    <v-tab>Metaproteomics Analysis</v-tab>
+                    <v-tab>API</v-tab>
+                    <v-tab>CLI</v-tab>
+                    <v-tab>Metagenomics</v-tab>
+                    <v-tab>Unipept Desktop</v-tab>
+                </v-tabs>
+            </template>
+        </v-app-bar>
 
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <HelloWorld/>
-    </v-main>
-  </v-app>
+        <v-main>
+        </v-main>
+    </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
 
 export default {
   name: 'App',
 
-  components: {
-    HelloWorld,
-  },
+  components: {},
 
   data: () => ({
     //
