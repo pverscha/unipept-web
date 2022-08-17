@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import HomePage from "@/components/pages/HomePage.vue";
+import AboutPage from "@/components/pages/AboutPage.vue";
 import NewsPage from "@/components/pages/NewsPage.vue";
 import TrypticPeptideAnalysisPage from "@/components/pages/features/TrypticPeptideAnalysisPage.vue";
 import MetaproteomeAnalysisPage from "@/components/pages/features/MetaproteomeAnalysisPage.vue";
@@ -39,6 +40,10 @@ const routes = [
     {
         path: "/desktop",
         component: DesktopPage
+    },
+    {
+        path: "/about",
+        component: AboutPage
     },
     {
         path: "/posts",
