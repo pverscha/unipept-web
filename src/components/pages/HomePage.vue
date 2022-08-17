@@ -25,33 +25,39 @@
 
                         <v-card-text>
                             Unipept 4.3 has just been released and contains these major additions:
-                            <v-list>
-                                <v-list-item>
+                            <ul>
+                                <li>
                                     Load and process multiple samples at once with the metaproteomics analysis tool.
-                                </v-list-item>
-                                <v-list-item>
+                                </li>
+                                <li>
                                     Compare multiple samples with each other using the new heatmap.
-                                </v-list-item>
-                                <v-list-item>
+                                </li>
+                                <li>
                                     Functional analysis has been expanded with support for InterPro annotations.
-                                </v-list-item>
-                                <v-list-item>
+                                </li>
+                                <li>
                                     UniProt updated to version 2020.01
-                                </v-list-item>
-                            </v-list>
+                                </li>
+                            </ul>
                         </v-card-text>
 
                         <v-divider class="mx-4"></v-divider>
 
                         <v-card-actions>
                             <v-spacer />
-                            <v-btn
-                                color="secondary"
-                                text
-                                @click="reserve"
+                            <router-link
+                                to="/posts"
+                                v-slot="{ href, navigate }"
                             >
-                                More news
-                            </v-btn>
+                                <v-btn
+                                    color="secondary"
+                                    text
+                                    @click="navigate"
+                                    :href="href"
+                                >
+                                    More news
+                                </v-btn>
+                            </router-link>
                         </v-card-actions>
                     </v-card>
                 </v-col>
@@ -69,9 +75,7 @@
 
                                 <v-card-title class="m-n16">{{ feature.name }}</v-card-title>
 
-                                <v-card-text>
-                                    {{ feature.description }}
-                                </v-card-text>
+                                <v-card-text v-html="feature.description" />
                             </v-card>
                         </template>
                     </v-hover>
@@ -93,12 +97,12 @@ export default defineComponent({
             features: [
                 { 
                     name: "Tryptic Peptide Analysis", 
-                    description: "With tryptic peptide analysis, you can submit a single tryptic peptide that can be 5 to 50 residues long. The application will respond with a list of all Uniprot entries wherein the peptide was found along with a complete taxonomic lineage derived from the NCBI taxonomy. These lineages are presented as a comprehensible table and using an interactive tree view.", 
+                    description: "With tryptic peptide analysis, you can submit a single <span class='font-weight-bold'>tryptic peptide</span> that can be 5 to 50 residues long. The application will respond with a list of <span class='font-weight-bold'>all Uniprot entries</span> wherein the peptide was found along with a complete taxonomic lineage derived from the NCBI taxonomy. These lineages are presented as a comprehensible table and using an interactive tree view.", 
                     asset: require("@/assets/home-feature-single.png") 
                 },
                 { 
                     name: "Metaproteome Analysis", 
-                    description: "Metaproteomics analysis helps you analyze lists of tryptic peptides, e.g. extracted from an environmental sample using shotgun tandem mass spectrometric methods. Of these peptides, the lowest common ancestors (LCA) will be calculated. These LCAs will be bundled and displayed in an interactive treemap giving you insight into the biodiversity of your sample.", 
+                    description: "Metaproteomics analysis helps you analyze <span class='font-weight-bold'>lists of tryptic peptides</span>, e.g. extracted from an environmental sample using shotgun tandem mass spectrometric methods. Of these peptides, the lowest common ancestors (LCA) will be calculated. These LCAs will be bundled and displayed in an interactive treemap giving you insight into the <span class='font-weight-bold'>biodiversity of your sample</span>.", 
                     asset: require("@/assets/home-feature-multi.svg") 
                 },
                 { 
@@ -108,17 +112,17 @@ export default defineComponent({
                 },
                 { 
                     name: "API Documentation", 
-                    description: "Unipept offers most of its peptide analysis features as a web service. This enables the integration of Unipept functionality into other applications and the creation of batch processing scripts. These documentation pages describe the available features of the API, how to access them and plenty examples.", 
+                    description: "Unipept offers most of its peptide analysis features as a <span class='font-weight-bold'>web service</span>. This enables the integration of Unipept functionality into other applications and the creation of batch processing scripts. These <span class='font-weight-bold'>documentation pages</span> describe the available features of the API, how to access them and plenty examples.", 
                     asset: require("@/assets/image-placeholder.jpg") 
                 },
                 { 
                     name: "CLI Documentation", 
-                    description: "The Unipept command line interface (CLI) is a wrapper around the Unipept API that offers an easy way to integrate Unipept functionality into your data processing pipelines and scripts. These pages cover installation and usage instructions, an overview of all available options and several use cases.", 
+                    description: "The Unipept <span class='font-weight-bold'>command line interface</span> (CLI) is a wrapper around the Unipept API that offers an easy way to <span class='font-weight-bold'>integrate Unipept</span> functionality into your data processing <span class='font-weight-bold'>pipelines and scripts</span>. These pages cover installation and usage instructions, an overview of all available options and several use cases.", 
                     asset: require("@/assets/image-placeholder.jpg") 
                 },
                 { 
                     name: "UMGAP", 
-                    description: "Use the Unipept MetaGenomics Analysis Pipeline to assign taxonomic labels to your shotgun metagenomics reads. The results are available as taxonomic frequency tables and interactive visualizations. UMGAP is a collection of CLI tools that can be combined to identify shotgun metagenomics reads.", 
+                    description: "Use the Unipept MetaGenomics Analysis Pipeline to assign taxonomic labels to your <span class='font-weight-bold'>shotgun metagenomics reads</span>. The results are available as taxonomic frequency tables and interactive visualizations. UMGAP is a collection of CLI tools that can be combined to identify shotgun metagenomics reads.", 
                     asset: require("@/assets/home-feature-umgap.svg") 
                 }
             ]
