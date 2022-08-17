@@ -118,13 +118,13 @@ export default defineComponent({
                 { 
                     name: "API Documentation", 
                     description: "Unipept offers most of its peptide analysis features as a <span class='font-weight-bold'>web service</span>. This enables the integration of Unipept functionality into other applications and the creation of batch processing scripts. These <span class='font-weight-bold'>documentation pages</span> describe the available features of the API, how to access them and plenty examples.", 
-                    asset: require("@/assets/image-placeholder.jpg"),
+                    asset: require("@/assets/home-feature-api.svg"),
                     link: "/apidocs"
                 },
-                { 
+                {
                     name: "CLI Documentation", 
                     description: "The Unipept <span class='font-weight-bold'>command line interface</span> (CLI) is a wrapper around the Unipept API that offers an easy way to <span class='font-weight-bold'>integrate Unipept</span> functionality into your data processing <span class='font-weight-bold'>pipelines and scripts</span>. These pages cover installation and usage instructions, an overview of all available options and several use cases.", 
-                    asset: require("@/assets/image-placeholder.jpg"),
+                    asset: require("@/assets/home-feature-cli.svg"),
                     link: "/clidocs"
                 },
                 { 
