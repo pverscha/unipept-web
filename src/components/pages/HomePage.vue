@@ -67,7 +67,7 @@
                     <router-link :to="feature.link">
                         <v-hover>
                             <template v-slot:default="{ hover }">
-                                <v-card :elevation="hover ? 6 : 2">
+                                <v-card :elevation="hover ? 6 : 2" class="equal">
                                     <v-img
                                         height="300"
                                         :src="feature.asset"
@@ -153,5 +153,9 @@ export default defineComponent({
         background-color: black;
         color: white;
         margin-top: -64px;
+    }
+
+    .equal {
+        height: 100%;
     }
 </style>
