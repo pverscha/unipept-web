@@ -1,9 +1,9 @@
 <template>
     <v-app>
         <v-app-bar
-          app
-          color="secondary"
-          dark
+            app
+            color="secondary"
+            dark
         >
             <h2 class="ml-4">
                 <router-link to="/" class="homepage-title">
@@ -36,7 +36,7 @@
     </v-app>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 
 export default defineComponent({
