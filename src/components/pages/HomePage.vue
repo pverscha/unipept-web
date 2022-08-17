@@ -69,14 +69,14 @@
                             <template v-slot:default="{ hover }">
                                 <v-card :elevation="hover ? 6 : 2">
                                     <v-img
-                                        height="250"
+                                        height="300"
                                         :src="feature.asset"
                                         :alt="feature.asset"
                                     />
 
-                                    <v-card-title class="m-n16">{{ feature.name }}</v-card-title>
+                                    <v-card-title class="feature-title">{{ feature.name }}</v-card-title>
 
-                                    <v-card-text v-html="feature.description" />
+                                    <v-card-text class="mt-4" v-html="feature.description" />
                                 </v-card>
                             </template>
                         </v-hover>
@@ -146,5 +146,12 @@ export default defineComponent({
 
     a {
         text-decoration: none;
+    }
+
+    .feature-title {
+        opacity: 0.70;
+        background-color: black;
+        color: white;
+        margin-top: -64px;
     }
 </style>
