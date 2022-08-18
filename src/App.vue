@@ -25,9 +25,9 @@
             </router-link>
 
             <template v-slot:extension>
-                <v-tabs :value="tabsSelected">
+                <v-tabs :value="tabsSelected" slider-size="3" optional>
                     <v-tab class="pa-0 ma-0" style="min-width:0px" />
-                    <v-tab v-for="item in navItems" :key="item.name" :to="item.path">
+                    <v-tab v-for="item in navItems" :key="item.name" :to="item.path" class="white--text">
                         {{ item.name }}
                     </v-tab>
                 </v-tabs>
@@ -70,7 +70,6 @@ export default defineComponent({
     name: "App",
     data() {
         return {
-            tabsSelected: 0,
             navItems: [
                 { name: "Tryptic Peptide Analysis", path: "/tpa" },
                 { name: "Metaproteomics Analysis", path: "/mpa" },
@@ -102,9 +101,5 @@ export default defineComponent({
 .link:hover {
     color: white !important;
     text-decoration: none;
-}
-
-.clickable {
-    pointer-events: all;
 }
 </style>
