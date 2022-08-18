@@ -35,7 +35,9 @@
         </v-app-bar>
 
         <v-content>
-            <router-view></router-view>
+            <v-container class="main-container">
+                <router-view></router-view>
+            </v-container>
         </v-content>
 
         <v-footer dark padless class="grey darken-3 px-lg-16 flex">
@@ -73,7 +75,6 @@
                     <router-link class="link ml-5" to="/">Publications</router-link>
                 </div>
             </div>
-
         </v-footer>
     </v-app>
 </template>
@@ -104,8 +105,8 @@ export default defineComponent({
     text-decoration: none;
 }
 
-.v-container {
-    width: 75%;
+.main-container {
+    width: 75% !important;
 }
 
 .v-slide-group__prev {

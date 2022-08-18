@@ -26,16 +26,16 @@ export default defineComponent({
             navigation: [
                 { name: "overview", link: "/apidocs" },
                 { name: "pept2prot", link: "/apidocs/pept2prot" },
-                { name: "pept2taxa", link: "" },
-                { name: "pept2lca", link: "" },
-                { name: "pept2ec", link: "" },
-                { name: "pept2go", link: "" },
-                { name: "pept2interpro", link: "" },
-                { name: "pept2funct", link: "" },
-                { name: "pept2info", link: "" },
-                { name: "taxa2lca", link: "" },
-                { name: "taxa2tree", link: "" },
-                { name: "taxonomy", link: "" }
+                { name: "pept2taxa", link: "/apidocs/pept2taxa" },
+                { name: "pept2lca", link: "/apidocs/pept2lca" },
+                { name: "pept2ec", link: "/apidocs/pept2ec" },
+                { name: "pept2go", link: "/apidocs/pept2go" },
+                { name: "pept2interpro", link: "/apidocs/pept2interpro" },
+                { name: "pept2funct", link: "/apidocs/pept2funct" },
+                { name: "pept2info", link: "/apidocs/pept2info" },
+                { name: "taxa2lca", link: "/apidocs/taxa2lca" },
+                { name: "taxa2tree", link: "/apidocs/taxa2tree" },
+                { name: "taxonomy", link: "/apidocs/taxonomy" }
             ]
         }
     }
