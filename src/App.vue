@@ -14,7 +14,7 @@
             </h2>
 
             <v-spacer></v-spacer>
-            
+
             <v-btn text>
                 Publications
             </v-btn>
@@ -25,9 +25,9 @@
             </router-link>
 
             <template v-slot:extension>
-                <v-tabs :value="tabsSelected" slider-size="3" optional>
+                <v-tabs :value="tabsSelected" slider-size="5" optional>
                     <v-tab class="pa-0 ma-0" style="min-width:0px" />
-                    <v-tab v-for="item in navItems" :key="item.name" :to="item.path" class="white--text">
+                    <v-tab v-for="item in navItems" :key="item.name" :to="item.path" class="white--text font-weight-bold">
                         {{ item.name }}
                     </v-tab>
                 </v-tabs>
@@ -72,7 +72,7 @@
                     <router-link class="link ml-5" to="/">Publications</router-link>
                 </div>
             </div>
-            
+
         </v-footer>
     </v-app>
 </template>
