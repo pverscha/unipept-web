@@ -8,6 +8,7 @@ import APIPage from "@/components/pages/features/APIPage.vue";
 import CLIPage from "@/components/pages/features/CLIPage.vue";
 import MetagenomicsPage from "@/components/pages/features/MetagenomicsPage.vue";
 import DesktopPage from "@/components/pages/features/DesktopPage.vue";
+import Pept2Prot from "@/components/pages/apidocs/Pept2Prot.vue";
 
 Vue.use(VueRouter);
 
@@ -26,7 +27,13 @@ const routes = [
     },
     {
         path: "/apidocs",
-        component: APIPage
+        component: APIPage,
+        children: [
+            {
+                path: "pept2prot",
+                component: Pept2Prot
+            }
+        ]
     },
     {
         path: "/clidocs",

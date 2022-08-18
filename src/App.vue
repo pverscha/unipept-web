@@ -49,4 +49,8 @@ export default defineComponent({
     color: white !important;
     text-decoration: none;
 }
+
+.v-container {
+    width: 75%;
+}
 </style>
