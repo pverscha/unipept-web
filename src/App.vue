@@ -39,26 +39,40 @@
         </v-content>
 
         <v-footer dark padless class="grey darken-3 px-lg-16 flex">
-            <div class="col-md-6 text-md-start order-md-0 col-12 text-center order-2 grey--text"> © 2022 Universiteit Gent </div>
-            <div class="col-md-6 text-md-end order-md-1 col-12 text-center order-0">
-                <router-link class="link" to="/about">Terms of service</router-link>
-                <router-link class="link ml-5" to="/posts">News</router-link>
-                <a class="ml-10 link" href="mailto:unipept@ugent.be">
-                    <v-icon size="30px" class="grey--text link">
-                        mdi-email-outline
-                    </v-icon>
-                </a>
-                <a class="ml-10 link" href="https://twitter.com/unipept" target="_blank">
-                    <v-icon size="30px" class="grey--text link">
-                        mdi-twitter
-                    </v-icon>
-                </a>
-                <a class="ml-10 link" href="https://github.com/unipept/unipept" target="_blank">
-                    <v-icon size="30px" class="grey--text link">
-                        mdi-github
-                    </v-icon>
-                </a>
+            <div class="d-flex flex-wrap" style="width: 100%">
+                <div class="col-md-8 text-md-start order-md-0 col-12 text-center order-2 grey--text d-md-flex">
+                    <div class="flex-md-column">
+                        {{ $route.meta.publication }}
+                    </div>
+                    <div class="flex-md-column">
+                        <a class="link" :href="'https://' + $route.meta.publicationLink" target="_blank">&nbsp;{{ $route.meta.publicationLink }}</a>
+                    </div>
+                </div>
+                <div class="col-md-4 text-md-end order-md-1 col-12 text-center order-0">
+                    <a class="link" href="mailto:unipept@ugent.be">
+                        <v-icon size="30px" class="grey--text link">
+                            mdi-email-outline
+                        </v-icon>
+                    </a>
+                    <a class="ml-10 link" href="https://twitter.com/unipept" target="_blank">
+                        <v-icon size="30px" class="grey--text link">
+                            mdi-twitter
+                        </v-icon>
+                    </a>
+                    <a class="ml-10 link" href="https://github.com/unipept/unipept" target="_blank">
+                        <v-icon size="30px" class="grey--text link">
+                            mdi-github
+                        </v-icon>
+                    </a>
+                </div>
+                <div class="col-md-8 text-md-start order-md-2 col-12 text-center order-3 grey--text">© 2022 Universiteit Gent</div>
+                <div class="col-md-4 text-md-end order-md-3 col-12 text-center order-1">
+                    <router-link class="link" to="/about">Terms of service</router-link>
+                    <router-link class="link ml-5" to="/posts">News</router-link>
+                    <router-link class="link ml-5" to="/">Publications</router-link>
+                </div>
             </div>
+            
         </v-footer>
     </v-app>
 </template>
@@ -102,4 +116,5 @@ export default defineComponent({
     color: white !important;
     text-decoration: none;
 }
+
 </style>
