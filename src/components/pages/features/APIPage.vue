@@ -1,14 +1,11 @@
 <template>
     <v-container>
-        <v-row class="mt-5">
-            <div class="col-10">
+        <v-row>
+            <div class="col-lg-10 order-lg-0 order-1 pt-0">
                 <router-view></router-view>
             </div>
-            <div class="col-2">
-                <VerticalNavigation :items="navigation">
-
-                </VerticalNavigation>
-            </div>
+            <VerticalNavigation v-if="$vuetify.breakpoint.lgAndUp" class="col-lg-2 order-lg-1 d-sm-none d-lg-flex" :items="navigation" />
+            <HorizontalNavigation v-else class="col-12 order-0" :items="navigation" />
         </v-row>
     </v-container>
 </template>
@@ -16,11 +13,12 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import VerticalNavigation from "@/components/navigation/VerticalNavigation.vue";
+import HorizontalNavigation from "@/components/navigation/HorizontalNavigation.vue";
 
 export default defineComponent({
     name: "APIPage",
     setup() { },
-    components: { VerticalNavigation },
+    components: { VerticalNavigation, HorizontalNavigation },
     data() {
         return {
             navigation: [

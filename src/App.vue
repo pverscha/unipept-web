@@ -99,14 +99,24 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style lang="scss">
+@import '~vuetify/src/styles/settings/_variables';
+
+@media #{map-get($display-breakpoints, 'md-and-down')} {
+    .main-container {
+        width: 100% !important;
+    }
+}
+
+@media #{map-get($display-breakpoints, 'lg-and-up')} {
+    .main-container {
+        width: 75% !important;
+    }
+}
+
 .homepage-title {
     color: white !important;
     text-decoration: none;
-}
-
-.main-container {
-    width: 75% !important;
 }
 
 .v-slide-group__prev {
