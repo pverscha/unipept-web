@@ -209,8 +209,8 @@
         <TryItCard class="mt-5" :response="tryItResponse">
             <template>
                 <v-row>
-                    <v-col class="font-weight-bold" md=2>Input[]</v-col>
-                    <v-col md=10>
+                    <v-col class="font-weight-bold" md=2 cols=12>Input[]</v-col>
+                    <v-col md=10 cols=12>
                         <v-textarea
                             class="pt-0 mt-0"
                             v-model="input"
@@ -223,8 +223,8 @@
                 </v-row>
 
                 <v-row>
-                    <v-col class="font-weight-bold" md=2>equate_il</v-col>
-                    <v-col md=10>
+                    <v-col class="font-weight-bold" cols=3 sm=2>equate_il</v-col>
+                    <v-col cols=9 sm=10>
                         <v-switch
                             class="pt-0 mt-0"
                             v-model="equate_il"
@@ -234,8 +234,8 @@
                 </v-row>
 
                 <v-row>
-                    <v-col class="font-weight-bold" md=2>extra</v-col>
-                    <v-col md=10>
+                    <v-col class="font-weight-bold" cols=3 sm=2>extra</v-col>
+                    <v-col cols=9 sm=10>
                         <v-switch
                             class="pt-0 mt-0"
                             v-model="extra"
@@ -244,8 +244,9 @@
                     </v-col>
                 </v-row>
 
-                <v-row class="justify-end me-0 mb-0">
+                <v-row class="justify-end mx-0 mb-0 ">
                     <v-btn
+                        class="col-12 col-sm-2"
                         color="primary"
                         @click="doRequest"
                     >
