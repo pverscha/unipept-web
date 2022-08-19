@@ -137,55 +137,97 @@
             </v-simple-table>
         </HeaderBodyCard>
 
-        <v-card>
-            <v-card-text class="mt-4">
-                <h4>Example <small>{{ examples[0].title }}</small></h4>
-                <p>
-                    This example retrieves all UniProt entries containing the peptide AIPQLEVARPADAYETAEAYR. The result is the same as this search with the 
-                    Tryptic Peptide Analysis in the web interface.
-                </p>
+        <h2 class="font-weight-light mt-10 mb-n2">Examples</h2>
 
-                <Initialism><b>post</b></Initialism>
-                <pre class="request">
-<b class="sentinel">$</b> curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/pept2prot -d 'input[]=AIPQLEVARPADAYETAEAYR'
-                </pre>
+        <ExampleCard 
+            title="Retrieve all UniProt entries containing any of multiple tryptic peptides" 
+            :response="response1"
+        >
+            <template v-slot:description>
+                This example retrieves all UniProt entries containing either the tryptic peptide AIPQLEVARPADAYETAEAYR or the tryptic peptide APVLSDSSCK. The 
+                result is the same as the combination of this search and this search with the Tryptic Peptide Analysis in the web interface.
+            </template>
+            <template v-slot:post>
+                curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/pept2prot -d 'input[]=AIPQLEVARPADAYETAEAYR'
+            </template>
+            <template v-slot:get>
+                http://api.unipept.ugent.be/api/v1/pept2prot.json?input[]=AIPQLEVARPADAYETAEAYR
+            </template>
+        </ExampleCard>
 
-                <Initialism><b>get</b></Initialism>
-                <pre class="request">
-http://api.unipept.ugent.be/api/v1/pept2prot.json?input[]=AIPQLEVARPADAYETAEAYR
-                </pre>
-            </v-card-text>
+        <ExampleCard 
+            class="mt-5"
+            title="Retrieve all UniProt entries containing a given tryptic peptide" 
+            :response="response2"
+        >
+            <template v-slot:description>
+                This example retrieves all UniProt entries containing the peptide AIPQLEVARPADAYETAEAYR. The result is the same as this search with the 
+                Tryptic Peptide Analysis in the web interface.
+            </template>
+            <template v-slot:post>
+                curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/pept2prot -d 'input[]=AIPQLEVARPADAYETAEAYR' -d 'input[]=APVLSDSSCK'
+            </template>
+            <template v-slot:get>
+                http://api.unipept.ugent.be/api/v1/pept2prot.json?input[]=AIPQLEVARPADAYETAEAYR&input[]=APVLSDSSCK
+            </template>
+        </ExampleCard>
 
-            <v-divider />
+        <ExampleCard 
+            class="mt-5"
+            title="Retrieve all UniProt entries containing a single tryptic peptide, while equating I and L" 
+            :response="response3"
+        >
+            <template v-slot:description>
+                This example retrieves all UniProt entries containing the tryptic peptide APVISDSSCK. In searching, isoleucine (I) and leucine (L) are 
+                considered equal. The result is the same as this search with the Tryptic Peptide Analysis in the web interface.
+            </template>
+            <template v-slot:post>
+                curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/pept2prot -d 'input[]=APVISDSSCK' -d 'equate_il=true'
+            </template>
+            <template v-slot:get>
+                http://api.unipept.ugent.be/api/v1/pept2prot.json?input[]=APVISDSSCK&equate_il=true
+            </template>
+        </ExampleCard>
 
-            <v-card-text class="grey lighten-4">
-                <h4>Response</h4>
-                <Json :object="examples[0].response"/>
-            </v-card-text>
-        </v-card>
+        <ExampleCard 
+            class="mt-5"
+            title="Retrieve all UniProt entries containing a single tryptic peptide and return extra information" 
+            :response="response4"
+        >
+            <template v-slot:description>
+                This example retrieves all UniProt entries containing the tryptic peptide AIPQLEVARPADAYETAEAYR, including additional information fields that 
+                are not returned by default. The result is the same as this search with the Tryptic Peptide Analysis in the web interface.
+            </template>
+            <template v-slot:post>
+                curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/pept2prot -d 'input[]=AIPQLEVARPADAYETAEAYR' -d 'extra=true'
+            </template>
+            <template v-slot:get>
+                http://api.unipept.ugent.be/api/v1/pept2prot.json?input[]=AIPQLEVARPADAYETAEAYR&extra=true
+            </template>
+        </ExampleCard>
     </v-container>
 </template>
 
 <script setup lang="ts">
+import { onBeforeMount, ref } from 'vue';
+
 import HeaderBodyCard from '@/components/cards/HeaderBodyCard.vue';
 import Code from '@/components/highlights/InlineCode.vue';
 import Initialism from '@/components/highlights/Initialism.vue';
 import StaticAlert from '@/components/alerts/StaticAlert.vue';
-import Json from '@/components/highlights/Json.vue';
+import ExampleCard from '@/components/cards/ExampleCard.vue';
 
-const examples = [
-    {
-        title: "Retrieve all UniProt entries containing a given tryptic peptide",
-        response: [
-            {
-                peptide: "'AIPQLEVARPADAYETAEAYR'",
-                taxon_id: 1680,
-                taxon_name: "'Bifidobacterium adolescentis'",
-                taxon_rank: "'species'"
-            }
-        ]
-    }
-];
+const response1 = ref({});
+const response2 = ref({});
+const response3 = ref({});
+const response4 = ref({});
+
+onBeforeMount(async () => {
+    response1.value = await fetch('http://api.unipept.ugent.be/api/v1/pept2prot.json?input[]=AIPQLEVARPADAYETAEAYR').then(res => res.json())
+    response2.value = await fetch('http://api.unipept.ugent.be/api/v1/pept2prot.json?input[]=AIPQLEVARPADAYETAEAYR&input[]=APVLSDSSCK').then(res => res.json())
+    response3.value = await fetch('http://api.unipept.ugent.be/api/v1/pept2prot.json?input[]=APVISDSSCK&equate_il=true').then(res => res.json())
+    response4.value = await fetch('http://api.unipept.ugent.be/api/v1/pept2prot.json?input[]=AIPQLEVARPADAYETAEAYR&extra=true').then(res => res.json())  
+})
 </script>
 
 <style scoped>
@@ -200,21 +242,5 @@ const examples = [
 
 HeaderBodyCard {
     font-size: inherit;
-}
-
-.request {
-    display: block;
-    border: 1px solid #cccccc;
-    border-radius: 2px;
-    padding: 8px;
-    background-color: #f5f5f5;
-    overflow: auto;
-    line-height: 0;
-    padding: 20px 10px;
-    margin-bottom: 12px;
-}
-
-.sentinel {
-    color: #c65d09;
 }
 </style>

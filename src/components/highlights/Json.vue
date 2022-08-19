@@ -6,12 +6,16 @@
 const highlight = (object: Object) => {
     return JSON
         .stringify(object, null, 2)
-        .replace(/"/g,"")
-        .replace(/('(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\'])*'(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g, 
+        .replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g, 
             match => {
-                if(/^'/.test(match)) {
-                    // String
-                    return '<span style="color: #4070a0;">' + match + '</span>';
+                if(/^"/.test(match)) {
+                    if (/:$/.test(match)) {
+                        // Field
+                        return match.replace(/"/g,"");
+                    } else {
+                        // String
+                        return '<span style="color: #4070a0;">' + match + '</span>';
+                    }
                 } else if(/true|false/.test(match)) {
                     // Boolean
                     return '<span style="color: #f79ea9;">' + match + '</span>';
@@ -27,7 +31,7 @@ const highlight = (object: Object) => {
 }
 
 export interface Props {
-    object: Object
+    object: Object | [Object]
 }
 
 /* eslint-disable */
