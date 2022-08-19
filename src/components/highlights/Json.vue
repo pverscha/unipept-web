@@ -1,0 +1,42 @@
+<template>
+    <pre v-html="highlight(object)"></pre>
+</template>
+
+<script setup lang="ts">
+const highlight = (object: Object) => {
+    return JSON
+        .stringify(object, null, 2)
+        .replace(/"/g,"")
+        .replace(/('(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\'])*'(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g, 
+            match => {
+                if(/^'/.test(match)) {
+                    // String
+                    return '<span style="color: #4070a0;">' + match + '</span>';
+                } else if(/true|false/.test(match)) {
+                    // Boolean
+                    return '<span style="color: #f79ea9;">' + match + '</span>';
+                } else if(/null/.test(match)) {
+                    // Null
+                    return '<span style="color: #f79ea9;">' + match + '</span>';
+                }
+
+                // Numbers
+                return '<span style="color: #40a070;">' + match + '</span>';
+            }
+    );
+}
+
+export interface Props {
+    object: Object
+}
+
+/* eslint-disable */
+defineProps<Props>();
+</script>
+
+<style scoped>
+span {
+    text-transform: uppercase;
+    font-size: 90%;
+};
+</style>

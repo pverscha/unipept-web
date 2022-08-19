@@ -136,6 +136,33 @@
                 </template>
             </v-simple-table>
         </HeaderBodyCard>
+
+        <v-card>
+            <v-card-text class="mt-4">
+                <h4>Example <small>{{ examples[0].title }}</small></h4>
+                <p>
+                    This example retrieves all UniProt entries containing the peptide AIPQLEVARPADAYETAEAYR. The result is the same as this search with the 
+                    Tryptic Peptide Analysis in the web interface.
+                </p>
+
+                <Initialism><b>post</b></Initialism>
+                <pre class="request">
+<b class="sentinel">$</b> curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/pept2prot -d 'input[]=AIPQLEVARPADAYETAEAYR'
+                </pre>
+
+                <Initialism><b>get</b></Initialism>
+                <pre class="request">
+http://api.unipept.ugent.be/api/v1/pept2prot.json?input[]=AIPQLEVARPADAYETAEAYR
+                </pre>
+            </v-card-text>
+
+            <v-divider />
+
+            <v-card-text class="grey lighten-4">
+                <h4>Response</h4>
+                <Json :object="examples[0].response"/>
+            </v-card-text>
+        </v-card>
     </v-container>
 </template>
 
@@ -144,6 +171,21 @@ import HeaderBodyCard from '@/components/cards/HeaderBodyCard.vue';
 import Code from '@/components/highlights/InlineCode.vue';
 import Initialism from '@/components/highlights/Initialism.vue';
 import StaticAlert from '@/components/alerts/StaticAlert.vue';
+import Json from '@/components/highlights/Json.vue';
+
+const examples = [
+    {
+        title: "Retrieve all UniProt entries containing a given tryptic peptide",
+        response: [
+            {
+                peptide: "'AIPQLEVARPADAYETAEAYR'",
+                taxon_id: 1680,
+                taxon_name: "'Bifidobacterium adolescentis'",
+                taxon_rank: "'species'"
+            }
+        ]
+    }
+];
 </script>
 
 <style scoped>
@@ -158,5 +200,21 @@ import StaticAlert from '@/components/alerts/StaticAlert.vue';
 
 HeaderBodyCard {
     font-size: inherit;
+}
+
+.request {
+    display: block;
+    border: 1px solid #cccccc;
+    border-radius: 2px;
+    padding: 8px;
+    background-color: #f5f5f5;
+    overflow: auto;
+    line-height: 0;
+    padding: 20px 10px;
+    margin-bottom: 12px;
+}
+
+.sentinel {
+    color: #c65d09;
 }
 </style>
