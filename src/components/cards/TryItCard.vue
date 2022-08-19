@@ -8,10 +8,7 @@
             <v-divider />
 
             <v-card-text class="grey lighten-4">
-                <h4>Request</h4>
-                <pre class="request">{{ request }}</pre>
-
-                <h4 class="mt-5">Response</h4>
+                <h4>Response</h4>
                 <Json class="limited" :object="response"/>
             </v-card-text>
         </template>
@@ -23,8 +20,7 @@ import HeaderBodyCard from './HeaderBodyCard.vue';
 import Json from '../highlights/Json.vue';
 
 export interface Props {
-    request: String,
-    response: Object | [Object]
+    response: object | object[]
 }
 
 /* eslint-disable */

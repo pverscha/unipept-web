@@ -27,8 +27,8 @@ import Initialism from '@/components/highlights/Initialism.vue';
 import Json from '@/components/highlights/Json.vue';
 
 export interface Props {
-    title: String,
-    response: Object | [Object]
+    title: string,
+    response: object | object[]
 }
 
 /* eslint-disable */

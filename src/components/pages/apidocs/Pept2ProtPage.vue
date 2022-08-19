@@ -140,12 +140,12 @@
         <h2 class="font-weight-light mt-10 mb-n2">Examples</h2>
 
         <ExampleCard 
-            title="Retrieve all UniProt entries containing any of multiple tryptic peptides" 
+            title="Retrieve all UniProt entries containing a given tryptic peptide" 
             :response="response1"
         >
             <template v-slot:description>
-                This example retrieves all UniProt entries containing either the tryptic peptide AIPQLEVARPADAYETAEAYR or the tryptic peptide APVLSDSSCK. The 
-                result is the same as the combination of this search and this search with the Tryptic Peptide Analysis in the web interface.
+                This example retrieves all UniProt entries containing the peptide AIPQLEVARPADAYETAEAYR. The result is the same as this search with the 
+                Tryptic Peptide Analysis in the web interface.
             </template>
             <template v-slot:post>
                 curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/pept2prot -d 'input[]=AIPQLEVARPADAYETAEAYR'
@@ -157,12 +157,12 @@
 
         <ExampleCard 
             class="mt-5"
-            title="Retrieve all UniProt entries containing a given tryptic peptide" 
+            title="Retrieve all UniProt entries containing any of multiple tryptic peptides" 
             :response="response2"
         >
             <template v-slot:description>
-                This example retrieves all UniProt entries containing the peptide AIPQLEVARPADAYETAEAYR. The result is the same as this search with the 
-                Tryptic Peptide Analysis in the web interface.
+                This example retrieves all UniProt entries containing either the tryptic peptide AIPQLEVARPADAYETAEAYR or the tryptic peptide APVLSDSSCK. The 
+                result is the same as the combination of this search and this search with the Tryptic Peptide Analysis in the web interface.
             </template>
             <template v-slot:post>
                 curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/pept2prot -d 'input[]=AIPQLEVARPADAYETAEAYR' -d 'input[]=APVLSDSSCK'
@@ -206,13 +206,14 @@
             </template>
         </ExampleCard>
 
-        <TryItCard class="mt-5" :response="response3" request="http://api.unipept.ugent.be/api/v1/pept2prot.json?input[]=APVISDSSCK&equate_il=true">
+        <TryItCard class="mt-5" :response="tryItResponse">
             <template>
                 <v-row>
                     <v-col class="font-weight-bold" md=2>Input[]</v-col>
                     <v-col md=10>
                         <v-textarea
                             class="pt-0 mt-0"
+                            v-model="input"
                             clearable
                             no-resize
                             filled
@@ -226,9 +227,8 @@
                     <v-col md=10>
                         <v-switch
                             class="pt-0 mt-0"
-                            v-model="parameters"
+                            v-model="equate_il"
                             inset
-                            value="equate_il"
                         ></v-switch>
                     </v-col>
                 </v-row>
@@ -238,9 +238,8 @@
                     <v-col md=10>
                         <v-switch
                             class="pt-0 mt-0"
-                            v-model="parameters"
+                            v-model="extra"
                             inset
-                            value="extra"
                         ></v-switch>
                     </v-col>
                 </v-row>
@@ -248,7 +247,7 @@
                 <v-row class="justify-end me-0 mb-0">
                     <v-btn
                         color="primary"
-                        @click="stop"
+                        @click="doRequest"
                     >
                         Try it!
                     </v-btn>
@@ -261,6 +260,8 @@
 <script setup lang="ts">
 import { onBeforeMount, ref } from 'vue';
 
+import UnipeptCommunicator from '@/communicators/unipept/UnipeptCommunicator';
+
 import HeaderBodyCard from '@/components/cards/HeaderBodyCard.vue';
 import Code from '@/components/highlights/InlineCode.vue';
 import Initialism from '@/components/highlights/Initialism.vue';
@@ -268,18 +269,28 @@ import StaticAlert from '@/components/alerts/StaticAlert.vue';
 import ExampleCard from '@/components/cards/ExampleCard.vue';
 import TryItCard from '@/components/cards/TryItCard.vue';
 
+const unipeptCommunicator = new UnipeptCommunicator();
+
 const response1 = ref({});
 const response2 = ref({});
 const response3 = ref({});
 const response4 = ref({});
 
-const parameters = ref([]);
+const input = ref("");
+const equate_il = ref(false);
+const extra = ref(false);
+
+const tryItResponse = ref({});
+
+const doRequest = async () => {
+    tryItResponse.value = await unipeptCommunicator.pept2prot(input.value.split('\n'), equate_il.value, extra.value);
+}
 
 onBeforeMount(async () => {
-    response1.value = await fetch('http://api.unipept.ugent.be/api/v1/pept2prot.json?input[]=AIPQLEVARPADAYETAEAYR').then(res => res.json())
-    response2.value = await fetch('http://api.unipept.ugent.be/api/v1/pept2prot.json?input[]=AIPQLEVARPADAYETAEAYR&input[]=APVLSDSSCK').then(res => res.json())
-    response3.value = await fetch('http://api.unipept.ugent.be/api/v1/pept2prot.json?input[]=APVISDSSCK&equate_il=true').then(res => res.json())
-    response4.value = await fetch('http://api.unipept.ugent.be/api/v1/pept2prot.json?input[]=AIPQLEVARPADAYETAEAYR&extra=true').then(res => res.json())  
+    response1.value = await unipeptCommunicator.pept2prot(["AIPQLEVARPADAYETAEAYR"]);
+    response2.value = await unipeptCommunicator.pept2prot(["AIPQLEVARPADAYETAEAYR", "APVLSDSSCK"]);
+    response3.value = await unipeptCommunicator.pept2prot(["AIPQLEVARPADAYETAEAYR"], true, undefined);
+    response4.value = await unipeptCommunicator.pept2prot(["AIPQLEVARPADAYETAEAYR"], undefined, true);
 })
 </script>
 
