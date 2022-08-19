@@ -5,6 +5,8 @@
         <v-card-text class="mt-4">
             <slot></slot>
         </v-card-text>
+
+        <slot name="extension"></slot>
     </v-card>
 </template>
 

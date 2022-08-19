@@ -205,6 +205,56 @@
                 http://api.unipept.ugent.be/api/v1/pept2prot.json?input[]=AIPQLEVARPADAYETAEAYR&extra=true
             </template>
         </ExampleCard>
+
+        <TryItCard class="mt-5" :response="response3" request="http://api.unipept.ugent.be/api/v1/pept2prot.json?input[]=APVISDSSCK&equate_il=true">
+            <template>
+                <v-row>
+                    <v-col class="font-weight-bold" md=2>Input[]</v-col>
+                    <v-col md=10>
+                        <v-textarea
+                            class="pt-0 mt-0"
+                            clearable
+                            no-resize
+                            filled
+                            clear-icon="mdi-close-circle"
+                        ></v-textarea>
+                    </v-col>
+                </v-row>
+
+                <v-row>
+                    <v-col class="font-weight-bold" md=2>equate_il</v-col>
+                    <v-col md=10>
+                        <v-switch
+                            class="pt-0 mt-0"
+                            v-model="parameters"
+                            inset
+                            value="equate_il"
+                        ></v-switch>
+                    </v-col>
+                </v-row>
+
+                <v-row>
+                    <v-col class="font-weight-bold" md=2>extra</v-col>
+                    <v-col md=10>
+                        <v-switch
+                            class="pt-0 mt-0"
+                            v-model="parameters"
+                            inset
+                            value="extra"
+                        ></v-switch>
+                    </v-col>
+                </v-row>
+
+                <v-row class="justify-end me-0 mb-0">
+                    <v-btn
+                        color="primary"
+                        @click="stop"
+                    >
+                        Try it!
+                    </v-btn>
+                </v-row>
+            </template>
+        </TryItCard>
     </v-container>
 </template>
 
@@ -216,11 +266,14 @@ import Code from '@/components/highlights/InlineCode.vue';
 import Initialism from '@/components/highlights/Initialism.vue';
 import StaticAlert from '@/components/alerts/StaticAlert.vue';
 import ExampleCard from '@/components/cards/ExampleCard.vue';
+import TryItCard from '@/components/cards/TryItCard.vue';
 
 const response1 = ref({});
 const response2 = ref({});
 const response3 = ref({});
 const response4 = ref({});
+
+const parameters = ref([]);
 
 onBeforeMount(async () => {
     response1.value = await fetch('http://api.unipept.ugent.be/api/v1/pept2prot.json?input[]=AIPQLEVARPADAYETAEAYR').then(res => res.json())
