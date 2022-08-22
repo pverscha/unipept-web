@@ -7,8 +7,12 @@
                         <v-card-title class="blue white--text">Unipept {{ release.tag_name }}</v-card-title>
                         <v-card-subtitle class="blue white--text">Posted on {{ formatDate(release.published_at) }}</v-card-subtitle>
 
+                        <v-card-text v-if="changelog.description">
+                            {{ changelog.description }}
+                        </v-card-text>
+
                         <v-card-text class="mt-4">
-                            <v-row v-for="(item, i) in changelog" :key="i">
+                            <v-row v-for="(item, i) in changelog.changelog" :key="i">
                                 <v-col class="d-flex justify-md-end pa-0" cols=12 md=2>
                                     <v-chip
                                         v-if="item.tag"
@@ -43,37 +47,23 @@
 </template>
 
 <script setup lang="ts">
-import { GithubRelease } from '@/communicators/github/GithubCommunicator';
+import { GithubRelease } from '@/logic/communicators/github/GithubCommunicator';
+import { ReleaseParser } from '@/logic/parsers/github/ReleaseParser';
 
 export interface Props {
-    release: GithubRelease
+    release: GithubRelease,
+    parser: ReleaseParser
 }
 
 /* eslint-disable */
-const { release } = defineProps<Props>()
+const { release, parser } = defineProps<Props>()
 
 const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`;
 }
 
-const splitTag = (item: string) => {
-    // Because not all releases have tags
-    if(!item.startsWith("[")) {
-        return {tag: null, description: item};
-    }
-
-    const [tag, ...text] = item.split(" ");
-
-    return {tag: tag.replace(/^\[/, "").replace(/\]$/, "").toLowerCase(), description: text.join(" ").trimEnd()};
-}
-
-const changelog = release.body
-    .trim()
-    .replace(/- /g, "* ")
-    .split('* ')
-    .filter(item => item.length)
-    .map(splitTag)
+const changelog = parser.parse(release.body);
 </script>
 
 <style scoped>

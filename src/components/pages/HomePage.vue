@@ -134,7 +134,7 @@
 </template>
 
 <script setup lang="ts">
-import { GithubCommunicator, GithubRelease } from "@/communicators/github/GithubCommunicator";
+import { GithubCommunicator, GithubRelease } from "@/logic/communicators/github/GithubCommunicator";
 import { ref, onBeforeMount } from "vue";
 import HomePageCard from "../cards/HomePageCard.vue";
 import ReleaseCard from "../cards/ReleaseCard.vue";
@@ -144,7 +144,7 @@ const githubCommunicator = new GithubCommunicator();
 const release = ref<GithubRelease>();
 
 onBeforeMount(async () => {
-    release.value = (await githubCommunicator.releases(1))[0];
+    release.value = (await githubCommunicator.releases("https://api.github.com/repos/unipept/unipept/releases", 1))[0];
 })
 </script>
 
