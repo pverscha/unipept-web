@@ -1,15 +1,12 @@
 import { ChangelogItem, ReleaseParser, ReleaseParserResult } from "./ReleaseParser";
 
-export default class APIReleaseParser implements ReleaseParser {
+export default class DescriptionChangelogParser implements ReleaseParser {
     public parse(body: string): ReleaseParserResult {
-        const description = "";
+        const [description, ...rest] = body.replace(/- /g, "* ").split("* ");
 
         return {
-            description: null,
-            changelog: body
-                .trim()
-                .replace(/- /g, "* ")
-                .split('* ')
+            description: description,
+            changelog: rest
                 .filter(item => item.length)
                 .map(this.splitTag)
         };

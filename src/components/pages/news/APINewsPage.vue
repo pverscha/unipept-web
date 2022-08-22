@@ -13,7 +13,7 @@
         >
         </ReleaseCard>
 
-        <v-container v-if="releases.length > 5" class="pa-0 d-flex justify-end">
+        <v-container v-if="releases.length == 5" class="pa-0 d-flex justify-end">
             <a href="https://github.com/unipept/unipept/releases" target="_blank">View all releases on github</a>
             <!-- TODO: change when API is extracted from unipept repo -->
         </v-container>
@@ -24,7 +24,7 @@
 import { GithubCommunicator, GithubRelease } from '@/logic/communicators/github/GithubCommunicator';
 import { ref, onBeforeMount } from 'vue';
 import ReleaseCard from "@/components/cards/ReleaseCard.vue";
-import APIReleaseParser from '@/logic/parsers/github/APIReleaseParser';
+import APIReleaseParser from '@/logic/parsers/github/DescriptionChangelogParser';
 
 const githubCommunicator = new GithubCommunicator();
 const releaseParser = new APIReleaseParser();

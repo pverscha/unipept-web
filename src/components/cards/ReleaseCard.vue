@@ -4,14 +4,17 @@
             <v-hover>
                 <template v-slot:default="{ hover }">
                     <v-card :hover="hover">
-                        <v-card-title class="blue white--text">Unipept {{ release.tag_name }}</v-card-title>
+                        <v-card-title class="blue white--text">Unipept {{ release.tag_name.replace(/^v/, "") }}</v-card-title>
                         <v-card-subtitle class="blue white--text">Posted on {{ formatDate(release.published_at) }}</v-card-subtitle>
 
-                        <v-card-text v-if="changelog.description">
+                        <v-card-text 
+                            v-if="changelog.description"
+                            class="px-5 pt-5 mb-n7"
+                        >
                             {{ changelog.description }}
                         </v-card-text>
 
-                        <v-card-text class="mt-4">
+                        <v-card-text class="mt-5">
                             <v-row v-for="(item, i) in changelog.changelog" :key="i">
                                 <v-col class="d-flex justify-md-end pa-0" cols=12 md=2>
                                     <v-chip
@@ -32,7 +35,7 @@
                                         NA
                                     </v-chip>
                                 </v-col>
-                                <v-col class="pa-0 my-0 my-md-1 ps-2" cols=12 md=10>
+                                <v-col class="pa-0 my-0 my-md-1 ps-2 pe-15" cols=12 md=10>
                                     {{ item.description }}
                                 </v-col>
                             </v-row>
@@ -64,6 +67,7 @@ const formatDate = (dateString: string) => {
 }
 
 const changelog = parser.parse(release.body);
+
 </script>
 
 <style scoped>
