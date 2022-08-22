@@ -132,4 +132,8 @@ export default defineComponent({
     color: white !important;
     text-decoration: none;
 }
+
+.v-card__text {
+    color: #333333 !important;
+}
 </style>

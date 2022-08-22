@@ -3,7 +3,7 @@
         <h1 class="font-weight-light">
             <Initialism>POST</Initialism> /api/v1/pept2prot
         </h1>
-        <h3 class="font-weight-regular grey--text">Returns the set of UniProt entries containing a given tryptic peptide.</h3>
+        <h3 class="font-weight-light">Returns the set of UniProt entries containing a given tryptic peptide.</h3>
         
         <v-divider class="my-2" />
 
