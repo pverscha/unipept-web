@@ -20,12 +20,12 @@
 
 <script setup lang="ts">
 import { GithubCommunicator, GithubRelease } from '@/communicators/github/GithubCommunicator';
-import { onBeforeMount, Ref, ref } from 'vue';
+import { onBeforeMount, ref } from 'vue';
 import ReleaseCard from '../cards/ReleaseCard.vue';
 
 const githubCommunicator = new GithubCommunicator();
 
-const releases: Ref<GithubRelease[]> = ref([]);
+const releases = ref<GithubRelease[]>([]);
 
 onBeforeMount(async () => {
     const result = await githubCommunicator.releases(5);

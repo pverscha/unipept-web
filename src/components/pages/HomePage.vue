@@ -2,7 +2,7 @@
     <v-container>
         <v-container class="main">
             <v-row>
-                <v-col class="col-lg-6 col-sm-12">
+                <v-col cols=12>
                     <div class="text-h3 font-weight-light mb-2">Welcome</div>
                     Unipept is an open source web application developed at <a href="https://www.ugent.be/en" target="_blank">Ghent University</a> that is designed for metaproteomics 
                     data analysis with a focus on <span class="font-weight-bold">interactive datavisualizations</span>. Unipept is powered by an index containing all 
@@ -12,54 +12,27 @@
                     selecting unique peptides for <span class="font-weight-bold">targeted proteomics</span> and for <span class="font-weight-bold">comparing 
                     genomes</span> based on peptide similarity.
                 </v-col>
-                <v-col class="col-lg-6 col-sm-12">
-                    <v-card>
-                        <v-list-item two-line class="blue darken-1">
-                            <v-list-item-content>
-                                <v-list-item-title class="text-h5 white--text">
-                                    Unipept 4.3
-                                </v-list-item-title>
-                                <v-list-item-subtitle class="white--text">posted on 2020-04-15</v-list-item-subtitle>
-                            </v-list-item-content>
-                        </v-list-item>
-
-                        <v-card-text>
-                            Unipept 4.3 has just been released and contains these major additions:
-                            <ul>
-                                <li>
-                                    Load and process multiple samples at once with the metaproteomics analysis tool.
-                                </li>
-                                <li>
-                                    Compare multiple samples with each other using the new heatmap.
-                                </li>
-                                <li>
-                                    Functional analysis has been expanded with support for InterPro annotations.
-                                </li>
-                                <li>
-                                    UniProt updated to version 2020.01
-                                </li>
-                            </ul>
-                        </v-card-text>
-
-                        <v-divider class="mx-4"></v-divider>
-
-                        <v-card-actions>
-                            <v-spacer />
-                            <router-link
-                                to="/posts"
-                                v-slot="{ href, navigate }"
-                            >
-                                <v-btn
-                                    color="secondary"
-                                    text
-                                    @click="navigate"
-                                    :href="href"
+                <v-col v-if="release" cols=12>
+                    <ReleaseCard :release="release">
+                        <template v-slot:extension>
+                            <v-card-actions>
+                                <v-spacer />
+                                <router-link
+                                    to="/posts"
+                                    v-slot="{ href, navigate }"
                                 >
-                                    More news
-                                </v-btn>
-                            </router-link>
-                        </v-card-actions>
-                    </v-card>
+                                    <v-btn
+                                        color="secondary"
+                                        text
+                                        @click="navigate"
+                                        :href="href"
+                                    >
+                                        More news
+                                    </v-btn>
+                                </router-link>
+                            </v-card-actions>
+                        </template>
+                    </ReleaseCard>
                 </v-col>
             </v-row>
             <v-row>
@@ -162,15 +135,19 @@
     </v-container>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { GithubCommunicator, GithubRelease } from "@/communicators/github/GithubCommunicator";
+import { ref, onBeforeMount } from "vue";
 import HomePageCard from "../cards/HomePageCard.vue";
+import ReleaseCard from "../cards/ReleaseCard.vue";
 
-export default defineComponent({
-    name: "HomePage",
-    setup() { },
-    components: { HomePageCard },
-});
+const githubCommunicator = new GithubCommunicator();
+
+const release = ref<GithubRelease>();
+
+onBeforeMount(async () => {
+    release.value = (await githubCommunicator.releases(1))[0];
+})
 </script>
 
 <style scoped>
