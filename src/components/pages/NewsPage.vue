@@ -1,5 +1,5 @@
 <template>
-    <v-container style="width: 75%;"> <!-- TODO: this is fixed in PR #5 and should be removed when merged -->
+    <v-container>
         <h1 class="font-weight-light">
             News
         </h1>
