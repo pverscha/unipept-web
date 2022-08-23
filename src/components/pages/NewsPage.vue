@@ -11,12 +11,8 @@
 </template>
 
 <script setup lang="ts">
-import { GithubCommunicator, GithubRelease } from '@/logic/communicators/github/GithubCommunicator';
-import { onBeforeMount, ref } from 'vue';
 import VerticalNavigation from "@/components/navigation/VerticalNavigation.vue";
 import HorizontalNavigation from "@/components/navigation/HorizontalNavigation.vue";
-
-const githubCommunicator = new GithubCommunicator();
 
 const navigation = [
     { name: "overview", link: "/news" },
@@ -24,13 +20,5 @@ const navigation = [
     { name: "cli", link: "/news/cli" },
     { name: "web", link: "/news/web" },
     { name: "desktop", link: "/news/desktop" },
-]
-
-const releases = ref<GithubRelease[]>([]);
-
-onBeforeMount(async () => {
-    const result = await githubCommunicator.releases("https://api.github.com/repos/unipept/unipept/releases", 5);
-
-    releases.value = result.filter(r => !r.prerelease);
-})
+];
 </script>

@@ -24,6 +24,7 @@ import Taxa2TreePage from "@/components/pages/apidocs/Taxa2TreePage.vue";
 import TaxonomyPage from "@/components/pages/apidocs/TaxonomyPage.vue";
 
 // News Documentation
+import NewsOverviewPage from "@/components/pages/news/NewsOverviewPage.vue";
 import APINewsPage from "@/components/pages/news/APINewsPage.vue";
 import CLINewsPage from "@/components/pages/news/CLINewsPage.vue";
 import WebNewsPage from "@/components/pages/news/WebNewsPage.vue";
@@ -120,6 +121,7 @@ const routes = [
         path: "/news",
         component: NewsPage,
         children: [
+            { path: "", component: NewsOverviewPage, meta: newsMeta },
             { path: "api", component: APINewsPage, meta: newsMeta },
             { path: "cli", component: CLINewsPage, meta: newsMeta },
             { path: "web", component: WebNewsPage, meta: newsMeta },
