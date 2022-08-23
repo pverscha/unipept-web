@@ -1,7 +1,7 @@
 <template>
     <v-container class="main">
         <v-row>
-            <v-col cols=12>
+            <v-col cols=12 md=6>
                 <div class="text-h3 font-weight-light mb-2">Welcome</div>
                 Unipept is an open source web application developed at <a href="https://www.ugent.be/en" target="_blank">Ghent University</a> that is designed for metaproteomics 
                 data analysis with a focus on <span class="font-weight-bold">interactive datavisualizations</span>. Unipept is powered by an index containing all 
@@ -11,27 +11,8 @@
                 selecting unique peptides for <span class="font-weight-bold">targeted proteomics</span> and for <span class="font-weight-bold">comparing 
                 genomes</span> based on peptide similarity.
             </v-col>
-            <v-col v-if="release" cols=12>
-                <ReleaseCard :release="release">
-                    <template v-slot:extension>
-                        <v-card-actions>
-                            <v-spacer />
-                            <router-link
-                                to="/posts"
-                                v-slot="{ href, navigate }"
-                            >
-                                <v-btn
-                                    color="secondary"
-                                    text
-                                    @click="navigate"
-                                    :href="href"
-                                >
-                                    More news
-                                </v-btn>
-                            </router-link>
-                        </v-card-actions>
-                    </template>
-                </ReleaseCard>
+            <v-col class="mt-md-15 mt-lg-0" cols=12 md=6>
+                <ReleaseOverviewCard v-if="!loading" :services="services" />
             </v-col>
         </v-row>
         <v-row>
@@ -134,18 +115,31 @@
 </template>
 
 <script setup lang="ts">
-import { GithubCommunicator, GithubRelease } from "@/logic/communicators/github/GithubCommunicator";
-import { ref, onBeforeMount } from "vue";
+import { GithubCommunicator } from "@/logic/communicators/github/GithubCommunicator";
+import { onBeforeMount, ref } from "vue";
 import HomePageCard from "../cards/HomePageCard.vue";
-import ReleaseCard from "../cards/ReleaseCard.vue";
+import ReleaseOverviewCard, { Service } from "../cards/ReleaseOverviewCard.vue";
 
 const githubCommunicator = new GithubCommunicator();
 
-const release = ref<GithubRelease>();
+const loading = ref<boolean>(true);
+const services = ref<Service[]>();
 
 onBeforeMount(async () => {
-    release.value = (await githubCommunicator.releases("https://api.github.com/repos/unipept/unipept/releases", 1))[0];
-})
+    const API = await githubCommunicator.latestRelease("https://api.github.com/repos/unipept/unipept/releases");
+    const CLI = await githubCommunicator.latestRelease("https://api.github.com/repos/unipept/unipept-cli/releases");
+    const Web = await githubCommunicator.latestRelease("https://api.github.com/repos/unipept/unipept-web/releases");
+    const Desktop = await githubCommunicator.latestRelease("https://api.github.com/repos/unipept/unipept-desktop/releases");
+
+    services.value = [
+        { name: "API", icon: "mdi-api", version: API.tag_name.replace(/^v/, ""), to: "/news/api" },
+        { name: "CLI", icon: "mdi-console", version: CLI.tag_name.replace(/^v/, ""), to: "/news/cli" },
+        { name: "Web app", icon: "mdi-web", version: Web.tag_name, to: "/news/web" },
+        { name: "Desktop app", icon: "mdi-desktop-tower-monitor", version: Desktop.tag_name.replace(/^v/, ""), to: "/news/desktop" }
+    ];
+
+    loading.value = false;
+});
 </script>
 
 <style scoped>
