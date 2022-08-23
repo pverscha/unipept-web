@@ -1,10 +1,29 @@
 <template>
     <div>
         <div v-if="!loading">
-            <ReleaseCard class="mb-5" :release="latestAPIRelease" :parser="descriptionChangelogParser"></ReleaseCard>
-            <ReleaseCard class="mb-5" :release="latestCLIRelease" :parser="descriptionChangelogParser"></ReleaseCard>
-            <ReleaseCard class="mb-5" :release="latestWebRelease" :parser="descriptionChangelogParser"></ReleaseCard>
-            <ReleaseCard class="mb-5" :release="latestDesktopRelease" :parser="desktopReleaseParser"></ReleaseCard>
+            <h1 class="font-weight-light">
+                Latest API version
+            </h1>
+            <ReleaseCard class="mb-2" :release="latestAPIRelease" :parser="descriptionChangelogParser"></ReleaseCard>
+            <ResourceLink class="d-flex justify-end" to="news/api" router>Go to API changelog</ResourceLink>
+            
+            <h1 class="font-weight-light">
+                Latest CLI version
+            </h1>
+            <ReleaseCard class="mb-2" :release="latestCLIRelease" :parser="descriptionChangelogParser"></ReleaseCard>
+            <ResourceLink class="d-flex justify-end" to="news/cli" router>Go to CLI changelog</ResourceLink>
+            
+            <h1 class="font-weight-light">
+                Latest Web version
+            </h1>
+            <ReleaseCard class="mb-2" :release="latestWebRelease" :parser="descriptionChangelogParser"></ReleaseCard>
+            <ResourceLink class="d-flex justify-end" to="news/web" router>Go to web changelog</ResourceLink>
+            
+            <h1 class="font-weight-light">
+                Latest Desktop version
+            </h1>
+            <ReleaseCard class="mb-2" :release="latestDesktopRelease" :parser="desktopReleaseParser"></ReleaseCard>
+            <ResourceLink class="d-flex justify-end" to="news/desktop" router>Go to desktop changelog</ResourceLink>
         </div>
     </div>
 </template>
@@ -15,6 +34,7 @@ import { GithubCommunicator, GithubRelease } from '@/logic/communicators/github/
 import DescriptionChangelogParser from '@/logic/parsers/github/DescriptionChangelogParser';
 import DesktopReleaseParser from "@/logic/parsers/github/DesktopReleaseParser";
 import { onBeforeMount, ref } from 'vue';
+import ResourceLink from '@/components/highlights/ResourceLink.vue';
 
 const githubCommunicator = new GithubCommunicator();
 const descriptionChangelogParser = new DescriptionChangelogParser();

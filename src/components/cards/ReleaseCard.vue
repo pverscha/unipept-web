@@ -1,6 +1,10 @@
 <template>
     <div>
-        <a :href="release.html_url" target="_blank">
+        <v-card v-if="!release.tag_name">
+            <v-card-title class="blue white--text">This application has not yet been released</v-card-title>
+        </v-card>
+
+        <a v-else :href="release.html_url" target="_blank">
             <v-hover>
                 <template v-slot:default="{ hover }">
                     <v-card :hover="hover">
