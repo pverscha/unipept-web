@@ -136,4 +136,21 @@ export default defineComponent({
 .v-card__text {
     color: #333333 !important;
 }
+
+li {
+    line-height: 1.8;
+}
+
+.v-card__text p {
+    font-size: 100%;
+}
+
+.v-card__content p {
+    font-size: 100%;
+}
+
+p {
+    color: #333333 !important;
+    font-size: 90%;
+}
 </style>

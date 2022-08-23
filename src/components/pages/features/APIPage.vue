@@ -30,7 +30,7 @@ export default defineComponent({
                 { name: "pept2go", link: "/apidocs/pept2go" },
                 { name: "pept2interpro", link: "/apidocs/pept2interpro" },
                 { name: "pept2funct", link: "/apidocs/pept2funct" },
-                { name: "pept2info", link: "/apidocs/pept2info" },
+                { name: "peptinfo", link: "/apidocs/peptinfo" },
                 { name: "taxa2lca", link: "/apidocs/taxa2lca" },
                 { name: "taxa2tree", link: "/apidocs/taxa2tree" },
                 { name: "taxonomy", link: "/apidocs/taxonomy" }

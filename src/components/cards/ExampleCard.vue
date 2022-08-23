@@ -53,7 +53,7 @@ defineProps<Props>();
 }
 
 .limited {
-    height: 350px;
+    max-height: 350px;
     overflow: auto;
 }
 </style>

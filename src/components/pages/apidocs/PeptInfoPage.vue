@@ -1,31 +1,32 @@
 <template>
     <v-container>
         <h1 class="font-weight-light">
-            <Initialism>POST</Initialism> /api/v1/pept2go
+            <Initialism>POST</Initialism> /api/v1/peptinfo
         </h1>
-        <h3 class="font-weight-light">Returns the functional <Initialism>GO</Initialism>-terms associated with a given tryptic peptide.</h3>
+        <h3 class="font-weight-light">Returns functional information and the lowest common ancestor for a given tryptic peptide.</h3>
         
         <v-divider class="my-2" />
 
         <p>
-            This method returns the functional <Initialism>GO</Initialism>-terms associated with a given tryptic peptide. This is the same information as provided 
-            when performing a search with the <RLink to="/tpa" router>Tryptic Peptide Analysis</RLink> in the web interface. 
+            This method returns functional information and the lowest common ancestor a given tryptic peptide. This is the same information as provided when 
+            performing a search with the <RLink to="/tpa" router>Tryptic Peptide Analysis</RLink> in the web interface. 
         </p>
 
         <!-- Request Card -->
         <HeaderBodyCard title="Request">
             <p>
-                The pept2go method can be used by doing a <Initialism>HTTP POST</Initialism>-request (preferred) or <Initialism>GET</Initialism>-request to 
-                <Code>http://api.unipept.ugent.be/api/v1/pept2go</Code>. <RLink to="parameters" anchor>Parameters</RLink> can be included in the request body 
+                The peptinfo method can be used by doing a <Initialism>HTTP POST</Initialism>-request (preferred) or <Initialism>GET</Initialism>-request to 
+                <Code>http://api.unipept.ugent.be/api/v1/peptinfo</Code>. <RLink to="parameters" anchor>Parameters</RLink> can be included in the request body 
                 (<Initialism>POST</Initialism>) or in the query string (<Initialism>GET</Initialism>). The only required parameter is <Code>input[]</Code>, which 
                 takes one or more tryptic peptides.
             </p>
-            
+
             <h3>input</h3>
             <p>
                 <Code>input[]</Code> is a required parameter that takes one or more tryptic peptides. Unipept will return the functional 
-                <Initialism>GO</Initialism>-terms associated with each of the <Code>input[]</Code> peptides based on their occurrence in UniProt entries. To pass 
-                multiple peptides at once, simply add multiple <Code>input[]</Code> parameters (see <RLink to="example2" anchor>example</RLink>).
+                <Initialism>EC</Initialism>-numbers, <Initialism>GO</Initialism>-terms and InterPro entries associated with each of the <Code>input[]</Code> 
+                peptides based on their occurrence in UniProt entries. To pass multiple peptides at once, simply add multiple <Code>input[]</Code> parameters 
+                (see <RLink to="example2" anchor>example</RLink>).
             </p>
 
             <StaticAlert title="Input size">
@@ -48,7 +49,9 @@
             <p>
                 <Code>extra</Code> is an optional parameter and can either be <Code>true</Code> or <Code>false</Code>. When not set explicitly, the parameter 
                 defaults to <Code>false</Code>. When the parameter is set to <Code>true</Code>, Unipept will also return the name associated with a 
-                <Initialism>GO</Initialism>-term. See the <RLink to="response" anchor>response</RLink> section for an overview of the information fields returned.
+                <Initialism>GO</Initialism>-term and an <Initialism>EC</Initialism>-number, the name and type associated with an InterPro entry, and the complete 
+                lineage of the taxonomic lowest common ancestor. See the <RLink to="response" anchor>response</RLink> section for an overview of the information 
+                fields returned.
             </p>
 
             <h3>domains</h3>
@@ -73,6 +76,19 @@
                 <ul class="my-3">
                     <li><Code>peptide</Code>: the peptide that was searched for.</li>
                     <li><Code>total_protein_count</Code>: total amount of proteins matched with the given peptide.</li>
+                    <li><Code>ec</Code>: 
+                        A list of <Initialism>JSON</Initialism> objects that each represent an <Initialism>EC</Initialism>-number associated with 
+                        the current tryptic peptide.
+                        <ul>
+                            <li><Code>ec_number</Code>: <Initialism>EC</Initialism>-number associated with the current tryptic peptide.</li>
+                            <li><Code>protein_count</Code>: 
+                                amount of proteins matched with the given tryptic peptide that are labeled with the current <Initialism>EC</Initialism>-number.
+                            </li>
+                            <li><Code>name</Code>: 
+                                optional, name of the <Initialism>EC</Initialism>-number. Included when the <Code>extra</Code> parameter is set to <Code>true</Code>.
+                            </li>
+                        </ul>
+                    </li>
                     <li><Code>go</Code>: 
                         A list of <Initialism>JSON</Initialism> objects that each represent a <Initialism>GO</Initialism>-term associated with 
                         the current tryptic peptide.
@@ -86,8 +102,65 @@
                             </li>
                         </ul>
                     </li>
+                    <li><Code>ipr</Code>: 
+                        A list of <Initialism>JSON</Initialism> objects that each represent an InterPro entry associated with 
+                        the current tryptic peptide.
+                        <ul>
+                            <li><Code>code</Code>: InterPro entry code associated with the current tryptic peptide.</li>
+                            <li><Code>protein_count</Code>: 
+                                amount of proteins matched with the given tryptic peptide that are labeled with the current InterPro code.
+                            </li>
+                            <li><Code>name</Code>: 
+                                optional, name of the InterPro entry. Included when the <Code>extra</Code> parameter is set to <Code>true</Code>.
+                            </li>
+                            <li><Code>type</Code>: 
+                                optional, type of the InterPro entry. Included when the <Code>extra</Code> parameter is set to <Code>true</Code>.
+                            </li>
+                        </ul>
+                    </li>
+                    <li><Code>taxon_id</Code>: the <Initialism>NCBI</Initialism> taxon id of the taxonomic lowest common ancestor</li>
+                    <li><Code>taxon_name</Code>: the name of the taxonomic lowest common ancestor</li>
+                    <li><Code>taxon_rank</Code>: the taxonomic rank of the taxonomic lowest common ancestor</li>
                 </ul>
 
+                When the <Code>extra</Code> parameter is set to <Code>true</Code>, objects contain additional information about the lineage of the taxonomic 
+                lowest common ancestor extracted from the <Initialism>NCBI</Initialism> taxonomy. The taxon id of each rank in the lineage is specified using the 
+                following information fields:
+
+                <ul class="multi-column my-3">
+                    <li><Code>superkingdom_id</Code></li>
+                    <li><Code>kingdom_id</Code></li>
+                    <li><Code>subkingdom_id</Code></li>
+                    <li><Code>superphylum_id</Code></li>
+                    <li><Code>phylum_id</Code></li>
+                    <li><Code>subphylum_id</Code></li>
+                    <li><Code>superclass_id</Code></li>
+                    <li><Code>class_id</Code></li>
+                    <li><Code>subclass_id</Code></li>
+                    <li><Code>infraclass_id</Code></li>
+                    <li><Code>superorder_id</Code></li>
+                    <li><Code>order_id</Code></li>
+                    <li><Code>suborder_id</Code></li>
+                    <li><Code>infraorder_id</Code></li>
+                    <li><Code>parvorder_id</Code></li>
+                    <li><Code>superfamily_id</Code></li>
+                    <li><Code>family_id</Code></li>
+                    <li><Code>subfamily_id</Code></li>
+                    <li><Code>tribe_id</Code></li>
+                    <li><Code>subtribe_id</Code></li>
+                    <li><Code>genus_id</Code></li>
+                    <li><Code>subgenus_id</Code></li>
+                    <li><Code>species_group_id</Code></li>
+                    <li><Code>species_subgroup_id</Code></li>
+                    <li><Code>species_id</Code></li>
+                    <li><Code>subspecies_id</Code></li>
+                    <li><Code>varietas_id</Code></li>
+                    <li><Code>forma_id</Code></li>
+                </ul>
+
+                The <Code>name</Code> associated with a <Initialism>GO</Initialism>-term and an <Initialism>EC</Initialism>-number, and the name and type of an InterPro 
+                entry, are also provided when the extra parameter is set to true. 
+                <br class="mb-3">
                 When the <Code>domains</Code> parameter is set to <Code>true</Code>, objects are placed in a group corresponding to their namespace and the objects 
                 are nested in an additional object. See the examples for more information on how to use this.
             </p>
@@ -148,7 +221,8 @@
                                 <i style="font-size: 85%;">optional</i>
                             </td>
                             <td class="py-3">
-                                Separates <Initialism>GO</Initialism>-namespaces and places objects in group associated with current namespace when <Code>true</Code>.
+                                Separates <Initialism>GO</Initialism>-namespaces and InterPro types and places objects in group associated with current namespace or 
+                                type when <Code>true</Code>.
                                 <br>
                                 <div class="mt-3" style="font-size: 85%;">Value: Must be <Code>true</Code> or <Code>false</Code> (default)</div>
                             </td>
@@ -161,94 +235,97 @@
         <h2 class="font-weight-light mt-10 mb-n2">Examples</h2>
 
         <ExampleCard 
-            title="Retrieve the functional go-terms associated with a given tryptic peptide" 
+            title="Retrieve the functional ec-numbers, go-terms, InterPro entries and lowest common ancestor associated with a given tryptic peptide" 
             :response="response1"
         >
             <template v-slot:description>
-                This example retrieves all functional <Initialism>GO</Initialism>-terms associated with the tryptic peptide 
-                <i><Initialism>AIPQLEVARPADAYETAEAYR</Initialism></i>. The result is the same as this search with the Tryptic Peptide Analysis in the web interface.
+                This example retrieves all functional <Initialism>EC</Initialism>-numbers, <Initialism>GO</Initialism>-terms, InterPro entries and the lowest 
+                common ancestor associated with the tryptic peptide <i><Initialism>AIPQLEVARPADAYETAEAYR</Initialism></i>. The result is the same as this search 
+                with the Tryptic Peptide Analysis in the web interface.
             </template>
             <template v-slot:post>
-                curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/pept2go -d 'input[]=AIPQLEVARPADAYETAEAYR'
+                curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/peptinfo -d 'input[]=AIPQLEVARPADAYETAEAYR'
             </template>
             <template v-slot:get>
-                http://api.unipept.ugent.be/api/v1/pept2go.json?input[]=AIPQLEVARPADAYETAEAYR
+                http://api.unipept.ugent.be/api/v1/peptinfo.json?input[]=AIPQLEVARPADAYETAEAYR
             </template>
         </ExampleCard>
 
         <ExampleCard 
             id="example2"
             class="mt-5"
-            title="Retrieve the functional go-terms associated with each of multiple tryptic peptides" 
+            title="Retrieve the functional ec-numbers, go-terms, InterPro entries and lowest common ancestor associated with each of multiple tryptic peptides" 
             :response="response2"
         >
             <template v-slot:description>
-                This example retrieves the functional <Initialism>GO</Initialism>-terms for both the tryptic peptides <i><Initialism>AIPQLEVARPADAYETAEAYR</Initialism></i> 
-                and <i><Initialism>APVLSDSSCK</Initialism></i>. The result is the same as the combination of this search and this search with the Tryptic Peptide Analysis in 
-                the web interface.
+                This example retrieves all functional <Initialism>EC</Initialism>-numbers, <Initialism>GO</Initialism>-terms, InterPro entries and the lowest 
+                common ancestor for both the tryptic peptides <i><Initialism>AIPQLEVARPADAYETAEAYR</Initialism></i> and <i><Initialism>APVLSDSSCK</Initialism></i>. 
+                The result is the same as the combination of this search and this search with the Tryptic Peptide Analysis in the web interface.
             </template>
             <template v-slot:post>
-                curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/pept2go -d 'input[]=AIPQLEVARPADAYETAEAYR' -d 'input[]=APVLSDSSCK'
+                curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/peptinfo -d 'input[]=AIPQLEVARPADAYETAEAYR' -d 'input[]=APVLSDSSCK'
             </template>
             <template v-slot:get>
-                http://api.unipept.ugent.be/api/v1/pept2go.json?input[]=AIPQLEVARPADAYETAEAYR&input[]=APVLSDSSCK
+                http://api.unipept.ugent.be/api/v1/peptinfo.json?input[]=AIPQLEVARPADAYETAEAYR&input[]=APVLSDSSCK
             </template>
         </ExampleCard>
 
         <ExampleCard 
             class="mt-5"
-            title="Retrieve the functional go-terms associated with a single tryptic peptide, while equating I and L" 
+            title="Retrieve the functional ec-numbers, go-terms, InterPro Entries and lowest common ancestor associated with a single tryptic peptide, while equating I and L" 
             :response="response3"
         >
             <template v-slot:description>
-                This example retrieves the functional <Initialism>GO</Initialism>-terms associated with the tryptic peptide <i><Initialism>APVLSDSSCK</Initialism></i>. 
-                In searching, isoleucine (I) and leucinge (L) are considered equal. The result is the same as this search with the Tryptic Peptide Analysis in the 
-                web interface.
+                This example retrieves all functional <Initialism>EC</Initialism>-numbers, <Initialism>GO</Initialism>-terms, InterPro entries and the lowest 
+                common ancestor associated with the tryptic peptide <i><Initialism>APVLSDSSCK</Initialism></i>. In searching, isoleucine (I) and leucinge (L) are 
+                considered equal. The result is the same as this search with the Tryptic Peptide Analysis in the web interface.
             </template>
             <template v-slot:post>
-                curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/pept2go -d 'input[]=APVISDSSCK' -d 'equate_il=true'
+                curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/peptinfo -d 'input[]=APVISDSSCK' -d 'equate_il=true'
             </template>
             <template v-slot:get>
-                http://api.unipept.ugent.be/api/v1/pept2go.json?input[]=APVISDSSCK&equate_il=true
+                http://api.unipept.ugent.be/api/v1/peptinfo.json?input[]=APVISDSSCK&equate_il=true
             </template>
         </ExampleCard>
 
         <ExampleCard 
             class="mt-5"
-            title="Retrieve the functional go-terms associated with a single tryptic peptide, with extra information enabled" 
+            title="Retrieve the functional ec-numbers, go-terms, InterPro entries and lowest common ancestor associated with a single tryptic peptide" 
             :response="response4"
         >
             <template v-slot:description>
-                This example retrieves the functional <Initialism>GO</Initialism>-terms associated with the tryptic peptide 
-                <i><Initialism>AIPQLEVARPADAYETAEAYR</Initialism></i> including the name of each <Initialism>GO</Initialism>-term. The result is the same as this search 
-                with the Tryptic Peptide Analysis in the web interface.
+                This example retrieves all functional <Initialism>EC</Initialism>-numbers, <Initialism>GO</Initialism>-terms, InterPro entries and the lowest 
+                common ancestor associated with the tryptic peptide <i><Initialism>AIPQLEVARPADAYETAEAYR</Initialism></i> including the name of each 
+                <Initialism>EC</Initialism>-number, <Initialism>GO</Initialism>-term, the name and type of each InterPro entry, and its complete lineage. The 
+                result is the same as this search with the Tryptic Peptide Analysis in the web interface.
             </template>
             <template v-slot:post>
-                curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/pept2go -d 'input[]=AIPQLEVARPADAYETAEAYR' -d 'extra=true'
+                curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/peptinfo -d 'input[]=AIPQLEVARPADAYETAEAYR' -d 'extra=true'
             </template>
             <template v-slot:get>
-                http://api.unipept.ugent.be/api/v1/pept2go.json?input[]=AIPQLEVARPADAYETAEAYR&extra=true
+                http://api.unipept.ugent.be/api/v1/peptinfo.json?input[]=AIPQLEVARPADAYETAEAYR&extra=true
             </template>
         </ExampleCard>
 
         <ExampleCard 
             class="mt-5"
-            title="Retrieve the functional go-terms associated with a single tryptic peptide, making a distinction between different domains" 
+            title="Retrieve the functional ec-numbers, go-terms, InterPro entries and lowest common ancestor associated with a single tryptic peptide, making a distinction between different go-domains and InterPro types" 
             :response="response5"
         >
             <template v-slot:description>
-                This example retrieves the functional <Initialism>GO</Initialism>-terms associated with the tryptic peptide <i><Initialism>APVLSDSSCK</Initialism></i> 
-                distributed over the distinct <Initialism>GO</Initialism>-domains. The result is the same as this search with the Tryptic Peptide Analysis in the web interface.
+                This example retrieves all functional <Initialism>EC</Initialism>-numbers, <Initialism>GO</Initialism>-terms, InterPro entries and the lowest 
+                common ancestor associated with the tryptic peptide <i><Initialism>APVLSDSSCK</Initialism></i> distributed over the distinct 
+                <Initialism>GO</Initialism>-domains and InterPro types. The result is the same as this search with the Tryptic Peptide Analysis in the web interface.
             </template>
             <template v-slot:post>
-                curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/pept2go -d 'input[]=APVLSDSSCK' -d 'domains=true'
+                curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/peptinfo -d 'input[]=APVLSDSSCK' -d 'domains=true'
             </template>
             <template v-slot:get>
-                http://api.unipept.ugent.be/api/v1/pept2go.json?input[]=APVLSDSSCK&domains=true
+                http://api.unipept.ugent.be/api/v1/peptinfo.json?input[]=APVLSDSSCK&domains=true
             </template>
         </ExampleCard>
 
-        <TryItCard class="mt-5" :response="tryItResponse" command="pept2go">
+        <TryItCard class="mt-5" :response="tryItResponse" command="pept2info">
             <template>
                 <v-row>
                     <v-col class="font-weight-bold" cols=12 md=2>Input[]</v-col>
@@ -340,18 +417,22 @@ const domains = ref(false);
 const tryItResponse = ref({});
 
 const doRequest = async () => {
-    tryItResponse.value = await unipeptCommunicator.pept2go(input.value.split('\n'), equate_il.value, extra.value, domains.value);
+    tryItResponse.value = await unipeptCommunicator.peptinfo(input.value.split('\n'), equate_il.value, extra.value, domains.value);
 }
 
 onBeforeMount(async () => {
-    response1.value = await unipeptCommunicator.pept2go(["AIPQLEVARPADAYETAEAYR"]);
-    response2.value = await unipeptCommunicator.pept2go(["AIPQLEVARPADAYETAEAYR", "APVLSDSSCK"]);
-    response3.value = await unipeptCommunicator.pept2go(["APVLSDSSCK"], true, undefined, undefined);
-    response4.value = await unipeptCommunicator.pept2go(["AIPQLEVARPADAYETAEAYR"], undefined, true, undefined);
-    response5.value = await unipeptCommunicator.pept2go(["APVLSDSSCK"], undefined, undefined, true);
+    response1.value = await unipeptCommunicator.peptinfo(["AIPQLEVARPADAYETAEAYR"]);
+    response2.value = await unipeptCommunicator.peptinfo(["AIPQLEVARPADAYETAEAYR", "APVLSDSSCK"]);
+    response3.value = await unipeptCommunicator.peptinfo(["APVLSDSSCK"], true, undefined, undefined);
+    response4.value = await unipeptCommunicator.peptinfo(["AIPQLEVARPADAYETAEAYR"], undefined, true, undefined);
+    response5.value = await unipeptCommunicator.peptinfo(["APVLSDSSCK"], undefined, undefined, true);
 })
 </script>
 
 <style scoped>
-
+.multi-column {
+  columns: 3;
+  -webkit-columns: 3;
+  -moz-columns: 3;
+}
 </style>

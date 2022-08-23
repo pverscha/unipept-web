@@ -1,5 +1,5 @@
 <template>
-    <v-container style="font-size: 90%;">
+    <v-container>
         <h1 class="font-weight-light">
             <Initialism>POST</Initialism> /api/v1/pept2prot
         </h1>
@@ -20,6 +20,7 @@
                 (<Initialism>POST</Initialism>) or in the query string (<Initialism>GET</Initialism>). The only required parameter is <Code>input[]</Code>, which 
                 takes one or more tryptic peptides.
             </p>
+
             <h3>input</h3>
             <p>
                 <Code>input[]</Code> is a required parameter that takes one or more tryptic peptides. Unipept will return the list of UniProt entries that contain 
@@ -42,6 +43,7 @@
                 peptides to UniProt entries. This setting is similar to checking the <i>Equate I and L</i> checkbox when performing a search with the 
                 <RLink to="/tpa" router>Tryptic Peptide Analysis</RLink> in the web interface.
             </p>
+            
             <h3>extra</h3>
             <p>
                 <Code>extra</Code> is an optional parameter and can either be <Code>true</Code> or <Code>false</Code>. When not set explicitly, the parameter 
@@ -145,8 +147,8 @@
             :response="response1"
         >
             <template v-slot:description>
-                This example retrieves all UniProt entries containing the peptide AIPQLEVARPADAYETAEAYR. The result is the same as this search with the 
-                Tryptic Peptide Analysis in the web interface.
+                This example retrieves all UniProt entries containing the peptide <i><Initialism>AIPQLEVARPADAYETAEAYR</Initialism></i>. The result is the same as 
+                this search with the Tryptic Peptide Analysis in the web interface.
             </template>
             <template v-slot:post>
                 curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/pept2prot -d 'input[]=AIPQLEVARPADAYETAEAYR'
@@ -163,8 +165,9 @@
             :response="response2"
         >
             <template v-slot:description>
-                This example retrieves all UniProt entries containing either the tryptic peptide AIPQLEVARPADAYETAEAYR or the tryptic peptide APVLSDSSCK. The 
-                result is the same as the combination of this search and this search with the Tryptic Peptide Analysis in the web interface.
+                This example retrieves all UniProt entries containing either the tryptic peptide <i><Initialism>AIPQLEVARPADAYETAEAYR</Initialism></i> or the 
+                tryptic peptide <i><Initialism>APVLSDSSCK</Initialism></i>. The result is the same as the combination of this search and this search with the 
+                Tryptic Peptide Analysis in the web interface.
             </template>
             <template v-slot:post>
                 curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/pept2prot -d 'input[]=AIPQLEVARPADAYETAEAYR' -d 'input[]=APVLSDSSCK'
@@ -180,8 +183,8 @@
             :response="response3"
         >
             <template v-slot:description>
-                This example retrieves all UniProt entries containing the tryptic peptide APVISDSSCK. In searching, isoleucine (I) and leucine (L) are 
-                considered equal. The result is the same as this search with the Tryptic Peptide Analysis in the web interface.
+                This example retrieves all UniProt entries containing the tryptic peptide <i><Initialism>APVLSDSSCK</Initialism></i>. In searching, isoleucine (I) 
+                and leucine (L) are considered equal. The result is the same as this search with the Tryptic Peptide Analysis in the web interface.
             </template>
             <template v-slot:post>
                 curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/pept2prot -d 'input[]=APVISDSSCK' -d 'equate_il=true'
@@ -197,8 +200,8 @@
             :response="response4"
         >
             <template v-slot:description>
-                This example retrieves all UniProt entries containing the tryptic peptide AIPQLEVARPADAYETAEAYR, including additional information fields that 
-                are not returned by default. The result is the same as this search with the Tryptic Peptide Analysis in the web interface.
+                This example retrieves all UniProt entries containing the tryptic peptide <i><Initialism>AIPQLEVARPADAYETAEAYR</Initialism></i>, including additional 
+                information fields that are not returned by default. The result is the same as this search with the Tryptic Peptide Analysis in the web interface.
             </template>
             <template v-slot:post>
                 curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/pept2prot -d 'input[]=AIPQLEVARPADAYETAEAYR' -d 'extra=true'
@@ -208,7 +211,7 @@
             </template>
         </ExampleCard>
 
-        <TryItCard class="mt-5" :response="tryItResponse">
+        <TryItCard class="mt-5" :response="tryItResponse" command="pept2prot">
             <template>
                 <v-row>
                     <v-col class="font-weight-bold" cols=12 md=2>Input[]</v-col>
@@ -293,22 +296,11 @@ const doRequest = async () => {
 onBeforeMount(async () => {
     response1.value = await unipeptCommunicator.pept2prot(["AIPQLEVARPADAYETAEAYR"]);
     response2.value = await unipeptCommunicator.pept2prot(["AIPQLEVARPADAYETAEAYR", "APVLSDSSCK"]);
-    response3.value = await unipeptCommunicator.pept2prot(["AIPQLEVARPADAYETAEAYR"], true, undefined);
+    response3.value = await unipeptCommunicator.pept2prot(["APVLSDSSCK"], true, undefined);
     response4.value = await unipeptCommunicator.pept2prot(["AIPQLEVARPADAYETAEAYR"], undefined, true);
 })
 </script>
 
 <style scoped>
-.subtitle {
-    color: #777777;
-    font-weight: normal;
-}
 
-.v-container {
-    font-size: 90%;
-}
-
-HeaderBodyCard {
-    font-size: inherit;
-}
 </style>
