@@ -15,7 +15,7 @@
 
         <p class="mt-3">
             If you use this API, please cite Mesuere et al. (2016) Bioinformatics 
-            <ResourceLink to="https.//doi:10.1093/bioinformatics/btw039">doi:10.1093/bioinformatics/btw039</ResourceLink>
+            <ResourceLink to="https://academic.oup.com/bioinformatics/article/32/11/1746/1742840?login=false">doi:10.1093/bioinformatics/btw039</ResourceLink>
         </p>
         
         <HeaderBodyCard title="API functions" class="mt-5">
@@ -47,63 +47,64 @@
 import HeaderBodyCard from '@/components/cards/HeaderBodyCard.vue';
 import Initialism from '@/components/highlights/Initialism.vue';
 import ResourceLink from '@/components/highlights/ResourceLink.vue';
-    const functions = [
-        { 
-            resource: "POST /api/v1/pept2prot", 
-            description: "Returns the set of UniProt entries containing a given tryptic peptide.",
-            link: "/apidocs/pept2prot"
-        },
-        { 
-            resource: "POST /api/v1/pept2taxa", 
-            description: "Returns the set of taxa extracted from the UniProt entries containing a given tryptic peptide.",
-            link: "/apidocs/pept2taxa" 
-        },
-        { 
-            resource: "POST /api/v1/pept2lca", 
-            description: "Returns the taxonomic lowest common ancestor for a given tryptic peptide.",
-            link: "/apidocs/pept2lca"  
-        },
-        { 
-            resource: "POST /api/v1/pept2ec", 
-            description: "Returns the functional EC-numbers associated with a given tryptic peptide.",
-            link: "/apidocs/pept2ec"  
-        },
-        { 
-            resource: "POST /api/v1/pept2go", 
-            description: "Returns the functional GO-terms associated with a given tryptic peptide.",
-            link: "/apidocs/pept2go"  
-        },
-        { 
-            resource: "POST /api/v1/pept2interpro", 
-            description: "Returns the functional InterPro entries associated with a given tryptic peptide.",
-            link: "/apidocs/pept2interpro"  
-        },
-        { 
-            resource: "POST /api/v1/pept2funct", 
-            description: "Returns the functional EC-numbers, GO-terms and InterPro entries associated with a given tryptic peptide.",
-            link: "/apidocs/pept2funct"  
-        },
-        { 
-            resource: "POST /api/v1/peptinfo", 
-            description: "Returns functional information and the lowest common ancestor for a given tryptic peptide.",
-            link: "/apidocs/peptinfo"  
-        },
-        { 
-            resource: "POST /api/v1/taxa2lca", 
-            description: "Returns the taxonomic lowest common ancestor for a given list of taxon identifiers.",
-            link: "/apidocs/taxa2lca"  
-        },
-        { 
-            resource: "POST /api/v1/taxa2tree", 
-            description: "Returns the taxonomic tree for a given list of taxon identifiers.",
-            link: "/apidocs/taxa2tree"  
-        },
-        { 
-            resource: "POST /api/v1/taxonomy", 
-            description: "Returns the taxonomic information for a given taxon identifier.",
-            link: "/apidocs/taxonomy"  
-        },
-    ]
+
+const functions = [
+    { 
+        resource: "POST /api/v1/pept2prot", 
+        description: "Returns the set of UniProt entries containing a given tryptic peptide.",
+        link: "/apidocs/pept2prot"
+    },
+    { 
+        resource: "POST /api/v1/pept2taxa", 
+        description: "Returns the set of taxa extracted from the UniProt entries containing a given tryptic peptide.",
+        link: "/apidocs/pept2taxa" 
+    },
+    { 
+        resource: "POST /api/v1/pept2lca", 
+        description: "Returns the taxonomic lowest common ancestor for a given tryptic peptide.",
+        link: "/apidocs/pept2lca"  
+    },
+    { 
+        resource: "POST /api/v1/pept2ec", 
+        description: "Returns the functional EC-numbers associated with a given tryptic peptide.",
+        link: "/apidocs/pept2ec"  
+    },
+    { 
+        resource: "POST /api/v1/pept2go", 
+        description: "Returns the functional GO-terms associated with a given tryptic peptide.",
+        link: "/apidocs/pept2go"  
+    },
+    { 
+        resource: "POST /api/v1/pept2interpro", 
+        description: "Returns the functional InterPro entries associated with a given tryptic peptide.",
+        link: "/apidocs/pept2interpro"  
+    },
+    { 
+        resource: "POST /api/v1/pept2funct", 
+        description: "Returns the functional EC-numbers, GO-terms and InterPro entries associated with a given tryptic peptide.",
+        link: "/apidocs/pept2funct"  
+    },
+    { 
+        resource: "POST /api/v1/peptinfo", 
+        description: "Returns functional information and the lowest common ancestor for a given tryptic peptide.",
+        link: "/apidocs/peptinfo"  
+    },
+    { 
+        resource: "POST /api/v1/taxa2lca", 
+        description: "Returns the taxonomic lowest common ancestor for a given list of taxon identifiers.",
+        link: "/apidocs/taxa2lca"  
+    },
+    { 
+        resource: "POST /api/v1/taxa2tree", 
+        description: "Returns the taxonomic tree for a given list of taxon identifiers.",
+        link: "/apidocs/taxa2tree"  
+    },
+    { 
+        resource: "POST /api/v1/taxonomy", 
+        description: "Returns the taxonomic information for a given taxon identifier.",
+        link: "/apidocs/taxonomy"  
+    },
+];
 </script>
 
 <style scoped>
