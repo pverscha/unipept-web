@@ -26,4 +26,8 @@ defineProps<Props>()
     text-align: start;
     padding-left: 5%;
 }
+
+.v-tabs /deep/ .v-slide-group__wrapper {
+    overflow: visible !important;
+}
 </style>
