@@ -11,18 +11,20 @@ import MetagenomicsPage from "@/components/pages/features/MetagenomicsPage.vue";
 import DesktopPage from "@/components/pages/features/DesktopPage.vue";
 
 // API Documentation
-import APIOverviewPage from "@/components/pages/apidocs/OverviewPage.vue";
-import Pept2ProtPage from "@/components/pages/apidocs/Pept2ProtPage.vue";
-import Pept2TaxaPage from "@/components/pages/apidocs/Pept2TaxaPage.vue";
-import Pept2LcaPage from "@/components/pages/apidocs/Pept2LcaPage.vue";
-import Pept2EcPage from "@/components/pages/apidocs/Pept2EcPage.vue";
-import Pept2GoPage from "@/components/pages/apidocs/Pept2GoPage.vue";
-import Pept2InterproPage from "@/components/pages/apidocs/Pept2InterproPage.vue";
-import Pept2FunctPage from "@/components/pages/apidocs/Pept2FunctPage.vue";
-import PeptInfoPage from "@/components/pages/apidocs/PeptInfoPage.vue";
-import Taxa2LcaPage from "@/components/pages/apidocs/Taxa2LcaPage.vue";
-import Taxa2TreePage from "@/components/pages/apidocs/Taxa2TreePage.vue";
-import TaxonomyPage from "@/components/pages/apidocs/TaxonomyPage.vue";
+import {
+    OverviewPage as APIOverviewPage,
+    Pept2ProtPage as APIPept2ProtPage,
+    Pept2TaxaPage as APIPept2TaxaPage,
+    Pept2LcaPage as APIPept2LcaPage,
+    Pept2EcPage as APIPept2EcPage,
+    Pept2GoPage as APIPept2GoPage,
+    Pept2InterproPage as APIPept2InterproPage,
+    Pept2FunctPage as APIPept2FunctPage,
+    PeptInfoPage as APIPeptInfoPage,
+    Taxa2LcaPage as APITaxa2LcaPage,
+    Taxa2TreePage as APITaxa2TreePage,
+    TaxonomyPage as APITaxonomyPage
+} from "@/components/pages/apidocs";
 
 Vue.use(VueRouter);
 
@@ -61,17 +63,17 @@ const routes = [
         component: APIPage,
         children: [
             { path: "", component: APIOverviewPage, meta: apidocsMeta },
-            { path: "pept2prot", component: Pept2ProtPage, meta: apidocsMeta },
-            { path: "pept2taxa", component: Pept2TaxaPage, meta: apidocsMeta },
-            { path: "pept2lca", component: Pept2LcaPage, meta: apidocsMeta },
-            { path: "pept2ec", component: Pept2EcPage, meta: apidocsMeta },
-            { path: "pept2go", component: Pept2GoPage, meta: apidocsMeta },
-            { path: "pept2interpro", component: Pept2InterproPage, meta: apidocsMeta },
-            { path: "pept2funct", component: Pept2FunctPage, meta: apidocsMeta },
-            { path: "peptinfo", component: PeptInfoPage, meta: apidocsMeta },
-            { path: "taxa2lca", component: Taxa2LcaPage, meta: apidocsMeta },
-            { path: "taxa2tree", component: Taxa2TreePage, meta: apidocsMeta },
-            { path: "taxonomy", component: TaxonomyPage, meta: apidocsMeta },
+            { path: "pept2prot", component: APIPept2ProtPage, meta: apidocsMeta },
+            { path: "pept2taxa", component: APIPept2TaxaPage, meta: apidocsMeta },
+            { path: "pept2lca", component: APIPept2LcaPage, meta: apidocsMeta },
+            { path: "pept2ec", component: APIPept2EcPage, meta: apidocsMeta },
+            { path: "pept2go", component: APIPept2GoPage, meta: apidocsMeta },
+            { path: "pept2interpro", component: APIPept2InterproPage, meta: apidocsMeta },
+            { path: "pept2funct", component: APIPept2FunctPage, meta: apidocsMeta },
+            { path: "peptinfo", component: APIPeptInfoPage, meta: apidocsMeta },
+            { path: "taxa2lca", component: APITaxa2LcaPage, meta: apidocsMeta },
+            { path: "taxa2tree", component: APITaxa2TreePage, meta: apidocsMeta },
+            { path: "taxonomy", component: APITaxonomyPage, meta: apidocsMeta },
         ],
         meta: apidocsMeta
     },
