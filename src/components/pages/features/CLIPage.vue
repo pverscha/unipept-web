@@ -25,7 +25,7 @@ const navigation = [
     { name: "unipept pept2taxa", link: "/clidocs/pept2taxa" },
     { name: "unipept pept2ec", link: "/clidocs/pept2ec" },
     { name: "unipept pept2go", link: "/clidocs/pept2go" },
-//    { name: "unipept pept2interpro", link: "/clidocs/pept2interpro" },
+    { name: "unipept pept2interpro", link: "/clidocs/pept2interpro" },
     { name: "unipept pept2funct", link: "/clidocs/pept2funct" },
     { name: "unipept peptinfo", link: "/clidocs/peptinfo" },
     { name: "unipept taxa2lca", link: "/clidocs/taxa2lca" },

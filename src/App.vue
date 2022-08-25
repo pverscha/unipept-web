@@ -152,6 +152,7 @@ li {
 p {
     color: #333333 !important;
     font-size: 90%;
+    margin-bottom: 8px !important;
 }
 
 .v-card h3 {

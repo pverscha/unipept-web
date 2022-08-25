@@ -1,5 +1,5 @@
 <template>
-    <v-containre>
+    <v-container>
         <h1 class="font-weight-light">
             uniprot
         </h1>
@@ -22,7 +22,6 @@
             <p>
                 If input is supplied using command line arguments, the accession numbers must be separated by spaces. 
             </p>
-
 
             <h4>Example</h4>
             <Boxed>
@@ -52,7 +51,7 @@
             <p>
                 The <Code>uniprot</Code> command outputs the UniProt entry for each of the input accession numbers. By default, only the protein sequences are 
                 returned. By using the <RLink to="clioptions" anchor>--format parameter</RLink>, this can be changed to fasta, txt, xml, rdf or gff. All output is 
-                written to standard output. 
+                written to <i>standard output</i>. 
             </p>
         </HeaderBodyCard>
 
@@ -80,7 +79,7 @@
                 This flag displays the help. 
             </p>
         </HeaderBodyCard>
-    </v-containre>
+    </v-container>
 </template>
 
 <script setup lang="ts">
