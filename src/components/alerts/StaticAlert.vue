@@ -1,5 +1,6 @@
 <template>
     <v-alert
+        class="pb-2"
         border="left"
         colored-border
         color="secondary"

@@ -142,39 +142,39 @@
             <h4>Example</h4>
             <Boxed style="padding-bottom: 16px; white-space: pre;">
                 <Sentinel>$</Sentinel> unipept taxa2tree <b>--format</b> url 817 329854 1099853
-                <br>https://bl.ocks.org/2c8279c53874528aa3f1ddd018953e60
+                <br><a href="https://bl.ocks.org/2c8279c53874528aa3f1ddd018953e60" target="_blank">https://bl.ocks.org/2c8279c53874528aa3f1ddd018953e60</a>
                 <br><Sentinel>$</Sentinel> unipept taxa2lca <b>--format</b> html 817 329854 1099853
-                <br>&lt;!DOCTYPE html&gt;
-                <br>&lt;html&gt;
-                <br>&lt;head&gt;
-                <br>&lt;script src=&quot;https://code.jquery.com/jquery-3.5.0.slim.min.js&quot; integrity=&quot;sha256-MlusDLJIP1GRgLrOflUQtshyP0TwT/RHXsI1wWGnQhs=&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
-                <br>&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js&quot; integrity=&quot;sha256-dsOXGNHAo/syFnazt+KTBsCQeRmlcW1XKL0bCK4Baec=&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
-                <br>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/unipept-visualizations@1.7.3/dist/unipept-visualizations.min.js&quot; integrity=&quot;sha256-X40vVFfGbi55N33QuZEMmw3nxi7Swljq5OJ1UHWdBhQ=&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
-                <br>&lt;/head&gt;
-                <br>&lt;body&gt;
-                <br>&lt;div id=&quot;sunburst&quot;&gt;&lt;/div&gt;
-                <br>&lt;script&gt;
-                <br>const data = {&quot;id&quot;:1,&quot;name&quot;:&quot;Organism&quot;,&quot;rank&quot;:&quot;root&quot;,&quot;data&quot;:{&quot;count&quot;:3,&quot;self_count&quot;:0},&quot;children&quot;:[{&quot;id&quot;:2,&quot;name&quot;:&quot;Bacteria&quot;,&quot;rank&quot;:&quot;superkingdom&quot;,&quot;data&quot;:{&quot;count&quot;:3,&quot;self_count&quot;:0},&quot;children&quot;:[{&quot;id&quot;:976,&quot;name&quot;:&quot;Bacteroidetes&quot;,&quot;rank&quot;:&quot;phylum&quot;,&quot;data&quot;:{&quot;count&quot;:3,&quot;self_count&quot;:0},&quot;children&quot;:[{&quot;id&quot;:200643,&quot;name&quot;:&quot;Bacteroidia&quot;,&quot;rank&quot;:&quot;class_&quot;,&quot;data&quot;:{&quot;count&quot;:3,&quot;self_count&quot;:0},&quot;children&quot;:[{&quot;id&quot;:171549,&quot;name&quot;:&quot;Bacteroidales&quot;,&quot;rank&quot;:&quot;order&quot;,&quot;data&quot;:{&quot;count&quot;:3,&quot;self_count&quot;:0},&quot;children&quot;:[{&quot;id&quot;:815,&quot;name&quot;:&quot;Bacteroidaceae&quot;,&quot;rank&quot;:&quot;family&quot;,&quot;data&quot;:{&quot;count&quot;:2,&quot;self_count&quot;:0},&quot;children&quot;:[{&quot;id&quot;:816,&quot;name&quot;:&quot;Bacteroides&quot;,&quot;rank&quot;:&quot;genus&quot;,&quot;data&quot;:{&quot;count&quot;:2,&quot;self_count&quot;:0},&quot;children&quot;:[{&quot;id&quot;:817,&quot;name&quot;:&quot;Bacteroides fragilis&quot;,&quot;rank&quot;:&quot;species&quot;,&quot;data&quot;:{&quot;count&quot;:1,&quot;self_count&quot;:1},&quot;children&quot;:[]},{&quot;id&quot;:329854,&quot;name&quot;:&quot;Bacteroides intestinalis&quot;,&quot;rank&quot;:&quot;species&quot;,&quot;data&quot;:{&quot;count&quot;:1,&quot;self_count&quot;:1},&quot;children&quot;:[]}]}]},{&quot;id&quot;:2005519,&quot;name&quot;:&quot;Barnesiellaceae&quot;,&quot;rank&quot;:&quot;family&quot;,&quot;data&quot;:{&quot;count&quot;:1,&quot;self_count&quot;:0},&quot;children&quot;:[{&quot;id&quot;:1348911,&quot;name&quot;:&quot;Coprobacter&quot;,&quot;rank&quot;:&quot;genus&quot;,&quot;data&quot;:{&quot;count&quot;:1,&quot;self_count&quot;:0},&quot;children&quot;:[{&quot;id&quot;:1099853,&quot;name&quot;:&quot;Coprobacter fastidiosus&quot;,&quot;rank&quot;:&quot;species&quot;,&quot;data&quot;:{&quot;count&quot;:1,&quot;self_count&quot;:1},&quot;children&quot;:[]}]}]}]}]}]}]}]};
-                <br>
-                <br>function tooltipContent(d) {
-                <br>return '&lt;b&gt;' + d.name + '&lt;/b&gt; (' + d.rank + ')&lt;br/&gt;' +
-                <br>(!d.data.self_count ? '0' : d.data.self_count) +
-                <br>(d.data.self_count && d.data.self_count === 1 ? ' sequence' : ' sequences') + ' specific to this level&lt;br/&gt;' +
-                <br>(!d.data.count ? '0' : d.data.count) +
-                <br>(d.data.count && d.data.count === 1 ? ' sequence' : ' sequences') + ' specific to this level or lower';
-                <br>};
-                <br>
-                <br>const options = {
-                <br>getTooltip: tooltipContent
-                <br>};
-                <br>
-                <br>$(&quot;#sunburst&quot;).sunburst(data, options);
-                <br>&lt;/script&gt;
-                <br>&lt;/body&gt;
-                <br>&lt;/html&gt;
-            </Boxed>
+<pre>
+&lt;!DOCTYPE html>
+&lt;html>
+    &lt;head>
+        &lt;script src="https://code.jquery.com/jquery-3.5.0.slim.min.js" integrity="sha256-MlusDLJIP1GRgLrOflUQtshyP0TwT/RHXsI1wWGnQhs=" crossorigin="anonymous">&lt;/script>
+        &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" integrity="sha256-dsOXGNHAo/syFnazt+KTBsCQeRmlcW1XKL0bCK4Baec=" crossorigin="anonymous">&lt;/script>
+        &lt;script src="https://cdn.jsdelivr.net/npm/unipept-visualizations@1.7.3/dist/unipept-visualizations.min.js" integrity="sha256-X40vVFfGbi55N33QuZEMmw3nxi7Swljq5OJ1UHWdBhQ=" crossorigin="anonymous">&lt;/script>
+    &lt;/head>
+    &lt;body>
+        &lt;div id="sunburst">&lt;/div>
+        &lt;script>
+            const data = {"id":1,"name":"Organism","rank":"root","data":{"count":3,"self_count":0},"children":[{"id":2,"name":"Bacteria","rank":"superkingdom","data":{"count":3,"self_count":0},"children":[{"id":976,"name":"Bacteroidetes","rank":"phylum","data":{"count":3,"self_count":0},"children":[{"id":200643,"name":"Bacteroidia","rank":"class_","data":{"count":3,"self_count":0},"children":[{"id":171549,"name":"Bacteroidales","rank":"order","data":{"count":3,"self_count":0},"children":[{"id":815,"name":"Bacteroidaceae","rank":"family","data":{"count":2,"self_count":0},"children":[{"id":816,"name":"Bacteroides","rank":"genus","data":{"count":2,"self_count":0},"children":[{"id":817,"name":"Bacteroides fragilis","rank":"species","data":{"count":1,"self_count":1},"children":[]},{"id":329854,"name":"Bacteroides intestinalis","rank":"species","data":{"count":1,"self_count":1},"children":[]}]}]},{"id":2005519,"name":"Barnesiellaceae","rank":"family","data":{"count":1,"self_count":0},"children":[{"id":1348911,"name":"Coprobacter","rank":"genus","data":{"count":1,"self_count":0},"children":[{"id":1099853,"name":"Coprobacter fastidiosus","rank":"species","data":{"count":1,"self_count":1},"children":[]}]}]}]}]}]}]}]};
 
-            <highlightjs language='javascript' code="var x = 5;" />
+            function tooltipContent(d) {
+                return '&lt;b>' + d.name + '&lt;/b> (' + d.rank + ')&lt;br/>' +
+                    (!d.data.self_count ? '0' : d.data.self_count) +
+                    (d.data.self_count && d.data.self_count === 1 ? ' sequence' : ' sequences') + ' specific to this level&lt;br/>' +
+                    (!d.data.count ? '0' : d.data.count) +
+                    (d.data.count && d.data.count === 1 ? ' sequence' : ' sequences') + ' specific to this level or lower';
+            };
+
+            const options = {
+                getTooltip: tooltipContent
+            };
+
+            $("#sunburst").sunburst(data, options);
+        &lt;/script>
+    &lt;/body>
+&lt;/html>
+</pre>
+            </Boxed>
 
             <h2>--help / -h <span class="text-caption grey--text text--darken-2">Display help</span></h2>
 
@@ -193,3 +193,9 @@ import Sentinel from '@/components/highlights/Sentinel.vue';
 import RLink from '@/components/highlights/ResourceLink.vue';
 import Initialism from '@/components/highlights/Initialism.vue';
 </script>
+
+<style scoped>
+a {
+    text-decoration: none;
+}
+</style>

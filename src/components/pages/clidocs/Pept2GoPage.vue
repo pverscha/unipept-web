@@ -3,7 +3,7 @@
         <h1 class="font-weight-light">
             unipept pept2go
         </h1>
-        <h3 class="font-weight-light">Returns all <Initialism>GO</Initialism>-terms associated with a given tryptic peptide.</h3>
+        <h3 class="font-weight-light">Returns the functional <Initialism>GO</Initialism>-terms associated with a given tryptic peptide.</h3>
         
         <v-divider class="my-2" />
 

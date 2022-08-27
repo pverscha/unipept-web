@@ -103,7 +103,7 @@ const functions = [
         resource: "POST /api/v1/taxonomy", 
         description: "Returns the taxonomic information for a given taxon identifier.",
         link: "/apidocs/taxonomy"  
-    },
+    }
 ];
 </script>
 

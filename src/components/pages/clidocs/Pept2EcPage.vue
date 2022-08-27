@@ -3,7 +3,7 @@
         <h1 class="font-weight-light">
             unipept pept2ec
         </h1>
-        <h3 class="font-weight-light">Returns all <Initialism>EC</Initialism>-numbers associated with a given tryptic peptide.</h3>
+        <h3 class="font-weight-light">Returns the functional <Initialism>EC</Initialism>-numbers associated with a given tryptic peptide.</h3>
         
         <v-divider class="my-2" />
 
