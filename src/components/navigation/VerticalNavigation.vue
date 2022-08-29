@@ -55,9 +55,10 @@ const scroll = (destination: string) => {
     overflow: visible !important;
 }
 
-.v-tab-child {
+.v-tab-child /deep/ .v-tab {
     padding-left: 15%;
     font-size: 75% !important;
+    max-height: 25px;
 }
 
 @keyframes tabs-grow {
