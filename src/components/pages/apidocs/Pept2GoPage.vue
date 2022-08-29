@@ -13,7 +13,7 @@
         </p>
 
         <!-- Request Card -->
-        <HeaderBodyCard title="Request">
+        <HeaderBodyCard id="request" title="Request">
             <p>
                 The pept2go method can be used by doing a <Initialism>HTTP POST</Initialism>-request (preferred) or <Initialism>GET</Initialism>-request to 
                 <Code>http://api.unipept.ugent.be/api/v1/pept2go</Code>. <RLink to="parameters" anchor>Parameters</RLink> can be included in the request body 
@@ -158,7 +158,7 @@
             </v-simple-table>
         </HeaderBodyCard>
 
-        <h2 class="font-weight-light mt-10 mb-n2">Examples</h2>
+        <h2 id="examples" class="font-weight-light mt-10 mb-n2">Examples</h2>
 
         <ExampleCard 
             title="Retrieve the functional go-terms associated with a given tryptic peptide" 
@@ -248,7 +248,7 @@
             </template>
         </ExampleCard>
 
-        <TryItCard class="mt-5" :response="tryItResponse" command="pept2go">
+        <TryItCard id="try" class="mt-5" :response="tryItResponse" command="pept2go">
             <template>
                 <v-row>
                     <v-col class="font-weight-bold" cols=12 md=2>Input[]</v-col>
