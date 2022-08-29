@@ -164,4 +164,8 @@ p {
     font-weight: 300;
     font-size: x-large;
 }
+
+.v-alert__wrapper {
+    display:block !important;
+}
 </style>
