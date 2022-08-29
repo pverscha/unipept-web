@@ -14,7 +14,7 @@
 
         <p class="mt-3">
             The Unipept command line tools are open source under the <Initialism>MIT</Initialism> License and all code is available on 
-            <RLink to="https://github.com/unipept/unipept-cli">Github</RLink>. Changes between releases are listed in the <RLink to="/news" router>changelog</RLink>. 
+            <RLink to="https://github.com/unipept/unipept-cli">Github</RLink>. Changes between releases are listed in the <RLink to="/news/cli" router>changelog</RLink>. 
             In case you have encountered an issue using these tools, have feature requests or found a bug, don't hesitate to contact us by email 
             (<RLink to="unipept@ugent.be" mail>unipept@ugent.be</RLink>), or create an <RLink to="https://github.com/unipept/unipept-cli/issues">issue</RLink> on 
             Github.
