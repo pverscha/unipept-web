@@ -13,7 +13,7 @@
             Unipept server.
         </p>
 
-        <HeaderBodyCard title="Input">
+        <HeaderBodyCard id="input" title="Input">
             <p>
                 The <Code>unipept taxa2tree</Code> command expects <Initialism>NCBI</Initialism> taxon id's as input. The source of this input can be command line 
                 arguments, a file, or <i>standard input</i>. If input is supplied using multiple sources at the same time, the order of priority as described above is used. 
@@ -32,7 +32,7 @@
 
             <h3>File input</h3>
             <p>
-                Use the <RLink to="clioptions" anchor>--input parameter</RLink> to specify a file to use as input. If input is supplied using a file, a single 
+                Use the <RLink to="options" anchor>--input parameter</RLink> to specify a file to use as input. If input is supplied using a file, a single 
                 peptide per line is expected.  
             </p>
 
@@ -63,18 +63,18 @@
             </Boxed>
         </HeaderBodyCard>
 
-        <HeaderBodyCard title="Output" class="mt-5">
+        <HeaderBodyCard id="output" title="Output" class="mt-5">
             <p>
                 The <Code>unipept taxa2tree</Code> command outputs the taxonomic tree for a given set of taxon IDs. By default, the <Initialism>NCBI</Initialism> taxon id, 
                 taxon name, taxonomic rank, count and self count of each node in the tree are returned in the json format. Consult the 
                 <RLink to="/apidocs/taxa2tree" router><Initialism>API</Initialism> documentation</RLink> for a detailed list of output fields. By default, output is 
-                generated in json format. By using the <RLink to="clioptions" anchor>--format parameter</RLink>, the format can be changed into html or an url. The output 
+                generated in json format. By using the <RLink to="options" anchor>--format parameter</RLink>, the format can be changed into html or an url. The output 
                 can be written to a file or to <i>standard output</i>. 
             </p>
 
             <h3>File output</h3>
             <p>
-                Use the <RLink to="clioptions" anchor>--output parameter</RLink> to specify an output file. If the file aready exists, the output will be 
+                Use the <RLink to="options" anchor>--output parameter</RLink> to specify an output file. If the file aready exists, the output will be 
                 appended to the end of the file. 
             </p>
 
@@ -100,7 +100,7 @@
             </Boxed>
         </HeaderBodyCard>
 
-        <HeaderBodyCard id="clioptions" title="Command-line options" class="mt-5">
+        <HeaderBodyCard id="options" title="Command-line options" class="mt-5">
             <h2>--input / -i <span class="text-caption grey--text text--darken-2">Specify an input file</span></h2>
 
             <p>

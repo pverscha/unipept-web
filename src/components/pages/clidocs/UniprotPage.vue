@@ -12,7 +12,7 @@
             numbers as output. This information is fetched by using the UniProt webservice. 
         </p>
 
-        <HeaderBodyCard title="Input">
+        <HeaderBodyCard id="input" title="Input">
             <p>
                 The <Code>uniprot</Code> command expects UniProt accession numbers as input. The source of this input can be command line arguments or standard 
                 input. If input is supplied using multiple sources at the same time, the order of priority as described above is used. 
@@ -47,15 +47,15 @@
             </Boxed>
         </HeaderBodyCard>
 
-        <HeaderBodyCard title="Output" class="mt-5">
+        <HeaderBodyCard id="output" title="Output" class="mt-5">
             <p>
                 The <Code>uniprot</Code> command outputs the UniProt entry for each of the input accession numbers. By default, only the protein sequences are 
-                returned. By using the <RLink to="clioptions" anchor>--format parameter</RLink>, this can be changed to fasta, txt, xml, rdf or gff. All output is 
+                returned. By using the <RLink to="options" anchor>--format parameter</RLink>, this can be changed to fasta, txt, xml, rdf or gff. All output is 
                 written to <i>standard output</i>. 
             </p>
         </HeaderBodyCard>
 
-        <HeaderBodyCard id="clioptions" title="Command-line options" class="mt-5">
+        <HeaderBodyCard id="options" title="Command-line options" class="mt-5">
             <h2>--format / -f <span class="text-caption grey--text text--darken-2">Specify the output format</span></h2>
 
             <p>
