@@ -10,10 +10,10 @@
         <p>
             The <Code>prot2pept</Code> command takes one or more protein sequences as input, performs an in silico tryptic digest on them and returns the 
             digested peptides as output. By default, a trypsin digest is simulated, but other proteases can be specified by using the 
-            <RLink to="clioptions" anchor>--patern parameter</RLink>. This command runs entirely locally and doesn't connect to any server. 
+            <RLink to="options" anchor>--patern parameter</RLink>. This command runs entirely locally and doesn't connect to any server. 
         </p>
 
-        <HeaderBodyCard title="Input">
+        <HeaderBodyCard id="input" title="Input">
             <p>
                 The <Code>prot2pept</Code> command expects protein sequences as input via <i>standard input</i>. A single protein sequences per line is expected. 
             </p>
@@ -31,7 +31,7 @@
             </Boxed>
         </HeaderBodyCard>
 
-        <HeaderBodyCard title="Output" class="mt-5">
+        <HeaderBodyCard id="output" title="Output" class="mt-5">
             <p>
                 The <Code>prot2pept</Code> command supports input in fasta format. This format consists of a fasta header (a line starting with a >), followed by 
                 one or more lines containing the protein sequence. When this format is detected, the command behaves slightly different. The main difference is that 
@@ -40,7 +40,7 @@
             </p>
         </HeaderBodyCard>
 
-        <HeaderBodyCard title="Fasta support" class="mt-5">
+        <HeaderBodyCard id="fasta" title="Fasta support" class="mt-5">
             <p>
                 The <Code>prot2pept</Code> command outputs the split peptides to <i>standard output</i>. All peptides are separated by newlines. 
             </p>
@@ -69,7 +69,7 @@
             </Boxed>
         </HeaderBodyCard>
 
-        <HeaderBodyCard id="clioptions" title="Command-line options" class="mt-5">
+        <HeaderBodyCard id="options" title="Command-line options" class="mt-5">
             <h2>--pattern / -p <span class="text-caption grey--text text--darken-2">Specify cleavage pattern</span></h2>
 
             <p>

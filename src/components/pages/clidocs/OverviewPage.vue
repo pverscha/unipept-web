@@ -14,13 +14,13 @@
 
         <p class="mt-3">
             The Unipept command line tools are open source under the <Initialism>MIT</Initialism> License and all code is available on 
-            <RLink to="https://github.com/unipept/unipept-cli">Github</RLink>. Changes between releases are listed in the <RLink to="/news" router>changelog</RLink>. 
+            <RLink to="https://github.com/unipept/unipept-cli">Github</RLink>. Changes between releases are listed in the <RLink to="/news/cli" router>changelog</RLink>. 
             In case you have encountered an issue using these tools, have feature requests or found a bug, don't hesitate to contact us by email 
             (<RLink to="unipept@ugent.be" mail>unipept@ugent.be</RLink>), or create an <RLink to="https://github.com/unipept/unipept-cli/issues">issue</RLink> on 
             Github.
         </p>
 
-        <HeaderBodyCard title="CLI functionality" class="mt-5">
+        <HeaderBodyCard id="functionality" title="CLI functionality" class="mt-5">
             <v-simple-table>
                 <template v-slot:default>
                     <thead>
@@ -43,7 +43,7 @@
             </v-simple-table>
         </HeaderBodyCard>
 
-        <HeaderBodyCard title="Installation" class="mt-5">
+        <HeaderBodyCard id="installation" title="Installation" class="mt-5">
             <p>
                 To use the Unipept command line tools, Ruby needs to be installed on your system. We recommend using Ruby 2.6, but all versions since Ruby 2.3 
                 are supported. To check if you have the correct Ruby version installed, open a terminal and run <Code>ruby --version</Code>.
@@ -107,7 +107,7 @@
             </StaticAlert>
         </HeaderBodyCard>
 
-        <HeaderBodyCard title="Updates" class="mt-5">
+        <HeaderBodyCard id="updates" title="Updates" class="mt-5">
             <p>
                 To update the Unipept command line tools to the latest version, simply run <Code>gem update unipept</Code>. The changes between releases are listed 
                 in the <RLink to="/news" router>changelog</RLink>.
@@ -127,7 +127,7 @@
             </Boxed>
         </HeaderBodyCard>
 
-        <HeaderBodyCard title="Configuration" class="mt-5">
+        <HeaderBodyCard id="configuration" title="Configuration" class="mt-5">
             <p>
                 The Unipept command line tools require no additional configuration and can be used immediately after installation. By default, the public Unipept 
                 server will be used for all commands. If you have a local Unipept server running, and wish to use it with the command line tools, simply run the 
