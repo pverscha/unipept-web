@@ -30,9 +30,9 @@
         <HeaderBodyCard id="output" title="Output" class="mt-5">
             <p>
                 The <Code>peptfilter</Code> command outputs all input peptides that satisfy all filter criteria to <i>standard output</i>. By default, peptides 
-                with a length lower than 5 or higher than 50 are removed. The length filter can be changed by using the <RLink to="options" anchor>--minlen</RLink> 
-                and <RLink to="options" anchor>--maxlen</RLink> parameters. Peptides can also be filtered based on whether or not they lack or contain certain amino 
-                acids. This can be done with the <RLink to="options" anchor>--lacks</RLink> and <RLink to="options" anchor>--contains</RLink> parameters. 
+                with a length lower than 5 or higher than 50 are removed. The length filter can be changed by using the <RLink to="#options" router>--minlen</RLink> 
+                and <RLink to="#options" router>--maxlen</RLink> parameters. Peptides can also be filtered based on whether or not they lack or contain certain amino 
+                acids. This can be done with the <RLink to="#options" router>--lacks</RLink> and <RLink to="#options" router>--contains</RLink> parameters. 
             </p>
         </HeaderBodyCard>
 

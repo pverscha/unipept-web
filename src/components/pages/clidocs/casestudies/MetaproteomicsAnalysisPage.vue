@@ -26,7 +26,7 @@
 
             <p>
                 A next step is to determine what genes are actually expressed and the function of the gut microbiota in different states of health and disease. 
-                <i>Shotgun proteomics</i> (<RLink to="fig1" anchor>Figure 1</RLink>) is one approach that can be used to determine what proteins were expressed in 
+                <i>Shotgun proteomics</i> (<RLink to="#fig1" router>Figure 1</RLink>) is one approach that can be used to determine what proteins were expressed in 
                 an environmental sample. As of today, this technique is still in its infancy, but given the rapid technological developments and based on the 
                 results of the first analyses, we can nevertheless consider this to be a very promising technique.
             </p>
@@ -268,7 +268,7 @@ OPTIONS
             </p>
 
             <p>
-                In the session that is shown in <RLink to="fig2" anchor>Figure 2</RLink>, we have indicated that no distinction should be made between leucine 
+                In the session that is shown in <RLink to="#fig2" router>Figure 2</RLink>, we have indicated that no distinction should be made between leucine 
                 (<Code>L</Code>) and isoleucine (<Code>I</Code>), that the peptides must be deduplicate prior to the actual biodiversity analysis, and that the 
                 results must be exported in csv format (<i>comma separated values</i>). Breaking up the missed cleavages happens by default. In addition, the option 
                 <i>Advanced missed cleavage handling</i> can be activated to indicate that the results should be aggregated as a post-processing step 
@@ -334,7 +334,7 @@ AADAAAALGEGLQAFCLPGSVADTR,186802,Clostridiales,order
 
             <p>
                 If needed, the <Code>unipept pept2lca</Code> command can be used in combination with the <Code>-a</Code> option to fetch the complete lineages for 
-                all <Initialism>LCA</Initialism>s according to the Unipept Taxonomy. <RLink to="fig3" anchor>Figure 3</RLink> shows the hierarchical classification 
+                all <Initialism>LCA</Initialism>s according to the Unipept Taxonomy. <RLink to="#fig3" router>Figure 3</RLink> shows the hierarchical classification 
                 of the taxa that could be identified in sample 7, with the node representing the order <i>Clostridiales</i> having the focus. A similar tree view 
                 can be found in the <i>Treeview</i> tab on the page showing the results of a Metaproteomics analysis in the Unipept web interface.
             </p>

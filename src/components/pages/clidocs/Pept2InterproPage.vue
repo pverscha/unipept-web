@@ -34,7 +34,7 @@
 
             <h3>File input</h3>
             <p>
-                Use the <RLink to="options" anchor>--input parameter</RLink> to specify a file to use as input. If input is supplied using a file, a single 
+                Use the <RLink to="#options" router>--input parameter</RLink> to specify a file to use as input. If input is supplied using a file, a single 
                 peptide per line is expected.  
             </p>
 
@@ -71,16 +71,16 @@
             <p>
                 The <Code>unipept pept2interpro</Code> command outputs the list of associated InterPro entries for each of the (tryptic) input peptides 
                 that were found in the Unipept database. By default, the InterPro entry and peptide count are returned. By using the 
-                <RLink to="options" anchor>--all parameter</RLink>, this can be supplemented with the name of the InterPro entry. Consult 
+                <RLink to="#options" router>--all parameter</RLink>, this can be supplemented with the name of the InterPro entry. Consult 
                 the <RLink to="/apidocs/pept2interpro" router><Initialism>API</Initialism> documentation</RLink> for a detailed list of output fields. A selection of 
-                output fields can be specified with the <RLink to="options" anchor>--select parameter</RLink>. By default, output is generated in csv format. 
-                By using the <RLink to="options" anchor>--format parameter</RLink>, the format can be changed into json or xml. The output can be written to a file or to
+                output fields can be specified with the <RLink to="#options" router>--select parameter</RLink>. By default, output is generated in csv format. 
+                By using the <RLink to="#options" router>--format parameter</RLink>, the format can be changed into json or xml. The output can be written to a file or to
                 <i>standard output</i>.
             </p>
 
             <h3>File output</h3>
             <p>
-                Use the <RLink to="options" anchor>--output parameter</RLink> to specify an output file. If the file aready exists, the output will be 
+                Use the <RLink to="#options" router>--output parameter</RLink> to specify an output file. If the file aready exists, the output will be 
                 appended to the end of the file. 
             </p>
 

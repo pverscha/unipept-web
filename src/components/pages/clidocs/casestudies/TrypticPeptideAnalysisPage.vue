@@ -27,7 +27,7 @@
                 to every <Code>K</Code> (lysine) or <Code>R</Code> (arginine), except when followed by <Code>P</Code> (proline). The individual components that result after the 
                 cleavage step are called tryptic peptides. The amino acid sequence of these tryptic peptides may then be determined by means of mass spectrometry. However, most 
                 devices have a detection limit that only allows to determine the amino acid sequence of peptides having a length between 5 and 50 amino acids 
-                (<RLink to="fig1" anchor>Figure 1</RLink>).
+                (<RLink to="#fig1" router>Figure 1</RLink>).
             </p>
 
             <ImageCaptionCard id="fig1" class="mb-5" :image="require('@/assets/casestudy-tpa-trypsin-digest.png')">
@@ -148,7 +148,7 @@ OPTIONS
         <HeaderBodyCard class="mt-5" title="The Unipept commands">
             <p>
                 Using the <Code>unipept</Code> command with a single tryptic peptide passed as an argument or read from <i>standard input</i>, corresponds to using 
-                the <RLink to="/tpa" router>Tryptic Peptide Analysis</RLink> feature from the Unipept web interface (<RLink to="fig3" anchor>Figure 3</RLink>). 
+                the <RLink to="/tpa" router>Tryptic Peptide Analysis</RLink> feature from the Unipept web interface (<RLink to="#fig3" router>Figure 3</RLink>). 
                 Activating the option Equate I and L in the web interface corresponds to using the <Code>-e</Code> option with the <Code>unipept</Code> command.
             </p>
 
@@ -158,7 +158,7 @@ OPTIONS
             </ImageCaptionCard>
 
             <p>
-                The <Code>unipept pept2prot</Code> command is an implementation of the <Code>pept2prot</Code> step in <RLink to="fig2" anchor>Figure 2</RLink>. 
+                The <Code>unipept pept2prot</Code> command is an implementation of the <Code>pept2prot</Code> step in <RLink to="#fig2" router>Figure 2</RLink>. 
                 This command can therefore be used to fetch all UniProt proteins that contain (exact matching) the given tryptic peptide. These peptides are listed 
                 in the <i>Protein matches</i> tab on the page that shows the results of a Tryptic Peptide Analysis on the Unipept web interface. When the option 
                 <Code>-a/--all</Code> is used, additional taxonomic and functional information is shown for each of the matched protein records. These metadata 
@@ -166,7 +166,7 @@ OPTIONS
             </p>
 
             <p>
-                The <Code>unipept pept2taxa</Code> command is the composition of the <Code>pept2prot</Code> and <Code>prot2taxa</Code> steps in <RLink to="fig2" anchor>Figure 2</RLink>, 
+                The <Code>unipept pept2taxa</Code> command is the composition of the <Code>pept2prot</Code> and <Code>prot2taxa</Code> steps in <RLink to="#fig2" router>Figure 2</RLink>, 
                 apart from the fact that this command also implements a deduplication of the matched taxa. The command can thus be used to fetch all taxonomic 
                 annotations from all UniProt proteins that contain the given tryptic peptide. This information is represented in the Unipept web interface in 
                 tabular format (<i>Lineage table tab</i>) and in tree format (<i>Lineage tree tab</i>). All information included in the table can be retrieved using the 
@@ -175,12 +175,12 @@ OPTIONS
 
             <p>
                 The <Code>unipept pept2lca</Code> command is the composition of the <Code>pept2prot</Code>, <Code>prot2taxa</Code> and <Code>taxa2lca</Code> steps 
-                in <RLink to="fig2" anchor>Figure 2</RLink>. In other words, this command can be used to determine the taxonomic identification of a tryptic peptide. 
+                in <RLink to="#fig2" router>Figure 2</RLink>. In other words, this command can be used to determine the taxonomic identification of a tryptic peptide. 
                 This is done by computing the lowest common ancestor (<Initialism>LCA</Initialism>) from all taxonomic annotations of the UniProt proteins that 
-                match the given tryptic peptide (<RLink to="fig2" anchor>Figure 2</RLink>). This information can be found in the summary on top of the page that 
-                shows the results of a Tryptic Peptide Analysis in the Unipept web interface (<RLink to="fig4" anchor>Figure 4</RLink>). The complete lineage can 
+                match the given tryptic peptide (<RLink to="#fig2" router>Figure 2</RLink>). This information can be found in the summary on top of the page that 
+                shows the results of a Tryptic Peptide Analysis in the Unipept web interface (<RLink to="#fig4" router>Figure 4</RLink>). The complete lineage can 
                 be retrieved using the <Code>-a</Code> option in combination with this command. Note that the computation of the <Initialism>LCA</Initialism> 
-                (<Code>taxa2lca</Code> step in <RLink to="fig4" anchor>Figure 4</RLink>) can be done using the <Code>unipept taxa2lca</Code> command of the 
+                (<Code>taxa2lca</Code> step in <RLink to="#fig4" router>Figure 4</RLink>) can be done using the <Code>unipept taxa2lca</Code> command of the 
                 Unipept <Initialism>CLI</Initialism>.
             </p>
 
@@ -455,7 +455,7 @@ OPTIONS
             </Boxed>
 
             <p>
-                This output corresponds to the tree structure that appears at the left of <RLink to="fig2" anchor>Figure 2</RLink> or the tree drawn in the 
+                This output corresponds to the tree structure that appears at the left of <RLink to="#fig2" router>Figure 2</RLink> or the tree drawn in the 
                 <i>Lineage tree</i> tab on the page that shows the results of a Tryptic Peptide Analysis in the Unipept web interface. Note that the tryptic peptide 
                 <Code>ENFVYLAK</Code> was only found in a peach protein (Prunus persica), whereas its <Code>I=L</Code> variant was found in proteins of a species 
                 of wild banana (<i>Musa acuminata subsp. malaccensis</i>) and in different members of the flowering plants including chick pea (<i>Cicer arietinum</i>), 
@@ -483,7 +483,7 @@ OPTIONS
             </Boxed>
 
             <p>
-                The correctness of the computed <Initialism>LCA</Initialism>s can be checked based on the taxonomic hierarchy shown in <RLink to="fig2" anchor>Figure 2</RLink>.
+                The correctness of the computed <Initialism>LCA</Initialism>s can be checked based on the taxonomic hierarchy shown in <RLink to="#fig2" router>Figure 2</RLink>.
             </p>
         </HeaderBodyCard>
 

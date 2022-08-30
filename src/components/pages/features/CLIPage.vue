@@ -19,10 +19,10 @@ const navigation = [
         name: "Overview", 
         link: "/clidocs",
         children: [
-            { name: "Functionality", link: "#functionality", anchor: true },
-            { name: "Installation", link: "#installation", anchor: true },
-            { name: "Updates", link: "#updates", anchor: true },
-            { name: "Configuration", link: "#configuration", anchor: true }
+            { name: "Functionality", link: "#functionality" },
+            { name: "Installation", link: "#installation" },
+            { name: "Updates", link: "#updates" },
+            { name: "Configuration", link: "#configuration" }
         ]
     },
     { 
@@ -37,137 +37,137 @@ const navigation = [
         name: "uniprot", 
         link: "/clidocs/uniprot",
         children: [
-            { name: "Input", link: "input", anchor: true },
-            { name: "Output", link: "output", anchor: true },
-            { name: "Options", link: "options", anchor: true }
+            { name: "Input", link: "#input" },
+            { name: "Output", link: "#output" },
+            { name: "Options", link: "#options" }
         ]
     },
     { 
         name: "prot2pept", 
         link: "/clidocs/prot2pept",
         children: [
-            { name: "Input", link: "input", anchor: true },
-            { name: "Output", link: "output", anchor: true },
-            { name: "Fasta", link: "fasta", anchor: true },
-            { name: "Options", link: "options", anchor: true }
+            { name: "Input", link: "#input" },
+            { name: "Output", link: "#output" },
+            { name: "Fasta", link: "#fasta" },
+            { name: "Options", link: "#options" }
         ]
     },
     { 
         name: "peptfilter", 
         link: "/clidocs/peptfilter",
         children: [
-            { name: "Input", link: "input", anchor: true },
-            { name: "Output", link: "output", anchor: true },
-            { name: "Fasta", link: "fasta", anchor: true },
-            { name: "Options", link: "options", anchor: true }
+            { name: "Input", link: "#input" },
+            { name: "Output", link: "#output" },
+            { name: "Fasta", link: "#fasta" },
+            { name: "Options", link: "#options" }
         ]
     },
     { 
         name: "unipept pept2lca", 
         link: "/clidocs/pept2lca",
         children: [
-            { name: "Input", link: "input", anchor: true },
-            { name: "Output", link: "output", anchor: true },
-            { name: "Fasta", link: "fasta", anchor: true },
-            { name: "Options", link: "options", anchor: true }
+            { name: "Input", link: "#input" },
+            { name: "Output", link: "#output" },
+            { name: "Fasta", link: "#fasta" },
+            { name: "Options", link: "#options" }
         ]
     },
     { 
         name: "unipept pept2prot", 
         link: "/clidocs/pept2prot",
         children: [
-            { name: "Input", link: "input", anchor: true },
-            { name: "Output", link: "output", anchor: true },
-            { name: "Fasta", link: "fasta", anchor: true },
-            { name: "Options", link: "options", anchor: true }
+            { name: "Input", link: "#input" },
+            { name: "Output", link: "#output" },
+            { name: "Fasta", link: "#fasta" },
+            { name: "Options", link: "#options" }
         ]
     },
     { 
         name: "unipept pept2taxa", 
         link: "/clidocs/pept2taxa",
         children: [
-            { name: "Input", link: "input", anchor: true },
-            { name: "Output", link: "output", anchor: true },
-            { name: "Fasta", link: "fasta", anchor: true },
-            { name: "Options", link: "options", anchor: true }
+            { name: "Input", link: "#input" },
+            { name: "Output", link: "#output" },
+            { name: "Fasta", link: "#fasta" },
+            { name: "Options", link: "#options" }
         ]
     },
     { 
         name: "unipept pept2ec", 
         link: "/clidocs/pept2ec",
         children: [
-            { name: "Input", link: "input", anchor: true },
-            { name: "Output", link: "output", anchor: true },
-            { name: "Fasta", link: "fasta", anchor: true },
-            { name: "Options", link: "options", anchor: true }
+            { name: "Input", link: "#input" },
+            { name: "Output", link: "#output" },
+            { name: "Fasta", link: "#fasta" },
+            { name: "Options", link: "#options" }
         ]
     },
     { 
         name: "unipept pept2go", 
         link: "/clidocs/pept2go",
         children: [
-            { name: "Input", link: "input", anchor: true },
-            { name: "Output", link: "output", anchor: true },
-            { name: "Fasta", link: "fasta", anchor: true },
-            { name: "Options", link: "options", anchor: true }
+            { name: "Input", link: "#input" },
+            { name: "Output", link: "#output" },
+            { name: "Fasta", link: "#fasta" },
+            { name: "Options", link: "#options" }
         ]
     },
     { 
         name: "unipept pept2interpro", 
         link: "/clidocs/pept2interpro",
         children: [
-            { name: "Input", link: "input", anchor: true },
-            { name: "Output", link: "output", anchor: true },
-            { name: "Fasta", link: "fasta", anchor: true },
-            { name: "Options", link: "options", anchor: true }
+            { name: "Input", link: "#input" },
+            { name: "Output", link: "#output" },
+            { name: "Fasta", link: "#fasta" },
+            { name: "Options", link: "#options" }
         ]
     },
     { 
         name: "unipept pept2funct", 
         link: "/clidocs/pept2funct",
         children: [
-            { name: "Input", link: "input", anchor: true },
-            { name: "Output", link: "output", anchor: true },
-            { name: "Fasta", link: "fasta", anchor: true },
-            { name: "Options", link: "options", anchor: true }
+            { name: "Input", link: "#input" },
+            { name: "Output", link: "#output" },
+            { name: "Fasta", link: "#fasta" },
+            { name: "Options", link: "#options" }
         ]
     },
     { 
         name: "unipept peptinfo", 
         link: "/clidocs/peptinfo",
         children: [
-            { name: "Input", link: "input", anchor: true },
-            { name: "Output", link: "output", anchor: true },
-            { name: "Fasta", link: "fasta", anchor: true },
-            { name: "Options", link: "options", anchor: true }
+            { name: "Input", link: "#input" },
+            { name: "Output", link: "#output" },
+            { name: "Fasta", link: "#fasta" },
+            { name: "Options", link: "#options" }
         ]
     },
     { 
         name: "unipept taxa2lca", 
         link: "/clidocs/taxa2lca",
         children: [
-            { name: "Input", link: "input", anchor: true },
-            { name: "Output", link: "output", anchor: true },
-            { name: "Options", link: "options", anchor: true }
+            { name: "Input", link: "#input" },
+            { name: "Output", link: "#output" },
+            { name: "Options", link: "#options" }
         ]
     },
     { 
         name: "unipept taxa2tree", 
         link: "/clidocs/taxa2tree",
         children: [
-            { name: "Input", link: "input", anchor: true },
-            { name: "Output", link: "output", anchor: true },
-            { name: "Options", link: "options", anchor: true }
-        ] 
+            { name: "Input", link: "#input" },
+            { name: "Output", link: "#output" },
+            { name: "Options", link: "#options" }
+        ]
     },
     { 
         name: "unipept taxonomy", 
         link: "/clidocs/taxonomy",
         children: [
-            { name: "Input", link: "input", anchor: true },
-            { name: "Output", link: "output", anchor: true },
-            { name: "Fasta", link: "fasta", anchor: true },
-            { name: "Options", link: "options", anchor: true }
+            { name: "Input", link: "#input" },
+            { name: "Output", link: "#output" },
+            { name: "Fasta", link: "#fasta" },
+            { name: "Options", link: "#options" }
         ]
     }
 ];
