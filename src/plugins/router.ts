@@ -164,5 +164,21 @@ const routes = [
 ];
 
 export default new VueRouter({
-    routes
+    routes,
+    mode: "history",
+    scrollBehavior(to, from, savedPosition) {
+        if (to.hash) {
+            // Go to appended anchor in the url
+            return { 
+                selector: to.hash,
+                behavior: "smooth"
+            }
+        } else if (savedPosition) {
+            // Go to a saved location (history)
+            return savedPosition;
+        } else {
+            // Go to the top of the page
+            return { x: 0, y: 0 }
+        }
+    }
 });

@@ -19,10 +19,10 @@ const navigation = [
         name: "Overview", 
         link: "/clidocs",
         children: [
-            { name: "Functionality", link: "functionality", anchor: true },
-            { name: "Installation", link: "installation", anchor: true },
-            { name: "Updates", link: "updates", anchor: true },
-            { name: "Configuration", link: "configuration", anchor: true }
+            { name: "Functionality", link: "#functionality", anchor: true },
+            { name: "Installation", link: "#installation", anchor: true },
+            { name: "Updates", link: "#updates", anchor: true },
+            { name: "Configuration", link: "#configuration", anchor: true }
         ]
     },
     { 

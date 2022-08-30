@@ -6,7 +6,7 @@
             </v-tab>
             <div class="sub-tabs" v-if="active == item.name">
                 <div v-for="child in item.children" class="v-tab-child" :key="child.name">
-                    <v-tab v-if="child.anchor" @click="scroll(child.link)">
+                    <v-tab v-if="child.anchor" :to="child.link">
                         {{ child.name }}
                     </v-tab>
                     <v-tab v-else :to="child.link" exact-path>
