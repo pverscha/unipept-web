@@ -52,7 +52,7 @@
             by email (<RLink to="unipept@ugent.be" mail>unipept@ugent.be</RLink>), or create an <RLink to="https://github.com/unipept/umgap/issues">issue</RLink> on Github.
         </p>
 
-        <HeaderBodyCard title="UMGAP functionality" class="mt-5">
+        <HeaderBodyCard id="functionality" title="UMGAP functionality" class="mt-5">
             <v-simple-table>
                 <template v-slot:default>
                     <thead>
@@ -146,7 +146,7 @@
             </p>
         </HeaderBodyCard>
 
-        <HeaderBodyCard id="config" title="Configuration" class="mt-5">
+        <HeaderBodyCard id="configuration" title="Configuration" class="mt-5">
             <p>
                 If you want to use FragGeneScanPlusPlus as gene predictor, this needs to be installed as well. Instructions can be 
                 found at <RLink to="https://github.com/unipept/FragGeneScanPlusPlus">https://github.com/unipept/FragGeneScanPlusPlus</RLink>.

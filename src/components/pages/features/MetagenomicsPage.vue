@@ -15,8 +15,25 @@ import VerticalNavigation from "@/components/navigation/VerticalNavigation.vue";
 import HorizontalNavigation from "@/components/navigation/HorizontalNavigation.vue";
 
 const navigation = [
-    { name: "Overview", link: "/umgap" },
-    { name: "Case studies", link: "/umgap/casestudies" },
+    { 
+        name: "Overview", 
+        link: "/umgap",
+        children: [
+            { name: "Functionality", link: "functionality", anchor: true },
+            { name: "Installation", link: "installation", anchor: true },
+            { name: "Updates", link: "updates", anchor: true },
+            { name: "Configuration", link: "configuration", anchor: true }
+        ]
+    },
+    { 
+        name: "Case studies", 
+        link: "/umgap/casestudies",
+        children: [
+            { name: "Preconfigured pipelines", link: "/umgap/casestudies/basic" },
+            { name: "Advanced configuration", link: "/umgap/casestudies/advanced" },
+            { name: "Comparative analysis", link: "/umgap/casestudies/comparative" }
+        ]
+    },
     { name: "fastq2fasta", link: "/umgap/fastq2fasta" },
     { name: "translate", link: "/umgap/translate" },
     { name: "prot2tryp", link: "/umgap/prot2tryp" },
