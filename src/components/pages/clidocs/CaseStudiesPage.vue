@@ -1,6 +1,13 @@
 <template>
     <v-container>
-        <HeaderBodyCard title="Taxonomic analysis of a tryptic peptide">
+        <h1 class="font-weight-light">
+            Unipept <Initialism>CLI</Initialism> Case Studies
+        </h1>
+        <h3 class="font-weight-light">
+            This page explores several uses of the Unipept command line tools.
+        </h3>
+
+        <HeaderBodyCard class="mt-5" title="Taxonomic analysis of a tryptic peptide">
             <p class="mb-0">
                 This case study describes how the Unipept command line tools can be used for the taxonomic analysis of a single tryptic peptide. All steps, 
                 from installation till the end result are covered.
@@ -57,4 +64,5 @@
 
 <script setup lang="ts">
 import HeaderBodyCard from '@/components/cards/HeaderBodyCard.vue';
+import Initialism from '@/components/highlights/Initialism.vue';
 </script>
