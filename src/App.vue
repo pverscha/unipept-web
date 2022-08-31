@@ -35,7 +35,9 @@
         </v-app-bar>
 
         <v-content>
-            <router-view></router-view>
+            <v-container class="main-container">
+                <router-view></router-view>
+            </v-container>
         </v-content>
 
         <v-footer dark padless class="grey darken-3 px-lg-16 flex">
@@ -73,7 +75,6 @@
                     <router-link class="link ml-5" to="/">Publications</router-link>
                 </div>
             </div>
-
         </v-footer>
     </v-app>
 </template>
@@ -93,8 +94,22 @@ const navItems = [
 ];
 </script>
 
-<style>
+
+<style lang="scss">
 @import "~unipept-web-components/dist/unipept-web-components.css";
+@import '~vuetify/src/styles/settings/_variables';
+
+@media #{map-get($display-breakpoints, 'md-and-down')} {
+    .main-container {
+        width: 100% !important;
+    }
+}
+
+@media #{map-get($display-breakpoints, 'lg-and-up')} {
+    .main-container {
+        width: 75% !important;
+    }
+}
 
 .homepage-title {
     color: white !important;
@@ -115,4 +130,39 @@ const navItems = [
     text-decoration: none;
 }
 
+.v-card__text {
+    color: #333333 !important;
+}
+
+li {
+    line-height: 1.8;
+}
+
+.v-card__text p {
+    font-size: 100%;
+}
+
+.v-card__content p {
+    font-size: 100%;
+}
+
+p {
+    color: #333333 !important;
+    font-size: 90%;
+    margin-bottom: 8px !important;
+}
+
+.v-card h3 {
+    font-weight: 300;
+    font-size: large;
+}
+
+.v-card h2 {
+    font-weight: 300;
+    font-size: x-large;
+}
+
+.v-alert__wrapper {
+    display:block !important;
+}
 </style>

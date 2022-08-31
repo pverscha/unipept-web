@@ -1,12 +1,147 @@
 <template>
-    <div></div>
+    <v-container>
+        <v-row>
+            <div class="col-lg-10 order-lg-0 order-1 pt-0">
+                <router-view></router-view>
+            </div>
+            <VerticalNavigation v-if="$vuetify.breakpoint.lgAndUp" class="col-lg-2 order-lg-1 d-sm-none d-lg-flex" :items="navigation" />
+            <HorizontalNavigation v-else class="col-12 order-0" :items="navigation" />
+        </v-row>
+    </v-container>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import VerticalNavigation from "@/components/navigation/VerticalNavigation.vue";
+import HorizontalNavigation from "@/components/navigation/HorizontalNavigation.vue";
 
-export default defineComponent({
-    name: "APIPage",
-    setup() { }
-});
+const navigation = [
+    { 
+        name: "Overview", 
+        link: "/apidocs",
+        children: [
+            { name: "Functionality", link: "functionality", anchor: true }
+        ] 
+    },
+    { 
+        name: "pept2prot", 
+        link: "/apidocs/pept2prot",
+        children: [
+            { name: "Request", link: "request", anchor: true },
+            { name: "Response", link: "response", anchor: true },
+            { name: "Parameters", link: "parameters", anchor: true },
+            { name: "Examples", link: "examples", anchor: true },
+            { name: "Try it", link: "try", anchor: true },
+        ]
+    },
+    { 
+        name: "pept2taxa", 
+        link: "/apidocs/pept2taxa",
+        children: [
+            { name: "Request", link: "request", anchor: true },
+            { name: "Response", link: "response", anchor: true },
+            { name: "Parameters", link: "parameters", anchor: true },
+            { name: "Examples", link: "examples", anchor: true },
+            { name: "Try it", link: "try", anchor: true },
+        ] 
+    },
+    { 
+        name: "pept2lca", 
+        link: "/apidocs/pept2lca",
+        children: [
+            { name: "Request", link: "request", anchor: true },
+            { name: "Response", link: "response", anchor: true },
+            { name: "Parameters", link: "parameters", anchor: true },
+            { name: "Examples", link: "examples", anchor: true },
+            { name: "Try it", link: "try", anchor: true },
+        ] 
+    },
+    { 
+        name: "pept2ec", 
+        link: "/apidocs/pept2ec",
+        children: [
+            { name: "Request", link: "request", anchor: true },
+            { name: "Response", link: "response", anchor: true },
+            { name: "Parameters", link: "parameters", anchor: true },
+            { name: "Examples", link: "examples", anchor: true },
+            { name: "Try it", link: "try", anchor: true },
+        ] 
+    },
+    { 
+        name: "pept2go", 
+        link: "/apidocs/pept2go",
+        children: [
+            { name: "Request", link: "request", anchor: true },
+            { name: "Response", link: "response", anchor: true },
+            { name: "Parameters", link: "parameters", anchor: true },
+            { name: "Examples", link: "examples", anchor: true },
+            { name: "Try it", link: "try", anchor: true },
+        ] 
+    },
+    { 
+        name: "pept2interpro", 
+        link: "/apidocs/pept2interpro",
+        children: [
+            { name: "Request", link: "request", anchor: true },
+            { name: "Response", link: "response", anchor: true },
+            { name: "Parameters", link: "parameters", anchor: true },
+            { name: "Examples", link: "examples", anchor: true },
+            { name: "Try it", link: "try", anchor: true },
+        ] 
+    },
+    { 
+        name: "pept2funct", 
+        link: "/apidocs/pept2funct",
+        children: [
+            { name: "Request", link: "request", anchor: true },
+            { name: "Response", link: "response", anchor: true },
+            { name: "Parameters", link: "parameters", anchor: true },
+            { name: "Examples", link: "examples", anchor: true },
+            { name: "Try it", link: "try", anchor: true },
+        ] 
+    },
+    { 
+        name: "peptinfo", 
+        link: "/apidocs/peptinfo",
+        children: [
+            { name: "Request", link: "request", anchor: true },
+            { name: "Response", link: "response", anchor: true },
+            { name: "Parameters", link: "parameters", anchor: true },
+            { name: "Examples", link: "examples", anchor: true },
+            { name: "Try it", link: "try", anchor: true },
+        ] 
+    },
+    { 
+        name: "taxa2lca", 
+        link: "/apidocs/taxa2lca",
+        children: [
+            { name: "Request", link: "request", anchor: true },
+            { name: "Response", link: "response", anchor: true },
+            { name: "Parameters", link: "parameters", anchor: true },
+            { name: "Examples", link: "examples", anchor: true },
+            { name: "Try it", link: "try", anchor: true },
+        ] 
+    },
+    { 
+        name: "taxa2tree", 
+        link: "/apidocs/taxa2tree",
+        children: [
+            { name: "Request", link: "request", anchor: true },
+            { name: "Response", link: "response", anchor: true },
+            { name: "Parameters", link: "parameters", anchor: true },
+            { name: "Examples", link: "examples", anchor: true },
+            { name: "Try it", link: "try", anchor: true },
+        ] 
+    },
+    { 
+        name: "taxonomy", 
+        link: "/apidocs/taxonomy",
+        children: [
+            { name: "Request", link: "request", anchor: true },
+            { name: "Response", link: "response", anchor: true },
+            { name: "Parameters", link: "parameters", anchor: true },
+            { name: "Examples", link: "examples", anchor: true },
+            { name: "Try it", link: "try", anchor: true },
+        ] 
+    }
+];
 </script>
