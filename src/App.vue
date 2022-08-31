@@ -25,7 +25,7 @@
             </router-link>
 
             <template v-slot:extension>
-                <v-tabs :value="tabsSelected" slider-size="5" optional>
+                <v-tabs slider-size="5" optional>
                     <v-tab class="pa-0 ma-0" style="min-width:0px" />
                     <v-tab v-for="item in navItems" :key="item.name" :to="item.path" class="white--text font-weight-bold">
                         {{ item.name }}
@@ -40,7 +40,7 @@
 
         <v-footer dark padless class="grey darken-3 px-lg-16 flex">
             <div class="d-flex flex-wrap" style="width: 100%">
-                <div class="col-md-8 text-md-start order-md-0 col-12 text-center order-2 grey--text d-md-flex">
+                <div v-if="$route.meta" class="col-md-8 text-md-start order-md-0 col-12 text-center order-2 grey--text d-md-flex">
                     <div class="flex-md-column">
                         {{ $route.meta.publication }}
                     </div>
@@ -48,6 +48,7 @@
                         <a class="link" :href="'https://' + $route.meta.publicationLink" target="_blank">&nbsp;{{ $route.meta.publicationLink }}</a>
                     </div>
                 </div>
+                <div v-else class="col-md-8 text-md-start order-md-0 col-12 text-center order-2 grey--text d-md-flex"></div>
                 <div class="col-md-4 text-md-end order-md-1 col-12 text-center order-0">
                     <a class="link" href="mailto:unipept@ugent.be">
                         <v-icon size="30px" class="grey--text link">
@@ -77,27 +78,24 @@
     </v-app>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { QueueManager } from "unipept-web-components";
 
-export default defineComponent({
-    name: "App",
-    data() {
-        return {
-            navItems: [
-                { name: "Tryptic Peptide Analysis", path: "/tpa" },
-                { name: "Metaproteomics Analysis", path: "/mpa" },
-                { name: "API", path: "/apidocs" },
-                { name: "CLI", path: "/clidocs" },
-                { name: "Metagenomics", path: "/umgap" },
-                { name: "Unipept Desktop", path: "/desktop" }
-            ]
-        }
-    }
-});
+QueueManager.initializeQueue(4);
+
+const navItems = [
+    { name: "Tryptic Peptide Analysis", path: "/tpa" },
+    { name: "Metaproteomics Analysis", path: "/mpa" },
+    { name: "API", path: "/apidocs" },
+    { name: "CLI", path: "/clidocs" },
+    { name: "Metagenomics", path: "/umgap" },
+    { name: "Unipept Desktop", path: "/desktop" }
+];
 </script>
 
 <style>
+@import "~unipept-web-components/dist/unipept-web-components.css";
+
 .homepage-title {
     color: white !important;
     text-decoration: none;

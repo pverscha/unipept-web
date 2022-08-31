@@ -1,12 +1,9 @@
 <template>
-    <div></div>
+    <v-container>
+        qdfjqdflqdnfj
+    </v-container>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
 
-export default defineComponent({
-    name: "TrypticPeptideAnalysisPage",
-    setup() { }
-});
 </script>

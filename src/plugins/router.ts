@@ -9,8 +9,14 @@ import APIPage from "@/components/pages/features/APIPage.vue";
 import CLIPage from "@/components/pages/features/CLIPage.vue";
 import MetagenomicsPage from "@/components/pages/features/MetagenomicsPage.vue";
 import DesktopPage from "@/components/pages/features/DesktopPage.vue";
+import TrypticPeptideAnalysisResultPage from "@/components/pages/analysis/TrypticPeptideAnalysisResultPage.vue";
 
 Vue.use(VueRouter);
+
+const tpaMeta = {
+    publication: "Gurdeep Singh et al. (2019) Journal of Proteome Research",
+    publicationLink: "doi:10.1021/acs.jproteome.8b00716"
+};
 
 const routes = [
     {
@@ -24,10 +30,12 @@ const routes = [
     {
         path: "/tpa",
         component: TrypticPeptideAnalysisPage,
-        meta: {
-            publication: "Gurdeep Singh et al. (2019) Journal of Proteome Research",
-            publicationLink: "doi:10.1021/acs.jproteome.8b00716"
-        }
+        meta: tpaMeta
+    },
+    { 
+        path: "/tpa/:sequence", 
+        component: TrypticPeptideAnalysisResultPage, 
+        meta: tpaMeta 
     },
     {
         path: "/mpa",
