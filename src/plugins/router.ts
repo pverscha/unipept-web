@@ -9,6 +9,7 @@ import APIPage from "@/components/pages/features/APIPage.vue";
 import CLIPage from "@/components/pages/features/CLIPage.vue";
 import MetagenomicsPage from "@/components/pages/features/MetagenomicsPage.vue";
 import DesktopPage from "@/components/pages/features/DesktopPage.vue";
+import PublicationsPage from "@/components/pages/PublicationsPage.vue";
 
 // API Documentation
 import {
@@ -156,6 +157,14 @@ const routes = [
     {
         path: "/posts",
         component: NewsPage,
+        meta: {
+            publication: "Gurdeep Singh et al. (2019) Journal of Proteome Research",
+            publicationLink: "doi:10.1021/acs.jproteome.8b00716"
+        }
+    },
+    {
+        path: "/publications",
+        component: PublicationsPage,
         meta: {
             publication: "Gurdeep Singh et al. (2019) Journal of Proteome Research",
             publicationLink: "doi:10.1021/acs.jproteome.8b00716"

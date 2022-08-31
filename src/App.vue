@@ -15,9 +15,11 @@
 
             <v-spacer></v-spacer>
 
-            <v-btn text>
-                Publications
-            </v-btn>
+            <router-link to="/publications" v-slot="{ href, navigate }">
+                <v-btn text @click="navigate" :href="href">
+                    Publications
+                </v-btn>
+            </router-link>
             <router-link to="/about" v-slot="{ href, navigate }">
                 <v-btn text @click="navigate" :href="href">
                     About
@@ -72,7 +74,7 @@
                 <div class="col-md-4 text-md-end order-md-3 col-12 text-center order-1">
                     <router-link class="link" to="/about">Terms of service</router-link>
                     <router-link class="link ml-5" to="/posts">News</router-link>
-                    <router-link class="link ml-5" to="/">Publications</router-link>
+                    <router-link class="link ml-5" to="/publications">Publications</router-link>
                 </div>
             </div>
         </v-footer>
