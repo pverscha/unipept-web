@@ -26,11 +26,38 @@ import {
     TaxonomyPage as APITaxonomyPage
 } from "@/components/pages/apidocs";
 
+// CLI Documentation
+import { 
+    OverviewPage as CLIOverviewPage,
+    CaseStudiesPage,
+    CLITrypticPeptideAnalysisPage,
+    CLIMetaproteomicsAnalysisPage,
+    UniprotPage,
+    Prot2PeptPage,
+    PeptfilterPage,
+    Pept2LcaPage as CLIPept2LcaPage,
+    Pept2ProtPage as CLIPept2ProtPage,
+    Pept2TaxaPage as CLIPept2TaxaPage,
+    Pept2EcPage as CLIPept2EcPage,
+    Pept2GoPage as CLIPept2GoPage,
+    Pept2InterproPage as CLIPept2InterproPage,
+    Pept2FunctPage as CLIPept2FunctPage,
+    PeptInfoPage as CLIPeptInfoPage,
+    Taxa2LcaPage as CLITaxa2LcaPage,
+    Taxa2TreePage as CLITaxa2TreePage,
+    TaxonomyPage as CLITaxonomyPage
+} from "@/components/pages/clidocs";
+
 Vue.use(VueRouter);
 
 const apidocsMeta = {
     publication: "Mesuere et al. (2016) Bioinformatics",
     publicationLink: "doi:10.1093/bioinformatics/btw039"
+};
+
+const clidocsMeta = {
+    publication: "Verschaffelt et al. (2020) Bioinformatics",
+    publicationLink: "doi.org/10.1093/bioinformatics/btaa553"
 };
 
 const routes = [
@@ -80,10 +107,27 @@ const routes = [
     {
         path: "/clidocs",
         component: CLIPage,
-        meta: {
-            publication: "Verschaffelt et al. (2020) Bioinformatics",
-            publicationLink: "doi.org/10.1093/bioinformatics/btaa553"
-        }
+        children: [
+            { path: "", component: CLIOverviewPage, meta: clidocsMeta },
+            { path: "casestudies", component: CaseStudiesPage, meta: clidocsMeta },
+            { path: "casestudies/tpa", component: CLITrypticPeptideAnalysisPage, meta: clidocsMeta },
+            { path: "casestudies/mpa", component: CLIMetaproteomicsAnalysisPage, meta: clidocsMeta },
+            { path: "uniprot", component: UniprotPage, meta: clidocsMeta },
+            { path: "prot2pept", component: Prot2PeptPage, meta: clidocsMeta },
+            { path: "peptfilter", component: PeptfilterPage, meta: clidocsMeta },
+            { path: "pept2lca", component: CLIPept2LcaPage, meta: clidocsMeta },
+            { path: "pept2prot", component: CLIPept2ProtPage, meta: clidocsMeta },
+            { path: "pept2taxa", component: CLIPept2TaxaPage, meta: clidocsMeta },
+            { path: "pept2ec", component: CLIPept2EcPage, meta: clidocsMeta },
+            { path: "pept2go", component: CLIPept2GoPage, meta: clidocsMeta },
+            { path: "pept2interpro", component: CLIPept2InterproPage, meta: clidocsMeta },
+            { path: "pept2funct", component: CLIPept2FunctPage, meta: clidocsMeta },
+            { path: "peptinfo", component: CLIPeptInfoPage, meta: clidocsMeta },
+            { path: "taxa2lca", component: CLITaxa2LcaPage, meta: clidocsMeta },
+            { path: "taxa2tree", component: CLITaxa2TreePage, meta: clidocsMeta },
+            { path: "taxonomy", component: CLITaxonomyPage, meta: clidocsMeta }
+        ],
+        meta: clidocsMeta
     },
     {
         path: "/umgap",
@@ -120,5 +164,21 @@ const routes = [
 ];
 
 export default new VueRouter({
-    routes
+    routes,
+    mode: "history",
+    scrollBehavior(to, from, savedPosition) {
+        if (to.hash) {
+            // Go to appended anchor in the url
+            return { 
+                selector: to.hash,
+                behavior: "smooth"
+            }
+        } else if (savedPosition) {
+            // Go to a saved location (history)
+            return savedPosition;
+        } else {
+            // Go to the top of the page
+            return { x: 0, y: 0 }
+        }
+    }
 });

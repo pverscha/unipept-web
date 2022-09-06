@@ -152,5 +152,16 @@ li {
 p {
     color: #333333 !important;
     font-size: 90%;
+    margin-bottom: 8px !important;
+}
+
+.v-card h3 {
+    font-weight: 300;
+    font-size: large;
+}
+
+.v-card h2 {
+    font-weight: 300;
+    font-size: x-large;
 }
 </style>

@@ -18,7 +18,7 @@
             <ResourceLink to="https://academic.oup.com/bioinformatics/article/32/11/1746/1742840?login=false">doi:10.1093/bioinformatics/btw039</ResourceLink>
         </p>
         
-        <HeaderBodyCard title="API functions" class="mt-5">
+        <HeaderBodyCard id="functionality" title="API functions" class="mt-5">
             <v-simple-table>
                 <template v-slot:default>
                     <thead>
@@ -103,7 +103,7 @@ const functions = [
         resource: "POST /api/v1/taxonomy", 
         description: "Returns the taxonomic information for a given taxon identifier.",
         link: "/apidocs/taxonomy"  
-    },
+    }
 ];
 </script>
 

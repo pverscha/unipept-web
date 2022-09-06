@@ -12,10 +12,10 @@
         </p>
 
         <!-- Request Card -->
-        <HeaderBodyCard title="Request">
+        <HeaderBodyCard id="request" title="Request">
             <p>
                 The taxonomy method can be used by doing a <Initialism>HTTP POST</Initialism>-request (preferred) or <Initialism>GET</Initialism>-request to 
-                <Code>http://api.unipept.ugent.be/api/v1/taxonomy</Code>. <RLink to="parameters" anchor>Parameters</RLink> can be included in the request body 
+                <Code>http://api.unipept.ugent.be/api/v1/taxonomy</Code>. <RLink to="#parameters" router>Parameters</RLink> can be included in the request body 
                 (<Initialism>POST</Initialism>) or in the query string (<Initialism>GET</Initialism>). The only required parameter is <Code>input[]</Code>, which 
                 takes one or more tryptic peptides.
             </p>
@@ -23,7 +23,7 @@
             <h3>input</h3>
             <p>
                 <Code>input[]</Code> s a required parameter that takes one or more taxon identifiers. Unipept will return the taxonomic information for the given taxa. 
-                To pass multiple taxon identifiers, simply add multiple <Code>input[]</Code> parameters (see <RLink to="example2" anchor>example</RLink>).
+                To pass multiple taxon identifiers, simply add multiple <Code>input[]</Code> parameters (see <RLink to="#example2" router>example</RLink>).
             </p>
 
             <StaticAlert title="Input size">
@@ -38,7 +38,7 @@
             <p>
                 <Code>extra</Code> is an optional parameter and can either be <Code>true</Code> or <Code>false</Code>. When not set explicitly, the parameter 
                 defaults to <Code>false</Code>. When the parameter is set to <Code>true</Code>, Unipept will return the complete lineage for each taxon. See the 
-                <RLink to="response" anchor>response</RLink> section for an overview of the information fields returned.
+                <RLink to="#response" router>response</RLink> section for an overview of the information fields returned.
             </p>
 
             <h3>names</h3>
@@ -46,7 +46,7 @@
                 <Code>names</Code> is an optional parameter and can either be <Code>true</Code> or <Code>false</Code>. When not set explicitly, the parameter 
                 defaults to <Code>false</Code>. When both <Code>names</Code> and <Code>extra</Code> are set to <Code>true</Code>, Unipept will return the names of 
                 all ranks in the lineage of each organism. Setting only <Code>names</Code> to <Code>true</Code> will not result in additional 
-                information fields being returned. See the <RLink to="response" anchor>response</RLink> section for an overview of the information fields returned. 
+                information fields being returned. See the <RLink to="#response" router>response</RLink> section for an overview of the information fields returned. 
             </p>
 
             <StaticAlert title="Performance penalty">
@@ -193,7 +193,7 @@
             </v-simple-table>
         </HeaderBodyCard>
 
-        <h2 class="font-weight-light mt-10 mb-n2">Examples</h2>
+        <h2 id="examples" class="font-weight-light mt-10 mb-n2">Examples</h2>
 
         <ExampleCard 
             title="Retrieve taxonomic information for a given taxon identifier" 
@@ -266,7 +266,7 @@
             </template>
         </ExampleCard>
 
-        <TryItCard class="mt-5" :response="tryItResponse" command="taxonomy">
+        <TryItCard id="try" class="mt-5" :response="tryItResponse" command="taxonomy">
             <template>
                 <v-row>
                     <v-col class="font-weight-bold" cols=12 md=2>Input[]</v-col>
