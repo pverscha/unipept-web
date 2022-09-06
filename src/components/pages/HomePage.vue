@@ -1,7 +1,7 @@
 <template>
     <v-container class="main">
         <v-row>
-            <v-col cols=12 md=6>
+            <v-col cols=12 md=5>
                 <div class="text-h3 font-weight-light mb-2">Welcome</div>
                 Unipept is an open source web application developed at <a href="https://www.ugent.be/en" target="_blank">Ghent University</a> that is designed for metaproteomics 
                 data analysis with a focus on <span class="font-weight-bold">interactive datavisualizations</span>. Unipept is powered by an index containing all 
@@ -11,7 +11,7 @@
                 selecting unique peptides for <span class="font-weight-bold">targeted proteomics</span> and for <span class="font-weight-bold">comparing 
                 genomes</span> based on peptide similarity.
             </v-col>
-            <v-col class="mt-md-15 mt-lg-0" cols=12 md=6>
+            <v-col class="mt-0 mt-md-15" cols=12 md=7>
                 <ReleaseOverviewCard v-if="!loading" :services="services" />
             </v-col>
         </v-row>
@@ -132,10 +132,10 @@ onBeforeMount(async () => {
     const Desktop = await githubCommunicator.latestRelease("https://api.github.com/repos/unipept/unipept-desktop/releases");
 
     services.value = [
-        { name: "API", icon: "mdi-api", version: API.tag_name.replace(/^v/, ""), to: "/news/api" },
-        { name: "CLI", icon: "mdi-console", version: CLI.tag_name.replace(/^v/, ""), to: "/news/cli" },
-        { name: "Web app", icon: "mdi-web", version: Web.tag_name, to: "/news/web" },
-        { name: "Desktop app", icon: "mdi-desktop-tower-monitor", version: Desktop.tag_name.replace(/^v/, ""), to: "/news/desktop" }
+        { name: "API", icon: "mdi-api", version: API.tag_name.replace(/^v/, ""), date: API.published_at, to: "/news/api" },
+        { name: "CLI", icon: "mdi-console", version: CLI.tag_name.replace(/^v/, ""), date: CLI.published_at, to: "/news/cli" },
+        { name: "Web app", icon: "mdi-web", version: Web.tag_name, date: Web.published_at, to: "/news/web" },
+        { name: "Desktop app", icon: "mdi-desktop-tower-monitor", version: Desktop.tag_name.replace(/^v/, ""), date: Desktop.published_at, to: "/news/desktop" }
     ];
 
     loading.value = false;
