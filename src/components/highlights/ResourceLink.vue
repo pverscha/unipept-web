@@ -1,25 +1,20 @@
 <template>
     <router-link v-if="router" class="link" :to="to"><slot></slot></router-link>
-    <span v-else-if="anchor" class="link" @click="scroll(to)"><slot></slot></span>
+    <a v-else-if="mail" class="link" :href="'mailto:' + to"><slot></slot></a>
     <a v-else class="link" :href="to" target="_blank"><slot></slot></a>
 </template>
 
 <script setup lang="ts">
 export interface Props {
     to: string,
-    type: string
     router?: boolean,
-    anchor?: boolean
-}
-
-const scroll = (destination: string) => {
-    document.getElementById(destination)?.scrollIntoView({ behavior: 'smooth' });
+    mail?: boolean
 }
 
 /* eslint-disable */
 withDefaults(defineProps<Props>(), {
     router: false,
-    anchor: false
+    mail: false
 })
 </script>
 

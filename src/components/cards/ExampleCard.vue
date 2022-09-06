@@ -7,7 +7,9 @@
                 </p>
 
                 <Initialism><b>post</b></Initialism>
-                <pre class="request"><b class="sentinel">$</b><slot name="post"></slot></pre>
+                <Boxed>
+                    <Sentinel>$</Sentinel><slot name="post"></slot>
+                </Boxed>
 
                 <Initialism><b>get</b></Initialism>
                 <pre class="request"><slot name="get"></slot></pre>
@@ -24,6 +26,8 @@
 
 <script setup lang="ts">
 import Initialism from '@/components/highlights/Initialism.vue';
+import Sentinel from '@/components/highlights/Sentinel.vue'
+import Boxed from '../highlights/Boxed.vue';
 import Json from '@/components/highlights/Json.vue';
 
 export interface Props {
@@ -53,7 +57,7 @@ defineProps<Props>();
 }
 
 .limited {
-    height: 350px;
+    max-height: 350px;
     overflow: auto;
 }
 </style>

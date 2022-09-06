@@ -1,6 +1,6 @@
 <template>
     <HeaderBodyCard title="Try it">
-        <p>Use the API explorer form below to call the pept2prot method on live data and see the response.</p>
+        <p>Use the API explorer form below to call the {{ command }} method on live data and see the response.</p>
 
         <slot></slot>
 
@@ -20,7 +20,8 @@ import HeaderBodyCard from './HeaderBodyCard.vue';
 import Json from '../highlights/Json.vue';
 
 export interface Props {
-    response: object | object[]
+    response: object | object[],
+    command: string
 }
 
 /* eslint-disable */
