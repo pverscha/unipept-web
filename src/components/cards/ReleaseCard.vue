@@ -19,30 +19,20 @@
                         </v-card-text>
 
                         <v-card-text class="mt-5">
-                            <v-row v-for="(item, i) in changelog.changelog" :key="i">
-                                <v-col class="d-flex justify-sm-end pa-0" cols=12 sm=2>
+                            <ul class="align-center px-5" v-for="(item, i) in changelog.changelog" :key="i">
+                                <li>
                                     <v-chip
                                         v-if="item.tag"
-                                        class="ma-2 mb-0"
+                                        class="me-2"
                                         :class="item.tag"
                                         x-small
                                         label
                                     >
                                         {{ item.tag }}
                                     </v-chip>
-                                    <v-chip
-                                        v-else
-                                        class="ma-2"
-                                        x-small
-                                        label
-                                    >
-                                        NA
-                                    </v-chip>
-                                </v-col>
-                                <v-col class="pa-0 my-0 my-sm-1 ps-2 pe-15" cols=12 sm=10>
                                     {{ item.description }}
-                                </v-col>
-                            </v-row>
+                                </li>
+                            </ul>
                         </v-card-text>
 
                         <slot name="extension"></slot>
