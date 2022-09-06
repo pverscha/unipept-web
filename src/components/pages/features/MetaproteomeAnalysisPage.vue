@@ -1,12 +1,17 @@
 <template>
-    <div></div>
+    <div>
+        <LoadDatasetsCard></LoadDatasetsCard>
+    </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import useWebStore from "@/stores/WebStore";
+import LoadDatasetsCard from "@/components/cards/analysis/LoadDatasetsCard.vue";
+//import { ProteomicsAssay } from "unipept-web-components/types";
 
-export default defineComponent({
-    name: "MetaproteomeAnalysisPage",
-    setup() { }
-});
+const webStore = useWebStore();
+
+//webStore.addAssay({id: "test"} as ProteomicsAssay);
+
+console.log(webStore.assays.join(""));
 </script>

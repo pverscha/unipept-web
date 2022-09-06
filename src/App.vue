@@ -80,8 +80,12 @@
 </template>
 
 <script setup lang="ts">
-import { QueueManager } from "unipept-web-components";
+import { 
+    NetworkConfiguration,
+    QueueManager 
+} from "unipept-web-components";
 
+NetworkConfiguration.BASE_URL = "https://api.unipept.ugent.be";
 QueueManager.initializeQueue(4);
 
 const navItems = [

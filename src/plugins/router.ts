@@ -116,6 +116,7 @@ const routes = [
     },
     { 
         path: "/tpa/:sequence", 
+        name: "tpaResult",
         component: TrypticPeptideAnalysisResultPage, 
         meta: tpaMeta 
     },
