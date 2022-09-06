@@ -29,7 +29,7 @@ import {
 // CLI Documentation
 import { 
     OverviewPage as CLIOverviewPage,
-    CaseStudiesPage,
+    CaseStudiesPage as CLICaseStudiesPage,
     CLITrypticPeptideAnalysisPage,
     CLIMetaproteomicsAnalysisPage,
     UniprotPage,
@@ -48,6 +48,35 @@ import {
     TaxonomyPage as CLITaxonomyPage
 } from "@/components/pages/clidocs";
 
+// Metagenomics documentation
+import {
+    OverviewPage as MetagenomicsOverviewPage,
+    CaseStudiesPage as MetagenomicsCaseStudiesPage,
+    PreconfiguredPage as MetagenomicsPreconfiguredPage,
+    AdvancedPage as MetagenomicsAdvancedPage,
+    ComparativePage as MetagenomicsComparativePage,
+    Fastq2FastaPage as MetagenomicsFastq2FastaPage,
+    TranslatePage as MetagenomicsTranslatePage,
+    Prot2TrypPage as MetagenomicsProt2TrypPage,
+    Prot2KmerPage as MetagenomicsProt2KmerPage,
+    FilterPage as MetagenomicsFilterPage,
+    Pept2LcaPage as MetagenomicsPept2LcaPage,
+    Prot2Tryp2LcaPage as MetagenomicsProt2Tryp2LcaPage,
+    Prot2Kmer2LcaPage as MetagenomicsProt2Kmer2LcaPage,
+    BestofPage as MetagenomicsBestofPage,
+    SeedExtendPage as MetagenomicsSeedExtendPage,
+    UniqPage as MetagenomicsUniqPage,
+    Taxa2AggPage as MetagenomicsTaxa2AggPage,
+    SnapTaxonPage as MetagenomicsSnapTaxonPage,
+    Taxa2FreqPage as MetagenomicsTaxa2FreqPage,
+    Taxa2TreePage as MetagenomicsTaxa2TreePage,
+    TaxonomyPage as MetagenomicsTaxonomyPage,
+    SplitKmersPage as MetagenomicsSplitKmersPage,
+    JoinKmersPage as MetagenomicsJoinKmersPage,
+    BuildIndexPage as MetagenomicsBuildIndexPage,
+    PrintIndexPage as MetagenomicsPrintIndexPage
+} from "@/components/pages/metagenomics"
+
 Vue.use(VueRouter);
 
 const apidocsMeta = {
@@ -58,6 +87,11 @@ const apidocsMeta = {
 const clidocsMeta = {
     publication: "Verschaffelt et al. (2020) Bioinformatics",
     publicationLink: "doi.org/10.1093/bioinformatics/btaa553"
+};
+
+const metagenomicsMeta = {
+    publication: "Gurdeep Singh et al. (2019) Journal of Proteome Research",
+    publicationLink: "doi:10.1021/acs.jproteome.8b00716"
 };
 
 const routes = [
@@ -109,7 +143,7 @@ const routes = [
         component: CLIPage,
         children: [
             { path: "", component: CLIOverviewPage, meta: clidocsMeta },
-            { path: "casestudies", component: CaseStudiesPage, meta: clidocsMeta },
+            { path: "casestudies", component: CLICaseStudiesPage, meta: clidocsMeta },
             { path: "casestudies/tpa", component: CLITrypticPeptideAnalysisPage, meta: clidocsMeta },
             { path: "casestudies/mpa", component: CLIMetaproteomicsAnalysisPage, meta: clidocsMeta },
             { path: "uniprot", component: UniprotPage, meta: clidocsMeta },
@@ -132,10 +166,34 @@ const routes = [
     {
         path: "/umgap",
         component: MetagenomicsPage,
-        meta: {
-            publication: "Gurdeep Singh et al. (2019) Journal of Proteome Research",
-            publicationLink: "doi:10.1021/acs.jproteome.8b00716"
-        }
+        children: [
+            { path: "", component: MetagenomicsOverviewPage, meta: metagenomicsMeta },
+            { path: "casestudies", component: MetagenomicsCaseStudiesPage, meta: metagenomicsMeta },
+            { path: "casestudies/basic", component: MetagenomicsPreconfiguredPage, meta: metagenomicsMeta },
+            { path: "casestudies/advanced", component: MetagenomicsAdvancedPage, meta: metagenomicsMeta },
+            { path: "casestudies/comparative", component: MetagenomicsComparativePage, meta: metagenomicsMeta },
+            { path: "fastq2fasta", component: MetagenomicsFastq2FastaPage, meta: metagenomicsMeta },
+            { path: "translate", component: MetagenomicsTranslatePage, meta: metagenomicsMeta },
+            { path: "prot2tryp", component: MetagenomicsProt2TrypPage, meta: metagenomicsMeta },
+            { path: "prot2kmer", component: MetagenomicsProt2KmerPage, meta: metagenomicsMeta },
+            { path: "filter", component: MetagenomicsFilterPage, meta: metagenomicsMeta },
+            { path: "pept2lca", component: MetagenomicsPept2LcaPage, meta: metagenomicsMeta },
+            { path: "prot2tryp2lca", component: MetagenomicsProt2Tryp2LcaPage, meta: metagenomicsMeta },
+            { path: "prot2kmer2lca", component: MetagenomicsProt2Kmer2LcaPage, meta: metagenomicsMeta },
+            { path: "bestof", component: MetagenomicsBestofPage, meta: metagenomicsMeta },
+            { path: "seedextend", component: MetagenomicsSeedExtendPage, meta: metagenomicsMeta },
+            { path: "uniq", component: MetagenomicsUniqPage, meta: metagenomicsMeta },
+            { path: "taxa2agg", component: MetagenomicsTaxa2AggPage, meta: metagenomicsMeta },
+            { path: "snaptaxon", component: MetagenomicsSnapTaxonPage, meta: metagenomicsMeta },
+            { path: "taxa2freq", component: MetagenomicsTaxa2FreqPage, meta: metagenomicsMeta },
+            { path: "taxa2tree", component: MetagenomicsTaxa2TreePage, meta: metagenomicsMeta },
+            { path: "taxonomy", component: MetagenomicsTaxonomyPage, meta: metagenomicsMeta },
+            { path: "splitkmers", component: MetagenomicsSplitKmersPage, meta: metagenomicsMeta },
+            { path: "joinkmers", component: MetagenomicsJoinKmersPage, meta: metagenomicsMeta },
+            { path: "buildindex", component: MetagenomicsBuildIndexPage, meta: metagenomicsMeta },
+            { path: "printindex", component: MetagenomicsPrintIndexPage, meta: metagenomicsMeta }
+        ],
+        meta: metagenomicsMeta
     },
     {
         path: "/desktop",
