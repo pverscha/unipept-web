@@ -12,7 +12,7 @@
             index file (as build by the <Code>umgap buildindex</Code> command).
         </p>
 
-        <HeaderBodyCard id="usage" title="usage">
+        <HeaderBodyCard id="usage" title="Usage">
             <p>
                 The input is given in <Initialism>FASTA</Initialism> format on <i>standard input</i>. Per <Initialism>FASTA</Initialism> header, there can be multiple sequences, each on 
                 a line. In the following example we match tryptic peptides on their lowest common ancestor in the <Initialism>NCBI</Initialism> taxonomy.

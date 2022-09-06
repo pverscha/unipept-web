@@ -11,7 +11,7 @@
             Outputs in the string keys and taxon ID values in <Initialism>TSV</Initialism> format, mostly for debugging purposes.
         </p>
 
-        <HeaderBodyCard id="usage" title="usage">
+        <HeaderBodyCard id="usage" title="Usage">
             <Boxed style="max-height: fit-content;">
 <pre>
 <Sentinel>$</Sentinel> <b>umgap printindex tryptic.index</b>

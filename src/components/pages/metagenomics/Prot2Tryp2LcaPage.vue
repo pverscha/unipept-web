@@ -14,7 +14,7 @@
             documentation for details).
         </p>
 
-        <HeaderBodyCard id="usage" title="usage">
+        <HeaderBodyCard id="usage" title="Usage">
             <p>
                 The input is given in a <Initialism>FASTA</Initialism> format on <i>standard input</i> with a single peptide per <Initialism>FASTA</Initialism> header, which may be 
                 hardwrapped with newlines. The command prints the lowest common ancestors for each tryptic peptide found in each given 

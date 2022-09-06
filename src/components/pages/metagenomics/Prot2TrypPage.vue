@@ -11,7 +11,7 @@
             The <Code>umgap prot2tryp</Code> command takes one or more amino acid sequences as input and applies an <i>in silico</i> peptide digest.
         </p>
 
-        <HeaderBodyCard id="usage" title="usage">
+        <HeaderBodyCard id="usage" title="Usage">
             <p>
                 The input is given in a <Initialism>FASTA</Initialism> format on <i>standard input</i> with a single peptide per 
                 <Initialism>FASTA</Initialism> header, which may be hardwrapped with newlines. The peptides resulting from the digest are 

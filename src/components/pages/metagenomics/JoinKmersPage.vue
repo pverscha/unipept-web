@@ -12,7 +12,7 @@
             consecutive peptides are equal and outputs a tab-separated triple of peptide, consensus taxon ID and taxon rank.
         </p>
 
-        <HeaderBodyCard id="usage" title="usage">
+        <HeaderBodyCard id="usage" title="Usage">
             <p>
                 The input is given on <i>standard input</i>. If it is sorted on the first column, a complete mapping from strings to 
                 aggregated taxa and its rank will be written to <i>standard output</i>. It is meant to be used after the 

@@ -12,7 +12,7 @@
             single <Initialism>FASTA</Initialism> file.
         </p>
 
-        <HeaderBodyCard id="usage" title="usage">
+        <HeaderBodyCard id="usage" title="Usage">
             <p>
                 The <Initialism>FASTQ</Initialism> input files are given as command line arguments. In order, a single record is taken 
                 from each of these files, and the record header and sequence are written to <i>standard output</i> in <Initialism>FASTA</Initialism> 
