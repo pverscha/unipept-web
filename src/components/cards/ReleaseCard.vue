@@ -33,6 +33,7 @@
                                     {{ item.description }}
                                 </li>
                             </ul>
+                            <Rlink class="d-flex justify-end" :to="release.html_url">View on GitHub</Rlink>
                         </v-card-text>
 
                         <slot name="extension"></slot>
@@ -46,6 +47,7 @@
 <script setup lang="ts">
 import { GithubRelease } from '@/logic/communicators/github/GithubCommunicator';
 import { ReleaseParser } from '@/logic/parsers/github/ReleaseParser';
+import Rlink from '../highlights/ResourceLink.vue';
 
 export interface Props {
     release: GithubRelease,
