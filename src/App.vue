@@ -25,7 +25,7 @@
             </router-link>
 
             <template v-slot:extension>
-                <v-tabs :value="tabsSelected" slider-size="5" optional>
+                <v-tabs slider-size="5" optional>
                     <v-tab class="pa-0 ma-0" style="min-width:0px" />
                     <v-tab v-for="item in navItems" :key="item.name" :to="item.path" class="white--text font-weight-bold">
                         {{ item.name }}
@@ -35,12 +35,14 @@
         </v-app-bar>
 
         <v-content>
-            <router-view></router-view>
+            <v-container class="main-container">
+                <router-view></router-view>
+            </v-container>
         </v-content>
 
         <v-footer dark padless class="grey darken-3 px-lg-16 flex">
             <div class="d-flex flex-wrap" style="width: 100%">
-                <div class="col-md-8 text-md-start order-md-0 col-12 text-center order-2 grey--text d-md-flex">
+                <div v-if="$route.meta" class="col-md-8 text-md-start order-md-0 col-12 text-center order-2 grey--text d-md-flex">
                     <div class="flex-md-column">
                         {{ $route.meta.publication }}
                     </div>
@@ -48,6 +50,7 @@
                         <a class="link" :href="'https://' + $route.meta.publicationLink" target="_blank">&nbsp;{{ $route.meta.publicationLink }}</a>
                     </div>
                 </div>
+                <div v-else class="col-md-8 text-md-start order-md-0 col-12 text-center order-2 grey--text d-md-flex"></div>
                 <div class="col-md-4 text-md-end order-md-1 col-12 text-center order-0">
                     <a class="link" href="mailto:unipept@ugent.be">
                         <v-icon size="30px" class="grey--text link">
@@ -68,11 +71,10 @@
                 <div class="col-md-8 text-md-start order-md-2 col-12 text-center order-3 grey--text">© 2022 Universiteit Gent</div>
                 <div class="col-md-4 text-md-end order-md-3 col-12 text-center order-1">
                     <router-link class="link" to="/about">Terms of service</router-link>
-                    <router-link class="link ml-5" to="/posts">News</router-link>
+                    <router-link class="link ml-5" to="/news">News</router-link>
                     <router-link class="link ml-5" to="/">Publications</router-link>
                 </div>
             </div>
-
         </v-footer>
     </v-app>
 </template>
@@ -97,7 +99,21 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style lang="scss">
+@import '~vuetify/src/styles/settings/_variables';
+
+@media #{map-get($display-breakpoints, 'md-and-down')} {
+    .main-container {
+        width: 100% !important;
+    }
+}
+
+@media #{map-get($display-breakpoints, 'lg-and-up')} {
+    .main-container {
+        width: 75% !important;
+    }
+}
+
 .homepage-title {
     color: white !important;
     text-decoration: none;
@@ -117,4 +133,7 @@ export default defineComponent({
     text-decoration: none;
 }
 
+.v-card__text {
+    color: #333333 !important;
+}
 </style>

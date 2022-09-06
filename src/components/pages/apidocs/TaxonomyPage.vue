@@ -1,5 +1,5 @@
 <template>
-    <div></div>
+    <div>taxonomy</div>
 </template>
 
 <script setup lang="ts">

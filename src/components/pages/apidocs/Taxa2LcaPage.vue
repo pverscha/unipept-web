@@ -1,5 +1,5 @@
 <template>
-    <div></div>
+    <div>taxa2lca</div>
 </template>
 
 <script setup lang="ts">
