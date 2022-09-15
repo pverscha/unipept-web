@@ -1,6 +1,6 @@
 <template>
     <v-card>
-        <v-tabs
+        <!--<v-tabs
             v-model="currentTab"
         >
             <v-tab>
@@ -45,23 +45,10 @@
             <v-btn color="white" text @click="errorSnackbar = false">
                 Close
             </v-btn>
-        </v-snackbar>
+        </v-snackbar>-->
     </v-card>
 </template>
 
 <script setup lang="ts">
-import {
-    CreateDatasetCard,
-    LoadSampleDatasetCard,
-    LoadLocalDatasetCard
-} from "unipept-web-components"
-import useWebStore from "@/stores/WebStore";
-import { ref } from "vue";
-
-const webStore = useWebStore();
-
-const currentTab = ref(0);
-const errorSnackbar = false;
-
 
 </script>

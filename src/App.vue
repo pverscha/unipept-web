@@ -80,13 +80,7 @@
 </template>
 
 <script setup lang="ts">
-import { 
-    NetworkConfiguration,
-    QueueManager 
-} from "unipept-web-components";
-
-NetworkConfiguration.BASE_URL = "https://api.unipept.ugent.be";
-QueueManager.initializeQueue(4);
+import { QueueManager } from 'unipept-web-components';
 
 const navItems = [
     { name: "Tryptic Peptide Analysis", path: "/tpa" },
@@ -96,6 +90,8 @@ const navItems = [
     { name: "Metagenomics", path: "/umgap" },
     { name: "Unipept Desktop", path: "/desktop" }
 ];
+
+QueueManager.initializeQueue(4);
 </script>
 
 
