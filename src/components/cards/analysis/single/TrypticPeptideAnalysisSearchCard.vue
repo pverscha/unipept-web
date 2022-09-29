@@ -1,5 +1,14 @@
 <template>
-    <HeaderBodyCard title="Search for a single tryptic peptide">
+    <v-card>
+        <v-tabs
+            style="pointer-events: none;"
+            slider-color="primary"
+            background-color="primary"
+            dark
+        >
+            <v-tab>Search for a single tryptic peptide</v-tab>
+        </v-tabs>
+
         <v-card-text>
             <router-link
                 :to="{
@@ -44,12 +53,11 @@
                 </v-form>
             </router-link>
         </v-card-text>
-    </HeaderBodyCard>
+    </v-card>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import HeaderBodyCard from './HeaderBodyCard.vue';
 
 const validForm = ref(false);
 const sequence = ref("");

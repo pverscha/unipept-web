@@ -7,5 +7,5 @@
 </template>
 
 <script setup lang="ts">
-import TrypticPeptideAnalysisSearchCard from '@/components/cards/TrypticPeptideAnalysisSearchCard.vue';
+import TrypticPeptideAnalysisSearchCard from '@/components/cards/analysis/single/TrypticPeptideAnalysisSearchCard.vue';
 </script>
