@@ -1,7 +1,10 @@
 <template>
     <v-card>
-        <!--<v-tabs
+        <v-tabs
             v-model="currentTab"
+            slider-color="secondary"
+            background-color="primary"
+            dark
         >
             <v-tab>
                 Create
@@ -18,25 +21,16 @@
         </v-tabs>
         <v-tabs-items v-model="currentTab">
             <v-tab-item>
-                <create-dataset-card
-                    @create-assay="webStore.addAssay"
-                >
-                </create-dataset-card>
+                <CreateDatasetCard />
             </v-tab-item>
             <v-tab-item>
-                <load-sample-dataset-card
-                    @create-assay="webStore.addAssay"
-                    @destroy-assay="webStore.removeAssay"
-                >
-                </load-sample-dataset-card>
+                <LoadSampleDatasetCard />
             </v-tab-item>
-
             <v-tab-item>
-                <load-local-dataset-card
-                    v-on:create-assay="webStore.addAssay"
-                    v-on:destroy-assay="webStore.removeAssay"
-                    :stored-assays="webStore.assays">
-                </load-local-dataset-card>
+                <LoadPrideDatasetCard />
+            </v-tab-item>
+            <v-tab-item>
+                <LoadLocalDatasetCard />
             </v-tab-item>
         </v-tabs-items>
         <v-snackbar v-model="errorSnackbar" color="error" multi-line :timeout="0" top>
@@ -45,10 +39,16 @@
             <v-btn color="white" text @click="errorSnackbar = false">
                 Close
             </v-btn>
-        </v-snackbar>-->
+        </v-snackbar>
     </v-card>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
+import CreateDatasetCard from './CreateDatasetCard.vue';
+import LoadLocalDatasetCard from './LoadLocalDatasetCard.vue';
+import LoadSampleDatasetCard from './LoadSampleDatasetCard.vue';
+import LoadPrideDatasetCard from './LoadPrideDatasetCard.vue';
 
+const currentTab = ref<number>(0);
 </script>

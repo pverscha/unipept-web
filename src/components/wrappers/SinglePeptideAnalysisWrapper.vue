@@ -1,10 +1,13 @@
 <template>
-    <single-peptide-summary class="mt-5" :assay="analysisStore.assay" />
+    <div>
+        <single-peptide-summary class="my-5" :assay="analysisStore.assay" />
+        <single-peptide-analysis :assay="analysisStore.assay" />
+    </div>
 </template>
 
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import { SinglePeptideSummary } from 'unipept-web-components';
+import { SinglePeptideSummary, SinglePeptideAnalysis } from 'unipept-web-components';
 import { useSingleAnalysis } from '@/stores';
 
 export interface Props {
