@@ -1,6 +1,6 @@
 <template>
     <v-card flat>
-        <v-card-text v-if="assayStore.noLocalAssays">
+        <v-card-text v-if="assayStore.empty">
             <span id="empty-dataset-placeholder">
                 There are currently no datasets present in your browser's local storage.
             </span>
@@ -8,7 +8,7 @@
 
         <v-list two-line class="stored-assays-list">
             <v-list-item 
-                v-for="dataset of assayStore.localAssays" 
+                v-for="dataset of assayStore.assays" 
                 :key="dataset.name"
                 @click="loadAssay(dataset)"
                 ripple 
@@ -66,23 +66,25 @@
 </template>
 
 <script setup lang="ts">
-import useAssays, { Assay } from '@/stores/AssayStore';
-import { Tooltip } from "unipept-web-components";
+import useAssays from '@/stores/AssayStore';
+import useMultiAnalysis from '@/stores/MultiAnalysisStore';
+import { Assay, Tooltip } from "unipept-web-components";
 import { ref } from 'vue';
 
 const assayStore = useAssays();
+const multiAnalysisStore = useMultiAnalysis();
 
 const confirmationDialogOpen = ref<boolean>(false);
 const confirmationDialogAssay = ref<Assay | undefined>();
 
 const loadAssay = (assay: Assay) => {
-    assayStore.addSelectedAssay(assay);
+    multiAnalysisStore.addAssay(assay);
 };
 
 const removeAssay = (assay: Assay | undefined) => {
     if(assay) {
-        assayStore.removeLocalAssay(assay);
-        assayStore.removeSelectedAssay(assay);
+        assayStore.remove(assay);
+        multiAnalysisStore.removeAssay(assay);
     }
 };
 

@@ -77,8 +77,13 @@
 import useAssays from '@/stores/AssayStore';
 import { ref } from 'vue';
 import { Tooltip, PrideCommunicator, Peptide } from 'unipept-web-components';
+import useId from '@/composables/useId';
+import useMultiAnalysis from '@/stores/MultiAnalysisStore';
 
 const assayStore = useAssays();
+const multiAnalysisStore = useMultiAnalysis();
+
+const { id } = useId();
 
 const loading = ref<boolean>(false);
 const error = ref<string>("");
@@ -131,13 +136,14 @@ const createAssay = () => {
     const peptides = peptideList.value.split('\n');
 
     const assay = {
+        id: id(),
         name: datasetName.value,
         peptides: peptides,
         amountOfPeptides: peptides.length,
         createdAt: new Date()
     }
 
-    assayStore.addLocalAssay(assay);
-    assayStore.addSelectedAssay(assay);
+    assayStore.add(assay);
+    multiAnalysisStore.addAssay(assay);
 }
 </script>

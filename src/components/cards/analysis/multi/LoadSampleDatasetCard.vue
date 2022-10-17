@@ -43,10 +43,12 @@
 </template>
 
 <script setup lang="ts">
-import useAssays from '@/stores/AssayStore';
+import useId from '@/composables/useId';
+import useMultiAnalysis from '@/stores/MultiAnalysisStore';
 import { onMounted, ref } from 'vue';
 
 interface SampleDataset {
+    id: string,
     name: string;
     data: string[];
     order: number;
@@ -61,7 +63,9 @@ interface SampleDatasetCollection {
     datasets: SampleDataset[];
 }
 
-const assayStore = useAssays();
+const multiAnalysisStore = useMultiAnalysis();
+
+const { id } = useId();
 
 const loading = ref<boolean>(false);
 const error = ref<boolean>(false);
@@ -76,10 +80,17 @@ const retrieveDatasets = () => {
     // @ts-ignore
     fetch(`${process.env.VUE_APP_UNIPEPT_API_URL}/datasets/sampledata`, { method: "POST", body: JSON.stringify({}) })
         .then(response => response.json())
-        .then(response => { console.log(response); return response; })
         .then(response => {
             for(let item of response.sample_data) {
-                const itemDatasets = item.datasets.sort((a: SampleDataset, b: SampleDataset) => a.order - b.order);
+                const itemDatasets = item.datasets.map((dataset: any) => {
+                    return {
+                        id: id(),
+                        name: dataset.name,
+                        data: dataset.data,
+                        order: dataset.order,
+                    };
+                }).sort((a: SampleDataset, b: SampleDataset) => a.order - b.order);
+
                 sampleDatasets.push({
                     id: item.id,
                     environment: item.environment,
@@ -88,6 +99,7 @@ const retrieveDatasets = () => {
                     url: item.url,
                     datasets: itemDatasets
                 });
+                
                 selectedSampleDataset.value[item.id] = itemDatasets[0].name;
             }
         })
@@ -95,16 +107,17 @@ const retrieveDatasets = () => {
         .finally(() => loading.value = false );
 };
 
-const selectSampleDataset = (id: string) => {
+const selectSampleDataset = (datatsetId: string) => {
     const sampleDatasetCollection: SampleDatasetCollection = sampleDatasets.find(
-        dataset => dataset.id == id
+        dataset => dataset.id == datatsetId
     )!;
 
     const sampleDataset: SampleDataset = sampleDatasetCollection.datasets.find(
-        dataset => dataset.name == selectedSampleDataset.value[id]
+        dataset => dataset.name == selectedSampleDataset.value[datatsetId]
     )!;
 
-    assayStore.addSelectedAssay({
+    multiAnalysisStore.addAssay({
+        id: sampleDataset.id,
         name: sampleDataset.name,
         peptides: sampleDataset.data,
         amountOfPeptides: sampleDataset.data.length,

@@ -40,6 +40,8 @@ const useSingleAnalysis = defineStore('single-analysis', () => {
 
         const [pept2Data, trust] = await pept2DataCommunicator.process(peptideCountTable, false, equateIl);
 
+        console.log(trust)
+
         const proteinProcessor = new ProteinProcessor();
         await proteinProcessor.compute(peptide, equateIl);
 

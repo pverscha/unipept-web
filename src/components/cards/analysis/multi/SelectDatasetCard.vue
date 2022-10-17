@@ -12,27 +12,27 @@
         <v-card-text class="flex-grow-1">
             <div>
                 <h3>Selected datasets</h3>
-                <span v-if="assayStore.noSelectedAssays" :class="{'shaking': shaking, 'selected-placeholder': true}">
+                <span v-if="multiAnalysisStore.empty" :class="{'shaking': shaking, 'selected-placeholder': true}">
                     Please select one or more datasets from the right hand panel to continue the analysis.
                 </span>
             </div>
             <v-list two-line>
-                <v-list-item v-for="dataset of assayStore.selectedAssays" two-line :key="dataset.name" >
+                <v-list-item v-for="dataset of multiAnalysisStore.assayStatuses" two-line :key="dataset.assay.id" >
                     <v-list-item-content>
                         <v-list-item-title>
-                            {{ dataset.name }}
+                            {{ dataset.assay.name }}
                         </v-list-item-title>
                         <v-list-item-subtitle>
-                            {{ dataset.amountOfPeptides }} peptides
+                            {{ dataset.assay.amountOfPeptides }} peptides
                         </v-list-item-subtitle>
                     </v-list-item-content>
 
                     <v-list-item-action>
                         <v-list-item-action-text>
-                            {{ dateToString(dataset.createdAt) }}
+                            {{ dateToString(dataset.assay.createdAt) }}
                         </v-list-item-action-text>
                         <Tooltip message="Remove dataset from analysis.">
-                            <v-btn class="fix-icon-list-position" text icon @click="removeAssay(dataset)">
+                            <v-btn class="fix-icon-list-position" text icon @click="removeAssay(dataset.assay)">
                                 <v-icon color="grey darken-1">mdi-delete-outline</v-icon>
                             </v-btn>
                         </Tooltip>
@@ -79,11 +79,13 @@
 </template>
 
 <script setup lang="ts">
-import useAssays, { Assay } from '@/stores/AssayStore';
-import { ref } from 'vue';
-import { Tooltip } from "unipept-web-components";
+import { ref, defineEmits } from 'vue';
+import { Assay, Tooltip } from "unipept-web-components";
+import useMultiAnalysis from '@/stores/MultiAnalysisStore';
 
-const assayStore = useAssays();
+const emit = defineEmits(['search']);
+
+const multiAnalysisStore = useMultiAnalysis();
 
 const shaking = ref<boolean>(false);
 const equateIl = ref<boolean>(true);
@@ -91,15 +93,21 @@ const filterDuplicates = ref<boolean>(true);
 const cleavageHandling = ref<boolean>(false);
 
 const removeAssay = (assay: Assay) => {
-    assayStore.removeSelectedAssay(assay);
+    multiAnalysisStore.removeAssay(assay);
 };
 
 const reset = () => {
-    assayStore.resetSelectedAssays();
+    multiAnalysisStore.removeAllAssays();
 };
 
 const search = () => {
-    // TODO: implement search
+    multiAnalysisStore.assayStatuses.forEach(status => {
+        multiAnalysisStore.analyse(
+            status.assay, equateIl.value, filterDuplicates.value, cleavageHandling.value
+        )
+    });
+    
+    emit('search');
 }
 
 const dateToString = (date: Date) => {

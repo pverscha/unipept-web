@@ -43,8 +43,13 @@
 import { ref } from 'vue';
 import useAssays from '@/stores/AssayStore';
 import { Tooltip } from "unipept-web-components";
+import useMultiAnalysis from '@/stores/MultiAnalysisStore';
+import useId from '@/composables/useId';
 
 const assayStore = useAssays();
+const multiAnalysisStore = useMultiAnalysis();
+
+const { id } = useId();
 
 const validForm = ref(false);
 const peptideList = ref("");
@@ -62,13 +67,14 @@ const createAssay = () => {
     const peptides = peptideList.value.split('\n');
 
     const assay = {
+        id: id(),
         name: datasetName.value,
         peptides: peptides,
         amountOfPeptides: peptides.length,
         createdAt: new Date()
     }
 
-    assayStore.addLocalAssay(assay);
-    assayStore.addSelectedAssay(assay);
+    assayStore.add(assay);
+    multiAnalysisStore.addAssay(assay);
 }
 </script>
