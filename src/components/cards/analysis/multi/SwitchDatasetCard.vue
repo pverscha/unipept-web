@@ -8,14 +8,6 @@
             dark
         >
             <v-tab>Metaproteomics Analysis</v-tab>
-            <v-spacer />
-            <v-tab class="pe-0">
-                <tooltip message="Add another assay to the selection.">
-                    <v-icon color="white" @click="() => {}">
-                        {{ assaySelectionInProgress ? 'mdi-plus-circle' : 'mdi-plus' }}
-                    </v-icon>
-                </tooltip>
-            </v-tab>
         </v-tabs>
 
         <v-card-text v-if="multiAnalysisStore.empty">

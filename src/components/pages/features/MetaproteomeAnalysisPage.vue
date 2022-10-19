@@ -21,6 +21,14 @@
 
         <v-row v-if="multiAnalysisStore.activeAssayStatus">
             <v-col cols=12>
+                <VisualizationOverview
+                    :analysisInProgress="!multiAnalysisStore.analysisCompleted(multiAnalysisStore.activeAssayStatus.assay.id)"
+                    :ecTree="ecTree"
+                    :taxaTree="multiAnalysisStore.activeAssayStatus?.data?.tree"
+                />
+            </v-col>
+
+            <v-col cols=12>
                 <v-card>
                     <v-tabs 
                         slider-color="secondary" 
@@ -69,7 +77,7 @@ import SelectDatasetCard from '@/components/cards/analysis/multi/SelectDatasetCa
 import SwitchDatasetCard from '@/components/cards/analysis/multi/SwitchDatasetCard.vue';
 import { computed, ref } from 'vue';
 import AnalysisSummaryCard from '@/components/cards/analysis/multi/AnalysisSummaryCard.vue';
-import { GoSummaryCard, EcSummaryCard, InterproSummaryCard } from 'unipept-web-components';
+import { GoSummaryCard, EcSummaryCard, InterproSummaryCard, computeEcTree, VisualizationOverview } from 'unipept-web-components';
 import useMultiAnalysis from '@/stores/MultiAnalysisStore';
 
 const multiAnalysisStore = useMultiAnalysis();
@@ -87,6 +95,15 @@ const search = () => {
 }
 
 const ecTree = computed(() => {
+    if(multiAnalysisStore.activeAssayStatus) {
+        if(multiAnalysisStore.analysisCompleted(multiAnalysisStore.activeAssayStatus.assay.id)) {
+            return computeEcTree(
+                multiAnalysisStore.activeAssayStatus.data.ecCountTableProcessor.getCountTable(), 
+                // @ts-ignore
+                multiAnalysisStore.activeAssayStatus.ecOntology
+            );
+        }
+    }
 
     return undefined;
 })

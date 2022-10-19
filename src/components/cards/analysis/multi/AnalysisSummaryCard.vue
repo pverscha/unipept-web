@@ -72,25 +72,18 @@
                     <span class="peptide-match-text">
                         We managed to match {{ multiAnalysisStore.activeAssayStatus.filteredData.trust.matchedPeptides }} of your 
                         {{ multiAnalysisStore.activeAssayStatus.filteredData.trust.searchedPeptides }} peptides. Unfortunately,
-                        <a style="cursor: pointer;" @click="() => {}">
+                        <a style="cursor: pointer;" @click="showMissedPeptides = true">
                             {{ multiAnalysisStore.activeAssayStatus.filteredData.trust.missedPeptides.length }}
                         </a>
                         peptides couldn't be found.
                     </span>
                 </div>
+
+                <v-dialog v-model="showMissedPeptides" :width="600" scrollable>
+                    <MissingPeptidesModal :missedPeptides="multiAnalysisStore.activeAssayStatus.filteredData.trust.missedPeptides" />
+                </v-dialog>
             </div>
         </v-card-text>
-        <!--<v-dialog v-model="showNotFoundModal" :width="600">
-            <v-card v-if="peptideTrust">
-                <v-card-title>
-                    {{ peptideTrust.missedPeptides.length }} missed peptides
-                </v-card-title>
-                <v-card-text>
-                    <missing-peptides-list :missed-peptides="peptideTrust.missedPeptides">
-                    </missing-peptides-list>
-                </v-card-text>
-            </v-card>
-        </v-dialog>-->
     </v-card>
 </template>
 
@@ -98,6 +91,7 @@
 import useMultiAnalysis from '@/stores/MultiAnalysisStore';
 import { computed, ref } from 'vue';
 import { Tooltip } from 'unipept-web-components';
+import MissingPeptidesModal from '@/components/modals/MissingPeptidesModal.vue';
 
 const multiAnalysisStore = useMultiAnalysis();
 
@@ -106,6 +100,8 @@ const filterDuplicates = ref<boolean>(multiAnalysisStore.activeAssayStatus?.filt
 const cleavageHandling = ref<boolean>(multiAnalysisStore.activeAssayStatus?.cleavageHandling!);
 
 const loading = ref<boolean>(false);
+
+const showMissedPeptides = ref<boolean>(false);
 
 const peptides = computed(() => {
     if(!multiAnalysisStore.activeAssayStatus) {
