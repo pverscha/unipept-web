@@ -25,6 +25,11 @@
                     :analysisInProgress="!multiAnalysisStore.analysisCompleted(multiAnalysisStore.activeAssayStatus.assay.id)"
                     :ecTree="ecTree"
                     :taxaTree="multiAnalysisStore.activeAssayStatus?.data?.tree"
+                    :ecCountTableProcessor="multiAnalysisStore.activeAssayStatus?.data?.ecCountTableProcessor"
+                    :ecOntology="multiAnalysisStore.activeAssayStatus?.ecOntology"
+                    :ncbiCountTableProcessor="multiAnalysisStore.activeAssayStatus?.data?.lcaCountTableProcessor"
+                    :ncbiOntology="multiAnalysisStore.activeAssayStatus?.ncbiOntology"
+                    :ncbiTree="multiAnalysisStore.activeAssayStatus?.data?.tree"
                 />
             </v-col>
 
