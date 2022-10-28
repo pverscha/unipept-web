@@ -27,7 +27,7 @@ import {
 } from "@/components/pages/apidocs";
 
 // CLI Documentation
-import { 
+import {
     OverviewPage as CLIOverviewPage,
     CaseStudiesPage as CLICaseStudiesPage,
     CLITrypticPeptideAnalysisPage,
@@ -48,7 +48,7 @@ import {
     TaxonomyPage as CLITaxonomyPage
 } from "@/components/pages/clidocs";
 
-// Metagenomics documentation
+// Metagenomics Documentation
 import {
     OverviewPage as MetagenomicsOverviewPage,
     CaseStudiesPage as MetagenomicsCaseStudiesPage,
@@ -77,6 +77,11 @@ import {
     PrintIndexPage as MetagenomicsPrintIndexPage
 } from "@/components/pages/metagenomics"
 
+// Desktop Documentation
+import {
+    DesktopOverviewPage as DesktopOverviewPage
+} from "@/components/pages/desktopdocs";
+
 Vue.use(VueRouter);
 
 const apidocsMeta = {
@@ -93,6 +98,11 @@ const metagenomicsMeta = {
     publication: "Gurdeep Singh et al. (2019) Journal of Proteome Research",
     publicationLink: "doi:10.1021/acs.jproteome.8b00716"
 };
+
+const desktopMeta = {
+    publication: "Verschaffelt et al. (2021) Journal of Proteome Research",
+    publicationLink: "doi.org/10.1021/acs.jproteome.0c00855"
+}
 
 const routes = [
     {
@@ -198,10 +208,10 @@ const routes = [
     {
         path: "/desktop",
         component: DesktopPage,
-        meta: {
-            publication: "Verschaffelt et al. (2021) Journal of Proteome Research",
-            publicationLink: "doi.org/10.1021/acs.jproteome.0c00855"
-        }
+        children: [
+            { path: "", component: DesktopOverviewPage, meta: desktopMeta },
+        ],
+        meta: desktopMeta
     },
     {
         path: "/about",
@@ -227,7 +237,7 @@ export default new VueRouter({
     scrollBehavior(to, from, savedPosition) {
         if (to.hash) {
             // Go to appended anchor in the url
-            return { 
+            return {
                 selector: to.hash,
                 behavior: "smooth"
             }
