@@ -25,8 +25,12 @@
                     :analysisInProgress="!multiAnalysisStore.analysisCompleted(multiAnalysisStore.activeAssayStatus.assay.id)"
                     :ecTree="ecTree"
                     :taxaTree="multiAnalysisStore.activeAssayStatus?.data?.tree"
+                    :goCountTableProcessor="multiAnalysisStore.activeAssayStatus?.data?.goCountTableProcessor"
+                    :goOntology="multiAnalysisStore.activeAssayStatus?.goOntology" 
                     :ecCountTableProcessor="multiAnalysisStore.activeAssayStatus?.data?.ecCountTableProcessor"
                     :ecOntology="multiAnalysisStore.activeAssayStatus?.ecOntology"
+                    :interproCountTableProcessor="multiAnalysisStore.activeAssayStatus?.data?.interproCountTableProcessor"
+                    :interproOntology="multiAnalysisStore.activeAssayStatus?.interproOntology"
                     :ncbiCountTableProcessor="multiAnalysisStore.activeAssayStatus?.data?.lcaCountTableProcessor"
                     :ncbiOntology="multiAnalysisStore.activeAssayStatus?.ncbiOntology"
                     :ncbiTree="multiAnalysisStore.activeAssayStatus?.data?.tree"
@@ -44,6 +48,35 @@
                         <v-tab>GO terms</v-tab>
                         <v-tab>EC numbers</v-tab>
                         <v-tab>Interpro</v-tab>
+                        <v-spacer/>
+                        <v-menu close-on-content-click bottom left ref="sortMenu">
+                            <template v-slot:activator="{ on }">
+                                <v-btn text class="align-self-center mr-4" v-on="on">
+                                    <v-icon left>mdi-sort-descending</v-icon>
+                                    {{ sortPeptidePercentage ? 'Peptides %' : 'Peptides' }}
+                                    <v-icon right>mdi-menu-down</v-icon>
+                                </v-btn>
+                            </template>
+
+                            <v-list class="grey lighten-3">
+                                <v-list-item dense class="menu-header">
+                                    <v-list-item-title>
+                                        Sort by number of peptides in related proteins
+                                        <SortingPeptidesModal />
+                                    </v-list-item-title>
+                                </v-list-item>
+                                <v-list-item @click="sortPeptidePercentage = true">
+                                    <v-list-item-title>
+                                        Peptides %
+                                    </v-list-item-title>
+                                </v-list-item>
+                                <v-list-item @click="sortPeptidePercentage = false">
+                                    <v-list-item-title>
+                                        Peptides
+                                    </v-list-item-title>
+                                </v-list-item>
+                            </v-list>
+                        </v-menu>
                     </v-tabs>
 
                     <v-tabs-items class="mb-5" v-model="currentTab">
@@ -52,6 +85,7 @@
                                 :analysisInProgress="!multiAnalysisStore.analysisCompleted(multiAnalysisStore.activeAssayStatus.assay.id)"
                                 :goProcessor="multiAnalysisStore.activeAssayStatus.data?.goCountTableProcessor"
                                 :goOntology="multiAnalysisStore.activeAssayStatus?.goOntology"
+                                :showPercentage="sortPeptidePercentage"
                             />
                         </v-tab-item>
                         <v-tab-item>
@@ -60,6 +94,7 @@
                                 :ecProcessor="multiAnalysisStore.activeAssayStatus.data?.ecCountTableProcessor"
                                 :ecOntology="multiAnalysisStore.activeAssayStatus?.ecOntology"
                                 :ecTree="ecTree"
+                                :showPercentage="sortPeptidePercentage"
                             />
                         </v-tab-item>
                         <v-tab-item>
@@ -67,6 +102,7 @@
                                 :analysisInProgress="!multiAnalysisStore.analysisCompleted(multiAnalysisStore.activeAssayStatus.assay.id)"
                                 :interproProcessor="multiAnalysisStore.activeAssayStatus.data?.interproCountTableProcessor"
                                 :interproOntology="multiAnalysisStore.activeAssayStatus?.interproOntology"
+                                :showPercentage="sortPeptidePercentage"
                             />
                         </v-tab-item>
                     </v-tabs-items>
@@ -84,13 +120,13 @@ import { computed, ref } from 'vue';
 import AnalysisSummaryCard from '@/components/cards/analysis/multi/AnalysisSummaryCard.vue';
 import { GoSummaryCard, EcSummaryCard, InterproSummaryCard, computeEcTree, VisualizationOverview } from 'unipept-web-components';
 import useMultiAnalysis from '@/stores/MultiAnalysisStore';
+import SortingPeptidesModal from '@/components/modals/SortingPeptidesModal.vue';
 
 const multiAnalysisStore = useMultiAnalysis();
 
-console.log(multiAnalysisStore)
-
 const selector = ref<boolean>(true);
 const displaySummary = ref<boolean>(false);
+const sortPeptidePercentage = ref<boolean>(false);
 
 const currentTab = ref<number>(0);
 
