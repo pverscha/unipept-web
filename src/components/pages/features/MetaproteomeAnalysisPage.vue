@@ -116,7 +116,7 @@
 import LoadDatasetsCard from '@/components/cards/analysis/multi/LoadDatasetsCard.vue';
 import SelectDatasetCard from '@/components/cards/analysis/multi/SelectDatasetCard.vue';
 import SwitchDatasetCard from '@/components/cards/analysis/multi/SwitchDatasetCard.vue';
-import { computed, ref } from 'vue';
+import { computed, onUnmounted, ref } from 'vue';
 import AnalysisSummaryCard from '@/components/cards/analysis/multi/AnalysisSummaryCard.vue';
 import { GoSummaryCard, EcSummaryCard, InterproSummaryCard, computeEcTree, VisualizationOverview } from 'unipept-web-components';
 import useMultiAnalysis from '@/stores/MultiAnalysisStore';
@@ -148,4 +148,11 @@ const ecTree = computed(() => {
 
     return undefined;
 })
+
+onUnmounted(() => {
+    selector.value = true;
+    multiAnalysisStore.removeAllAssays();
+    displaySummary.value = false;
+    sortPeptidePercentage.value = false;
+});
 </script>
