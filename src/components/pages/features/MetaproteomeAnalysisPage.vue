@@ -1,7 +1,7 @@
 <template>
     <div class="mt-5">
         <v-row>
-            <v-col cols=6>
+            <v-col cols=12 sm=6>
                 <SelectDatasetCard v-if="selector"
                     style="min-height: 100%;"
                     @search="search"
@@ -11,7 +11,7 @@
                     :assaySelectionInProgress="true" 
                 />
             </v-col>
-            <v-col cols=6>
+            <v-col cols=12 sm=6>
                 <LoadDatasetsCard v-if="!displaySummary"
                     style="min-height: 100%;" 
                 />

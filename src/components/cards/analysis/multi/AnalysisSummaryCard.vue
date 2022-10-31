@@ -53,7 +53,7 @@
 
                 <div class="card-actions d-flex flex-wrap">
                     <tooltip message="Restart search with selected samples using the settings chosen above.">
-                        <v-btn class="mr-3" :disabled="false" @click="reprocess()" color="primary">
+                        <v-btn class="mr-3 mb-2" :disabled="false" @click="reprocess()" color="primary">
                             <v-icon left>
                                 mdi-restore
                             </v-icon>
