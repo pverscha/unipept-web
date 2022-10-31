@@ -109,6 +109,27 @@
                 </v-card>
             </v-col>
         </v-row>
+
+        <v-row v-else class="search-info">
+            <v-col class="info-step">
+                <h2>Select samples</h2>
+                <p>
+                    Make a selection of samples that should be analysed. New samples can be added by pasting a peptide list, or existing samples can be reused.
+                </p>
+                </v-col>
+                <v-col class="info-step">
+                <h2>Click search</h2>
+                <p>
+                    Review the search settings for peptide deduplication, advanced missed cleavage handling and equating isoleucine and leucine before clicking search.
+                </p>
+                </v-col>
+                <v-col class="info-step">
+                <h2>Gain insight</h2>
+                <p>
+                    For each of the peptides, the lowest common ancestor (LCA) will be calculated, aggregated and visualised on the result page, giving you insight in the taxonomic diversity of your sample.
+                </p>
+            </v-col>
+        </v-row>
     </div>
 </template>
 
@@ -156,3 +177,19 @@ onUnmounted(() => {
     sortPeptidePercentage.value = false;
 });
 </script>
+
+<style scoped>
+.search-info {
+    margin-top: 36px;
+}
+
+.info-step h2 {
+    font-size: 24px;
+}
+.info-step p {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    margin-top: 16px;
+}
+</style>

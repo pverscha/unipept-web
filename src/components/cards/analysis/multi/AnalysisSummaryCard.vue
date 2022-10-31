@@ -51,9 +51,9 @@
                     </Tooltip>
                 </div>
 
-                <div class="card-actions">
+                <div class="card-actions d-flex flex-wrap">
                     <tooltip message="Restart search with selected samples using the settings chosen above.">
-                        <v-btn :disabled="false" @click="reprocess()" color="primary">
+                        <v-btn class="mr-3" :disabled="false" @click="reprocess()" color="primary">
                             <v-icon left>
                                 mdi-restore
                             </v-icon>
@@ -61,9 +61,10 @@
                         </v-btn>
                     </tooltip>
 
-                    <v-btn class="ms-3" :assay="multiAnalysisStore.activeAssayStatus?.assay">
-                        <v-icon left>mdi-download</v-icon> Download results
-                    </v-btn>
+                    <PeptideExportButton
+                        :assayStatus="multiAnalysisStore.activeAssayStatus"
+                        buttonText="Download results"
+                    />
                 </div>
 
                 <div v-if="multiAnalysisStore.activeAssayStatus.filteredData">
@@ -92,6 +93,7 @@ import useMultiAnalysis from '@/stores/MultiAnalysisStore';
 import { computed, ref } from 'vue';
 import { Tooltip } from 'unipept-web-components';
 import MissingPeptidesModal from '@/components/modals/MissingPeptidesModal.vue';
+import PeptideExportButton from '@/components/buttons/PeptideExportButton.vue';
 
 const multiAnalysisStore = useMultiAnalysis();
 
