@@ -19,8 +19,11 @@ const navigation = [
         name: "Overview",
         link: "/desktop",
         children: [
-            { name: "Installation", link: "#installation" },
-            { name: "Updates", link: "#updates" }
+            { name: "Download", link: "#download" },
+            { name: "Install for Windows", link: "#windows_installation" },
+            { name: "Install for macOS", link: "#macos_installation" },
+            { name: "Install for Linux", link: "#linux_installation" },
+            { name: "Update", link: "#update" }
         ]
     }
 ]

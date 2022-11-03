@@ -54,14 +54,14 @@
             </p>
         </div>
 
-        <header-body-card id="installation" title="Installation" class="my-5">
+        <header-body-card id="download" title="Download" class="mt-5">
             <p>
                 In order to use the Unipept Desktop Application, it needs to be installed first. You can always download
                 the most recent version for your operating system from the releases on GitHub. Direct links for the
                 different operating systems are also available (these links will always point to the most recent
                 version):
             </p>
-            <div class="d-flex justify-center">
+            <div class="d-flex justify-center mb-2">
                 <v-btn
                     color="primary"
                     class="mr-5"
@@ -102,10 +102,159 @@
                     </div>
                 </v-btn>
             </div>
+            <p>
+                Most required dependencies will automatically be installed using the installation packages provided
+                above. If a specific installer is not suitable for your current operating system (e.g. specific flavours
+                of Linux that do not support AppImage's), you can always clone the repository and build the project
+                yourselves.
+            </p>
+            <v-alert color="warning" outlined>
+                <span class="font-weight-bold">Warning:</span>
+                If your are planning to use the Unipept Desktop application to build custom targeted protein reference
+                databases (which are required for proteogenomics data analyses), then you also need to make sure that
+                <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a> is installed and working on
+                your system.
+            </v-alert>
         </header-body-card>
 
-        <header-body-card id="updates" title="Updates">
+        <header-body-card id="windows_installation" title="Install for Windows" class="mt-5">
+            <v-container>
+                <v-row>
+                    <v-col cols="10">
+                        <h3>1. Start the installer package</h3>
+                        <p>
+                            Double-click the installer package to start the installation. You will be greeted by a
+                            window that asks for your explicit approval to install our application. Click "More info".
+                        </p>
+                    </v-col>
+                    <v-col cols="2">
+                        <v-img :src="require('@/assets/documentation/desktop/unipept_desktop_windows_1.png')" contain />
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col cols="10">
+                        <h3>2. Proceed with security checks</h3>
+                        <p>
+                            A new button appears "Run anyway". Click this button to start the installation process.
+                            Windows shows this warning as part of the "SmartScreen Security" system. This system
+                            protects your computer from running potentially unsafe apps. Windows displays this message
+                            for our application since it's very new, without a large userbase yet. The more people start
+                            to use this app, the faster it will be trusted by Microsoft.
+                        </p>
+                    </v-col>
+                    <v-col cols="2">
+                        <v-img :src="require('@/assets/documentation/desktop/unipept_desktop_windows_2.png')" contain />
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col cols="10">
+                        <h3>3. Installation process is started</h3>
+                        <p>
+                            The installation process is now started, and a progress bar should be visible. This process
+                            should not take longer than one minute on most modern systems. Please wait for the installer
+                            to disappear (without any errors). Once it's gone, the installation process is fully
+                            finished.
+                        </p>
+                    </v-col>
+                    <v-col cols="2">
+                        <v-img :src="require('@/assets/documentation/desktop/unipept_desktop_windows_3.png')" contain />
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col cols="10">
+                        <h3>4. Installation process is done</h3>
+                        <p>
+                            You can now start the application, by double clicking it's shortcut on your desktop or by
+                            selecting it from the applications list in Windows.
+                        </p>
+                    </v-col>
+                    <v-col cols="2">
+                        <v-img :src="require('@/assets/documentation/desktop/unipept_desktop_windows_4.png')" contain />
+                    </v-col>
+                </v-row>
+            </v-container>
+        </header-body-card>
 
+        <header-body-card id="macos_installation" title="Install for macOS" class="mt-5">
+            <v-container>
+                <v-row>
+                    <v-col cols="10">
+                        <h3>1. Mount the installer image</h3>
+                        <p>
+                            Double-click the downloaded "Unipept.dmg" file to mount the installer image. A new window
+                            pops up in which you need to drag the Unipept Desktop logo into your applications folder.
+                        </p>
+                    </v-col>
+                    <v-col cols="2">
+                        <v-img :src="require('@/assets/documentation/desktop/unipept_desktop_macos_1.png')" contain />
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col cols="10">
+                        <h3>2. Installation process is done</h3>
+                        <p>
+                            Look for the installed application in Launchpad and start Unipept Desktop.
+                        </p>
+                    </v-col>
+                    <v-col cols="2">
+                        <v-img :src="require('@/assets/documentation/desktop/unipept_desktop_macos_2.png')" contain />
+                    </v-col>
+                </v-row>
+            </v-container>
+        </header-body-card>
+
+        <header-body-card id="linux_installation" title="Install for Linux" class="mt-5">
+            <v-container>
+                <v-row>
+                    <v-col cols="10">
+                        <h3>1. Open AppImage properties</h3>
+                        <p>
+                            Right-click the downloaded "Unipept.AppImage" file and select "properties". A properties
+                            window will pop up.
+                        </p>
+                    </v-col>
+                    <v-col cols="2">
+                        <v-img :src="require('@/assets/documentation/desktop/unipept_desktop_ubuntu_1.png')" contain />
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col cols="10">
+                        <h3>2. Enable executable permissions</h3>
+                        <p>
+                            Click the "permissions" tab and check the box before "Allow executing file as program".
+                            Close the window.
+                        </p>
+                    </v-col>
+                    <v-col cols="2">
+                        <v-img :src="require('@/assets/documentation/desktop/unipept_desktop_ubuntu_2.png')" contain />
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col cols="10">
+                        <h3>3. Open the application</h3>
+                        <p>
+                            Double-click the downloaded AppImage-file to start the application.
+                        </p>
+                    </v-col>
+                    <v-col cols="2">
+                        <v-img :src="require('@/assets/documentation/desktop/unipept_desktop_ubuntu_3.png')" contain />
+                    </v-col>
+                </v-row>
+            </v-container>
+        </header-body-card>
+
+        <header-body-card id="update" title="Update" class="mt-5">
+            <p>
+                The Unipept Desktop Application will check for updates automatically. Once an update is found, the new
+                version of the application will automatically be downloaded and a progress bar at the bottom of the
+                application appears.Once the application is done downloading the new application, the update is
+                installed in the background. After the installation finishes, a notification pops up and requests the
+                user to restart the application to complete the update.
+            </p>
+            <p>
+                It's not mandatory to restart the application immediately after an update is installed. Note, however,
+                that the new version will only take effect after restarting the app.
+            </p>
         </header-body-card>
     </v-container>
 </template>
