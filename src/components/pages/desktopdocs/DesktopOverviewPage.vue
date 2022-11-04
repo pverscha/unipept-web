@@ -120,19 +120,27 @@
         <header-body-card id="windows_installation" title="Install for Windows" class="mt-5">
             <v-container>
                 <v-row>
-                    <v-col cols="10">
+                    <v-col :cols="stepWidth">
                         <h3>1. Start the installer package</h3>
                         <p>
                             Double-click the installer package to start the installation. You will be greeted by a
                             window that asks for your explicit approval to install our application. Click "More info".
                         </p>
                     </v-col>
-                    <v-col cols="2">
-                        <v-img :src="require('@/assets/documentation/desktop/unipept_desktop_windows_1.png')" contain />
+                    <v-col :cols="imgWidth">
+                        <v-card>
+                            <v-card-text>
+                                <a :href="require('@/assets/documentation/desktop/unipept_desktop_windows_1.png')">
+                                    <v-img
+                                        :src="require('@/assets/documentation/desktop/unipept_desktop_windows_1.png')"
+                                        contain />
+                                </a>
+                            </v-card-text>
+                        </v-card>
                     </v-col>
                 </v-row>
                 <v-row>
-                    <v-col cols="10">
+                    <v-col :cols="stepWidth">
                         <h3>2. Proceed with security checks</h3>
                         <p>
                             A new button appears "Run anyway". Click this button to start the installation process.
@@ -142,12 +150,20 @@
                             to use this app, the faster it will be trusted by Microsoft.
                         </p>
                     </v-col>
-                    <v-col cols="2">
-                        <v-img :src="require('@/assets/documentation/desktop/unipept_desktop_windows_2.png')" contain />
+                    <v-col :cols="imgWidth">
+                        <v-card>
+                            <v-card-text>
+                                <a :href="require('@/assets/documentation/desktop/unipept_desktop_windows_2.png')">
+                                    <v-img
+                                        :src="require('@/assets/documentation/desktop/unipept_desktop_windows_2.png')"
+                                        contain />
+                                </a>
+                            </v-card-text>
+                        </v-card>
                     </v-col>
                 </v-row>
                 <v-row>
-                    <v-col cols="10">
+                    <v-col :cols="stepWidth">
                         <h3>3. Installation process is started</h3>
                         <p>
                             The installation process is now started, and a progress bar should be visible. This process
@@ -156,20 +172,36 @@
                             finished.
                         </p>
                     </v-col>
-                    <v-col cols="2">
-                        <v-img :src="require('@/assets/documentation/desktop/unipept_desktop_windows_3.png')" contain />
+                    <v-col :cols="imgWidth">
+                        <v-card>
+                            <v-card-text>
+                                <a :href="require('@/assets/documentation/desktop/unipept_desktop_windows_3.png')">
+                                    <v-img
+                                        :src="require('@/assets/documentation/desktop/unipept_desktop_windows_3.png')"
+                                        contain />
+                                </a>
+                            </v-card-text>
+                        </v-card>
                     </v-col>
                 </v-row>
                 <v-row>
-                    <v-col cols="10">
+                    <v-col :cols="stepWidth">
                         <h3>4. Installation process is done</h3>
                         <p>
                             You can now start the application, by double clicking it's shortcut on your desktop or by
                             selecting it from the applications list in Windows.
                         </p>
                     </v-col>
-                    <v-col cols="2">
-                        <v-img :src="require('@/assets/documentation/desktop/unipept_desktop_windows_4.png')" contain />
+                    <v-col :cols="imgWidth">
+                        <v-card>
+                            <v-card-text>
+                                <a :href="require('@/assets/documentation/desktop/unipept_desktop_windows_4.png')">
+                                    <v-img
+                                        :src="require('@/assets/documentation/desktop/unipept_desktop_windows_4.png')"
+                                        contain />
+                                </a>
+                            </v-card-text>
+                        </v-card>
                     </v-col>
                 </v-row>
             </v-container>
@@ -178,26 +210,42 @@
         <header-body-card id="macos_installation" title="Install for macOS" class="mt-5">
             <v-container>
                 <v-row>
-                    <v-col cols="10">
+                    <v-col :cols="stepWidth">
                         <h3>1. Mount the installer image</h3>
                         <p>
                             Double-click the downloaded "Unipept.dmg" file to mount the installer image. A new window
                             pops up in which you need to drag the Unipept Desktop logo into your applications folder.
                         </p>
                     </v-col>
-                    <v-col cols="2">
-                        <v-img :src="require('@/assets/documentation/desktop/unipept_desktop_macos_1.png')" contain />
+                    <v-col :cols="imgWidth">
+                        <v-card>
+                            <v-card-text>
+                                <a :href="require('@/assets/documentation/desktop/unipept_desktop_macos_1.png')">
+                                    <v-img
+                                        :src="require('@/assets/documentation/desktop/unipept_desktop_macos_1.png')"
+                                        contain />
+                                </a>
+                            </v-card-text>
+                        </v-card>
                     </v-col>
                 </v-row>
                 <v-row>
-                    <v-col cols="10">
+                    <v-col :cols="stepWidth">
                         <h3>2. Installation process is done</h3>
                         <p>
                             Look for the installed application in Launchpad and start Unipept Desktop.
                         </p>
                     </v-col>
-                    <v-col cols="2">
-                        <v-img :src="require('@/assets/documentation/desktop/unipept_desktop_macos_2.png')" contain />
+                    <v-col :cols="imgWidth">
+                        <v-card>
+                            <v-card-text>
+                                <a :href="require('@/assets/documentation/desktop/unipept_desktop_macos_2.png')">
+                                    <v-img
+                                        :src="require('@/assets/documentation/desktop/unipept_desktop_macos_2.png')"
+                                        contain />
+                                </a>
+                            </v-card-text>
+                        </v-card>
                     </v-col>
                 </v-row>
             </v-container>
@@ -206,38 +254,62 @@
         <header-body-card id="linux_installation" title="Install for Linux" class="mt-5">
             <v-container>
                 <v-row>
-                    <v-col cols="10">
+                    <v-col :cols="stepWidth">
                         <h3>1. Open AppImage properties</h3>
                         <p>
                             Right-click the downloaded "Unipept.AppImage" file and select "properties". A properties
                             window will pop up.
                         </p>
                     </v-col>
-                    <v-col cols="2">
-                        <v-img :src="require('@/assets/documentation/desktop/unipept_desktop_ubuntu_1.png')" contain />
+                    <v-col :cols="imgWidth">
+                        <v-card>
+                            <v-card-text>
+                                <a :href="require('@/assets/documentation/desktop/unipept_desktop_ubuntu_1.png')">
+                                    <v-img
+                                        :src="require('@/assets/documentation/desktop/unipept_desktop_ubuntu_1.png')"
+                                        contain />
+                                </a>
+                            </v-card-text>
+                        </v-card>
                     </v-col>
                 </v-row>
                 <v-row>
-                    <v-col cols="10">
+                    <v-col :cols="stepWidth">
                         <h3>2. Enable executable permissions</h3>
                         <p>
                             Click the "permissions" tab and check the box before "Allow executing file as program".
                             Close the window.
                         </p>
                     </v-col>
-                    <v-col cols="2">
-                        <v-img :src="require('@/assets/documentation/desktop/unipept_desktop_ubuntu_2.png')" contain />
+                    <v-col :cols="imgWidth">
+                        <v-card>
+                            <v-card-text>
+                                <a :href="require('@/assets/documentation/desktop/unipept_desktop_ubuntu_2.png')">
+                                    <v-img
+                                        :src="require('@/assets/documentation/desktop/unipept_desktop_ubuntu_2.png')"
+                                        contain />
+                                </a>
+                            </v-card-text>
+                        </v-card>
                     </v-col>
                 </v-row>
                 <v-row>
-                    <v-col cols="10">
+                    <v-col :cols="stepWidth">
                         <h3>3. Open the application</h3>
                         <p>
                             Double-click the downloaded AppImage-file to start the application.
                         </p>
                     </v-col>
-                    <v-col cols="2">
-                        <v-img :src="require('@/assets/documentation/desktop/unipept_desktop_ubuntu_3.png')" contain />
+                    <v-col :cols="imgWidth">
+                        <v-card>
+                            <v-card-text>
+                                <a :href="require('@/assets/documentation/desktop/unipept_desktop_ubuntu_3.png')">
+                                    <v-img
+                                        :src="require('@/assets/documentation/desktop/unipept_desktop_ubuntu_3.png')"
+                                        contain />
+                                </a>
+                            </v-card-text>
+                        </v-card>
                     </v-col>
                 </v-row>
             </v-container>
@@ -262,4 +334,7 @@
 <script setup lang="ts">
 import ResourceLink from '@/components/highlights/ResourceLink.vue';
 import HeaderBodyCard from "@/components/cards/HeaderBodyCard.vue";
+
+const stepWidth = 9;
+const imgWidth = 3;
 </script>
