@@ -107,7 +107,9 @@ const datasetNameRules = [
     (value: string) => !!value || 'Name is required when the dataset is set to be saved'
 ];
 
-const fetchPrideDataset = () => {
+const fetchPrideDataset = (event: Event) => {
+    event.preventDefault();
+
     if(loading.value) {
         return;
     }
