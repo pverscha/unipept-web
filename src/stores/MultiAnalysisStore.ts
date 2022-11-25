@@ -80,37 +80,27 @@ const useMultiAnalysis = defineStore('multi-analysis', () => {
         progress.currentValue = value;
         progress.currentStep = step;
 
-        const time = new Date().getTime();
+        // Get the current time
+        const currentTime = new Date().getTime();
 
-        // Update the end time for all the previous steps
-        for(let i = step - 1; i >= 0; i--) {
-            if(progress.steps[i].end === 0) {
-                progress.steps[i].end = time;
-            }
-
-            if(progress.steps[i].start === 0) {
-                progress.steps[i].start = time;
-            }
+        // Set end time of the previous step if it is not the first step
+        if (step > 0) {
+            progress.steps[step - 1].end = currentTime;
         }
 
-        if(progress.steps[step].start === 0) {
-            progress.steps[step].end = time;
-            progress.eta = -1;
-        } else if(value !== -1) {
-            // This is already at least the second time that a progress value for this step is reported. This
-            // means that we can start to calculate an ETA (if a valid progress value has been given).
-            const elapsedTime = time - progress.steps[step].start;
-
-            if(elapsedTime > 500) {
-                const progressToDo = 100 - value;
-                const multiplier = progressToDo / value;
-                progress.eta = Math.max(elapsedTime * multiplier, 0);
-            } else {
-                progress.eta = -1;
-            }
-        } else {
-            progress.eta = -1;
+        // Set start time of the current step
+        if (progress.steps[step].start === 0) {
+            progress.steps[step].start = currentTime;
         }
+
+        // Calculate the eta
+        const elapsedTime = currentTime - progress.steps[0].start;
+        if (elapsedTime > 500) {
+            progress.eta = elapsedTime * (100 - value) / value;
+            return;
+        }
+
+        progress.eta = -1;
     }
 
     const analyse = async (assay: Assay, equateIl: boolean, filterDuplicates: boolean, cleavageHandling: boolean) => {
