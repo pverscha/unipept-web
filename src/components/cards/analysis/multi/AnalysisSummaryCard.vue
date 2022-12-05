@@ -67,21 +67,21 @@
                     />
                 </div>
 
-                <div v-if="multiAnalysisStore.activeAssayStatus.filteredData">
+                <div v-if="multiAnalysisStore.activeAssayStatus.data">
                     <v-divider class="my-3"></v-divider>
 
                     <span class="peptide-match-text">
-                        We managed to match {{ multiAnalysisStore.activeAssayStatus.filteredData.trust.matchedPeptides }} of your 
-                        {{ multiAnalysisStore.activeAssayStatus.filteredData.trust.searchedPeptides }} peptides. Unfortunately,
+                        We managed to match {{ multiAnalysisStore.activeAssayStatus.data.trust.matchedPeptides }} of your 
+                        {{ multiAnalysisStore.activeAssayStatus.data.trust.searchedPeptides }} peptides. Unfortunately,
                         <a style="cursor: pointer;" @click="showMissedPeptides = true">
-                            {{ multiAnalysisStore.activeAssayStatus.filteredData.trust.missedPeptides.length }}
+                            {{ multiAnalysisStore.activeAssayStatus.data.trust.missedPeptides.length }}
                         </a>
                         peptides couldn't be found.
                     </span>
                 </div>
 
                 <v-dialog v-model="showMissedPeptides" :width="600" scrollable>
-                    <MissingPeptidesModal :missedPeptides="multiAnalysisStore.activeAssayStatus.filteredData.trust.missedPeptides" />
+                    <MissingPeptidesModal :missedPeptides="multiAnalysisStore.activeAssayStatus.data.trust.missedPeptides" />
                 </v-dialog>
             </div>
         </v-card-text>
