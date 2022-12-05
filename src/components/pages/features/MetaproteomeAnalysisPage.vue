@@ -23,17 +23,18 @@
             <v-col cols=12>
                 <VisualizationOverview
                     :analysisInProgress="!multiAnalysisStore.analysisCompleted(multiAnalysisStore.activeAssayStatus.assay.id)"
-                    :ecTree="ecTree"
-                    :taxaTree="multiAnalysisStore.activeAssayStatus?.data?.tree"
-                    :goCountTableProcessor="multiAnalysisStore.activeAssayStatus?.data?.goCountTableProcessor"
+                    :ecTree="ecTree()"
+                    :goCountTableProcessor="multiAnalysisStore.activeAssayStatus?.filteredData?.goCountTableProcessor"
                     :goOntology="multiAnalysisStore.activeAssayStatus?.goOntology" 
-                    :ecCountTableProcessor="multiAnalysisStore.activeAssayStatus?.data?.ecCountTableProcessor"
+                    :ecCountTableProcessor="multiAnalysisStore.activeAssayStatus?.filteredData?.ecCountTableProcessor"
                     :ecOntology="multiAnalysisStore.activeAssayStatus?.ecOntology"
-                    :interproCountTableProcessor="multiAnalysisStore.activeAssayStatus?.data?.interproCountTableProcessor"
+                    :interproCountTableProcessor="multiAnalysisStore.activeAssayStatus?.filteredData?.interproCountTableProcessor"
                     :interproOntology="multiAnalysisStore.activeAssayStatus?.interproOntology"
                     :ncbiCountTableProcessor="multiAnalysisStore.activeAssayStatus?.data?.lcaCountTableProcessor"
                     :ncbiOntology="multiAnalysisStore.activeAssayStatus?.ncbiOntology"
                     :ncbiTree="multiAnalysisStore.activeAssayStatus?.data?.tree"
+                    :filterId="multiAnalysisStore.activeAssayStatus?.filterId"
+                    @update-selected-taxon-id="updateSelectedTaxonId"
                 />
             </v-col>
 
@@ -82,25 +83,25 @@
                     <v-tabs-items class="mb-5" v-model="currentTab">
                         <v-tab-item>
                             <GoSummaryCard
-                                :analysisInProgress="!multiAnalysisStore.analysisCompleted(multiAnalysisStore.activeAssayStatus.assay.id)"
-                                :goProcessor="multiAnalysisStore.activeAssayStatus.data?.goCountTableProcessor"
+                                :analysisInProgress="!multiAnalysisStore.analysisCompleted(multiAnalysisStore.activeAssayStatus.assay.id) || !multiAnalysisStore.filterCompleted(multiAnalysisStore.activeAssayStatus.assay.id)"
+                                :goProcessor="multiAnalysisStore.activeAssayStatus.filteredData?.goCountTableProcessor"
                                 :goOntology="multiAnalysisStore.activeAssayStatus?.goOntology"
                                 :showPercentage="sortPeptidePercentage"
                             />
                         </v-tab-item>
                         <v-tab-item>
                             <EcSummaryCard
-                                :analysisInProgress="!multiAnalysisStore.analysisCompleted(multiAnalysisStore.activeAssayStatus.assay.id)"
-                                :ecProcessor="multiAnalysisStore.activeAssayStatus.data?.ecCountTableProcessor"
+                                :analysisInProgress="!multiAnalysisStore.analysisCompleted(multiAnalysisStore.activeAssayStatus.assay.id) || !multiAnalysisStore.filterCompleted(multiAnalysisStore.activeAssayStatus.assay.id)"
+                                :ecProcessor="multiAnalysisStore.activeAssayStatus.filteredData?.ecCountTableProcessor"
                                 :ecOntology="multiAnalysisStore.activeAssayStatus?.ecOntology"
-                                :ecTree="ecTree"
+                                :ecTree="ecTree()"
                                 :showPercentage="sortPeptidePercentage"
                             />
                         </v-tab-item>
                         <v-tab-item>
                             <InterproSummaryCard
-                                :analysisInProgress="!multiAnalysisStore.analysisCompleted(multiAnalysisStore.activeAssayStatus.assay.id)"
-                                :interproProcessor="multiAnalysisStore.activeAssayStatus.data?.interproCountTableProcessor"
+                                :analysisInProgress="!multiAnalysisStore.analysisCompleted(multiAnalysisStore.activeAssayStatus.assay.id) || !multiAnalysisStore.filterCompleted(multiAnalysisStore.activeAssayStatus.assay.id)"
+                                :interproProcessor="multiAnalysisStore.activeAssayStatus.filteredData?.interproCountTableProcessor"
                                 :interproOntology="multiAnalysisStore.activeAssayStatus?.interproOntology"
                                 :showPercentage="sortPeptidePercentage"
                             />
@@ -137,9 +138,9 @@
 import LoadDatasetsCard from '@/components/cards/analysis/multi/LoadDatasetsCard.vue';
 import SelectDatasetCard from '@/components/cards/analysis/multi/SelectDatasetCard.vue';
 import SwitchDatasetCard from '@/components/cards/analysis/multi/SwitchDatasetCard.vue';
-import { computed, onUnmounted, ref } from 'vue';
+import { onUnmounted, ref } from 'vue';
 import AnalysisSummaryCard from '@/components/cards/analysis/multi/AnalysisSummaryCard.vue';
-import { GoSummaryCard, EcSummaryCard, InterproSummaryCard, computeEcTree, VisualizationOverview } from 'unipept-web-components';
+import { GoSummaryCard, EcSummaryCard, InterproSummaryCard, VisualizationOverview, computeEcTree } from 'unipept-web-components';
 import useMultiAnalysis from '@/stores/MultiAnalysisStore';
 import SortingPeptidesModal from '@/components/modals/SortingPeptidesModal.vue';
 
@@ -156,19 +157,25 @@ const search = () => {
     displaySummary.value = true;
 }
 
-const ecTree = computed(() => {
+const ecTree = () => {
     if(multiAnalysisStore.activeAssayStatus) {
         if(multiAnalysisStore.analysisCompleted(multiAnalysisStore.activeAssayStatus.assay.id)) {
             return computeEcTree(
-                multiAnalysisStore.activeAssayStatus.data.ecCountTableProcessor.getCountTable(), 
+                multiAnalysisStore.activeAssayStatus.filteredData?.ecCountTableProcessor.getCountTable(),
                 // @ts-ignore
-                multiAnalysisStore.activeAssayStatus.ecOntology
+                multiAnalysisStore.activeAssayStatus.ecOntology,
             );
         }
     }
 
     return undefined;
-})
+};
+
+const updateSelectedTaxonId = (taxonId: number) => {
+    if(multiAnalysisStore.activeAssayStatus) {
+        multiAnalysisStore.filterAssayByRank(multiAnalysisStore.activeAssayStatus.assay.id, taxonId);
+    }
+}
 
 onUnmounted(() => {
     selector.value = true;

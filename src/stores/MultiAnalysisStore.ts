@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { EcCountTableProcessor, EcOntologyProcessor, EcResponseCommunicator, GoCountTableProcessor, GoOntologyProcessor, GoResponseCommunicator, InterproCountTableProcessor, InterproOntologyProcessor, InterproResponseCommunicator, LcaCountTableProcessor, MultiProteomicsAnalysisStatus, NcbiOntologyProcessor, NcbiResponseCommunicator, NcbiTree, Pept2DataCommunicator, PeptideCountTableProcessor, ProgressUtils } from "unipept-web-components";
+import { computeEcTree, EcCountTableProcessor, EcOntologyProcessor, EcResponseCommunicator, GoCountTableProcessor, GoOntologyProcessor, GoResponseCommunicator, InterproCountTableProcessor, InterproOntologyProcessor, InterproResponseCommunicator, LcaCountTableProcessor, MultiProteomicsAnalysisStatus, NcbiId, NcbiOntologyProcessor, NcbiResponseCommunicator, NcbiTaxon, NcbiTree, NcbiTreeNode, Ontology, Pept2DataCommunicator, Peptide, PeptideCountTableProcessor, PeptideTrustProcessor, ProgressUtils } from "unipept-web-components";
 import { Assay } from "unipept-web-components";
 import { computed, ref } from "vue";
 
@@ -31,6 +31,14 @@ const progressSteps = [
     "Analysis completed",
 ];
 
+const enum FilterSteps {
+    CALCULATE_SEQUENCE_SUBSET,
+    FILTER_COUNT_TABLE,
+    FILTER_GO_COUNT_TABLE,
+    FILTER_EC_COUNT_TABLE,
+    FILTER_INTERPRO_COUNT_TABLE,
+    COMPLETED,
+}
 
 const filterSteps = [
     "Calculating sequences subset",
@@ -212,8 +220,6 @@ const useMultiAnalysis = defineStore('multi-analysis', () => {
                 trust: trust
             };
         } catch(error: any) {
-            console.log(error);
-
             assayStatus.error = {
                 status: true,
                 message: error.message,
@@ -229,7 +235,115 @@ const useMultiAnalysis = defineStore('multi-analysis', () => {
     }
 
     const filter = async (assayId: string) => {
-        // TODO: implement
+        const assayIndex = findAssayIndex(assayId);
+        const assayStatus = assayStatuses.value[assayIndex];
+
+        const taxonId = assayStatus.filterId;
+        const percentage = assayStatus.filterPercentage;
+
+        assayStatus.filterInProgress = true;
+        assayStatus.filterReady = false;
+        assayStatus.error = {
+            status: false,
+            message: "",
+            object: null
+        };
+
+        updateProgress(assayStatus.assay, -1, FilterSteps.CALCULATE_SEQUENCE_SUBSET, true);
+
+        if(taxonId === 1 && percentage === 5) {
+            const originalData = assayStatus.data;
+
+            assayStatus.filteredData = {
+                peptideCountTable: originalData.peptideCountTable,
+                goCountTableProcessor: originalData.goCountTableProcessor,
+                ecCountTableProcessor: originalData.ecCountTableProcessor,
+                interproCountTableProcessor: originalData.interproCountTableProcessor,
+                percentage: percentage,
+                trust: originalData.trust
+            };
+
+            assayStatus.filterInProgress = false;
+            assayStatus.filterReady = true;
+        } else {
+            const getOwnAndChildrenSequences = async function(
+                taxonId: NcbiId,
+                lcaProcessor: LcaCountTableProcessor,
+                ncbiOntology: Ontology<NcbiId, NcbiTaxon>
+            ): Promise<Peptide[]> {
+                const lcaCountTable = lcaProcessor.getCountTable();
+                const peptideMapping = lcaProcessor.getAnnotationPeptideMapping();
+
+                const tree = new NcbiTree(lcaCountTable, ncbiOntology);
+
+                const sequences: Peptide[] = [];
+                const node = tree.nodes.get(taxonId)!;
+                const nodes: NcbiTreeNode[] = [node];
+
+                while (nodes.length > 0) {
+                    const node = nodes.pop();
+                    if (peptideMapping.has(node?.id)) {
+                        sequences.push(...peptideMapping.get(node?.id)!);
+                    }
+
+                    if (node?.children) {
+                        nodes.push(...node.children);
+                    }
+                }
+
+                return sequences;
+            }
+
+            try {
+                const lcaCountTableProcessor = assayStatus.data.lcaCountTableProcessor;
+
+                updateProgress(assayStatus.assay, -1, FilterSteps.FILTER_COUNT_TABLE, true);
+
+                // @ts-ignore
+                const sequences = await getOwnAndChildrenSequences(taxonId, lcaCountTableProcessor, assayStatus.ncbiOntology);
+
+                const peptideProcessor = new PeptideCountTableProcessor();
+                const filteredCountTable = await peptideProcessor.getPeptideCountTable(sequences, assayStatus.cleavageHandling, assayStatus.filterDuplicates, assayStatus.equateIl);
+
+                const trustProcessor = new PeptideTrustProcessor()
+                const filteredTrust = trustProcessor.getPeptideTrust(filteredCountTable, assayStatus.pept2Data);
+
+                updateProgress(assayStatus.assay, -1, FilterSteps.FILTER_GO_COUNT_TABLE, true);
+
+                const goCountTableProcessor = new GoCountTableProcessor(filteredCountTable, assayStatus.pept2Data, goCommunicator);
+                await goCountTableProcessor.compute();
+
+                updateProgress(assayStatus.assay, -1, FilterSteps.FILTER_EC_COUNT_TABLE, true);
+
+                const ecCountTableProcessor = new EcCountTableProcessor(filteredCountTable, assayStatus.pept2Data, ecCommunicator);
+                await ecCountTableProcessor.compute();
+
+                updateProgress(assayStatus.assay, -1, FilterSteps.FILTER_INTERPRO_COUNT_TABLE, true);
+
+                const interproCountTableProcessor = new InterproCountTableProcessor(filteredCountTable, assayStatus.pept2Data, interproCommunicator);
+                await interproCountTableProcessor.compute();
+
+                assayStatus.filteredData = {
+                    peptideCountTable: filteredCountTable,
+                    goCountTableProcessor: goCountTableProcessor,
+                    ecCountTableProcessor: ecCountTableProcessor,
+                    interproCountTableProcessor: interproCountTableProcessor,
+                    percentage: percentage,
+                    trust: filteredTrust
+                };
+            } catch(error: any) {
+                assayStatus.error = {
+                    status: true,
+                    message: error.message,
+                    object: error
+                };
+            } finally {
+                assayStatus.filterInProgress = false;
+                assayStatus.filterReady = true;
+
+                updateProgress(assayStatus.assay, -1, FilterSteps.COMPLETED, true);
+            }
+        }
     }
 
     const analysisCompleted = (assayId: string) => {
@@ -241,11 +355,14 @@ const useMultiAnalysis = defineStore('multi-analysis', () => {
 
     const addAssay = (assay: Assay) => {
         if(findAssayIndex(assay.id) === -1) {
+            const filterProgress = ProgressUtils.constructProgressObject(filterSteps);
+            filterProgress.currentStep = FilterSteps.COMPLETED;
+
             assayStatuses.value.push({
                 assay: assay,
 
                 progress: ProgressUtils.constructProgressObject(progressSteps),
-                filterProgress: ProgressUtils.constructProgressObject(filterSteps)
+                filterProgress: filterProgress
             } as MultiProteomicsAnalysisStatus);
         }
     }
@@ -276,6 +393,25 @@ const useMultiAnalysis = defineStore('multi-analysis', () => {
         activeAssayStatus.value = assayStatuses.value[index];
     }
 
+    const filterAssayByRank = (assayId: string, rankId: number) => {
+        const assayIndex = findAssayIndex(assayId);
+        assayStatuses.value[assayIndex].filterId = rankId;
+        filter(assayId);
+    }
+
+    const filterAssayByPercentage = (assayId: string, percentage: number) => {
+        const assayIndex = findAssayIndex(assayId);
+        assayStatuses.value[assayIndex].filterPercentage = percentage;
+        filter(assayId);
+    }
+
+    const filterCompleted = (assayId: string) => {
+        const assayIndex = findAssayIndex(assayId);
+        const assayStatus = assayStatuses.value[assayIndex];
+
+        return assayStatus.filterProgress.currentStep === FilterSteps.COMPLETED;
+    }
+
     return {
         assayStatuses,
         activeAssayStatus,
@@ -289,7 +425,10 @@ const useMultiAnalysis = defineStore('multi-analysis', () => {
         removeAllAssays,
         activateAssay,
         analyse,
-        filter
+        filter,
+        filterAssayByRank,
+        filterAssayByPercentage,
+        filterCompleted
     }
 });
 
