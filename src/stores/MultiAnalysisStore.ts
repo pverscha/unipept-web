@@ -52,7 +52,7 @@ const useMultiAnalysis = defineStore('multi-analysis', () => {
     const pept2DataCommunicator = new Pept2DataCommunicator(
         process.env.VUE_APP_UNIPEPT_API_URL,
         +process.env.VUE_APP_PEPTDATA_BATCH_SIZE!,
-        +process.env.VUE_APP_MISSED_CLEAVAGE_BATCH_SIZE!,
+        +process.env.VUE_APP_CLEAVAGE_BATCH_SIZE!,
         +process.env.VUE_APP_PARALLEL_REQUESTS!
     );
 
@@ -137,6 +137,9 @@ const useMultiAnalysis = defineStore('multi-analysis', () => {
                 assay.peptides, assayStatus.cleavageHandling, assayStatus.filterDuplicates,assayStatus.equateIl
             );
 
+            console.log("counts: aaa: ")
+            console.log(peptideCountTable);
+
             const [pept2Data, trust] = await pept2DataCommunicator.process(
                 peptideCountTable, assayStatus.cleavageHandling, assayStatus.equateIl, {
                     onProgressUpdate(progress: number) {
@@ -144,6 +147,11 @@ const useMultiAnalysis = defineStore('multi-analysis', () => {
                     }
                 }
             );
+
+
+            console.log("pept2Data: aaa: ")
+            console.log(pept2Data);
+
 
             updateProgress(assay, 91, ProgressSteps.GO_COUNT_TABLE, false);
 

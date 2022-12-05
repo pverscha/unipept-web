@@ -53,7 +53,7 @@
 
                 <div class="card-actions d-flex flex-wrap">
                     <tooltip message="Restart search with selected samples using the settings chosen above.">
-                        <v-btn class="mr-3 mb-2" :disabled="false" @click="reprocess()" color="primary">
+                        <v-btn class="mr-3 mb-2" :disabled="!dirty()" @click="reprocess()" color="primary">
                             <v-icon left>
                                 mdi-restore
                             </v-icon>
@@ -90,7 +90,7 @@
 
 <script setup lang="ts">
 import useMultiAnalysis from '@/stores/MultiAnalysisStore';
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { Tooltip } from 'unipept-web-components';
 import MissingPeptidesModal from '@/components/modals/MissingPeptidesModal.vue';
 import PeptideExportButton from '@/components/buttons/PeptideExportButton.vue';
@@ -113,11 +113,25 @@ const peptides = computed(() => {
     return multiAnalysisStore.activeAssayStatus.assay.peptides.join('\n');
 });
 
+watch(() => multiAnalysisStore.activeAssayStatus, () => {
+    equateIl.value = multiAnalysisStore.activeAssayStatus?.equateIl!;
+    filterDuplicates.value = multiAnalysisStore.activeAssayStatus?.filterDuplicates!;
+    cleavageHandling.value = multiAnalysisStore.activeAssayStatus?.cleavageHandling!;
+})
+
+const dirty = () => {
+    return equateIl.value !== multiAnalysisStore.activeAssayStatus?.equateIl! ||
+        filterDuplicates.value !== multiAnalysisStore.activeAssayStatus?.filterDuplicates! ||
+        cleavageHandling.value !== multiAnalysisStore.activeAssayStatus?.cleavageHandling!;
+}
+
 const reprocess = () => {
-    multiAnalysisStore.analyse(
-        multiAnalysisStore.activeAssayStatus?.assay!, 
-        equateIl.value, filterDuplicates.value, cleavageHandling.value
-    )
+    if(dirty()) {
+        multiAnalysisStore.analyse(
+            multiAnalysisStore.activeAssayStatus?.assay!, 
+            equateIl.value, filterDuplicates.value, cleavageHandling.value
+        )
+    }
 }
 
 // Loading workaround
