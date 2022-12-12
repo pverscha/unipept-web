@@ -87,6 +87,7 @@
                                 :goProcessor="multiAnalysisStore.activeAssayStatus.filteredData?.goCountTableProcessor"
                                 :goOntology="multiAnalysisStore.activeAssayStatus?.goOntology"
                                 :showPercentage="sortPeptidePercentage"
+                                :downloadItem="downloadGoItem"
                             />
                         </v-tab-item>
                         <v-tab-item>
@@ -96,6 +97,7 @@
                                 :ecOntology="multiAnalysisStore.activeAssayStatus?.ecOntology"
                                 :ecTree="ecTree()"
                                 :showPercentage="sortPeptidePercentage"
+                                :downloadItem="downloadEcItem"
                             />
                         </v-tab-item>
                         <v-tab-item>
@@ -104,6 +106,7 @@
                                 :interproProcessor="multiAnalysisStore.activeAssayStatus.filteredData?.interproCountTableProcessor"
                                 :interproOntology="multiAnalysisStore.activeAssayStatus?.interproOntology"
                                 :showPercentage="sortPeptidePercentage"
+                                :downloadItem="downloadInterproItem"
                             />
                         </v-tab-item>
                     </v-tabs-items>
@@ -140,17 +143,23 @@ import SelectDatasetCard from '@/components/cards/analysis/multi/SelectDatasetCa
 import SwitchDatasetCard from '@/components/cards/analysis/multi/SwitchDatasetCard.vue';
 import { onUnmounted, ref } from 'vue';
 import AnalysisSummaryCard from '@/components/cards/analysis/multi/AnalysisSummaryCard.vue';
-import { GoSummaryCard, EcSummaryCard, InterproSummaryCard, VisualizationOverview, computeEcTree } from 'unipept-web-components';
+import { GoSummaryCard, EcSummaryCard, InterproSummaryCard, VisualizationOverview, computeEcTree, EcCode, CsvUtils, FunctionalSummaryProcessor, PeptideCountTableProcessor, useCsvDownload, PeptideData, FunctionalCode } from 'unipept-web-components';
 import useMultiAnalysis from '@/stores/MultiAnalysisStore';
 import SortingPeptidesModal from '@/components/modals/SortingPeptidesModal.vue';
+import { VRow, VCol, VCard, VTabs, VTab, VSpacer, VMenu, VBtn, VIcon, VList, VListItem, VListItemTitle, VTabsItems, VTabItem } from 'vuetify/lib';
+import { storeToRefs } from 'pinia';
 
 const multiAnalysisStore = useMultiAnalysis();
+
+const { activeAssayStatus } = storeToRefs(multiAnalysisStore);
 
 const selector = ref<boolean>(true);
 const displaySummary = ref<boolean>(false);
 const sortPeptidePercentage = ref<boolean>(false);
 
 const currentTab = ref<number>(0);
+
+const { downloadString } = useCsvDownload();
 
 const search = () => {
     selector.value = false;
@@ -183,6 +192,46 @@ onUnmounted(() => {
     displaySummary.value = false;
     sortPeptidePercentage.value = false;
 });
+
+const downloadItem = async (processor: any, ontology: any, code: FunctionalCode) => {
+    if(!activeAssayStatus.value) {
+        return;
+    }
+
+    const peptideTableProcessor = new PeptideCountTableProcessor();
+    const peptideCounts = await peptideTableProcessor.getPeptideCountTable(
+        processor.getAnnotationPeptideMapping().get(code)!,
+        activeAssayStatus.value.cleavageHandling,
+        activeAssayStatus.value.filterDuplicates,
+        activeAssayStatus.value.equateIl
+    );
+
+    const functionalSummaryProcessor = new FunctionalSummaryProcessor();
+    const data = await functionalSummaryProcessor.summarizeFunctionalAnnotation(
+        ontology.getDefinition(code)!,
+        peptideCounts,
+        activeAssayStatus.value.pept2Data,
+        // @ts-ignore
+        activeAssayStatus.value.ncbiOntology,
+        (peptideData: PeptideData) => peptideData.ec
+    );
+
+    const dataString = CsvUtils.toCsvString(data);
+
+    downloadString(dataString, code.replace(/:/g, "_") + ".csv")
+}
+
+const downloadEcItem = async (code: EcCode) => {
+    downloadItem(activeAssayStatus.value?.filteredData?.ecCountTableProcessor, activeAssayStatus.value?.ecOntology, code);
+}
+
+const downloadGoItem = async (code: string) => {
+    downloadItem(activeAssayStatus.value?.filteredData?.goCountTableProcessor, activeAssayStatus.value?.goOntology, code);
+}
+
+const downloadInterproItem = async (code: string) => {
+    downloadItem(activeAssayStatus.value?.filteredData?.interproCountTableProcessor, activeAssayStatus.value?.interproOntology, code);
+}
 </script>
 
 <style scoped>
