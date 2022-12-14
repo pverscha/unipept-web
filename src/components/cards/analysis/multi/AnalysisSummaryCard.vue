@@ -17,7 +17,7 @@
                 </v-alert>
             </div>
 
-            <div v-else-if="loading" style="display: flex; justify-content: center;">
+            <div v-else-if="loading" class="d-flex loading-container">
                 <v-progress-circular indeterminate color="primary" />
             </div>
 
@@ -139,3 +139,12 @@ multiAnalysisStore.$subscribe((mutation, state) => {
     loading.value = state.activeAssayStatus?.analysisInProgress!;
 });
 </script>
+
+<style scoped>
+.loading-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 0);
+}
+</style>
