@@ -15,11 +15,16 @@
                 <b>Reference:</b>
                 <small>
                     {{ dataset.reference }}
-                    <a target="_blank" title="Article website" :href="dataset.url">
-                        <span class="glyphicon glyphicon-link"></span>
+                    <a class="link" target="_blank" title="Article website" :href="dataset.url">
+                        <v-icon class="pb-1 primary--text" small>
+                            mdi-link-variant
+                        </v-icon>
                     </a>
-                    <a target="_blank" title="Project website" :href="dataset.projectWebsite">
+                    <a class="link" target="_blank" title="Project website" :href="dataset.projectWebsite">
                         <span class="glyphicon glyphicon-share-alt"></span>
+                        <v-icon class="pb-1 primary--text" small>
+                            mdi-share
+                        </v-icon>
                     </a>
                 </small>
                 <br>
@@ -127,3 +132,15 @@ const selectSampleDataset = (datatsetId: string) => {
 
 onMounted(retrieveDatasets);
 </script>
+
+<style scoped>
+.link {
+    color: #9e9e9e !important;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: white !important;
+    text-decoration: none;
+}
+</style>
