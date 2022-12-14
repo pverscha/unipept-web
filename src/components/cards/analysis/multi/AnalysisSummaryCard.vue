@@ -78,11 +78,11 @@
                         </a>
                         peptides couldn't be found.
                     </span>
-                </div>
 
-                <v-dialog v-model="showMissedPeptides" :width="600" scrollable>
-                    <MissingPeptidesModal :missedPeptides="multiAnalysisStore.activeAssayStatus.data.trust.missedPeptides" />
-                </v-dialog>
+                    <v-dialog v-model="showMissedPeptides" :width="600" scrollable>
+                        <MissingPeptidesModal :missedPeptides="multiAnalysisStore.activeAssayStatus.data.trust.missedPeptides" />
+                    </v-dialog>
+                </div>
             </div>
         </v-card-text>
     </v-card>

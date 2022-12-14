@@ -51,4 +51,5 @@ import LoadSampleDatasetCard from './LoadSampleDatasetCard.vue';
 import LoadPrideDatasetCard from './LoadPrideDatasetCard.vue';
 
 const currentTab = ref<number>(0);
+const errorSnackbar = ref<boolean>(false);
 </script>
