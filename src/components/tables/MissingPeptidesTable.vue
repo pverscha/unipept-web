@@ -3,15 +3,15 @@
         <v-data-table
             :headers="headers"
             :loading="!items"
-            :items="items"
+            :items="itemObjects"
             :itemsPerPage="10"
         >
             <template #item.peptide="{ item }">
-                <span>{{ item }}</span>
+                <span>{{ item.peptide }}</span>
             </template>
 
             <template #item.action="{ item }">
-                <a :href="url(item)" target="_blank" class="font-regular d-flex">
+                <a :href="url(item.peptide)" target="_blank" class="font-regular d-flex">
                     <v-icon class="pl-2">mdi-open-in-new</v-icon>
                 </a>
             </template>
@@ -21,13 +21,14 @@
 
 <script setup lang="ts">
 import { Peptide } from 'unipept-web-components';
+import { computed } from 'vue';
 
 export interface Props {
     items: Peptide[]
 }
 
 /* eslint-disable */
-defineProps<Props>();
+const props = defineProps<Props>();
 
 const headers = [
     {
@@ -44,6 +45,14 @@ const headers = [
         sortable: false
     }
 ];
+
+const itemObjects = computed(() => {
+    return props.items.map((item) => {
+        return {
+            peptide: item
+        };
+    });
+});
 
 const url = (peptide: Peptide) => {
     return "http://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastSearch&SET_SAVED_SEARCH=on" +
