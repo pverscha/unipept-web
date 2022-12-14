@@ -45,7 +45,8 @@ const filterSteps = [
     "Filter count table",
     "Compute filtered GO count table",
     "Compute filtered EC count table",
-    "Compute filtered InterPro count table"
+    "Compute filtered InterPro count table",
+    "filtering completed"
 ];
 
 const useMultiAnalysis = defineStore('multi-analysis', () => {
@@ -137,9 +138,6 @@ const useMultiAnalysis = defineStore('multi-analysis', () => {
                 assay.peptides, assayStatus.cleavageHandling, assayStatus.filterDuplicates,assayStatus.equateIl
             );
 
-            console.log("counts: aaa: ")
-            console.log(peptideCountTable);
-
             const [pept2Data, trust] = await pept2DataCommunicator.process(
                 peptideCountTable, assayStatus.cleavageHandling, assayStatus.equateIl, {
                     onProgressUpdate(progress: number) {
@@ -147,11 +145,6 @@ const useMultiAnalysis = defineStore('multi-analysis', () => {
                     }
                 }
             );
-
-
-            console.log("pept2Data: aaa: ")
-            console.log(pept2Data);
-
 
             updateProgress(assay, 91, ProgressSteps.GO_COUNT_TABLE, false);
 
