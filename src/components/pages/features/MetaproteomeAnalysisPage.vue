@@ -20,7 +20,24 @@
         </v-row>
 
         <v-row v-if="multiAnalysisStore.activeAssayStatus">
-            <v-col cols=12>
+            <v-col v-if="filtered()">
+                <v-alert class="mb-0" type="info" text outlined>
+                    <v-col class="grow pa-0">
+                        <b>
+                            Filtered results:
+                        </b>
+                        these results are limited to the {{ multiAnalysisStore.activeAssayStatus.filteredData.trust.matchedPeptides }} peptides specific to
+                        <b>
+                            {{ taxon()?.name }} ({{ taxon()?.rank }})
+                        </b>
+                    </v-col>
+                    <v-col class="shrink pa-0 ml-3">
+                        <v-btn @click="updateSelectedTaxonId(1)" color="primary" small>Reset filter</v-btn>
+                    </v-col>
+                </v-alert>
+            </v-col>
+
+            <v-col class="pb-0" cols=12>
                 <VisualizationOverview
                     :analysisInProgress="!multiAnalysisStore.analysisCompleted(multiAnalysisStore.activeAssayStatus.assay.id)"
                     :ecTree="ecTree()"
@@ -38,7 +55,7 @@
                 />
             </v-col>
 
-            <v-col cols=12>
+            <v-col class="pt-2" cols=12>
                 <v-card>
                     <v-tabs 
                         slider-color="secondary" 
@@ -161,6 +178,22 @@ const currentTab = ref<number>(0);
 
 const { downloadString } = useCsvDownload();
 
+const filtered = () => {
+    if(multiAnalysisStore.activeAssayStatus?.filterId) {
+        return multiAnalysisStore.activeAssayStatus?.filterId !== 1;
+    }
+
+    return false;
+};
+
+const taxon = () => {
+    if(multiAnalysisStore.activeAssayStatus) {
+        return multiAnalysisStore.activeAssayStatus.ncbiOntology.getDefinition(multiAnalysisStore.activeAssayStatus.filterId);
+    }
+
+    return undefined;
+};
+
 const search = () => {
     selector.value = false;
     displaySummary.value = true;
@@ -247,5 +280,14 @@ const downloadInterproItem = async (code: string) => {
     font-weight: 300;
     line-height: 24px;
     margin-top: 16px;
+}
+
+:deep(.v-alert__wrapper) {
+    display: flex !important;
+    align-items: center;
+}
+
+:deep(.v-alert__content) {
+    display: flex;
 }
 </style>
