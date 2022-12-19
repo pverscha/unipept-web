@@ -25,6 +25,13 @@ const navigation = [
             { name: "Install for Linux", link: "#linux_installation" },
             { name: "Update", link: "#update" }
         ]
+    },
+    {
+        name: "Application overview",
+        link: "/desktop/application-overview",
+        children: [
+            { name: "First time use", link: "#first_time_use" }
+        ]
     }
 ]
 </script>
