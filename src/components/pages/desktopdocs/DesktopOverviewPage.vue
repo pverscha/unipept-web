@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <h1 class="font-weight-light">
-            Unipept Desktop documentation <small>v2.0.0-alpha.9</small>
+            Unipept Desktop documentation <small>v2.0.0-alpha.11</small>
         </h1>
         <h3 class="font-weight-light mb-2">
             The Unipept Desktop application allows, in contrast to the web application, to analyse much larger samples,

@@ -49,7 +49,15 @@ const navigation = [
         link: "/desktop/single-assay-analysis",
         children: [
             { name: "Overview", link: "#overview" },
-            { name: "Analysing an assay", link: "#analysing_assay" }
+            { name: "Analyse an assay", link: "#analysing_assay" },
+            { name: "Browse analysis results", link: "#taxonomic_analysis_results" }
+        ]
+    },
+    {
+        name: "Inter-assay Comparative Analysis",
+        link: "/desktop/inter-assay-comparative-analysis",
+        children: [
+            { name: "Overview", link: "#overview" }
         ]
     }
 ]

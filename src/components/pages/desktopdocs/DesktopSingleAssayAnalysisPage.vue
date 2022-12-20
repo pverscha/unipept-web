@@ -29,7 +29,7 @@
                 viewer on the right.
             </p>
         </header-body-card>
-        <header-body-card title="Analysing an assay" id="analysing_assay" class="mb-5">
+        <header-body-card title="Analyse an assay" id="analysing_assay" class="mb-5">
             <h3>Start by creating a study</h3>
             <p>
                 In order to add a new assay to the current project, you first have to make sure that at least one
@@ -131,7 +131,7 @@
             </p>
         </header-body-card>
 
-        <header-body-card title="Browsing analysis results" id="taxonomic_analysis_results">
+        <header-body-card title="Browse analysis results" id="taxonomic_analysis_results">
             <p>
                 Once an analysis is finished, the main results are split into a taxonomic and a functional part. On top
                 of the &quot;Single assay analysis&quot; page, you will directly see a summary of the analysis including
