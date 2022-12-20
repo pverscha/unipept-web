@@ -119,16 +119,8 @@
     </v-container>
 </template>
 
-<script lang="ts">
-import Vue from "vue";
-import Component from "vue-class-component";
+<script setup lang="ts">
 import HeaderBodyCard from "@/components/cards/HeaderBodyCard.vue";
-@Component({
-    components: { HeaderBodyCard }
-})
-export default class DesktopApplicationOverviewPage extends Vue {
-
-}
 </script>
 
 <style scoped>

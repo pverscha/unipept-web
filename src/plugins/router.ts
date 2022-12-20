@@ -79,7 +79,8 @@ import {
 
 // Desktop Documentation
 import {
-    DesktopOverviewPage as DesktopOverviewPage
+    DesktopOverviewPage as DesktopOverviewPage,
+    DesktopHomeDocsPage as DesktopHomeDocsPage,
 } from "@/components/pages/desktopdocs";
 import DesktopApplicationOverviewPage from "@/components/pages/desktopdocs/DesktopApplicationOverviewPage.vue";
 
@@ -212,6 +213,7 @@ const routes = [
         children: [
             { path: "", component: DesktopOverviewPage, meta: desktopMeta },
             { path: "application-overview", component: DesktopApplicationOverviewPage, meta: desktopMeta },
+            { path: "home", component: DesktopHomeDocsPage, meta: desktopMeta },
         ],
         meta: desktopMeta
     },

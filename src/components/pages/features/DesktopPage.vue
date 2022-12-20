@@ -30,7 +30,18 @@ const navigation = [
         name: "Application overview",
         link: "/desktop/application-overview",
         children: [
-            { name: "First time use", link: "#first_time_use" }
+            { name: "First time use", link: "#first_time_use" },
+            { name: "Navigation overview", link: "#navigation_overview" }
+        ]
+    },
+    {
+        name: "Home",
+        link: "/desktop/home",
+        children: [
+            { name: "Overview", link: "#overview" },
+            { name: "Project terminology", link: "#project_terminology" },
+            { name: "Updates and release notes", link: "#updates_release_notes" },
+            { name: "Physical project structure", link: "#physical_project_structure" }
         ]
     }
 ]
