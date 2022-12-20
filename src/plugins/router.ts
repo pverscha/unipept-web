@@ -81,6 +81,7 @@ import {
 import {
     DesktopOverviewPage as DesktopOverviewPage,
     DesktopHomeDocsPage as DesktopHomeDocsPage,
+    DesktopSingleAssayAnalysisPage as DesktopSingleAssayAnalysisPage,
 } from "@/components/pages/desktopdocs";
 import DesktopApplicationOverviewPage from "@/components/pages/desktopdocs/DesktopApplicationOverviewPage.vue";
 
@@ -214,6 +215,7 @@ const routes = [
             { path: "", component: DesktopOverviewPage, meta: desktopMeta },
             { path: "application-overview", component: DesktopApplicationOverviewPage, meta: desktopMeta },
             { path: "home", component: DesktopHomeDocsPage, meta: desktopMeta },
+            { path: "single-assay-analysis", component: DesktopSingleAssayAnalysisPage, meta: desktopMeta },
         ],
         meta: desktopMeta
     },

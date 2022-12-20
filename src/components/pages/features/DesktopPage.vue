@@ -43,6 +43,14 @@ const navigation = [
             { name: "Updates and release notes", link: "#updates_release_notes" },
             { name: "Physical project structure", link: "#physical_project_structure" }
         ]
+    },
+    {
+        name: "Single Assay Analysis",
+        link: "/desktop/single-assay-analysis",
+        children: [
+            { name: "Overview", link: "#overview" },
+            { name: "Analysing an assay", link: "#analysing_assay" }
+        ]
     }
 ]
 </script>

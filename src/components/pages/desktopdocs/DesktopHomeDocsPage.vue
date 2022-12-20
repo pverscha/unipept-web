@@ -61,7 +61,7 @@
                 </div>
             </div>
         </header-body-card>
-        <header-body-card title="Project Terminology" id="project_terminology" class="mb-5">
+        <header-body-card title="Project terminology" id="project_terminology" class="mb-5">
             <p>
                 Every project in Unipept Desktop adheres to a specific structure. It's important that you grasp the
                 different concepts and terminology involved with these projects. You can find a summary of the different
@@ -86,7 +86,7 @@
                 same name can only occur within one project, if they belong to different studies.
             </p>
         </header-body-card>
-        <header-body-card title="Physical Project Structure" id="physical_project_structure">
+        <header-body-card title="Physical project structure" id="physical_project_structure">
             Every project corresponds to a single folder on your local file system. This folder will always contain
             at least the following files and folders:
 
