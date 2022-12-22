@@ -127,16 +127,13 @@
                             window that asks for your explicit approval to install our application. Click "More info".
                         </p>
                     </v-col>
-                    <v-col :cols="imgWidth">
-                        <v-card>
-                            <v-card-text>
-                                <a :href="require('@/assets/documentation/desktop/unipept_desktop_windows_1.png')">
-                                    <v-img
-                                        :src="require('@/assets/documentation/desktop/unipept_desktop_windows_1.png')"
-                                        contain />
-                                </a>
-                            </v-card-text>
-                        </v-card>
+                    <v-col :cols="imgWidth" :class="screenshotClass">
+                        <a :href="require('@/assets/documentation/desktop/getting_started/desktop_install_windows_1.png')">
+                            <v-img
+                                :src="require('@/assets/documentation/desktop/getting_started/desktop_install_windows_1.png')"
+                                contain
+                                class="screenshot" />
+                        </a>
                     </v-col>
                 </v-row>
                 <v-row>
@@ -150,16 +147,13 @@
                             to use this app, the faster it will be trusted by Microsoft.
                         </p>
                     </v-col>
-                    <v-col :cols="imgWidth">
-                        <v-card>
-                            <v-card-text>
-                                <a :href="require('@/assets/documentation/desktop/unipept_desktop_windows_2.png')">
-                                    <v-img
-                                        :src="require('@/assets/documentation/desktop/unipept_desktop_windows_2.png')"
-                                        contain />
-                                </a>
-                            </v-card-text>
-                        </v-card>
+                    <v-col :cols="imgWidth" :class="screenshotClass">
+                        <a :href="require('@/assets/documentation/desktop/getting_started/desktop_install_windows_2.png')">
+                            <v-img
+                                :src="require('@/assets/documentation/desktop/getting_started/desktop_install_windows_2.png')"
+                                contain
+                                class="screenshot" />
+                        </a>
                     </v-col>
                 </v-row>
                 <v-row>
@@ -172,16 +166,13 @@
                             finished.
                         </p>
                     </v-col>
-                    <v-col :cols="imgWidth">
-                        <v-card>
-                            <v-card-text>
-                                <a :href="require('@/assets/documentation/desktop/unipept_desktop_windows_3.png')">
-                                    <v-img
-                                        :src="require('@/assets/documentation/desktop/unipept_desktop_windows_3.png')"
-                                        contain />
-                                </a>
-                            </v-card-text>
-                        </v-card>
+                    <v-col :cols="imgWidth" :class="screenshotClass">
+                        <a :href="require('@/assets/documentation/desktop/getting_started/desktop_install_windows_3.png')">
+                            <v-img
+                                :src="require('@/assets/documentation/desktop/getting_started/desktop_install_windows_3.png')"
+                                contain
+                                class="screenshot" />
+                        </a>
                     </v-col>
                 </v-row>
                 <v-row>
@@ -192,16 +183,13 @@
                             selecting it from the applications list in Windows.
                         </p>
                     </v-col>
-                    <v-col :cols="imgWidth">
-                        <v-card>
-                            <v-card-text>
-                                <a :href="require('@/assets/documentation/desktop/unipept_desktop_windows_4.png')">
-                                    <v-img
-                                        :src="require('@/assets/documentation/desktop/unipept_desktop_windows_4.png')"
-                                        contain />
-                                </a>
-                            </v-card-text>
-                        </v-card>
+                    <v-col :cols="imgWidth" :class="screenshotClass">
+                        <a :href="require('@/assets/documentation/desktop/getting_started/desktop_install_windows_4.png')">
+                            <v-img
+                                :src="require('@/assets/documentation/desktop/getting_started/desktop_install_windows_4.png')"
+                                contain
+                                class="screenshot" />
+                        </a>
                     </v-col>
                 </v-row>
             </v-container>
@@ -217,16 +205,13 @@
                             pops up in which you need to drag the Unipept Desktop logo into your applications folder.
                         </p>
                     </v-col>
-                    <v-col :cols="imgWidth">
-                        <v-card>
-                            <v-card-text>
-                                <a :href="require('@/assets/documentation/desktop/unipept_desktop_macos_1.png')">
-                                    <v-img
-                                        :src="require('@/assets/documentation/desktop/unipept_desktop_macos_1.png')"
-                                        contain />
-                                </a>
-                            </v-card-text>
-                        </v-card>
+                    <v-col :cols="imgWidth" :class="screenshotClass">
+                        <a :href="require('@/assets/documentation/desktop/getting_started/desktop_install_macos_1.png')">
+                            <v-img
+                                :src="require('@/assets/documentation/desktop/getting_started/desktop_install_macos_1.png')"
+                                contain
+                                class="screenshot" />
+                        </a>
                     </v-col>
                 </v-row>
                 <v-row>
@@ -236,16 +221,13 @@
                             Look for the installed application in Launchpad and start Unipept Desktop.
                         </p>
                     </v-col>
-                    <v-col :cols="imgWidth">
-                        <v-card>
-                            <v-card-text>
-                                <a :href="require('@/assets/documentation/desktop/unipept_desktop_macos_2.png')">
-                                    <v-img
-                                        :src="require('@/assets/documentation/desktop/unipept_desktop_macos_2.png')"
-                                        contain />
-                                </a>
-                            </v-card-text>
-                        </v-card>
+                    <v-col :cols="imgWidth" :class="screenshotClass">
+                        <a :href="require('@/assets/documentation/desktop/getting_started/desktop_install_macos_2.png')">
+                            <v-img
+                                :src="require('@/assets/documentation/desktop/getting_started/desktop_install_macos_2.png')"
+                                contain
+                                class="screenshot"/>
+                        </a>
                     </v-col>
                 </v-row>
             </v-container>
@@ -261,16 +243,13 @@
                             window will pop up.
                         </p>
                     </v-col>
-                    <v-col :cols="imgWidth">
-                        <v-card>
-                            <v-card-text>
-                                <a :href="require('@/assets/documentation/desktop/unipept_desktop_ubuntu_1.png')">
-                                    <v-img
-                                        :src="require('@/assets/documentation/desktop/unipept_desktop_ubuntu_1.png')"
-                                        contain />
-                                </a>
-                            </v-card-text>
-                        </v-card>
+                    <v-col :cols="imgWidth" :class="screenshotClass">
+                        <a :href="require('@/assets/documentation/desktop/getting_started/desktop_install_ubuntu_1.png')">
+                            <v-img
+                                :src="require('@/assets/documentation/desktop/getting_started/desktop_install_ubuntu_1.png')"
+                                contain
+                                class="screenshot" />
+                        </a>
                     </v-col>
                 </v-row>
                 <v-row>
@@ -281,16 +260,13 @@
                             Close the window.
                         </p>
                     </v-col>
-                    <v-col :cols="imgWidth">
-                        <v-card>
-                            <v-card-text>
-                                <a :href="require('@/assets/documentation/desktop/unipept_desktop_ubuntu_2.png')">
-                                    <v-img
-                                        :src="require('@/assets/documentation/desktop/unipept_desktop_ubuntu_2.png')"
-                                        contain />
-                                </a>
-                            </v-card-text>
-                        </v-card>
+                    <v-col :cols="imgWidth" :class="screenshotClass">
+                        <a :href="require('@/assets/documentation/desktop/getting_started/desktop_install_ubuntu_2.png')">
+                            <v-img
+                                :src="require('@/assets/documentation/desktop/getting_started/desktop_install_ubuntu_2.png')"
+                                contain
+                                class="screenshot" />
+                        </a>
                     </v-col>
                 </v-row>
                 <v-row>
@@ -300,22 +276,69 @@
                             Double-click the downloaded AppImage-file to start the application.
                         </p>
                     </v-col>
-                    <v-col :cols="imgWidth">
-                        <v-card>
-                            <v-card-text>
-                                <a :href="require('@/assets/documentation/desktop/unipept_desktop_ubuntu_3.png')">
-                                    <v-img
-                                        :src="require('@/assets/documentation/desktop/unipept_desktop_ubuntu_3.png')"
-                                        contain />
-                                </a>
-                            </v-card-text>
-                        </v-card>
+                    <v-col :cols="imgWidth" :class="screenshotClass">
+                        <a :href="require('@/assets/documentation/desktop/getting_started/desktop_install_ubuntu_3.png')">
+                            <v-img
+                                :src="require('@/assets/documentation/desktop/getting_started/desktop_install_ubuntu_3.png')"
+                                contain
+                                class="screenshot" />
+                        </a>
                     </v-col>
                 </v-row>
             </v-container>
         </header-body-card>
 
-        <header-body-card id="update" title="Update" class="mt-5">
+        <header-body-card id="first_time_use" title="First time use" class="mt-5">
+            If this is your first time using the application, we recommend to follow the steps in this guide to
+            get you started easily and to get acquainted with the basic functionality of the application.
+            <h3>Static database download</h3>
+            <p>
+                A few things are automatically set up the first time you start this application. You will directly
+                notice a dialog popping up that downloads a small SQLite-database. This database is called the
+                &quot;static database&quot; and contains static information about taxa and functional annotations. Every
+                month, a new release of this database is automatically generated. Unipept Desktop will regularly check
+                for a new version of this database and automatically download it when necessary.
+            </p>
+            <div class="d-flex justify-center">
+                <v-img
+                    :src="require('@/assets/documentation/desktop/desktop_download_static_database.png')"
+                    max-width="800"
+                    contain />
+            </div>
+            <p>
+                Download and installation of this static database can take a few minutes, depending on the available
+                speed of your internet connection. If, for some reason, the download fails, the application will
+                automatically fallback to a (slower) online version of this database and will continue to work. A new
+                attempt to install the database will be made when you restart the application.
+            </p>
+            <h3 class="mb-2">Opening the demo project</h3>
+            <v-alert color="warning" outlined>
+                <span class="font-weight-bold">Warning:</span>
+                Changes made to the demo project will not be saved! The demo project is read-only and all changes will
+                be lost when you close the application.
+            </v-alert>
+            <p>
+                Every assay or sample needs to be associated with a project. So, before you can start analyzing your
+                data, you need to create a project. However, since this is the first time you use the application, we
+                recommend you to click the &quot;Open demo project&quot; button. By doing so, a preconfigured project
+                will be loaded and you can quickly browse the analysis results that are being produced by Unipept
+                and play with some of its features.
+            </p>
+            <h3>Creating a new project</h3>
+            <p>
+                In order to create a project of your own, head back to the homepage of the application by clicking on
+                the &quot;home&quot; button in the sidebar. Here, you will find a button to create a new project or to
+                reopen an existing project. Click the &quot;New project&quot; button, select an empty folder (or create
+                a new one) and continue.
+            </p>
+            <h3>Saving a project</h3>
+            <p>
+                Changes made to projects are automatically saved. If you close the application, the current state of
+                the project will already be persisted and there's nothing else that needs to be done.
+            </p>
+        </header-body-card>
+
+        <header-body-card id="update" title="Updating the application" class="mt-5">
             <p>
                 The Unipept Desktop Application will check for updates automatically. Once an update is found, the new
                 version of the application will automatically be downloaded and a progress bar at the bottom of the
@@ -337,4 +360,11 @@ import HeaderBodyCard from "@/components/cards/HeaderBodyCard.vue";
 
 const stepWidth = 9;
 const imgWidth = 3;
+const screenshotClass = "pa-6";
 </script>
+
+<style>
+.screenshot {
+    filter: drop-shadow(0 0 0.50rem gray);
+}
+</style>

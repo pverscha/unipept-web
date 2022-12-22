@@ -78,13 +78,11 @@ import {
 } from "@/components/pages/metagenomics"
 
 // Desktop Documentation
-import {
-    DesktopOverviewPage as DesktopOverviewPage,
-    DesktopHomeDocsPage as DesktopHomeDocsPage,
-    DesktopSingleAssayAnalysisPage as DesktopSingleAssayAnalysisPage,
-    DesktopInterAssayComparisonPage as DesktopInterAssayComparisonPage,
-} from "@/components/pages/desktopdocs";
+import DesktopGettingStartedPage from "@/components/pages/desktopdocs/DesktopGettingStartedPage.vue"
 import DesktopApplicationOverviewPage from "@/components/pages/desktopdocs/DesktopApplicationOverviewPage.vue";
+import DesktopHomeDocsPage from "@/components/pages/desktopdocs/DesktopHomeDocsPage.vue";
+import DesktopSingleAssayAnalysisPage from "@/components/pages/desktopdocs/DesktopSingleAssayAnalysisPage.vue";
+import DesktopInterAssayComparisonPage from "@/components/pages/desktopdocs/DesktopInterAssayComparisonPage.vue";
 
 Vue.use(VueRouter);
 
@@ -213,7 +211,7 @@ const routes = [
         path: "/desktop",
         component: DesktopPage,
         children: [
-            { path: "", component: DesktopOverviewPage, meta: desktopMeta },
+            { path: "", component: DesktopGettingStartedPage, meta: desktopMeta },
             { path: "application-overview", component: DesktopApplicationOverviewPage, meta: desktopMeta },
             { path: "home", component: DesktopHomeDocsPage, meta: desktopMeta },
             { path: "single-assay-analysis", component: DesktopSingleAssayAnalysisPage, meta: desktopMeta },

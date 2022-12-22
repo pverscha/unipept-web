@@ -202,12 +202,8 @@
     </v-container>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import HeaderBodyCard from "@/components/cards/HeaderBodyCard.vue";
-
-export default {
-    components: { HeaderBodyCard }
-}
 </script>
 
 <style scoped>

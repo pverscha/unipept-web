@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <h1 class="font-weight-light">
-            Unipept Desktop - Home
+            Unipept Desktop - Project Management
         </h1>
         <h3 class="font-weight-light mb-2">
             Main starting point of the application.

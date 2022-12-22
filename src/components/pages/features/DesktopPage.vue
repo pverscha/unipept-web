@@ -16,14 +16,15 @@ import HorizontalNavigation from "@/components/navigation/HorizontalNavigation.v
 
 const navigation = [
     {
-        name: "Overview",
+        name: "Getting started",
         link: "/desktop",
         children: [
             { name: "Download", link: "#download" },
             { name: "Install for Windows", link: "#windows_installation" },
             { name: "Install for macOS", link: "#macos_installation" },
             { name: "Install for Linux", link: "#linux_installation" },
-            { name: "Update", link: "#update" }
+            { name: "First time use", link: "#first_time_use" },
+            { name: "Updating the application", link: "#update" }
         ]
     },
     {
