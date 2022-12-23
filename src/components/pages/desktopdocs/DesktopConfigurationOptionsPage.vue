@@ -1,0 +1,74 @@
+<template>
+    <v-container>
+        <h1 class="font-weight-light">
+            Configuration options
+        </h1>
+        <h3 class="font-weight-light mb-2">
+            A lot of the default behaviour of the Unipept Desktop application can be tweaked using the configuration
+            options of the app. This document provides an overview of the different configuration options and some
+            sensible default values.
+        </h3>
+
+        <header-body-card title="Concurrency" id="concurrency" class="mb-5">
+            <div class="d-flex justify-center">
+                <v-img
+                    :src="require('@/assets/documentation/desktop/configuration/desktop_configuration_concurrency.png')"
+                    max-width="800"
+                    contain
+                    eager
+                    class="screenshot ma-6" />
+            </div>
+
+            <p>
+                The &quot;Concurrency&quot; section of the configuration options allows you to tweak a number of
+                network settings that are used by the Unipept Desktop application. These options typically influence
+                the time it takes to perform a single analysis, and the amount of network traffic that is generated
+                at one point in time.
+            </p>
+
+            <h3>Long running tasks</h3>
+            <p>
+                A long running task, in this context, is defined as a task that runs in the background and takes longer
+                than a few milliseconds to complete. A good example of such a long running task is reading in all of
+                the peptides found in an assay file. More than one of these tasks can be executed at the same time, and
+                typically require either a lot of processing power, or disk activity. In order to limit the impact of
+                Unipept on the rest of your system, you can limit the number of long running tasks that can be executed
+                in parallel here. It is recommended to set this value a little bit lower than the number of CPU cores
+                that are available on your system. This safeguards the reservation of some spare resources for other
+                processes that might require processing power.
+            </p>
+
+            <h3>API requests</h3>
+            <p>
+                This option determines the amount of HTTP-requests that will be performed in parallel to our API-server.
+                Setting this to a higher value will typically improve analysis performance. However, setting it too
+                high, can cause a bigger load on our server (causing your requests to be delayed). It is recommended
+                to set this to a value between 1 and 5.
+            </p>
+
+            <h3>Custom endpoints</h3>
+            <p>
+                If you are using our online service for the analysis of a sample, you are typically using the
+                <a href="https://api.unipept.ugent.be">https://api.unipept.ugent.be</a> endpoint. Sometimes, however,
+                you might be interested to use a custom endpoint that's set up by a third party. This allows you, for
+                example, to use a local instance of the Unipept API-server and avoid sensitive data to be sent over
+                the internet. Add custom API-endpoints that adhere to the Unipept API-specification here. You can
+                select which endpoint should be used during the analysis of an assay.
+            </p>
+        </header-body-card>
+
+        <header-body-card title="Storage" id="storage" class="mb-5">
+        </header-body-card>
+
+        <header-body-card title="Docker" id="docker" class="mb-5">
+        </header-body-card>
+    </v-container>
+</template>
+
+<script setup lang="ts">
+import HeaderBodyCard from "@/components/cards/HeaderBodyCard.vue";
+</script>
+
+<style scoped>
+
+</style>

@@ -23,7 +23,6 @@
                 that is highly configurable. On this page, we will guide you through the different steps that are
                 required to construct such a heatmap.
             </p>
-
         </header-body-card>
 
         <header-body-card title="Intra-assay comparison" id="intra_assay_comparison" class="mb-5">

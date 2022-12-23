@@ -60,6 +60,15 @@ const navigation = [
             { name: "Intra-assay comparison", link: "#intra_assay_comparison" },
             { name: "Inter-assay comparison", link: "#inter_assay_comparison" }
         ]
+    },
+    {
+        name: "Configuration options",
+        link: "/desktop/configuration",
+        children: [
+            { name: "Concurrency", link: "#concurrency" },
+            { name: "Storage", link: "#storage" },
+            { name: "Docker", link: "#docker" }
+        ]
     }
 ]
 </script>
