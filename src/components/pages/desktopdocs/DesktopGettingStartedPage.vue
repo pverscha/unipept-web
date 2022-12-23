@@ -8,7 +8,16 @@
             to store analysis results offline, extensively compare assays with each other, better manage
             samples and perform proteogenomics data analyses using targeted protein reference databases.
         </h3>
-        <div>
+
+        <header-body-card title="Overview" id="overview" class="mb-5">
+            <div>
+                <v-img
+                    :src="require('@/assets/documentation/desktop/getting_started/desktop_overview.png')"
+                    contain
+                    eager
+                    class="screenshot ma-6" />
+            </div>
+
             <p>
                 Unipept's web application provides users with the ability to analyze a metaproteomics sample and extract
                 taxonomic and functional information from environmental samples. Our web app provides interactive
@@ -52,9 +61,8 @@
                     doi:10.1093/bioinformatics/btw039
                 </resource-link>
             </p>
-        </div>
-
-        <header-body-card id="download" title="Download" class="my-5">
+        </header-body-card>
+        <header-body-card id="download" title="Download" class="mb-5">
             <p>
                 In order to use the Unipept Desktop Application, it needs to be installed first. You can always download
                 the most recent version for your operating system from the releases on GitHub. Direct links for the
@@ -132,6 +140,7 @@
                             <v-img
                                 :src="require('@/assets/documentation/desktop/getting_started/desktop_install_windows_1.png')"
                                 contain
+                                eager
                                 class="screenshot" />
                         </a>
                     </v-col>
@@ -152,6 +161,7 @@
                             <v-img
                                 :src="require('@/assets/documentation/desktop/getting_started/desktop_install_windows_2.png')"
                                 contain
+                                eager
                                 class="screenshot" />
                         </a>
                     </v-col>
@@ -171,6 +181,7 @@
                             <v-img
                                 :src="require('@/assets/documentation/desktop/getting_started/desktop_install_windows_3.png')"
                                 contain
+                                eager
                                 class="screenshot" />
                         </a>
                     </v-col>
@@ -188,6 +199,7 @@
                             <v-img
                                 :src="require('@/assets/documentation/desktop/getting_started/desktop_install_windows_4.png')"
                                 contain
+                                eager
                                 class="screenshot" />
                         </a>
                     </v-col>
@@ -210,6 +222,7 @@
                             <v-img
                                 :src="require('@/assets/documentation/desktop/getting_started/desktop_install_macos_1.png')"
                                 contain
+                                eager
                                 class="screenshot" />
                         </a>
                     </v-col>
@@ -226,6 +239,7 @@
                             <v-img
                                 :src="require('@/assets/documentation/desktop/getting_started/desktop_install_macos_2.png')"
                                 contain
+                                eager
                                 class="screenshot"/>
                         </a>
                     </v-col>
@@ -248,6 +262,7 @@
                             <v-img
                                 :src="require('@/assets/documentation/desktop/getting_started/desktop_install_ubuntu_1.png')"
                                 contain
+                                eager
                                 class="screenshot" />
                         </a>
                     </v-col>
@@ -265,6 +280,7 @@
                             <v-img
                                 :src="require('@/assets/documentation/desktop/getting_started/desktop_install_ubuntu_2.png')"
                                 contain
+                                eager
                                 class="screenshot" />
                         </a>
                     </v-col>
@@ -281,6 +297,7 @@
                             <v-img
                                 :src="require('@/assets/documentation/desktop/getting_started/desktop_install_ubuntu_3.png')"
                                 contain
+                                eager
                                 class="screenshot" />
                         </a>
                     </v-col>
@@ -306,6 +323,7 @@
                 <v-img
                     :src="require('@/assets/documentation/desktop/desktop_download_static_database.png')"
                     max-width="800"
+                    eager
                     contain />
             </div>
             <p>
@@ -347,7 +365,8 @@
                     :src="require('@/assets/documentation/desktop/getting_started/desktop_update_notification.png')"
                     max-width="800"
                     contain
-                    class="screenshot" />
+                    eager
+                    class="screenshot ma-6" />
                 <div>
                     <span class="font-weight-bold">Figure 1:</span> a notification is shown during the automatic
                     application update process on the bottom of the main application window.
@@ -366,12 +385,13 @@
                 is also available on our
                 <a href="https://github.com/unipept/unipept-desktop/releases">release notes page</a>.
             </p>
-            <div class="d-flex align-center flex-column ma-6">
+            <div class="d-flex align-center flex-column">
                 <v-img
                     :src="require('@/assets/documentation/desktop/getting_started/desktop_update_changes.png')"
                     max-width="800"
                     contain
-                    class="screenshot" />
+                    eager
+                    class="screenshot ma-6" />
                 <div>
                     <span class="font-weight-bold">Figure 2:</span> when an update is available, a small message will
                     appear on the homepage. A dialog with a summary of all changes will pop up after clicking on this

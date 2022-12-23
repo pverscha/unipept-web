@@ -44,7 +44,7 @@ const navigation = [
         ]
     },
     {
-        name: "Single Assay Analysis",
+        name: "Single assay analysis",
         link: "/desktop/single-assay-analysis",
         children: [
             { name: "Overview", link: "#overview" },
@@ -53,10 +53,12 @@ const navigation = [
         ]
     },
     {
-        name: "Inter-assay Comparative Analysis",
-        link: "/desktop/inter-assay-comparative-analysis",
+        name: "Comparative analysis",
+        link: "/desktop/comparative-analysis",
         children: [
-            { name: "Overview", link: "#overview" }
+            { name: "Overview", link: "#overview" },
+            { name: "Intra-assay comparison", link: "#intra_assay_comparison" },
+            { name: "Inter-assay comparison", link: "#inter_assay_comparison" }
         ]
     }
 ]

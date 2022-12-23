@@ -82,7 +82,7 @@ import DesktopGettingStartedPage from "@/components/pages/desktopdocs/DesktopGet
 import DesktopApplicationOverviewPage from "@/components/pages/desktopdocs/DesktopApplicationOverviewPage.vue";
 import DesktopProjectManagementPage from "@/components/pages/desktopdocs/DesktopProjectManagementPage.vue";
 import DesktopSingleAssayAnalysisPage from "@/components/pages/desktopdocs/DesktopSingleAssayAnalysisPage.vue";
-import DesktopInterAssayComparisonPage from "@/components/pages/desktopdocs/DesktopInterAssayComparisonPage.vue";
+import DesktopComparativeAnalysisPage from "@/components/pages/desktopdocs/DesktopComparativeAnalysisPage.vue";
 
 Vue.use(VueRouter);
 
@@ -215,7 +215,7 @@ const routes = [
             { path: "application-overview", component: DesktopApplicationOverviewPage, meta: desktopMeta },
             { path: "project-management", component: DesktopProjectManagementPage, meta: desktopMeta },
             { path: "single-assay-analysis", component: DesktopSingleAssayAnalysisPage, meta: desktopMeta },
-            { path: "inter-assay-comparative-analysis", component: DesktopInterAssayComparisonPage, meta: desktopMeta },
+            { path: "comparative-analysis", component: DesktopComparativeAnalysisPage, meta: desktopMeta },
         ],
         meta: desktopMeta
     },
