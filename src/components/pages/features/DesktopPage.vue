@@ -31,18 +31,16 @@ const navigation = [
         name: "Application overview",
         link: "/desktop/application-overview",
         children: [
-            { name: "First time use", link: "#first_time_use" },
-            { name: "Navigation overview", link: "#navigation_overview" }
+            { name: "Application window", link: "#application_window" },
+            { name: "Sidebar", link: "#sidebar" }
         ]
     },
     {
-        name: "Home",
-        link: "/desktop/home",
+        name: "Project management",
+        link: "/desktop/project-management",
         children: [
             { name: "Overview", link: "#overview" },
-            { name: "Project terminology", link: "#project_terminology" },
-            { name: "Updates and release notes", link: "#updates_release_notes" },
-            { name: "Physical project structure", link: "#physical_project_structure" }
+            { name: "Managing projects", link: "#managing_projects" }
         ]
     },
     {

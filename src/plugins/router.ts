@@ -80,7 +80,7 @@ import {
 // Desktop Documentation
 import DesktopGettingStartedPage from "@/components/pages/desktopdocs/DesktopGettingStartedPage.vue"
 import DesktopApplicationOverviewPage from "@/components/pages/desktopdocs/DesktopApplicationOverviewPage.vue";
-import DesktopHomeDocsPage from "@/components/pages/desktopdocs/DesktopHomeDocsPage.vue";
+import DesktopProjectManagementPage from "@/components/pages/desktopdocs/DesktopProjectManagementPage.vue";
 import DesktopSingleAssayAnalysisPage from "@/components/pages/desktopdocs/DesktopSingleAssayAnalysisPage.vue";
 import DesktopInterAssayComparisonPage from "@/components/pages/desktopdocs/DesktopInterAssayComparisonPage.vue";
 
@@ -213,7 +213,7 @@ const routes = [
         children: [
             { path: "", component: DesktopGettingStartedPage, meta: desktopMeta },
             { path: "application-overview", component: DesktopApplicationOverviewPage, meta: desktopMeta },
-            { path: "home", component: DesktopHomeDocsPage, meta: desktopMeta },
+            { path: "project-management", component: DesktopProjectManagementPage, meta: desktopMeta },
             { path: "single-assay-analysis", component: DesktopSingleAssayAnalysisPage, meta: desktopMeta },
             { path: "inter-assay-comparative-analysis", component: DesktopInterAssayComparisonPage, meta: desktopMeta },
         ],

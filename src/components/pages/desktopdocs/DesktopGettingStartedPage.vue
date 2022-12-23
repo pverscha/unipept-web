@@ -54,7 +54,7 @@
             </p>
         </div>
 
-        <header-body-card id="download" title="Download" class="mt-5">
+        <header-body-card id="download" title="Download" class="my-5">
             <p>
                 In order to use the Unipept Desktop Application, it needs to be installed first. You can always download
                 the most recent version for your operating system from the releases on GitHub. Direct links for the
@@ -117,7 +117,7 @@
             </v-alert>
         </header-body-card>
 
-        <header-body-card id="windows_installation" title="Install for Windows" class="mt-5">
+        <header-body-card id="windows_installation" title="Install for Windows" class="mb-5">
             <v-container>
                 <v-row>
                     <v-col :cols="stepWidth">
@@ -195,7 +195,7 @@
             </v-container>
         </header-body-card>
 
-        <header-body-card id="macos_installation" title="Install for macOS" class="mt-5">
+        <header-body-card id="macos_installation" title="Install for macOS" class="mb-5">
             <v-container>
                 <v-row>
                     <v-col :cols="stepWidth">
@@ -233,7 +233,7 @@
             </v-container>
         </header-body-card>
 
-        <header-body-card id="linux_installation" title="Install for Linux" class="mt-5">
+        <header-body-card id="linux_installation" title="Install for Linux" class="mb-5">
             <v-container>
                 <v-row>
                     <v-col :cols="stepWidth">
@@ -288,9 +288,12 @@
             </v-container>
         </header-body-card>
 
-        <header-body-card id="first_time_use" title="First time use" class="mt-5">
-            If this is your first time using the application, we recommend to follow the steps in this guide to
-            get you started easily and to get acquainted with the basic functionality of the application.
+        <header-body-card id="first_time_use" title="First time use" class="mb-5">
+            <p>
+                If this is your first time using the application, we recommend to follow the steps in this guide to
+                get you started easily and to get acquainted with the basic functionality of the application.
+            </p>
+
             <h3>Static database download</h3>
             <p>
                 A few things are automatically set up the first time you start this application. You will directly
@@ -338,18 +341,43 @@
             </p>
         </header-body-card>
 
-        <header-body-card id="update" title="Updating the application" class="mt-5">
+        <header-body-card title="Updating the application" id="update" class="mb-5">
+            <div class="d-flex align-center flex-column ma-6">
+                <v-img
+                    :src="require('@/assets/documentation/desktop/getting_started/desktop_update_notification.png')"
+                    max-width="800"
+                    contain
+                    class="screenshot" />
+                <div>
+                    <span class="font-weight-bold">Figure 1:</span> a notification is shown during the automatic
+                    application update process on the bottom of the main application window.
+                </div>
+            </div>
             <p>
-                The Unipept Desktop Application will check for updates automatically. Once an update is found, the new
-                version of the application will automatically be downloaded and a progress bar at the bottom of the
-                application appears.Once the application is done downloading the new application, the update is
-                installed in the background. After the installation finishes, a notification pops up and requests the
-                user to restart the application to complete the update.
+                The application will automatically be kept up-to-date. Everytime it is started, Unipept will
+                automatically contact the update-servers and check if a new version if available. If this is
+                the case, a notification will appear on the bottom of the application window. The notification shows
+                the update progress and will ask you to restart the application once the update is finished. The
+                previous version will be used as long as the app is not (manually) restarted.
             </p>
             <p>
-                It's not mandatory to restart the application immediately after an update is installed. Note, however,
-                that the new version will only take effect after restarting the app.
+                A summary of all changes that were made between the current version of the application and the previous
+                version will always be displayed on the right side of the home page. This summary (for all versions)
+                is also available on our
+                <a href="https://github.com/unipept/unipept-desktop/releases">release notes page</a>.
             </p>
+            <div class="d-flex align-center flex-column ma-6">
+                <v-img
+                    :src="require('@/assets/documentation/desktop/getting_started/desktop_update_changes.png')"
+                    max-width="800"
+                    contain
+                    class="screenshot" />
+                <div>
+                    <span class="font-weight-bold">Figure 2:</span> when an update is available, a small message will
+                    appear on the homepage. A dialog with a summary of all changes will pop up after clicking on this
+                    message.
+                </div>
+            </div>
         </header-body-card>
     </v-container>
 </template>
@@ -362,9 +390,3 @@ const stepWidth = 9;
 const imgWidth = 3;
 const screenshotClass = "pa-6";
 </script>
-
-<style>
-.screenshot {
-    filter: drop-shadow(0 0 0.50rem gray);
-}
-</style>

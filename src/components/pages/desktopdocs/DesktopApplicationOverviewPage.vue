@@ -1,118 +1,118 @@
 <template>
     <v-container>
         <h1 class="font-weight-light">
-            Unipept Desktop - Overview
+            Application overview
         </h1>
         <h3 class="font-weight-light mb-2">
-            Read this document to quickly get started to use our application.
+            This document provides a quick overview and explanation of the main application window and how this is
+            composed of smaller components.
         </h3>
-        <header-body-card title="First Time Use" id="first_time_use" class="mb-5">
-            <p>
-                A few things are automatically set up the first time you start this application. You will directly
-                notice a dialog popping up that downloads a small SQLite-database. This database contains static
-                information about taxa and functional annotations. Every month, a new release of this database is
-                automatically generated. Unipept Desktop will regularly check for a new version of this database and
-                update it in the background.
-            </p>
-            <div class="d-flex justify-center">
-                <v-img
-                    :src="require('@/assets/documentation/desktop/desktop_download_static_database.png')"
+        <header-body-card title="Application window" id="application_window" class="mb-5">
+            <div class="d-flex justify-center ma-5">
+                <v-img :src="require('@/assets/documentation/desktop/application_overview/desktop_application_structure.png')"
                     max-width="800"
-                    contain />
-            </div>
-            <p>
-                Installation for this static database can take up to a few minutes, depending on the downlink of your
-                internet connection. The application will continue to work if the installation fails for some reason, it
-                will only take longer before analysis results are available. A new attempt to install the database will
-                be made when you restart the application.
-            </p>
-        </header-body-card>
-        <header-body-card title="Navigation Overview" id="navigation_overview">
-            <div class="d-flex justify-center">
-                <v-img :src="require('@/assets/documentation/desktop/desktop_navigation_overview.png')"
-                    max-width="800"
-                    contain />
+                    contain
+                    class="screenshot"/>
             </div>
             <p>
                 The application window will always consists of two main parts. On the far left (depicted in red in the
-                screenshot), you will find the sidebar. The sidebar can be used to navigate between the different main
-                functions of the application. Unipept's sidebar will always look the same, no matter which analysis page
-                is selected. On the right (depicted in purple in the screenshot) the main content view is located. This
-                is the part of the application that will change depending on the selected tab in the sidebar.
+                screenshot), you will find the sidebar. The sidebar is always visible and can be used to navigate
+                between the different windows of this application (each corresponding to a specific feature or
+                functionality). On the right (depicted in purple in the screenshot) the main content view is located.
+                This is the part of the application that will change depending on the selected tab in the sidebar.
             </p>
+        </header-body-card>
+
+        <header-body-card title="Sidebar" id="sidebar">
             <p>
-                Below you will find a summary of all icons in the sidebar and their associated function. A more detailed
-                explanation for each of the application's pages is available below.
+                Below you will find a short overview of all buttons that are present in the sidebar and what the
+                associated functionality of these buttons is. Dedicated documentation pages are available for each of
+                the functions / components described below.
             </p>
-            <div class="d-flex app-navigation-explanation pa-2 mb-2">
-                <v-img :src="require('@/assets/documentation/desktop/desktop_home_button.png')"
-                    max-width="50"
-                    contain
-                    class="mr-2" />
+            <h3>Home</h3>
+            <div class="d-flex mb-2">
+                <v-img :src="require('@/assets/documentation/desktop/application_overview/desktop_home_button.png')"
+                   max-width="50"
+                   contain
+                   class="mr-2" />
                 <div>
-                    <h3>Home</h3>
-                    Use the &quot;Home&quot; button to return to the application's starting point (this is where you can
-                    switch between projects).
+                    The homepage of the application is dedicated to project management. Everytime you want to switch
+                    between projects, create a new project, or open an existing one, you will have to go back to this
+                    page.
                 </div>
             </div>
-            <div class="d-flex app-navigation-explanation pa-2 mb-2">
-                <v-img :src="require('@/assets/documentation/desktop/desktop_single_analysis_button.png')"
+
+            <h3>Single assay analysis</h3>
+            <div class="d-flex mb-2">
+                <v-img :src="require('@/assets/documentation/desktop/application_overview/desktop_single_analysis_button.png')"
+                   max-width="50"
+                   contain
+                   class="mr-2" />
+                <div>
+                    In order to analyse invidual samples (and browse the analysis results), you will have to navigate
+                    to the &quot;single assay analysis&quot; page. This page allows you to manage the contents of your
+                    project, manage studies and assays and browse the results of the analyses that were performed
+                    earlier.
+                </div>
+            </div>
+
+            <h3>Inter-assay comparative analysis</h3>
+            <div class="d-flex mb-2">
+                <v-img :src="require('@/assets/documentation/desktop/application_overview/desktop_comparative_button.png')"
+                   max-width="50"
+                   contain
+                   class="mr-2" />
+                <div>
+                    Unipept Desktop allows you to compare features between distinct samples. By navigating to the
+                    &quot;inter-assay comparative analysis&quot; page, you can select multiple samples in the project
+                    explorer view on the left and a set of features that should be compared between these samples. After
+                    properly selecting and configuring all settings on this page, an interactive heatmap visualization
+                    will automatically be generated.
+                </div>
+            </div>
+
+            <h3>Tryptic peptide analysis</h3>
+            <div class="d-flex mb-2">
+                <v-img :src="require('@/assets/documentation/desktop/application_overview/desktop_single_peptide_button.png')"
                        max-width="50"
                        contain
                        class="mr-2" />
                 <div>
-                    <h3>Single Assay Analysis</h3>
-                    The &quot;single assay analysis&quot; page allows you to browse all functional and taxonomic
-                    analysis results that are available for each individual sample that was processed by Unipept.
+                    All analysis types that have been described above require a project to be loaded. They perform a
+                    specific analysis on a set of peptides and aggregate the results. In contrast, the &quot;tryptic
+                    peptide analysis&quot; page allows you to perform a specific analysis on a single peptide. This
+                    component type generates a report with all information that is known about a single tryptic peptide
+                    and produces a list of all proteins that match with this peptide, as well as a taxonomic and
+                    functional annotation.
                 </div>
             </div>
-            <div class="d-flex app-navigation-explanation pa-2 mb-2">
-                <v-img :src="require('@/assets/documentation/desktop/desktop_comparative_button.png')"
+
+            <h3>Targeted database management</h3>
+            <div class="d-flex mb-2">
+                <v-img :src="require('@/assets/documentation/desktop/application_overview/desktop_database_button.png')"
                        max-width="50"
                        contain
                        class="mr-2" />
                 <div>
-                    <h3>Inter-assay Comparative Analysis</h3>
-                    The &quot;inter-assay comparative analysis&quot; page allows you to construct a heatmap that can
-                    be used to increase your understanding of the taxonomic or functional differences between different
-                    samples.
-                </div>
-            </div>
-            <div class="d-flex app-navigation-explanation pa-2 mb-2">
-                <v-img :src="require('@/assets/documentation/desktop/desktop_single_peptide_button.png')"
-                       max-width="50"
-                       contain
-                       class="mr-2" />
-                <div>
-                    <h3>Tryptic Peptide Analysis</h3>
-                    The &quot;tryptic peptide analysis&quot; pipeline generates a report with all information that is
-                    known for a single tryptic peptide. This includes a list of all proteins in which a given peptide is
-                    contained, all functional annotations related with these proteins, as well as the lowest common
-                    ancestor for this peptide.
-                </div>
-            </div>
-            <div class="d-flex app-navigation-explanation pa-2 mb-2">
-                <v-img :src="require('@/assets/documentation/desktop/desktop_database_button.png')"
-                       max-width="50"
-                       contain
-                       class="mr-2" />
-                <div>
-                    <h3>Targeted Database Management</h3>
                     If you want to construct, delete or modify a targeted protein reference database (for use with the
                     metaproteomics analysis pipeline), you need to navigate to the
                     &quot;targeted database management&quot; page. This page will provide you with a list of all
-                    available databases and their current construction status.
+                    available databases, their current construction status and a handy wizard that will guide you
+                    through the database construction process.
                 </div>
             </div>
-            <div class="d-flex app-navigation-explanation pa-2">
-                <v-img :src="require('@/assets/documentation/desktop/desktop_settings_button.png')"
+
+            <h3>Settings</h3>
+            <div class="d-flex">
+                <v-img :src="require('@/assets/documentation/desktop/application_overview/desktop_settings_button.png')"
                        max-width="50"
                        contain
                        class="mr-2" />
                 <div>
-                    <h3>Settings</h3>
-                    This button brings you to the settings page, which allows you to configure the application (e.g.
-                    how many CPU cores can be used, configuration settings for communication with Docker, ...).
+                    The behaviour of the Unipept Desktop application can be finetuned in a lot of cases. All available
+                    configuration options can be configured on the &quot;settings&quot; page. Some examples of this are
+                    the location of the Unipept Desktop application data directory, configuration settings for
+                    communication between Unipept and the local Docker Daemon, etc.
                 </div>
             </div>
         </header-body-card>
@@ -122,9 +122,3 @@
 <script setup lang="ts">
 import HeaderBodyCard from "@/components/cards/HeaderBodyCard.vue";
 </script>
-
-<style scoped>
-    .app-navigation-explanation {
-        border: 1px solid gray;
-    }
-</style>

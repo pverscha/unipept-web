@@ -168,4 +168,8 @@ p {
 .v-alert__wrapper {
     display:block !important;
 }
+
+.screenshot {
+    filter: drop-shadow(0 0 0.50rem gray);
+}
 </style>
