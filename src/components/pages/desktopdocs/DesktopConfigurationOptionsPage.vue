@@ -58,9 +58,54 @@
         </header-body-card>
 
         <header-body-card title="Storage" id="storage" class="mb-5">
+            <div class="d-flex justify-center">
+                <v-img
+                    :src="require('@/assets/documentation/desktop/configuration/desktop_configuration_storage.png')"
+                    max-width="800"
+                    contain
+                    eager
+                    class="screenshot ma-6" />
+            </div>
+
+            <h3>Database storage location</h3>
+            <p>
+                All targeted protein reference databases that are constructed by this application need to be stored
+                in a specific location. This setting can be used to change the location on the file system of where
+                these custom databases will be kept. Note that these files can grow very large in size and that it is
+                recommended to keep them on a fast (and preferably large) storage medium (such as an SSD).
+            </p>
         </header-body-card>
 
         <header-body-card title="Docker" id="docker" class="mb-5">
+            <div class="d-flex justify-center">
+                <v-img
+                    :src="require('@/assets/documentation/desktop/configuration/desktop_configuration_docker.png')"
+                    max-width="800"
+                    contain
+                    eager
+                    class="screenshot ma-6" />
+            </div>
+
+            <p>
+                Docker is a containerization platform that allows you to run applications in a sandboxed environment.
+                This sounds complicated, but means that you can run applications without having to install all of their
+                dependencies separately on your system and without having to worry about conflicts with other
+                applications. Docker is being used by the Unipept Desktop application for the construction of targeted
+                protein reference databases and for running a local instance of the Unipept API.
+            </p>
+
+            <v-alert color="warning" outlined>
+                <span class="font-weight-bold">Warning:</span>
+                Make sure that Docker Desktop is properly installed on your system. Otherwise, the settings for this
+                configuration options will not have any effect (and analyses using targeted protein reference
+                databases will not work properly). Check <a href="https://docs.docker.com/get-docker/">this guide</a>
+                for a quick explanation on how to install Docker on your system.
+            </v-alert>
+
+            <h3>Connection settings</h3>
+
+
+            <h3>Docker availability</h3>
         </header-body-card>
     </v-container>
 </template>
