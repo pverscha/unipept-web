@@ -6,9 +6,12 @@ on:
       - develop
   workflow_dispatch:
   
+permissions:
+  contents: write
+  
 jobs:
   build_for_pages:
-    runs-on: linux-latest
+    runs-on: ubuntu-latest
     
     steps:
       - uses: actions/checkout@v1
