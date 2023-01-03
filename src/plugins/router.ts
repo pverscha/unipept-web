@@ -88,5 +88,7 @@ const routes = [
 ];
 
 export default new VueRouter({
-    routes
+    routes,
+    mode: "history",
+    base: process.env.GH_ACTION === "true" ? "/unipept-web/" : "/"
 });
