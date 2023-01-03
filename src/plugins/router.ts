@@ -244,7 +244,7 @@ const routes = [
 export default new VueRouter({
     routes,
     mode: "history",
-    base: process.env.GH_ACTION === "true" ? "/unipept-web/" : "/",
+    base: process.env.BASE_URL,
     scrollBehavior(to, from, savedPosition) {
         if (to.hash) {
             // Go to appended anchor in the url
