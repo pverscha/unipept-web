@@ -12,7 +12,8 @@ permissions:
 jobs:
   build_for_pages:
     runs-on: ubuntu-latest
-    
+    env:
+      GH_ACTION: true
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v2
