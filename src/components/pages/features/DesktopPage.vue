@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+    <v-container style="max-width: 1200px;">
         <v-row>
             <div class="col-lg-10 order-lg-0 order-1 pt-0">
                 <router-view></router-view>
