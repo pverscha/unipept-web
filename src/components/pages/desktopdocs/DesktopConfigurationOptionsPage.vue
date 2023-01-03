@@ -103,9 +103,21 @@
             </v-alert>
 
             <h3>Connection settings</h3>
-
+            <p>
+                Unipept Desktop needs to connect to the Docker daemon in order to manage containers and images.
+                Normally, the correct default connection settings for your system are used by default. If, however,
+                the application is unable to connect to the Docker daemon, then please verify that the settings here
+                are correct and adjust where necessary. You can check
+                <a href="https://github.com/apocas/dockerode#getting-started">this webpage</a> for more information on
+                what configuration values are excepted.
+            </p>
 
             <h3>Docker availability</h3>
+            <p>
+                By looking at the output presented here, you can verify that the application was able to succesfully
+                connect to the Docker daemon. This output is mainly used for debugging purposes and allows you to
+                verify the configuration of your Docker installation and what compute resources it has access to.
+            </p>
         </header-body-card>
     </v-container>
 </template>

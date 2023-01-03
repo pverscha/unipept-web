@@ -12,6 +12,7 @@
                     :src="require('@/assets/documentation/desktop/single_assay_analysis/desktop_single_assay_analysis_overview.png')"
                     max-width="800"
                     contain
+                    eager
                     class="screenshot ma-6" />
             </div>
             <p>
@@ -68,6 +69,7 @@
                     :src="require('@/assets/documentation/desktop/single_assay_analysis/desktop_add_assay_dialog.png')"
                     max-width="800"
                     contain
+                    eager
                     class="screenshot ma-6" />
                 <div>
                     <span class="font-weight-bold">Figure 1:</span> the assay creation dialog will guide you through
@@ -89,6 +91,7 @@
                     :src="require('@/assets/documentation/desktop/single_assay_analysis/desktop_configure_assays.png')"
                     max-width="800"
                     contain
+                    eager
                     class="screenshot ma-6" />
                 <div>
                     <span class="font-weight-bold">Figure 2:</span> search settings for each of the new assays can also
@@ -155,6 +158,7 @@
                     :src="require('@/assets/documentation/desktop/single_assay_analysis/desktop_taxonomic_analysis.png')"
                     max-width="800"
                     contain
+                    eager
                     class="screenshot ma-6" />
                 <div>
                     <span class="font-weight-bold">Figure 3:</span> the taxonomic analysis of a metaproteomics sample
@@ -175,6 +179,7 @@
                     :src="require('@/assets/documentation/desktop/single_assay_analysis/desktop_functional_analysis.png')"
                     max-width="800"
                     contain
+                    eager
                     class="screenshot ma-6" />
                 <div>
                     <span class="font-weight-bold">Figure 4:</span> the functional analysis of a metaproteomics sample
@@ -198,6 +203,7 @@
                     :src="require('@/assets/documentation/desktop/single_assay_analysis/desktop_taxonomic_filter.png')"
                     max-width="800"
                     contain
+                    eager
                     class="screenshot ma-6" />
                 <div>
                     <span class="font-weight-bold">Figure 5:</span> if a taxonomic filter is active, a banner on top

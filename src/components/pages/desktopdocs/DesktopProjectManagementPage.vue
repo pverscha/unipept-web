@@ -77,6 +77,7 @@
                     :src="require('@/assets/documentation/desktop/project_management/desktop_project_management_overview.png')"
                     max-width="800"
                     contain
+                    eager
                     class="screenshot" />
             </div>
             <p>

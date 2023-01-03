@@ -121,7 +121,8 @@
                 If your are planning to use the Unipept Desktop application to build custom targeted protein reference
                 databases (which are required for proteogenomics data analyses), then you also need to make sure that
                 <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a> is installed and working on
-                your system.
+                your system. See <ResourceLink to="/desktop/configuration#docker">this page</ResourceLink> for more
+                information on how to set up Docker Desktop with the Unipept Desktop application.
             </v-alert>
         </header-body-card>
 
