@@ -27,7 +27,7 @@ import {
 } from "@/components/pages/apidocs";
 
 // CLI Documentation
-import { 
+import {
     OverviewPage as CLIOverviewPage,
     CaseStudiesPage as CLICaseStudiesPage,
     CLITrypticPeptideAnalysisPage,
@@ -224,10 +224,11 @@ const routes = [
 export default new VueRouter({
     routes,
     mode: "history",
+    base: process.env.GH_ACTION === "true" ? "/unipept-web/" : "/",
     scrollBehavior(to, from, savedPosition) {
         if (to.hash) {
             // Go to appended anchor in the url
-            return { 
+            return {
                 selector: to.hash,
                 behavior: "smooth"
             }
