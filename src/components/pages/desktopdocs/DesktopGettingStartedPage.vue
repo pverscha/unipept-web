@@ -69,47 +69,95 @@
                 different operating systems are also available (these links will always point to the most recent
                 version):
             </p>
-            <div class="d-flex justify-center mb-2">
-                <v-btn
-                    color="primary"
-                    class="mr-5"
-                    href="https://github.com/unipept/unipept-desktop/releases/latest/download/Unipept-Desktop.exe">
-                    <div class="d-flex align-center">
-                        <v-icon>mdi-microsoft-windows</v-icon>
-                        <span>Download for Windows</span>
-                    </div>
-                </v-btn>
-                <v-menu offset-y>
-                    <template v-slot:activator="{ on, attrs }">
-                        <v-btn color="primary" v-bind="attrs" v-on="on" class="mr-5">
-                            <div class="d-flex align-center">
-                                <v-icon>mdi-apple</v-icon>
-                                <span>Download for macOS</span>
-                            </div>
-                        </v-btn>
-                    </template>
-                    <v-list>
-                        <v-list-item href="https://github.com/unipept/unipept-desktop/releases/latest/download/Unipept-Desktop-x64.dmg">
-                            <v-list-item-title>
-                                Mac with Intel Processor (x86, AMD64)
-                            </v-list-item-title>
-                        </v-list-item>
-                        <v-list-item href="https://github.com/unipept/unipept-desktop/releases/latest/download/Unipept-Desktop-arm64.dmg">
-                            <v-list-item-title>
-                                Mac with Apple Silicon Processor (ARM)
-                            </v-list-item-title>
-                        </v-list-item>
-                    </v-list>
-                </v-menu>
-                <v-btn
-                    color="primary"
-                    href="https://github.com/unipept/unipept-desktop/releases/latest/download/Unipept-Desktop.AppImage">
-                    <div class="d-flex align-center">
-                        <v-icon>mdi-linux</v-icon>
-                        <span>Download for Linux</span>
-                    </div>
-                </v-btn>
-            </div>
+            <v-row dense>
+                <v-col sm="12" md="4">
+                    <v-btn
+                        style="width: 100%;"
+                        color="primary"
+                        href="https://github.com/unipept/unipept-desktop/releases/latest/download/Unipept-Desktop.exe">
+                        <div class="d-flex align-center">
+                            <v-icon class="mr-1">mdi-microsoft-windows</v-icon>
+                            <span>Download for Windows</span>
+                        </div>
+                    </v-btn>
+                </v-col>
+                <v-col sm="12" md="4">
+                    <v-menu offset-y>
+                        <template v-slot:activator="{ on, attrs }">
+                            <v-btn style="width: 100%;" color="primary" v-bind="attrs" v-on="on">
+                                <div class="d-flex align-center">
+                                    <v-icon class="mr-1">mdi-apple</v-icon>
+                                    <span>Download for macOS</span>
+                                </div>
+                            </v-btn>
+                        </template>
+                        <v-list>
+                            <v-list-item href="https://github.com/unipept/unipept-desktop/releases/latest/download/Unipept-Desktop-x64.dmg">
+                                <v-list-item-title>
+                                    Mac with Intel Processor (x86, AMD64)
+                                </v-list-item-title>
+                            </v-list-item>
+                            <v-list-item href="https://github.com/unipept/unipept-desktop/releases/latest/download/Unipept-Desktop-arm64.dmg">
+                                <v-list-item-title>
+                                    Mac with Apple Silicon Processor (ARM)
+                                </v-list-item-title>
+                            </v-list-item>
+                        </v-list>
+                    </v-menu>
+                </v-col>
+                <v-col sm="12" md="4">
+                    <v-btn
+                        style="width: 100%;"
+                        color="primary"
+                        href="https://github.com/unipept/unipept-desktop/releases/latest/download/Unipept-Desktop.AppImage">
+                        <div class="d-flex align-center">
+                            <v-icon class="mr-1">mdi-linux</v-icon>
+                            <span>Download for Linux</span>
+                        </div>
+                    </v-btn>
+                </v-col>
+            </v-row>
+<!--            <div class="d-flex justify-center mb-2">-->
+<!--                <v-btn-->
+<!--                    color="primary"-->
+<!--                    class="mr-5"-->
+<!--                    href="https://github.com/unipept/unipept-desktop/releases/latest/download/Unipept-Desktop.exe">-->
+<!--                    <div class="d-flex align-center">-->
+<!--                        <v-icon>mdi-microsoft-windows</v-icon>-->
+<!--                        <span>Download for Windows</span>-->
+<!--                    </div>-->
+<!--                </v-btn>-->
+<!--                <v-menu offset-y>-->
+<!--                    <template v-slot:activator="{ on, attrs }">-->
+<!--                        <v-btn color="primary" v-bind="attrs" v-on="on" class="mr-5">-->
+<!--                            <div class="d-flex align-center">-->
+<!--                                <v-icon>mdi-apple</v-icon>-->
+<!--                                <span>Download for macOS</span>-->
+<!--                            </div>-->
+<!--                        </v-btn>-->
+<!--                    </template>-->
+<!--                    <v-list>-->
+<!--                        <v-list-item href="https://github.com/unipept/unipept-desktop/releases/latest/download/Unipept-Desktop-x64.dmg">-->
+<!--                            <v-list-item-title>-->
+<!--                                Mac with Intel Processor (x86, AMD64)-->
+<!--                            </v-list-item-title>-->
+<!--                        </v-list-item>-->
+<!--                        <v-list-item href="https://github.com/unipept/unipept-desktop/releases/latest/download/Unipept-Desktop-arm64.dmg">-->
+<!--                            <v-list-item-title>-->
+<!--                                Mac with Apple Silicon Processor (ARM)-->
+<!--                            </v-list-item-title>-->
+<!--                        </v-list-item>-->
+<!--                    </v-list>-->
+<!--                </v-menu>-->
+<!--                <v-btn-->
+<!--                    color="primary"-->
+<!--                    href="https://github.com/unipept/unipept-desktop/releases/latest/download/Unipept-Desktop.AppImage">-->
+<!--                    <div class="d-flex align-center">-->
+<!--                        <v-icon>mdi-linux</v-icon>-->
+<!--                        <span>Download for Linux</span>-->
+<!--                    </div>-->
+<!--                </v-btn>-->
+<!--            </div>-->
             <p>
                 Most required dependencies will automatically be installed using the installation packages provided
                 above. If a specific installer is not suitable for your current operating system (e.g. specific flavours
