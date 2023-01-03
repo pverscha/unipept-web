@@ -69,6 +69,13 @@ const navigation = [
             { name: "Storage", link: "#storage" },
             { name: "Docker", link: "#docker" }
         ]
+    },
+    {
+        name: "Frequently Asked Questions",
+        link: "/desktop/faq",
+        children: [
+            { name: "FAQ", link: "#faq" }
+        ]
     }
 ]
 </script>
