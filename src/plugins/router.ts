@@ -48,7 +48,7 @@ import {
     TaxonomyPage as CLITaxonomyPage
 } from "@/components/pages/clidocs";
 
-// Metagenomics documentation
+// Metagenomics Documentation
 import {
     OverviewPage as MetagenomicsOverviewPage,
     CaseStudiesPage as MetagenomicsCaseStudiesPage,
@@ -77,6 +77,15 @@ import {
     PrintIndexPage as MetagenomicsPrintIndexPage
 } from "@/components/pages/metagenomics"
 
+// Desktop Documentation
+import DesktopGettingStartedPage from "@/components/pages/desktopdocs/DesktopGettingStartedPage.vue"
+import DesktopApplicationOverviewPage from "@/components/pages/desktopdocs/DesktopApplicationOverviewPage.vue";
+import DesktopProjectManagementPage from "@/components/pages/desktopdocs/DesktopProjectManagementPage.vue";
+import DesktopSingleAssayAnalysisPage from "@/components/pages/desktopdocs/DesktopSingleAssayAnalysisPage.vue";
+import DesktopComparativeAnalysisPage from "@/components/pages/desktopdocs/DesktopComparativeAnalysisPage.vue";
+import DesktopConfigurationOptionsPage from "@/components/pages/desktopdocs/DesktopConfigurationOptionsPage.vue";
+import DesktopFAQPage from "@/components/pages/desktopdocs/DesktopFAQPage.vue";
+
 Vue.use(VueRouter);
 
 const apidocsMeta = {
@@ -93,6 +102,11 @@ const metagenomicsMeta = {
     publication: "Gurdeep Singh et al. (2019) Journal of Proteome Research",
     publicationLink: "doi:10.1021/acs.jproteome.8b00716"
 };
+
+const desktopMeta = {
+    publication: "Verschaffelt et al. (2021) Journal of Proteome Research",
+    publicationLink: "doi.org/10.1021/acs.jproteome.0c00855"
+}
 
 const routes = [
     {
@@ -198,10 +212,16 @@ const routes = [
     {
         path: "/desktop",
         component: DesktopPage,
-        meta: {
-            publication: "Verschaffelt et al. (2021) Journal of Proteome Research",
-            publicationLink: "doi.org/10.1021/acs.jproteome.0c00855"
-        }
+        children: [
+            { path: "", component: DesktopGettingStartedPage, meta: desktopMeta },
+            { path: "application-overview", component: DesktopApplicationOverviewPage, meta: desktopMeta },
+            { path: "project-management", component: DesktopProjectManagementPage, meta: desktopMeta },
+            { path: "single-assay-analysis", component: DesktopSingleAssayAnalysisPage, meta: desktopMeta },
+            { path: "comparative-analysis", component: DesktopComparativeAnalysisPage, meta: desktopMeta },
+            { path: "configuration", component: DesktopConfigurationOptionsPage, meta: desktopMeta },
+            { path: "faq", component: DesktopFAQPage, meta: desktopMeta }
+        ],
+        meta: desktopMeta
     },
     {
         path: "/about",
@@ -224,7 +244,7 @@ const routes = [
 export default new VueRouter({
     routes,
     mode: "history",
-    base: process.env.GH_ACTION === "true" ? "/unipept-web/" : "/",
+    base: process.env.BASE_URL,
     scrollBehavior(to, from, savedPosition) {
         if (to.hash) {
             // Go to appended anchor in the url
