@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-row>
-            <v-col class="col-lg-6 col-sm-12">
+            <v-col cols=12 md=6>
                 <div class="text-h3 font-weight-light mb-2">Welcome</div>
                 Unipept is an open source web application developed at <a href="https://www.ugent.be/en" target="_blank">Ghent University</a> that is designed for metaproteomics 
                 data analysis with a focus on <span class="font-weight-bold">interactive datavisualizations</span>. Unipept is powered by an index containing all 
@@ -12,7 +12,7 @@
                 genomes</span> based on peptide similarity.
             </v-col>
             
-            <v-col class="mt-0 mt-md-15" cols=12 md=7>
+            <v-col class="mt-0" cols=12 md=6>
                 <ReleaseOverviewCard v-if="!loading" :services="services" />
             </v-col>
         </v-row>
