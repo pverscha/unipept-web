@@ -30,7 +30,7 @@
                 (<RLink to="#fig1" router>Figure 1</RLink>).
             </p>
 
-            <ImageCaptionCard id="fig1" class="mb-5" :image="require('@/assets/casestudy-tpa-trypsin-digest.png')">
+            <ImageCaptionCard id="fig1" class="mb-5" :image="require('@/assets/documentation/cli/casestudy-tpa-trypsin-digest.png')">
                 <b>Figure 1</b> Tryptic digestion is a necessary step in protein absorption as proteins are generally too large to be absorbed through the lining 
                 of the small intestine. Trypsin predominantly cleaves proteins at the carboxyl side (or "C-terminal side") of the amino acids lysine (<Code>K</Code>) 
                 and arginine (<Code>R</Code>) except when either is bound to a C-terminal proline (<Code>P</Code>).
@@ -43,7 +43,7 @@
                 underlying index structure is designed to quickly retrieve all occurrences of a tryptic peptide in UniProt entries.
             </p>
 
-            <ImageCaptionCard id="fig2" :image="require('@/assets/casestudy-tpa-workflow.png')">
+            <ImageCaptionCard id="fig2" :image="require('@/assets/documentation/cli/casestudy-tpa-workflow.png')">
                 <b>Figure 2</b> General outline of the Unipept workflow for taxonomic identification of tryptic peptides. For a given tryptic peptide, all UniProt 
                 entries having an exact match of the peptide in the protein sequence are found. Unipept then computes the lowest common ancestor (<Initialism>LCA</Initialism>) 
                 of the taxonomic annotations extracted from the matched UniProt entries, based on a cleaned up version of the <Initialism>NCBI</Initialism> Taxonomy. All 
@@ -152,7 +152,7 @@ OPTIONS
                 Activating the option Equate I and L in the web interface corresponds to using the <Code>-e</Code> option with the <Code>unipept</Code> command.
             </p>
 
-            <ImageCaptionCard id="fig3" class="mb-5" :image="require('@/assets/casestudy-tpa-request.png')">
+            <ImageCaptionCard id="fig3" class="mb-5" :image="require('@/assets/documentation/cli/casestudy-tpa-request.png')">
                 <b>Figure 3</b> Taxonomic identification of the tryptic peptide <Code>ENFVYIAK</Code> using the <RLink to="/tpa" router>Tryptic Peptide Analysis</RLink> 
                 feature from the Unipept web interface.
             </ImageCaptionCard>
@@ -184,7 +184,7 @@ OPTIONS
                 Unipept <Initialism>CLI</Initialism>.
             </p>
 
-            <ImageCaptionCard id="fig4" :image="require('@/assets/casestudy-tpa-response.png')">
+            <ImageCaptionCard id="fig4" :image="require('@/assets/documentation/cli/casestudy-tpa-response.png')">
                 <b>Figure 4</b> Information about the lowest common ancestor of the tryptic peptide <Code>ENFVYIAK</Code>, as displayed on top of the page that shows the 
                 results of a <RLink to="/tpa" router>Tryptic Peptide Analysis</RLink> in the Unipept web interface.
             </ImageCaptionCard>

@@ -13,41 +13,79 @@ import PublicationsPage from "@/components/pages/PublicationsPage.vue";
 
 // API Documentation
 import {
-    OverviewPage as APIOverviewPage,
-    Pept2ProtPage as APIPept2ProtPage,
-    Pept2TaxaPage as APIPept2TaxaPage,
-    Pept2LcaPage as APIPept2LcaPage,
-    Pept2EcPage as APIPept2EcPage,
-    Pept2GoPage as APIPept2GoPage,
-    Pept2InterproPage as APIPept2InterproPage,
-    Pept2FunctPage as APIPept2FunctPage,
-    PeptInfoPage as APIPeptInfoPage,
-    Taxa2LcaPage as APITaxa2LcaPage,
-    Taxa2TreePage as APITaxa2TreePage,
-    TaxonomyPage as APITaxonomyPage
+    APIOverviewPage,
+    APIPept2ProtPage,
+    APIPept2TaxaPage,
+    APIPept2LcaPage,
+    APIPept2EcPage,
+    APIPept2GoPage,
+    APIPept2InterproPage,
+    APIPept2FunctPage,
+    APIPeptInfoPage,
+    APITaxa2LcaPage,
+    APITaxa2TreePage,
+    APITaxonomyPage
 } from "@/components/pages/apidocs";
 
 // CLI Documentation
-import { 
-    OverviewPage as CLIOverviewPage,
-    CaseStudiesPage,
+import {
+    CLIOverviewPage,
+    CLICaseStudiesPage,
     CLITrypticPeptideAnalysisPage,
     CLIMetaproteomicsAnalysisPage,
-    UniprotPage,
-    Prot2PeptPage,
-    PeptfilterPage,
-    Pept2LcaPage as CLIPept2LcaPage,
-    Pept2ProtPage as CLIPept2ProtPage,
-    Pept2TaxaPage as CLIPept2TaxaPage,
-    Pept2EcPage as CLIPept2EcPage,
-    Pept2GoPage as CLIPept2GoPage,
-    Pept2InterproPage as CLIPept2InterproPage,
-    Pept2FunctPage as CLIPept2FunctPage,
-    PeptInfoPage as CLIPeptInfoPage,
-    Taxa2LcaPage as CLITaxa2LcaPage,
-    Taxa2TreePage as CLITaxa2TreePage,
-    TaxonomyPage as CLITaxonomyPage
+    CLIUniprotPage,
+    CLIProt2PeptPage,
+    CLIPeptfilterPage,
+    CLIPept2LcaPage,
+    CLIPept2ProtPage,
+    CLIPept2TaxaPage,
+    CLIPept2EcPage,
+    CLIPept2GoPage,
+    CLIPept2InterproPage,
+    CLIPept2FunctPage,
+    CLIPeptInfoPage,
+    CLITaxa2LcaPage,
+    CLITaxa2TreePage,
+    CLITaxonomyPage
 } from "@/components/pages/clidocs";
+
+// Metagenomics Documentation
+import {
+    MetagenomicsOverviewPage,
+    MetagenomicsCaseStudiesPage,
+    MetagenomicsPreconfiguredPage,
+    MetagenomicsAdvancedPage,
+    MetagenomicsComparativePage,
+    MetagenomicsFastq2FastaPage,
+    MetagenomicsTranslatePage,
+    MetagenomicsProt2TrypPage,
+    MetagenomicsProt2KmerPage,
+    MetagenomicsFilterPage,
+    MetagenomicsPept2LcaPage,
+    MetagenomicsProt2Tryp2LcaPage,
+    MetagenomicsProt2Kmer2LcaPage,
+    MetagenomicsBestofPage,
+    MetagenomicsSeedExtendPage,
+    MetagenomicsUniqPage,
+    MetagenomicsTaxa2AggPage,
+    MetagenomicsSnapTaxonPage,
+    MetagenomicsTaxa2FreqPage,
+    MetagenomicsTaxa2TreePage,
+    MetagenomicsTaxonomyPage,
+    MetagenomicsSplitKmersPage,
+    MetagenomicsJoinKmersPage,
+    MetagenomicsBuildIndexPage,
+    MetagenomicsPrintIndexPage
+} from "@/components/pages/metagenomics"
+
+// Desktop Documentation
+import DesktopGettingStartedPage from "@/components/pages/desktopdocs/DesktopGettingStartedPage.vue"
+import DesktopApplicationOverviewPage from "@/components/pages/desktopdocs/DesktopApplicationOverviewPage.vue";
+import DesktopProjectManagementPage from "@/components/pages/desktopdocs/DesktopProjectManagementPage.vue";
+import DesktopSingleAssayAnalysisPage from "@/components/pages/desktopdocs/DesktopSingleAssayAnalysisPage.vue";
+import DesktopComparativeAnalysisPage from "@/components/pages/desktopdocs/DesktopComparativeAnalysisPage.vue";
+import DesktopConfigurationOptionsPage from "@/components/pages/desktopdocs/DesktopConfigurationOptionsPage.vue";
+import DesktopFAQPage from "@/components/pages/desktopdocs/DesktopFAQPage.vue";
 
 Vue.use(VueRouter);
 
@@ -60,6 +98,16 @@ const clidocsMeta = {
     publication: "Verschaffelt et al. (2020) Bioinformatics",
     publicationLink: "doi.org/10.1093/bioinformatics/btaa553"
 };
+
+const metagenomicsMeta = {
+    publication: "Gurdeep Singh et al. (2019) Journal of Proteome Research",
+    publicationLink: "doi:10.1021/acs.jproteome.8b00716"
+};
+
+const desktopMeta = {
+    publication: "Verschaffelt et al. (2021) Journal of Proteome Research",
+    publicationLink: "doi.org/10.1021/acs.jproteome.0c00855"
+}
 
 const routes = [
     {
@@ -110,12 +158,12 @@ const routes = [
         component: CLIPage,
         children: [
             { path: "", component: CLIOverviewPage, meta: clidocsMeta },
-            { path: "casestudies", component: CaseStudiesPage, meta: clidocsMeta },
+            { path: "casestudies", component: CLICaseStudiesPage, meta: clidocsMeta },
             { path: "casestudies/tpa", component: CLITrypticPeptideAnalysisPage, meta: clidocsMeta },
             { path: "casestudies/mpa", component: CLIMetaproteomicsAnalysisPage, meta: clidocsMeta },
-            { path: "uniprot", component: UniprotPage, meta: clidocsMeta },
-            { path: "prot2pept", component: Prot2PeptPage, meta: clidocsMeta },
-            { path: "peptfilter", component: PeptfilterPage, meta: clidocsMeta },
+            { path: "uniprot", component: CLIUniprotPage, meta: clidocsMeta },
+            { path: "prot2pept", component: CLIProt2PeptPage, meta: clidocsMeta },
+            { path: "peptfilter", component: CLIPeptfilterPage, meta: clidocsMeta },
             { path: "pept2lca", component: CLIPept2LcaPage, meta: clidocsMeta },
             { path: "pept2prot", component: CLIPept2ProtPage, meta: clidocsMeta },
             { path: "pept2taxa", component: CLIPept2TaxaPage, meta: clidocsMeta },
@@ -133,18 +181,48 @@ const routes = [
     {
         path: "/umgap",
         component: MetagenomicsPage,
-        meta: {
-            publication: "Gurdeep Singh et al. (2019) Journal of Proteome Research",
-            publicationLink: "doi:10.1021/acs.jproteome.8b00716"
-        }
+        children: [
+            { path: "", component: MetagenomicsOverviewPage, meta: metagenomicsMeta },
+            { path: "casestudies", component: MetagenomicsCaseStudiesPage, meta: metagenomicsMeta },
+            { path: "casestudies/basic", component: MetagenomicsPreconfiguredPage, meta: metagenomicsMeta },
+            { path: "casestudies/advanced", component: MetagenomicsAdvancedPage, meta: metagenomicsMeta },
+            { path: "casestudies/comparative", component: MetagenomicsComparativePage, meta: metagenomicsMeta },
+            { path: "fastq2fasta", component: MetagenomicsFastq2FastaPage, meta: metagenomicsMeta },
+            { path: "translate", component: MetagenomicsTranslatePage, meta: metagenomicsMeta },
+            { path: "prot2tryp", component: MetagenomicsProt2TrypPage, meta: metagenomicsMeta },
+            { path: "prot2kmer", component: MetagenomicsProt2KmerPage, meta: metagenomicsMeta },
+            { path: "filter", component: MetagenomicsFilterPage, meta: metagenomicsMeta },
+            { path: "pept2lca", component: MetagenomicsPept2LcaPage, meta: metagenomicsMeta },
+            { path: "prot2tryp2lca", component: MetagenomicsProt2Tryp2LcaPage, meta: metagenomicsMeta },
+            { path: "prot2kmer2lca", component: MetagenomicsProt2Kmer2LcaPage, meta: metagenomicsMeta },
+            { path: "bestof", component: MetagenomicsBestofPage, meta: metagenomicsMeta },
+            { path: "seedextend", component: MetagenomicsSeedExtendPage, meta: metagenomicsMeta },
+            { path: "uniq", component: MetagenomicsUniqPage, meta: metagenomicsMeta },
+            { path: "taxa2agg", component: MetagenomicsTaxa2AggPage, meta: metagenomicsMeta },
+            { path: "snaptaxon", component: MetagenomicsSnapTaxonPage, meta: metagenomicsMeta },
+            { path: "taxa2freq", component: MetagenomicsTaxa2FreqPage, meta: metagenomicsMeta },
+            { path: "taxa2tree", component: MetagenomicsTaxa2TreePage, meta: metagenomicsMeta },
+            { path: "taxonomy", component: MetagenomicsTaxonomyPage, meta: metagenomicsMeta },
+            { path: "splitkmers", component: MetagenomicsSplitKmersPage, meta: metagenomicsMeta },
+            { path: "joinkmers", component: MetagenomicsJoinKmersPage, meta: metagenomicsMeta },
+            { path: "buildindex", component: MetagenomicsBuildIndexPage, meta: metagenomicsMeta },
+            { path: "printindex", component: MetagenomicsPrintIndexPage, meta: metagenomicsMeta }
+        ],
+        meta: metagenomicsMeta
     },
     {
         path: "/desktop",
         component: DesktopPage,
-        meta: {
-            publication: "Verschaffelt et al. (2021) Journal of Proteome Research",
-            publicationLink: "doi.org/10.1021/acs.jproteome.0c00855"
-        }
+        children: [
+            { path: "", component: DesktopGettingStartedPage, meta: desktopMeta },
+            { path: "application-overview", component: DesktopApplicationOverviewPage, meta: desktopMeta },
+            { path: "project-management", component: DesktopProjectManagementPage, meta: desktopMeta },
+            { path: "single-assay-analysis", component: DesktopSingleAssayAnalysisPage, meta: desktopMeta },
+            { path: "comparative-analysis", component: DesktopComparativeAnalysisPage, meta: desktopMeta },
+            { path: "configuration", component: DesktopConfigurationOptionsPage, meta: desktopMeta },
+            { path: "faq", component: DesktopFAQPage, meta: desktopMeta }
+        ],
+        meta: desktopMeta
     },
     {
         path: "/about",
@@ -175,10 +253,11 @@ const routes = [
 export default new VueRouter({
     routes,
     mode: "history",
+    base: process.env.BASE_URL,
     scrollBehavior(to, from, savedPosition) {
         if (to.hash) {
             // Go to appended anchor in the url
-            return { 
+            return {
                 selector: to.hash,
                 behavior: "smooth"
             }

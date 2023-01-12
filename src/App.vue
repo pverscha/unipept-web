@@ -166,4 +166,12 @@ p {
     font-weight: 300;
     font-size: x-large;
 }
+
+.v-alert__wrapper {
+    display:block !important;
+}
+
+.screenshot {
+    filter: drop-shadow(0 0 0.50rem gray);
+}
 </style>

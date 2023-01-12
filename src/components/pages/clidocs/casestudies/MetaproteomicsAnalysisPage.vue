@@ -31,7 +31,7 @@
                 results of the first analyses, we can nevertheless consider this to be a very promising technique.
             </p>
 
-            <ImageCaptionCard id="fig1" class="mb-5" :image="require('@/assets/casestudy-mpa-shotgun-mpa.jpg')">
+            <ImageCaptionCard id="fig1" class="mb-5" :image="require('@/assets/documentation/cli/casestudy-mpa-shotgun-mpa.jpg')">
                 <b>Figure 1</b> Shotgun metaproteomics approach used to identify microbial proteins in human faecal samples. Taken from 
                 {{ references.verberkmoes.short }}.
             </ImageCaptionCard>
@@ -275,7 +275,7 @@ OPTIONS
                 (not selected in this example).
             </p>
 
-            <ImageCaptionCard id="fig2" class="mb-5" :image="require('@/assets/casestudy-mpa-request.png')">
+            <ImageCaptionCard id="fig2" class="mb-5" :image="require('@/assets/documentation/cli/casestudy-mpa-request.png')">
                 <b>Figure 2</b> Processing of sample 7 from the study of {{ references.verberkmoes.short }} using the Metaproteomics Analysis feature of the 
                 <RLink to="/" router>Unipept website</RLink>. In this example session we indicate that no distinction should be made between leucine (<code>L</code>) 
                 and isoleucine (<Code>I</Code>), that the peptides must be deduplicated, and that the results must be exported in csv format (<i>comma separated values</i>). 
@@ -339,7 +339,7 @@ AADAAAALGEGLQAFCLPGSVADTR,186802,Clostridiales,order
                 can be found in the <i>Treeview</i> tab on the page showing the results of a Metaproteomics analysis in the Unipept web interface.
             </p>
 
-            <ImageCaptionCard id="fig3" class="mb-5" :image="require('@/assets/casestudy-mpa-treeview.png')">
+            <ImageCaptionCard id="fig3" class="mb-5" :image="require('@/assets/documentation/cli/casestudy-mpa-treeview.png')">
                 <b>Figure 3</b> Snapshot of an interactive tree view that shows the results of the biodiversity analysis of sample 7, a metaproteomics data set 
                 from the study of {{ references.verberkmoes.short }}. The node that represents the order <i>Clostridiales</i> has the focus. Percentages on the 
                 nodes indicate the relative amount of tryptic peptides that are specific for the corresponding taxa or one of its subtaxa, and also correspond to 
