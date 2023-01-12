@@ -88,7 +88,6 @@ const formatDate = (dateString: string) => {
 
 const recentDate = (dateString: string, maxDays: number) => {
     const date = new Date(dateString);
-    console.log(Math.round((Date.now() - date.getTime()) / (1000 * 60 * 60 * 24)))
     return Math.round((Date.now() - date.getTime()) / (1000 * 60 * 60 * 24)) < maxDays;
 }
 </script>
