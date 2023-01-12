@@ -35,6 +35,6 @@ const releases = ref<GithubRelease[]>([]);
 onBeforeMount(async () => {
     const result = await githubCommunicator.releases("https://api.github.com/repos/unipept/unipept-desktop/releases", 5);
 
-    releases.value = result.filter(r => !r.prerelease);
+    releases.value = result;
 })
 </script>

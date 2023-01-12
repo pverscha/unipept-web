@@ -16,10 +16,16 @@ export const defaultGithubRelease = {
 
 export class GithubCommunicator {
     public async releases(url: string, per_page: number = 100): Promise<GithubRelease[]> {
-        return await fetch(`${url}?per_page=${per_page}`).then(r => r.json());
+        return await fetch(`${url}?per_page=${per_page}`).then(r => r.json()).catch(() => []);
     }
 
     public async latestRelease(url: string): Promise<GithubRelease> {
-        return await fetch(`${url}/latest`).then(r => r.json());
+        return await fetch(`${url}/latest`).then(r => {
+            if (!r.ok) {
+                return defaultGithubRelease;
+            }
+
+            return r.json()
+        });
     }
 }

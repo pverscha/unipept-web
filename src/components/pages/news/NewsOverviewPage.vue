@@ -30,7 +30,7 @@
 
 <script setup lang="ts">
 import ReleaseCard from '@/components/cards/ReleaseCard.vue';
-import { GithubCommunicator, GithubRelease } from '@/logic/communicators/github/GithubCommunicator';
+import { defaultGithubRelease, GithubCommunicator, GithubRelease } from '@/logic/communicators/github/GithubCommunicator';
 import DescriptionChangelogParser from '@/logic/parsers/github/DescriptionChangelogParser';
 import DesktopReleaseParser from "@/logic/parsers/github/DesktopReleaseParser";
 import { onBeforeMount, ref } from 'vue';
@@ -41,10 +41,10 @@ const descriptionChangelogParser = new DescriptionChangelogParser();
 const desktopReleaseParser = new DesktopReleaseParser();
 
 const loading = ref<boolean>(true);
-const latestAPIRelease = ref<GithubRelease>();
-const latestCLIRelease = ref<GithubRelease>();
-const latestWebRelease = ref<GithubRelease>();
-const latestDesktopRelease = ref<GithubRelease>();
+const latestAPIRelease = ref<GithubRelease>(defaultGithubRelease);
+const latestCLIRelease = ref<GithubRelease>(defaultGithubRelease);
+const latestWebRelease = ref<GithubRelease>(defaultGithubRelease);
+const latestDesktopRelease = ref<GithubRelease>(defaultGithubRelease);
 
 onBeforeMount(async () => {
     latestAPIRelease.value = await githubCommunicator.latestRelease("https://api.github.com/repos/unipept/unipept/releases");
