@@ -15,10 +15,10 @@ import VerticalNavigation from "@/components/navigation/VerticalNavigation.vue";
 import HorizontalNavigation from "@/components/navigation/HorizontalNavigation.vue";
 
 const navigation = [
-    { name: "overview", link: "/news" },
-    { name: "api", link: "/news/api" },
-    { name: "cli", link: "/news/cli" },
-    { name: "web", link: "/news/web" },
-    { name: "desktop", link: "/news/desktop" },
+    { name: "Overview", link: "/news" },
+    { name: "Api", link: "/news/api" },
+    { name: "Cli", link: "/news/cli" },
+    { name: "Web", link: "/news/web" },
+    { name: "Desktop", link: "/news/desktop" },
 ];
 </script>
