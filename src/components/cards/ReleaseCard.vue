@@ -19,8 +19,8 @@
                         </v-card-text>
 
                         <v-card-text class="mt-5">
-                            <ul class="align-center px-5" v-for="(item, i) in changelog.changelog" :key="i">
-                                <li>
+                            <ul class="align-center px-0" v-for="(item, i) in changelog.changelog" :key="i">
+                                <li class="nobull">
                                     <v-chip
                                         v-if="item.tag"
                                         class="me-2"
@@ -95,5 +95,9 @@ a {
     font-weight: 800 !important;
     text-transform: uppercase;
     align-content: center;
+}
+
+.nobull {
+    list-style-type: none;
 }
 </style>
