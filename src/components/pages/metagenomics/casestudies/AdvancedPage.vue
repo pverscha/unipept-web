@@ -425,7 +425,7 @@
                 <br><RLink to="https://bl.ocks.org/5960ffd859fb17439d7975896f513bc3">https://bl.ocks.org/5960ffd859fb17439d7975896f513bc3</RLink>
             </Boxed>
 
-            <ImageCaptionCard class="mt-5" :image="require('@/assets/casestudy-umgap-advanced.png')" />
+            <ImageCaptionCard class="mt-5" :image="require('@/assets/documentation/metagenomics/casestudy-umgap-advanced.png')" />
         </HeaderBodyCard>
 
         <HeaderBodyCard class="mt-5" title="Recap">

@@ -1,39 +1,39 @@
-import OverviewPage from "./OverviewPage.vue";
-import CaseStudiesPage from "./CaseStudiesPage.vue";
-import TrypticPeptideAnalysisPage from "./casestudies/TrypticPeptideAnalysisPage.vue";
-import MetaproteomicsAnalysisPage from "./casestudies/MetaproteomicsAnalysisPage.vue";
-import UniprotPage from "./UniprotPage.vue";
-import Prot2PeptPage from "./Prot2PeptPage.vue";
-import PeptfilterPage from "./PeptfilterPage.vue";
-import Pept2LcaPage from "./Pept2LcaPage.vue";
-import Pept2ProtPage from "./Pept2ProtPage.vue";
-import Pept2TaxaPage from "./Pept2TaxaPage.vue";
-import Pept2EcPage from "./Pept2EcPage.vue";
-import Pept2GoPage from "./Pept2GoPage.vue";
-import Pept2InterproPage from "./Pept2InterproPage.vue";
-import Pept2FunctPage from "./Pept2FunctPage.vue";
-import PeptInfoPage from "./PeptInfoPage.vue";
-import Taxa2LcaPage from "./Taxa2LcaPage.vue";
-import Taxa2TreePage from "./Taxa2TreePage.vue";
-import TaxonomyPage from "./TaxonomyPage.vue";
+import CLIOverviewPage from "./OverviewPage.vue";
+import CLICaseStudiesPage from "./CaseStudiesPage.vue";
+import CLITrypticPeptideAnalysisPage from "./casestudies/TrypticPeptideAnalysisPage.vue";
+import CLIMetaproteomicsAnalysisPage from "./casestudies/MetaproteomicsAnalysisPage.vue";
+import CLIUniprotPage from "./UniprotPage.vue";
+import CLIProt2PeptPage from "./Prot2PeptPage.vue";
+import CLIPeptfilterPage from "./PeptfilterPage.vue";
+import CLIPept2LcaPage from "./Pept2LcaPage.vue";
+import CLIPept2ProtPage from "./Pept2ProtPage.vue";
+import CLIPept2TaxaPage from "./Pept2TaxaPage.vue";
+import CLIPept2EcPage from "./Pept2EcPage.vue";
+import CLIPept2GoPage from "./Pept2GoPage.vue";
+import CLIPept2InterproPage from "./Pept2InterproPage.vue";
+import CLIPept2FunctPage from "./Pept2FunctPage.vue";
+import CLIPeptInfoPage from "./PeptInfoPage.vue";
+import CLITaxa2LcaPage from "./Taxa2LcaPage.vue";
+import CLITaxa2TreePage from "./Taxa2TreePage.vue";
+import CLITaxonomyPage from "./TaxonomyPage.vue";
 
 export {
-    OverviewPage,
-    CaseStudiesPage,
-    TrypticPeptideAnalysisPage,
-    MetaproteomicsAnalysisPage,
-    UniprotPage,
-    Prot2PeptPage,
-    PeptfilterPage,
-    Pept2LcaPage,
-    Pept2ProtPage,
-    Pept2TaxaPage,
-    Pept2EcPage,
-    Pept2GoPage,
-    Pept2InterproPage,
-    Pept2FunctPage,
-    PeptInfoPage,
-    Taxa2LcaPage,
-    Taxa2TreePage,
-    TaxonomyPage
+    CLIOverviewPage,
+    CLICaseStudiesPage,
+    CLITrypticPeptideAnalysisPage,
+    CLIMetaproteomicsAnalysisPage,
+    CLIUniprotPage,
+    CLIProt2PeptPage,
+    CLIPeptfilterPage,
+    CLIPept2LcaPage,
+    CLIPept2ProtPage,
+    CLIPept2TaxaPage,
+    CLIPept2EcPage,
+    CLIPept2GoPage,
+    CLIPept2InterproPage,
+    CLIPept2FunctPage,
+    CLIPeptInfoPage,
+    CLITaxa2LcaPage,
+    CLITaxa2TreePage,
+    CLITaxonomyPage
 };

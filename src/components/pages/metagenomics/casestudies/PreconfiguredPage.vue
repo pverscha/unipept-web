@@ -144,7 +144,7 @@ Would you like to download the 9-mer index from 2020-12-02 (152GiB)? [y]/n n
 
             <ParameterTable class="my-3" :parameters="visualizeParameters" />
 
-            <ImageCaptionCard class="mt-5" :image="require('@/assets/casestudy-umgap-basic.png')" />
+            <ImageCaptionCard class="mt-5" :image="require('@/assets/documentation/metagenomics/casestudy-umgap-basic.png')" />
         </HeaderBodyCard>
 
         <h2 class="font-weight-light mt-5">References</h2>

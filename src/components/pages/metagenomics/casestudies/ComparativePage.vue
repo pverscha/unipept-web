@@ -114,7 +114,7 @@
                 phyla, however, are overrepresented in the 4 chitin-rich samples.
             </p>
 
-            <ImageCaptionCard class="mt-5" :image="require('@/assets/casestudy-umgap-comparative.svg')" />
+            <ImageCaptionCard class="mt-5" :image="require('@/assets/documentation/metagenomics/casestudy-umgap-comparative.svg')" />
         </HeaderBodyCard>
 
         <h2 class="font-weight-light mt-5">References</h2>
