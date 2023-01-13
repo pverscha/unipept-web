@@ -116,7 +116,7 @@ import HeaderBodyCard from '../cards/HeaderBodyCard.vue';
 import MemberCard from '../cards/MemberCard.vue';
 
 const members = [
-    { name: "Bart Mesuere", title: "Postdoc and lead developer", imgUrl: "https://avatars.githubusercontent.com/u/481872?v=4" },
+    { name: "Bart Mesuere", title: "Project lead", imgUrl: "https://avatars.githubusercontent.com/u/481872?v=4" },
     { name: "Pieter Verschaffelt", title: "PhD student", imgUrl: "https://avatars.githubusercontent.com/u/9608686?v=4" },
     { name: "Tibo Vande Moortele", title: "PhD student", imgUrl: "https://avatars.githubusercontent.com/u/34175340?v=4" },
     { name: "Peter Dawyndt", title: "P.I.", imgUrl: "https://avatars.githubusercontent.com/u/5736113?v=4" },
