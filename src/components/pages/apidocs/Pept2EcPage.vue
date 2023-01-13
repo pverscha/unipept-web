@@ -16,7 +16,7 @@
         <HeaderBodyCard id="request" title="Request">
             <p>
                 The pept2ec method can be used by doing a <Initialism>HTTP POST</Initialism>-request (preferred) or <Initialism>GET</Initialism>-request to 
-                <Code>http://api.unipept.ugent.be/api/v1/pept2ec</Code>. <RLink to="parameters" anchor>Parameters</RLink> can be included in the request body 
+                <Code>http://api.unipept.ugent.be/api/v1/pept2ec</Code>. <RLink to="#parameters" router>Parameters</RLink> can be included in the request body 
                 (<Initialism>POST</Initialism>) or in the query string (<Initialism>GET</Initialism>). The only required parameter is <Code>input[]</Code>, which 
                 takes one or more tryptic peptides.
             </p>
@@ -25,7 +25,7 @@
             <p>
                 <Code>input[]</Code> is a required parameter that takes one or more tryptic peptides. Unipept will return the functional 
                 <Initialism>EC</Initialism>-numbers associated with each of the <Code>input[]</Code> peptides based on their occurrence in UniProt entries. To pass 
-                multiple peptides at once, simply add multiple <Code>input[]</Code> parameters (see <RLink to="example2" anchor>example</RLink>).
+                multiple peptides at once, simply add multiple <Code>input[]</Code> parameters (see <RLink to="#example2" router>example</RLink>).
             </p>
 
             <StaticAlert title="Input size">
@@ -48,7 +48,7 @@
             <p>
                 <Code>extra</Code> is an optional parameter and can either be <Code>true</Code> or <Code>false</Code>. When not set explicitly, the parameter 
                 defaults to <Code>false</Code>. When the parameter is set to <Code>true</Code>, Unipept will also return the name associated with an 
-                <Initialism>EC</Initialism>-number. See the <RLink to="response" anchor>response</RLink> section for an overview of the information fields returned.
+                <Initialism>EC</Initialism>-number. See the <RLink to="#response" router>response</RLink> section for an overview of the information fields returned.
             </p>
 
             <StaticAlert title="Performance penalty">
@@ -265,7 +265,7 @@
 <script setup lang="ts">
 import { onBeforeMount, ref } from 'vue';
 
-import UnipeptCommunicator from '@/communicators/unipept/UnipeptCommunicator';
+import UnipeptCommunicator from '@/logic/communicators/unipept/UnipeptCommunicator';
 
 import HeaderBodyCard from '@/components/cards/HeaderBodyCard.vue';
 import Code from '@/components/highlights/InlineCode.vue';

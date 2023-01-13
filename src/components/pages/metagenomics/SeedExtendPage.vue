@@ -12,7 +12,7 @@
             predictions. It can be used to filter out accidental matches of incorrect taxa.
         </p>
 
-        <HeaderBodyCard id="usage" title="usage">
+        <HeaderBodyCard id="usage" title="Usage">
             <p>
                 The input is given in a <Initialism>FASTA</Initialism> format on <i>standard input</i>. It should consist of taxon IDs separated by newlines, and 
                 the order of these taxa should reflect their location on a peptide, such as output by the 

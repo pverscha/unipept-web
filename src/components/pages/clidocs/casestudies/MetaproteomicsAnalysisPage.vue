@@ -26,12 +26,12 @@
 
             <p>
                 A next step is to determine what genes are actually expressed and the function of the gut microbiota in different states of health and disease. 
-                <i>Shotgun proteomics</i> (<RLink to="fig1" anchor>Figure 1</RLink>) is one approach that can be used to determine what proteins were expressed in 
+                <i>Shotgun proteomics</i> (<RLink to="#fig1" router>Figure 1</RLink>) is one approach that can be used to determine what proteins were expressed in 
                 an environmental sample. As of today, this technique is still in its infancy, but given the rapid technological developments and based on the 
                 results of the first analyses, we can nevertheless consider this to be a very promising technique.
             </p>
 
-            <ImageCaptionCard id="fig1" class="mb-5" :image="require('@/assets/casestudy-mpa-shotgun-mpa.jpg')">
+            <ImageCaptionCard id="fig1" class="mb-5" :image="require('@/assets/documentation/cli/casestudy-mpa-shotgun-mpa.jpg')">
                 <b>Figure 1</b> Shotgun metaproteomics approach used to identify microbial proteins in human faecal samples. Taken from 
                 {{ references.verberkmoes.short }}.
             </ImageCaptionCard>
@@ -268,14 +268,14 @@ OPTIONS
             </p>
 
             <p>
-                In the session that is shown in <RLink to="fig2" anchor>Figure 2</RLink>, we have indicated that no distinction should be made between leucine 
+                In the session that is shown in <RLink to="#fig2" router>Figure 2</RLink>, we have indicated that no distinction should be made between leucine 
                 (<Code>L</Code>) and isoleucine (<Code>I</Code>), that the peptides must be deduplicate prior to the actual biodiversity analysis, and that the 
                 results must be exported in csv format (<i>comma separated values</i>). Breaking up the missed cleavages happens by default. In addition, the option 
                 <i>Advanced missed cleavage handling</i> can be activated to indicate that the results should be aggregated as a post-processing step 
                 (not selected in this example).
             </p>
 
-            <ImageCaptionCard id="fig2" class="mb-5" :image="require('@/assets/casestudy-mpa-request.png')">
+            <ImageCaptionCard id="fig2" class="mb-5" :image="require('@/assets/documentation/cli/casestudy-mpa-request.png')">
                 <b>Figure 2</b> Processing of sample 7 from the study of {{ references.verberkmoes.short }} using the Metaproteomics Analysis feature of the 
                 <RLink to="/" router>Unipept website</RLink>. In this example session we indicate that no distinction should be made between leucine (<code>L</code>) 
                 and isoleucine (<Code>I</Code>), that the peptides must be deduplicated, and that the results must be exported in csv format (<i>comma separated values</i>). 
@@ -334,12 +334,12 @@ AADAAAALGEGLQAFCLPGSVADTR,186802,Clostridiales,order
 
             <p>
                 If needed, the <Code>unipept pept2lca</Code> command can be used in combination with the <Code>-a</Code> option to fetch the complete lineages for 
-                all <Initialism>LCA</Initialism>s according to the Unipept Taxonomy. <RLink to="fig3" anchor>Figure 3</RLink> shows the hierarchical classification 
+                all <Initialism>LCA</Initialism>s according to the Unipept Taxonomy. <RLink to="#fig3" router>Figure 3</RLink> shows the hierarchical classification 
                 of the taxa that could be identified in sample 7, with the node representing the order <i>Clostridiales</i> having the focus. A similar tree view 
                 can be found in the <i>Treeview</i> tab on the page showing the results of a Metaproteomics analysis in the Unipept web interface.
             </p>
 
-            <ImageCaptionCard id="fig3" class="mb-5" :image="require('@/assets/casestudy-mpa-treeview.png')">
+            <ImageCaptionCard id="fig3" class="mb-5" :image="require('@/assets/documentation/cli/casestudy-mpa-treeview.png')">
                 <b>Figure 3</b> Snapshot of an interactive tree view that shows the results of the biodiversity analysis of sample 7, a metaproteomics data set 
                 from the study of {{ references.verberkmoes.short }}. The node that represents the order <i>Clostridiales</i> has the focus. Percentages on the 
                 nodes indicate the relative amount of tryptic peptides that are specific for the corresponding taxa or one of its subtaxa, and also correspond to 

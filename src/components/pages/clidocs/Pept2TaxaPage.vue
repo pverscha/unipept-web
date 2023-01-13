@@ -35,7 +35,7 @@
 
             <h3>File input</h3>
             <p>
-                Use the <RLink to="options" anchor>--input parameter</RLink> to specify a file to use as input. If input is supplied using a file, a single 
+                Use the <RLink to="#options" router>--input parameter</RLink> to specify a file to use as input. If input is supplied using a file, a single 
                 peptide per line is expected.  
             </p>
 
@@ -74,15 +74,15 @@
             <p>
                 The <Code>unipept pept2taxa</Code> command outputs all <Initialism>NCBI</Initialism> taxonomy entries that are associated with UniProt entries that contain 
                 the given (tryptic) input peptides. By default, for each of the taxa, the <Initialism>NCBI</Initialism> taxon id, the name of the organism and the taxonomic 
-                rank are returned. By using the <RLink to="options" anchor>--all parameter</RLink>, this can be supplemented with the full taxonomic lineage of the taxon. 
+                rank are returned. By using the <RLink to="#options" router>--all parameter</RLink>, this can be supplemented with the full taxonomic lineage of the taxon. 
                 Consult the <RLink to="/apidocs/pept2taxa" router><Initialism>API</Initialism> documentation</RLink> for a detailed list of output fields. A selection of output 
-                fields can be specified with the <RLink to="options" anchor>--select parameter</RLink>. By default, output is generated in csv format. By using the 
-                <RLink to="options" anchor>--format parameter</RLink>, the format can be changed into json or xml. The output can be written to a file or to <i>standard output</i>.
+                fields can be specified with the <RLink to="#options" router>--select parameter</RLink>. By default, output is generated in csv format. By using the 
+                <RLink to="#options" router>--format parameter</RLink>, the format can be changed into json or xml. The output can be written to a file or to <i>standard output</i>.
             </p>
 
             <h3>File output</h3>
             <p>
-                Use the <RLink to="options" anchor>--output parameter</RLink> to specify an output file. If the file aready exists, the output will be 
+                Use the <RLink to="#options" router>--output parameter</RLink> to specify an output file. If the file aready exists, the output will be 
                 appended to the end of the file. 
             </p>
 

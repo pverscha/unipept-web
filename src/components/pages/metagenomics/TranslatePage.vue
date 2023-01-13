@@ -11,7 +11,7 @@
             The <Code>umgap translate</Code> command takes one or more <Initialism>DNA</Initialism> sequences and translates them into amino acid sequences
         </p>
 
-        <HeaderBodyCard id="usage" title="usage">
+        <HeaderBodyCard id="usage" title="Usage">
             <p>
                 The <Initialism>DNA</Initialism> sequences are expected in a <Initialism>FASTA</Initialism> format on <i>standard input</i>.
             </p>

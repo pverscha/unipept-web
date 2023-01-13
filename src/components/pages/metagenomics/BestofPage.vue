@@ -12,7 +12,7 @@
             most non-root identifications.
         </p>
 
-        <HeaderBodyCard id="usage" title="usage">
+        <HeaderBodyCard id="usage" title="Usage">
             <p>
                 The input is given in <Initialism>FASTA</Initialism> format on <i>standard input</i>. Per <Initialism>FASTA</Initialism> header, there should be multiple numbers (taxon IDs). 
                 Per 6 <Initialism>FASTA</Initialism> records (or whichever number you specify with <Code>-f</Code>), the best record is selected and written to 

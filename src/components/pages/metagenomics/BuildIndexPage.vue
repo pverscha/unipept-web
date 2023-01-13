@@ -12,7 +12,7 @@
             (<Initialism>FST</Initialism>) of this mapping.
         </p>
 
-        <HeaderBodyCard id="usage" title="usage">
+        <HeaderBodyCard id="usage" title="Usage">
             <p>
                 The input is given on <i>standard input</i>. It should be in a <Initialism>TSV</Initialism> format with two columns, ordered by the first. 
                 The unique strings in the first column should be mapped to the integers (taxon IDs) in the second column. A binary 

@@ -13,7 +13,7 @@
             allow more efficient parallel computing.
         </p>
 
-        <HeaderBodyCard id="usage" title="usage">
+        <HeaderBodyCard id="usage" title="Usage">
             <p>
                 The input is given in a <Initialism>FASTA</Initialism> format on <i>standard input</i>, with a single peptide per <Initialism>FASTA</Initialism> header, which may be 
                 hardwrapped with newlines. All overlapping k-mers in these peptides (k configurable via the <Code>-k</Code> option, 

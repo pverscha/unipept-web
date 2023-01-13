@@ -11,7 +11,7 @@
             The <Code>umgap filter</Code> command takes a <Initialism>FASTA</Initialism> stream of peptides as input and outputs a filtered stream.
         </p>
 
-        <HeaderBodyCard id="usage" title="usage">
+        <HeaderBodyCard id="usage" title="Usage">
             <p>
                 The input is given in <Initialism>FASTA</Initialism> format on <i>standard input</i>. Per <Initialism>FASTA</Initialism> header, 
                 there may be multiple peptides separated by newlines. Each of these peptides are checked against the filter criteria and 

@@ -7,13 +7,10 @@
 </template>
 
 <script setup lang="ts">
-export type NavigationItem = {
-    name: String,
-    link: String
-};
+import { NavigationItem } from './NavigationItem';
 
 export interface Props {
-    items: [NavigationItem]
+    items: NavigationItem[]
 }
 
 /* eslint-disable */
