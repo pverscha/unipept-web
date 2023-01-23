@@ -98,7 +98,7 @@
 
         <h1 class="font-weight-light mt-5">Supported by</h1>
         <v-row>
-            <v-col cols=4>
+            <v-col cols=2>
                 <v-img
                     src="@/assets/about/elixir-logo.svg"
                 />
@@ -124,11 +124,15 @@ const members = [
 ];
 
 const former_members = [
-{ name: "Robbert Gurdeep Singh", title: "Developer 2017-2018", imgUrl: "https://avatars.githubusercontent.com/u/662538?v=4" },
-{ name: "Toon Willems", title: "Master's student 2013-2014", imgUrl: "https://avatars.githubusercontent.com/u/104395?v=4" },
-{ name: "Tom Naessens", title: "Master's student 2014-2015", imgUrl: "https://avatars.githubusercontent.com/u/915130?v=4" },
-{ name: "Felix Van der Jeugt", title: "PhD student", imgUrl: "https://avatars.githubusercontent.com/u/994166?v=4" },
-{ name: "Peter Vandamme", title: "Advisor", imgUrl: "" },
-{ name: "Bart Devreese", title: "Advisor", imgUrl: "" },
-]
+    { name: "Robbert Gurdeep Singh", title: "Developer 2017-2018", imgUrl: "https://avatars.githubusercontent.com/u/662538?v=4" },
+    { name: "Felix Van der Jeugt", title: "PhD student", imgUrl: "https://avatars.githubusercontent.com/u/994166?v=4" },
+    { name: "Toon Willems", title: "Master's student 2013-2014", imgUrl: "https://avatars.githubusercontent.com/u/104395?v=4" },
+    { name: "Tom Naessens", title: "Master's student 2014-2015", imgUrl: "https://avatars.githubusercontent.com/u/915130?v=4" },
+    { name: "Stijn Seghers", title: "Master's student 2015-2016", imgUrl: "https://avatars.githubusercontent.com/u/607786?v=4" },
+    { name: "Kevin Velghe", title: "Master's student 2015-2016", imgUrl: "" },
+    { name: "Aranka Steyaert", title: "Master's student 2016-2017", imgUrl: "" },
+    { name: "Niels De Graef", title: "Master's student 2016-2018", imgUrl: "https://avatars.githubusercontent.com/u/1382976?v=4" },
+    { name: "Peter Vandamme", title: "Advisor", imgUrl: "" },
+    { name: "Bart Devreese", title: "Advisor", imgUrl: "" },
+];
 </script>
