@@ -49,6 +49,7 @@
 
 <script setup lang="ts">
 import useId from '@/composables/useId';
+import useConfigurationStore from '@/stores/ConfigurationStore';
 import useMultiAnalysis from '@/stores/MultiAnalysisStore';
 import { onMounted, ref } from 'vue';
 
@@ -69,6 +70,7 @@ interface SampleDatasetCollection {
 }
 
 const multiAnalysisStore = useMultiAnalysis();
+const configurationStore = useConfigurationStore();
 
 const { id } = useId();
 
@@ -83,7 +85,7 @@ const retrieveDatasets = () => {
     error.value = false;
 
     // @ts-ignore
-    fetch(`${process.env.VUE_APP_UNIPEPT_API_URL}/datasets/sampledata`, { method: "POST", body: JSON.stringify({}) })
+    fetch(`${configurationStore.unipeptApiUrl}/datasets/sampledata`, { method: "POST", body: JSON.stringify({}) })
         .then(response => response.json())
         .then(response => {
             for(let item of response.sample_data) {

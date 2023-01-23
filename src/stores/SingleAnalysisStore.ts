@@ -1,13 +1,32 @@
 import { defineStore } from "pinia";
-import { SinglePeptideAnalysisStatus, Peptide, CountTable, Pept2DataCommunicator, NcbiId, NcbiOntologyProcessor, ProteinProcessor, NcbiResponseCommunicator, GoResponseCommunicator, EcOntologyProcessor, EcProteinCountTableProcessor, EcResponseCommunicator, GoOntologyProcessor, GoProteinCountTableProcessor, InterproOntologyProcessor, InterproProteinCountTableProcessor, InterproResponseCommunicator, PeptideData, NcbiTaxon, Ontology, GoCode, GoDefinition, EcCode, EcDefinition, InterproCode, InterproDefinition, NcbiTree, computeEcTree } from "unipept-web-components";
+import { SinglePeptideAnalysisStatus, Peptide, CountTable, Pept2DataCommunicator, NcbiId, NcbiOntologyProcessor, ProteinProcessor, NcbiResponseCommunicator, GoResponseCommunicator, EcOntologyProcessor, EcProteinCountTableProcessor, EcResponseCommunicator, GoOntologyProcessor, GoProteinCountTableProcessor, InterproOntologyProcessor, InterproProteinCountTableProcessor, InterproResponseCommunicator, PeptideData, NcbiTaxon, Ontology, GoCode, GoDefinition, EcCode, EcDefinition, InterproCode, InterproDefinition, NcbiTree, computeEcTree, ProteinResponseCommunicator } from "unipept-web-components";
 import { ref } from "vue";
+import useConfigurationStore from "./ConfigurationStore";
 
 const useSingleAnalysis = defineStore('single-analysis', () => {
-    const pept2DataCommunicator = new Pept2DataCommunicator();
+    const configuration = useConfigurationStore();
+    
+    const pept2DataCommunicator = new Pept2DataCommunicator(
+        configuration.unipeptApiUrl,
+        configuration.peptideDataBatchSize,
+        configuration.cleavageBatchSize,
+        configuration.parallelRequests
+    );
+
+    NcbiResponseCommunicator.setup(configuration.unipeptApiUrl, configuration.ncbiBatchSize);
     const ncbiCommunicator = new NcbiResponseCommunicator();
+
+    GoResponseCommunicator.setup(configuration.unipeptApiUrl, configuration.goBatchSize);
     const goCommunicator = new GoResponseCommunicator();
+
+    EcResponseCommunicator.setup(configuration.unipeptApiUrl, configuration.ecBatchSize);
     const ecCommunicator = new EcResponseCommunicator();
+
+    InterproResponseCommunicator.setup(configuration.unipeptApiUrl, configuration.interproBatchSize);
     const interproCommunicator = new InterproResponseCommunicator();
+
+    ProteinResponseCommunicator.setup(configuration.unipeptApiUrl);
+    const proteinCommunicator = new ProteinResponseCommunicator();
 
     const assay = ref<SinglePeptideAnalysisStatus>({
         peptide: "",
@@ -40,7 +59,7 @@ const useSingleAnalysis = defineStore('single-analysis', () => {
 
         const [pept2Data, trust] = await pept2DataCommunicator.process(peptideCountTable, false, equateIl);
 
-        const proteinProcessor = new ProteinProcessor();
+        const proteinProcessor = new ProteinProcessor(proteinCommunicator);
         await proteinProcessor.compute(peptide, equateIl);
 
         const ncbiCounts = new Map<NcbiId, number>();

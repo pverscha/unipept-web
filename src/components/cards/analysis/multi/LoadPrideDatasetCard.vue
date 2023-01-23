@@ -79,9 +79,11 @@ import { ref } from 'vue';
 import { Tooltip, PrideCommunicator, Peptide } from 'unipept-web-components';
 import useId from '@/composables/useId';
 import useMultiAnalysis from '@/stores/MultiAnalysisStore';
+import useConfigurationStore from '@/stores/ConfigurationStore';
 
 const assayStore = useAssays();
 const multiAnalysisStore = useMultiAnalysis();
+const configurationStore = useConfigurationStore();
 
 const { id } = useId();
 
@@ -121,7 +123,7 @@ const fetchPrideDataset = (event: Event) => {
     datasetName.value = "PRIDE assay " + prideId.value;
 
     // @ts-ignore
-    const communicator = new PrideCommunicator(process.env.VUE_APP_PRIDE_API_PEPTIDE_URL, process.env.VUE_APP_PRIDE_BATCH_SIZE);
+    const communicator = new PrideCommunicator(configurationStore.prideApiPeptideUrl, configurationStore.prideBatchSize);
     communicator.getPeptides(prideId.value)
         .then((peptides: Peptide[]) => {
             if(peptides.length == 0) {

@@ -1,7 +1,8 @@
 import { defineStore } from "pinia";
-import { computeEcTree, EcCountTableProcessor, EcOntologyProcessor, EcResponseCommunicator, GoCountTableProcessor, GoOntologyProcessor, GoResponseCommunicator, InterproCountTableProcessor, InterproOntologyProcessor, InterproResponseCommunicator, LcaCountTableProcessor, MultiProteomicsAnalysisStatus, NcbiId, NcbiOntologyProcessor, NcbiResponseCommunicator, NcbiTaxon, NcbiTree, NcbiTreeNode, Ontology, Pept2DataCommunicator, Peptide, PeptideCountTableProcessor, PeptideTrustProcessor, ProgressUtils } from "unipept-web-components";
+import { EcCountTableProcessor, EcOntologyProcessor, EcResponseCommunicator, GoCountTableProcessor, GoOntologyProcessor, GoResponseCommunicator, InterproCountTableProcessor, InterproOntologyProcessor, InterproResponseCommunicator, LcaCountTableProcessor, MultiProteomicsAnalysisStatus, NcbiId, NcbiOntologyProcessor, NcbiResponseCommunicator, NcbiTaxon, NcbiTree, NcbiTreeNode, Ontology, Pept2DataCommunicator, Peptide, PeptideCountTableProcessor, PeptideTrustProcessor, ProgressUtils } from "unipept-web-components";
 import { Assay } from "unipept-web-components";
 import { computed, ref } from "vue";
+import useConfigurationStore from "./ConfigurationStore";
 
 const enum ProgressSteps {
     PEPT2DATA,
@@ -50,25 +51,25 @@ const filterSteps = [
 ];
 
 const useMultiAnalysis = defineStore('multi-analysis', () => {
+    const configuration = useConfigurationStore();
+    
     const pept2DataCommunicator = new Pept2DataCommunicator(
-        process.env.VUE_APP_UNIPEPT_API_URL,
-        +process.env.VUE_APP_PEPTDATA_BATCH_SIZE!,
-        +process.env.VUE_APP_CLEAVAGE_BATCH_SIZE!,
-        +process.env.VUE_APP_PARALLEL_REQUESTS!
+        configuration.unipeptApiUrl,
+        configuration.peptideDataBatchSize,
+        configuration.cleavageBatchSize,
+        configuration.parallelRequests
     );
 
-    // @ts-ignore
-    GoResponseCommunicator.setup(process.env.VUE_APP_UNIPEPT_API_URL, +process.env.VUE_APP_GO_BATCH_SIZE!);
+    GoResponseCommunicator.setup(configuration.unipeptApiUrl, configuration.goBatchSize);
     const goCommunicator = new GoResponseCommunicator();
 
-    // @ts-ignore
-    EcResponseCommunicator.setup(process.env.VUE_APP_UNIPEPT_API_URL, +process.env.VUE_APP_EC_BATCH_SIZE!);
+    EcResponseCommunicator.setup(configuration.unipeptApiUrl, configuration.ecBatchSize);
     const ecCommunicator = new EcResponseCommunicator();
 
-    // @ts-ignore
-    InterproResponseCommunicator.setup(process.env.VUE_APP_UNIPEPT_API_URL, +process.env.VUE_APP_INTERPRO_BATCH_SIZE!);
+    InterproResponseCommunicator.setup(configuration.unipeptApiUrl, configuration.interproBatchSize);
     const interproCommunicator = new InterproResponseCommunicator();
 
+    NcbiResponseCommunicator.setup(configuration.unipeptApiUrl, configuration.ncbiBatchSize);
     const ncbiCommunicator = new NcbiResponseCommunicator();
     
     const assayStatuses = ref<MultiProteomicsAnalysisStatus[]>([] as MultiProteomicsAnalysisStatus[]);
