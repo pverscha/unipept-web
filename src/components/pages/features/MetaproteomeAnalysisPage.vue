@@ -223,7 +223,6 @@ const updateSelectedTaxonId = (taxonId: number) => {
 
 const onUpdateFilterPercentage = (percentage: number) => {
     if(multiAnalysisStore.activeAssayStatus) {
-        console.log(percentage)
         multiAnalysisStore.filterAssayByPercentage(multiAnalysisStore.activeAssayStatus.assay.id, percentage);
     }
 }

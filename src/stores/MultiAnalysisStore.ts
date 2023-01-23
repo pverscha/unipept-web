@@ -251,7 +251,6 @@ const useMultiAnalysis = defineStore('multi-analysis', () => {
         };
 
         updateProgress(assayStatus.assay, -1, FilterSteps.CALCULATE_SEQUENCE_SUBSET, true);
-        console.log("aaa: ", percentage)
         if(taxonId === 1 && percentage === 5) {
             const originalData = assayStatus.data;
 
@@ -401,7 +400,6 @@ const useMultiAnalysis = defineStore('multi-analysis', () => {
     }
 
     const filterAssayByPercentage = (assayId: string, percentage: number) => {
-        console.log("qkfshgqhsfg:", percentage)
         const assayIndex = findAssayIndex(assayId);
         assayStatuses.value[assayIndex].filterPercentage = percentage;
 
