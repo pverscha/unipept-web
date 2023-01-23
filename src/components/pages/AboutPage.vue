@@ -98,10 +98,16 @@
 
         <h1 class="font-weight-light mt-5">Supported by</h1>
         <v-row>
-            <v-col cols=2>
-                <v-img
-                    src="@/assets/about/elixir-logo.svg"
-                />
+            <v-col v-for="supporter in supporters" :key="supporter.name" cols=12 sm="6" md="4">
+                <v-card>
+                    <v-card-text>
+                        <v-img
+                            :src="supporter.imgUrl"
+                            height="100px"
+                            contain
+                        />
+                    </v-card-text>
+                </v-card>
             </v-col>
         </v-row>
 
@@ -134,5 +140,10 @@ const former_members = [
     { name: "Niels De Graef", title: "Master's student 2016-2018", imgUrl: "https://avatars.githubusercontent.com/u/1382976?v=4" },
     { name: "Peter Vandamme", title: "Advisor", imgUrl: "" },
     { name: "Bart Devreese", title: "Advisor", imgUrl: "" },
+];
+
+const supporters = [
+    { name: "ELIXIR", imgUrl: require("@/assets/about/elixir-logo.svg") },
+    { name: "UGent", imgUrl: require("@/assets/about/ugent-logo.png") }
 ];
 </script>
