@@ -16,8 +16,8 @@ import HorizontalNavigation from "@/components/navigation/HorizontalNavigation.v
 
 const navigation = [
     { name: "Overview", link: "/news" },
-    { name: "Api", link: "/news/api" },
-    { name: "Cli", link: "/news/cli" },
+    { name: "API", link: "/news/api" },
+    { name: "CLI", link: "/news/cli" },
     { name: "Web", link: "/news/web" },
     { name: "Desktop", link: "/news/desktop" },
 ];
