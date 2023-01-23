@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-row>
-            <v-col class="col-lg-6 col-sm-12">
+            <v-col cols=12 md=6>
                 <div class="text-h3 font-weight-light mb-2">Welcome</div>
                 Unipept is an open source web application developed at <a href="https://www.ugent.be/en" target="_blank">Ghent University</a> that is designed for metaproteomics 
                 data analysis with a focus on <span class="font-weight-bold">interactive datavisualizations</span>. Unipept is powered by an index containing all 
@@ -11,54 +11,9 @@
                 selecting unique peptides for <span class="font-weight-bold">targeted proteomics</span> and for <span class="font-weight-bold">comparing 
                 genomes</span> based on peptide similarity.
             </v-col>
-            <v-col class="col-lg-6 col-sm-12">
-                <v-card>
-                    <v-list-item two-line class="blue darken-1">
-                        <v-list-item-content>
-                            <v-list-item-title class="text-h5 white--text">
-                                Unipept 4.3
-                            </v-list-item-title>
-                            <v-list-item-subtitle class="white--text">posted on 2020-04-15</v-list-item-subtitle>
-                        </v-list-item-content>
-                    </v-list-item>
-
-                    <v-card-text>
-                        Unipept 4.3 has just been released and contains these major additions:
-                        <ul>
-                            <li>
-                                Load and process multiple samples at once with the metaproteomics analysis tool.
-                            </li>
-                            <li>
-                                Compare multiple samples with each other using the new heatmap.
-                            </li>
-                            <li>
-                                Functional analysis has been expanded with support for InterPro annotations.
-                            </li>
-                            <li>
-                                UniProt updated to version 2020.01
-                            </li>
-                        </ul>
-                    </v-card-text>
-
-                    <v-divider class="mx-4"></v-divider>
-
-                    <v-card-actions>
-                        <v-spacer />
-                        <router-link
-                            to="/posts"
-                            v-slot="{ href, navigate }"
-                        >
-                            <v-btn
-                                color="secondary"
-                                text
-                                @click="navigate"
-                                :href="href"
-                            >
-                                More news
-                            </v-btn>
-                        </router-link>
-                    </v-card-actions>
-                </v-card>
+            
+            <v-col class="mt-0" cols=12 md=6>
+                <ReleaseOverviewCard v-if="!loading" :services="services" />
             </v-col>
         </v-row>
         <v-row>
@@ -160,14 +115,31 @@
     </v-container>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { GithubCommunicator } from "@/logic/communicators/github/GithubCommunicator";
+import { onBeforeMount, ref } from "vue";
 import HomePageCard from "../cards/HomePageCard.vue";
+import ReleaseOverviewCard, { Service } from "../cards/ReleaseOverviewCard.vue";
 
-export default defineComponent({
-    name: "HomePage",
-    setup() { },
-    components: { HomePageCard },
+const githubCommunicator = new GithubCommunicator();
+
+const loading = ref<boolean>(true);
+const services = ref<Service[]>([]);
+
+onBeforeMount(async () => {
+    const API = await githubCommunicator.latestRelease("https://api.github.com/repos/unipept/unipept/releases");
+    const CLI = await githubCommunicator.latestRelease("https://api.github.com/repos/unipept/unipept-cli/releases");
+    const Web = await githubCommunicator.latestRelease("https://api.github.com/repos/unipept/unipept-web/releases");
+    const Desktop = await githubCommunicator.latestRelease("https://api.github.com/repos/unipept/unipept-desktop/releases");
+
+    services.value = [
+        { name: "API", icon: "mdi-api", version: API.tag_name.replace(/^v/, ""), date: API.published_at, to: "/news/api" },
+        { name: "CLI", icon: "mdi-console", version: CLI.tag_name.replace(/^v/, ""), date: CLI.published_at, to: "/news/cli" },
+        { name: "Web app", icon: "mdi-web", version: Web.tag_name, date: Web.published_at, to: "/news/web" },
+        { name: "Desktop app", icon: "mdi-desktop-tower-monitor", version: Desktop.tag_name.replace(/^v/, ""), date: Desktop.published_at, to: "/news/desktop" }
+    ];
+
+    loading.value = false;
 });
 </script>
 

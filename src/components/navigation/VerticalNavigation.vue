@@ -14,15 +14,10 @@
 </template>
 
 <script setup lang="ts">
-export type NavigationItem = {
-    name: string,
-    link: string,
-    anchor: boolean,
-    children: NavigationItem[]
-};
+import { NavigationItem } from './NavigationItem';
 
 export interface Props {
-    items: [NavigationItem]
+    items: NavigationItem[]
 }
 
 /* eslint-disable */

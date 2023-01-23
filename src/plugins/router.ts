@@ -87,6 +87,13 @@ import DesktopComparativeAnalysisPage from "@/components/pages/desktopdocs/Deskt
 import DesktopConfigurationOptionsPage from "@/components/pages/desktopdocs/DesktopConfigurationOptionsPage.vue";
 import DesktopFAQPage from "@/components/pages/desktopdocs/DesktopFAQPage.vue";
 
+// News Documentation
+import NewsOverviewPage from "@/components/pages/news/NewsOverviewPage.vue";
+import APINewsPage from "@/components/pages/news/APINewsPage.vue";
+import CLINewsPage from "@/components/pages/news/CLINewsPage.vue";
+import WebNewsPage from "@/components/pages/news/WebNewsPage.vue";
+import DesktopNewsPage from "@/components/pages/news/DesktopNewsPage.vue";
+
 Vue.use(VueRouter);
 
 const apidocsMeta = {
@@ -100,6 +107,11 @@ const clidocsMeta = {
 };
 
 const metagenomicsMeta = {
+    publication: "Gurdeep Singh et al. (2019) Journal of Proteome Research",
+    publicationLink: "doi:10.1021/acs.jproteome.8b00716"
+};
+
+const newsMeta = {
     publication: "Gurdeep Singh et al. (2019) Journal of Proteome Research",
     publicationLink: "doi:10.1021/acs.jproteome.8b00716"
 };
@@ -233,12 +245,16 @@ const routes = [
         }
     },
     {
-        path: "/posts",
+        path: "/news",
         component: NewsPage,
-        meta: {
-            publication: "Gurdeep Singh et al. (2019) Journal of Proteome Research",
-            publicationLink: "doi:10.1021/acs.jproteome.8b00716"
-        }
+        children: [
+            { path: "", component: NewsOverviewPage, meta: newsMeta },
+            { path: "api", component: APINewsPage, meta: newsMeta },
+            { path: "cli", component: CLINewsPage, meta: newsMeta },
+            { path: "web", component: WebNewsPage, meta: newsMeta },
+            { path: "desktop", component: DesktopNewsPage, meta: newsMeta },
+        ],
+        meta: newsMeta
     },
     {
         path: "/publications",

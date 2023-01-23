@@ -321,7 +321,7 @@
 <script setup lang="ts">
 import { onBeforeMount, ref } from 'vue';
 
-import UnipeptCommunicator from '@/communicators/unipept/UnipeptCommunicator';
+import UnipeptCommunicator from '@/logic/communicators/unipept/UnipeptCommunicator';
 
 import HeaderBodyCard from '@/components/cards/HeaderBodyCard.vue';
 import Code from '@/components/highlights/InlineCode.vue';

@@ -73,7 +73,7 @@
                 <div class="col-md-8 text-md-start order-md-2 col-12 text-center order-3 grey--text">© 2022 Universiteit Gent</div>
                 <div class="col-md-4 text-md-end order-md-3 col-12 text-center order-1">
                     <router-link class="link" to="/about">Terms of service</router-link>
-                    <router-link class="link ml-5" to="/posts">News</router-link>
+                    <router-link class="link ml-5" to="/news">News</router-link>
                     <router-link class="link ml-5" to="/publications">Publications</router-link>
                 </div>
             </div>

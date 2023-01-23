@@ -1,34 +1,9 @@
 <template>
-    <pre v-html="highlight(object)"></pre>
+    <pre v-html="jsonParser.parseAndHighlight(object)"></pre>
 </template>
 
 <script setup lang="ts">
-const highlight = (object: Object) => {
-    return JSON
-        .stringify(object, null, 2)
-        .replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g, 
-            match => {
-                if(/^"/.test(match)) {
-                    if (/:$/.test(match)) {
-                        // Field
-                        return match.replace(/"/g,"");
-                    } else {
-                        // String
-                        return '<span style="color: #4070a0;">' + match + '</span>';
-                    }
-                } else if(/true|false/.test(match)) {
-                    // Boolean
-                    return '<span style="color: #f79ea9;">' + match + '</span>';
-                } else if(/null/.test(match)) {
-                    // Null
-                    return '<span style="color: #f79ea9;">' + match + '</span>';
-                }
-
-                // Numbers
-                return '<span style="color: #40a070;">' + match + '</span>';
-            }
-    );
-}
+import JsonParser from '@/logic/parsers/json/JsonParser';
 
 export interface Props {
     object: Object | [Object]
@@ -36,6 +11,8 @@ export interface Props {
 
 /* eslint-disable */
 defineProps<Props>();
+
+const jsonParser = new JsonParser();
 </script>
 
 <style scoped>
