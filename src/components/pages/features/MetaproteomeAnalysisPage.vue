@@ -101,10 +101,12 @@
                         <v-tab-item>
                             <GoSummaryCard
                                 :analysisInProgress="!multiAnalysisStore.analysisCompleted(multiAnalysisStore.activeAssayStatus.assay.id) || !multiAnalysisStore.filterCompleted(multiAnalysisStore.activeAssayStatus.assay.id)"
+                                :filter="multiAnalysisStore.activeAssayStatus.filterPercentage"
                                 :goProcessor="multiAnalysisStore.activeAssayStatus.filteredData?.goCountTableProcessor"
                                 :goOntology="multiAnalysisStore.activeAssayStatus?.goOntology"
                                 :showPercentage="sortPeptidePercentage"
                                 :downloadItem="downloadGoItem"
+                                @filerPercentageChange="onUpdateFilterPercentage"
                             />
                         </v-tab-item>
                         <v-tab-item>
@@ -216,6 +218,13 @@ const ecTree = () => {
 const updateSelectedTaxonId = (taxonId: number) => {
     if(multiAnalysisStore.activeAssayStatus) {
         multiAnalysisStore.filterAssayByRank(multiAnalysisStore.activeAssayStatus.assay.id, taxonId);
+    }
+}
+
+const onUpdateFilterPercentage = (percentage: number) => {
+    if(multiAnalysisStore.activeAssayStatus) {
+        console.log(percentage)
+        multiAnalysisStore.filterAssayByPercentage(multiAnalysisStore.activeAssayStatus.assay.id, percentage);
     }
 }
 

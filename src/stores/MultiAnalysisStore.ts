@@ -251,7 +251,7 @@ const useMultiAnalysis = defineStore('multi-analysis', () => {
         };
 
         updateProgress(assayStatus.assay, -1, FilterSteps.CALCULATE_SEQUENCE_SUBSET, true);
-
+        console.log("aaa: ", percentage)
         if(taxonId === 1 && percentage === 5) {
             const originalData = assayStatus.data;
 
@@ -311,17 +311,17 @@ const useMultiAnalysis = defineStore('multi-analysis', () => {
 
                 updateProgress(assayStatus.assay, -1, FilterSteps.FILTER_GO_COUNT_TABLE, true);
 
-                const goCountTableProcessor = new GoCountTableProcessor(filteredCountTable, assayStatus.pept2Data, goCommunicator);
+                const goCountTableProcessor = new GoCountTableProcessor(filteredCountTable, assayStatus.pept2Data, goCommunicator, percentage);
                 await goCountTableProcessor.compute();
 
                 updateProgress(assayStatus.assay, -1, FilterSteps.FILTER_EC_COUNT_TABLE, true);
 
-                const ecCountTableProcessor = new EcCountTableProcessor(filteredCountTable, assayStatus.pept2Data, ecCommunicator);
+                const ecCountTableProcessor = new EcCountTableProcessor(filteredCountTable, assayStatus.pept2Data, ecCommunicator, percentage);
                 await ecCountTableProcessor.compute();
 
                 updateProgress(assayStatus.assay, -1, FilterSteps.FILTER_INTERPRO_COUNT_TABLE, true);
 
-                const interproCountTableProcessor = new InterproCountTableProcessor(filteredCountTable, assayStatus.pept2Data, interproCommunicator);
+                const interproCountTableProcessor = new InterproCountTableProcessor(filteredCountTable, assayStatus.pept2Data, interproCommunicator, percentage);
                 await interproCountTableProcessor.compute();
 
                 assayStatus.filteredData = {
@@ -401,8 +401,11 @@ const useMultiAnalysis = defineStore('multi-analysis', () => {
     }
 
     const filterAssayByPercentage = (assayId: string, percentage: number) => {
+        console.log("qkfshgqhsfg:", percentage)
         const assayIndex = findAssayIndex(assayId);
         assayStatuses.value[assayIndex].filterPercentage = percentage;
+
+        
         filter(assayId);
     }
 
