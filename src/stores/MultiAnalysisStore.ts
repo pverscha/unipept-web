@@ -251,98 +251,83 @@ const useMultiAnalysis = defineStore('multi-analysis', () => {
         };
 
         updateProgress(assayStatus.assay, -1, FilterSteps.CALCULATE_SEQUENCE_SUBSET, true);
-        if(taxonId === 1 && percentage === 5) {
-            const originalData = assayStatus.data;
 
-            assayStatus.filteredData = {
-                peptideCountTable: originalData.peptideCountTable,
-                goCountTableProcessor: originalData.goCountTableProcessor,
-                ecCountTableProcessor: originalData.ecCountTableProcessor,
-                interproCountTableProcessor: originalData.interproCountTableProcessor,
-                percentage: percentage,
-                trust: originalData.trust
-            };
+        const getOwnAndChildrenSequences = async function(
+            taxonId: NcbiId,
+            lcaProcessor: LcaCountTableProcessor,
+            ncbiOntology: Ontology<NcbiId, NcbiTaxon>
+        ): Promise<Peptide[]> {
+            const lcaCountTable = lcaProcessor.getCountTable();
+            const peptideMapping = lcaProcessor.getAnnotationPeptideMapping();
 
-            assayStatus.filterInProgress = false;
-            assayStatus.filterReady = true;
-        } else {
-            const getOwnAndChildrenSequences = async function(
-                taxonId: NcbiId,
-                lcaProcessor: LcaCountTableProcessor,
-                ncbiOntology: Ontology<NcbiId, NcbiTaxon>
-            ): Promise<Peptide[]> {
-                const lcaCountTable = lcaProcessor.getCountTable();
-                const peptideMapping = lcaProcessor.getAnnotationPeptideMapping();
+            const tree = new NcbiTree(lcaCountTable, ncbiOntology);
 
-                const tree = new NcbiTree(lcaCountTable, ncbiOntology);
+            const sequences: Peptide[] = [];
+            const node = tree.nodes.get(taxonId)!;
+            const nodes: NcbiTreeNode[] = [node];
 
-                const sequences: Peptide[] = [];
-                const node = tree.nodes.get(taxonId)!;
-                const nodes: NcbiTreeNode[] = [node];
-
-                while (nodes.length > 0) {
-                    const node = nodes.pop();
-                    if (peptideMapping.has(node?.id)) {
-                        sequences.push(...peptideMapping.get(node?.id)!);
-                    }
-
-                    if (node?.children) {
-                        nodes.push(...node.children);
-                    }
+            while (nodes.length > 0) {
+                const node = nodes.pop();
+                if (peptideMapping.has(node?.id)) {
+                    sequences.push(...peptideMapping.get(node?.id)!);
                 }
 
-                return sequences;
+                if (node?.children) {
+                    nodes.push(...node.children);
+                }
             }
 
-            try {
-                const lcaCountTableProcessor = assayStatus.data.lcaCountTableProcessor;
+            return sequences;
+        }
 
-                updateProgress(assayStatus.assay, -1, FilterSteps.FILTER_COUNT_TABLE, true);
+        try {
+            const lcaCountTableProcessor = assayStatus.data.lcaCountTableProcessor;
 
-                // @ts-ignore
-                const sequences = await getOwnAndChildrenSequences(taxonId, lcaCountTableProcessor, assayStatus.ncbiOntology);
+            updateProgress(assayStatus.assay, -1, FilterSteps.FILTER_COUNT_TABLE, true);
 
-                const peptideProcessor = new PeptideCountTableProcessor();
-                const filteredCountTable = await peptideProcessor.getPeptideCountTable(sequences, assayStatus.cleavageHandling, assayStatus.filterDuplicates, assayStatus.equateIl);
+            // @ts-ignore
+            const sequences = await getOwnAndChildrenSequences(taxonId, lcaCountTableProcessor, assayStatus.ncbiOntology);
 
-                const trustProcessor = new PeptideTrustProcessor()
-                const filteredTrust = trustProcessor.getPeptideTrust(filteredCountTable, assayStatus.pept2Data);
+            const peptideProcessor = new PeptideCountTableProcessor();
+            const filteredCountTable = await peptideProcessor.getPeptideCountTable(sequences, assayStatus.cleavageHandling, assayStatus.filterDuplicates, assayStatus.equateIl);
 
-                updateProgress(assayStatus.assay, -1, FilterSteps.FILTER_GO_COUNT_TABLE, true);
+            const trustProcessor = new PeptideTrustProcessor()
+            const filteredTrust = trustProcessor.getPeptideTrust(filteredCountTable, assayStatus.pept2Data);
 
-                const goCountTableProcessor = new GoCountTableProcessor(filteredCountTable, assayStatus.pept2Data, goCommunicator, percentage);
-                await goCountTableProcessor.compute();
+            updateProgress(assayStatus.assay, -1, FilterSteps.FILTER_GO_COUNT_TABLE, true);
 
-                updateProgress(assayStatus.assay, -1, FilterSteps.FILTER_EC_COUNT_TABLE, true);
+            const goCountTableProcessor = new GoCountTableProcessor(filteredCountTable, assayStatus.pept2Data, goCommunicator, percentage);
+            await goCountTableProcessor.compute();
 
-                const ecCountTableProcessor = new EcCountTableProcessor(filteredCountTable, assayStatus.pept2Data, ecCommunicator, percentage);
-                await ecCountTableProcessor.compute();
+            updateProgress(assayStatus.assay, -1, FilterSteps.FILTER_EC_COUNT_TABLE, true);
 
-                updateProgress(assayStatus.assay, -1, FilterSteps.FILTER_INTERPRO_COUNT_TABLE, true);
+            const ecCountTableProcessor = new EcCountTableProcessor(filteredCountTable, assayStatus.pept2Data, ecCommunicator, percentage);
+            await ecCountTableProcessor.compute();
 
-                const interproCountTableProcessor = new InterproCountTableProcessor(filteredCountTable, assayStatus.pept2Data, interproCommunicator, percentage);
-                await interproCountTableProcessor.compute();
+            updateProgress(assayStatus.assay, -1, FilterSteps.FILTER_INTERPRO_COUNT_TABLE, true);
 
-                assayStatus.filteredData = {
-                    peptideCountTable: filteredCountTable,
-                    goCountTableProcessor: goCountTableProcessor,
-                    ecCountTableProcessor: ecCountTableProcessor,
-                    interproCountTableProcessor: interproCountTableProcessor,
-                    percentage: percentage,
-                    trust: filteredTrust
-                };
-            } catch(error: any) {
-                assayStatus.error = {
-                    status: true,
-                    message: error.message,
-                    object: error
-                };
-            } finally {
-                assayStatus.filterInProgress = false;
-                assayStatus.filterReady = true;
+            const interproCountTableProcessor = new InterproCountTableProcessor(filteredCountTable, assayStatus.pept2Data, interproCommunicator, percentage);
+            await interproCountTableProcessor.compute();
 
-                updateProgress(assayStatus.assay, -1, FilterSteps.COMPLETED, true);
-            }
+            assayStatus.filteredData = {
+                peptideCountTable: filteredCountTable,
+                goCountTableProcessor: goCountTableProcessor,
+                ecCountTableProcessor: ecCountTableProcessor,
+                interproCountTableProcessor: interproCountTableProcessor,
+                percentage: percentage,
+                trust: filteredTrust
+            };
+        } catch(error: any) {
+            assayStatus.error = {
+                status: true,
+                message: error.message,
+                object: error
+            };
+        } finally {
+            assayStatus.filterInProgress = false;
+            assayStatus.filterReady = true;
+
+            updateProgress(assayStatus.assay, -1, FilterSteps.COMPLETED, true);
         }
     }
 

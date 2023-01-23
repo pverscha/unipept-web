@@ -101,11 +101,11 @@
                         <v-tab-item>
                             <GoSummaryCard
                                 :analysisInProgress="!multiAnalysisStore.analysisCompleted(multiAnalysisStore.activeAssayStatus.assay.id) || !multiAnalysisStore.filterCompleted(multiAnalysisStore.activeAssayStatus.assay.id)"
-                                :filter="multiAnalysisStore.activeAssayStatus.filterPercentage"
                                 :goProcessor="multiAnalysisStore.activeAssayStatus.filteredData?.goCountTableProcessor"
                                 :goOntology="multiAnalysisStore.activeAssayStatus?.goOntology"
                                 :showPercentage="sortPeptidePercentage"
                                 :downloadItem="downloadGoItem"
+                                :filter="multiAnalysisStore.activeAssayStatus.filterPercentage || 5"
                                 @filerPercentageChange="onUpdateFilterPercentage"
                             />
                         </v-tab-item>
@@ -117,6 +117,8 @@
                                 :ecTree="ecTree()"
                                 :showPercentage="sortPeptidePercentage"
                                 :downloadItem="downloadEcItem"
+                                :filter="multiAnalysisStore.activeAssayStatus.filterPercentage || 5"
+                                @filerPercentageChange="onUpdateFilterPercentage"
                             />
                         </v-tab-item>
                         <v-tab-item>
@@ -126,6 +128,8 @@
                                 :interproOntology="multiAnalysisStore.activeAssayStatus?.interproOntology"
                                 :showPercentage="sortPeptidePercentage"
                                 :downloadItem="downloadInterproItem"
+                                :filter="multiAnalysisStore.activeAssayStatus.filterPercentage || 5"
+                                @filerPercentageChange="onUpdateFilterPercentage"
                             />
                         </v-tab-item>
                     </v-tabs-items>
