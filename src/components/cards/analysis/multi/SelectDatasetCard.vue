@@ -82,6 +82,7 @@
 import { ref, defineEmits } from 'vue';
 import { Assay, Tooltip } from "unipept-web-components";
 import useMultiAnalysis from '@/stores/MultiAnalysisStore';
+import AnalyticsCommunicator from '@/logic/communicators/analytics/AnalyticsCommunicator';
 
 const emit = defineEmits(['search']);
 
@@ -102,6 +103,9 @@ const reset = () => {
 
 const search = () => {
     multiAnalysisStore.assayStatuses.forEach(status => {
+        // Log the search to the analytics server
+        new AnalyticsCommunicator().logSearchMpa(status.assay.amountOfPeptides, equateIl.value, filterDuplicates.value, cleavageHandling.value, false);
+
         multiAnalysisStore.analyse(
             status.assay, equateIl.value, filterDuplicates.value, cleavageHandling.value
         )
