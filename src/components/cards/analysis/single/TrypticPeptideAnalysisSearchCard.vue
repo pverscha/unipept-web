@@ -18,7 +18,7 @@
                 }"
                 v-slot="{ navigate }"
             >
-                <v-form v-model="validForm" @submit="navigate">
+                <v-form ref="form" v-model="validForm" @submit="navigate">
                     <v-row>
                         <v-col>
                             <p class="mb-0">
@@ -33,6 +33,7 @@
                                 v-model.trim="sequence"
                                 label="Sequence"
                                 :rules="sequenceRules"
+                                autofocus
                             ></v-text-field>
                         </v-col>
                     </v-row>
@@ -71,6 +72,8 @@ import { ref } from 'vue';
 const validForm = ref(false);
 const sequence = ref("");
 const equateIl = ref(true);
+
+const form = ref(null);
 
 const sequenceRules = [
     (value: string) => /^[A-Z]+$/.test(value.toUpperCase()) || "Peptide can only consist of letters",
