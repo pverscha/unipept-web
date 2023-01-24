@@ -22,7 +22,8 @@
                     <v-row>
                         <v-col>
                             <p class="mb-0">
-                                Search for a single tryptic peptide (e.g. AALTER) by entering the sequence below.
+                                Search for a single tryptic peptide (e.g. AALTER) by entering the sequence below. Note that your input should only consist of <b>5</b> to <b>50</b> amino acids. 
+                                Lowercase letters are allowed, but will be converted to their uppercase counterpart.
                             </p>
                         </v-col>
                     </v-row>
