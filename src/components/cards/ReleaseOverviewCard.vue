@@ -18,7 +18,7 @@
 
                         <v-spacer />
 
-                        <v-chip v-if="recentDate(item.date, 250)"
+                        <v-chip v-if="recentDate(item.date, 90)"
                             class="recent-release my-2 mb-0 px-2 justify-left"
                             small
                             label
