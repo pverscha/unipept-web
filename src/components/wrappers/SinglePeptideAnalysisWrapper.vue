@@ -39,16 +39,19 @@ analysisStore.analyse(peptide, equateIl);
 
 const onGoClicked = (router: VueRouter) => {
     currentTab.value = 3;
+    // https://github.com/vuejs/vue-router/issues/2881#issuecomment-520554378
     router.push({ path: '#Analysis' }).catch(() => {});
 }
 
 const onEcClicked = (router: VueRouter) => {
     currentTab.value = 4;
+    // https://github.com/vuejs/vue-router/issues/2881#issuecomment-520554378
     router.push({ path: '#Analysis' }).catch(() => {});
 }
 
 const onInterproClicked = (router: VueRouter) => {
     currentTab.value = 5;
+    // https://github.com/vuejs/vue-router/issues/2881#issuecomment-520554378
     router.push({ path: '#Analysis' }).catch(() => {});
 }
 </script>
