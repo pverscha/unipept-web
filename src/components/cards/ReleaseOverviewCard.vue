@@ -12,7 +12,7 @@
                             <v-icon>{{ item.icon }}</v-icon>
                         </v-list-item-icon>
 
-                        <v-list-item-content v-if="$vuetify.breakpoint.smAndUp" class="fixed-flex-size">
+                        <v-list-item-content class="fixed-flex-size">
                             <v-list-item-title>{{ item.name }}</v-list-item-title>
                         </v-list-item-content>
 
