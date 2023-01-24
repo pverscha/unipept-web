@@ -29,7 +29,7 @@
                     </thead>
                     <tbody>
                         <router-link v-for="item in functions" class="clickable" :key="item.resource" :to="item.link" tag="tr">
-                            <td>
+                            <td style="white-space: nowrap;">
                                 <b>{{ item.resource }}</b>
                             </td>
                             <td class="py-3">
