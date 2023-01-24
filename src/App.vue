@@ -113,6 +113,10 @@ QueueManager.initializeQueue(4);
     }
 }
 
+body {
+    font-size: 16px;
+}
+
 .homepage-title {
     color: white !important;
     text-decoration: none;
@@ -136,22 +140,17 @@ QueueManager.initializeQueue(4);
     color: #333333 !important;
 }
 
-li {
-    line-height: 1.8;
-}
-
-.v-card__text p {
-    font-size: 100%;
-}
-
-.v-card__content p {
-    font-size: 100%;
-}
-
 p {
     color: #333333 !important;
-    font-size: 90%;
     margin-bottom: 8px !important;
+}
+
+li {
+    font-size: 16px;
+}
+
+td {
+    font-size: 16px !important;
 }
 
 .v-card h3 {

@@ -13,5 +13,6 @@
     line-height: 1.5;
     margin-bottom: 12px;
     max-height: 350px;
+    font-size: 90%;
 }
 </style>

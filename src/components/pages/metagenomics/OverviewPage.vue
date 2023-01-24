@@ -5,7 +5,7 @@
                 Go from a paired-end <Initialism>FASTQ</Initialism> sample to an interactive visualisation in 7 simple commands.
             </p>
 
-            <Boxed class="fs">
+            <Boxed>
                 <Sentinel>$</Sentinel> git clone https://github.com/unipept/umgap.git && cd umgap # download source code
                 <br><Sentinel>$</Sentinel> cargo install --path . # install UMGAP
                 <br><Sentinel>$</Sentinel> git clone https://github.com/unipept/FragGeneScanPlusPlus.git FGSpp # download gene predictor
@@ -32,7 +32,7 @@
             consistent intermediate format, it's easy to plug your own extensions into the pipeline.
         </p>
 
-        <ul class="fs">
+        <ul>
             <li><b><Initialism>UMGAP</Initialism> High Precision</b>: Optimized for high precision identifications on your metagenomics reads.</li>
             <li><b><Initialism>UMGAP</Initialism> Max Precision</b>: Optimized for highest precision, with a small setback on sensitivity.</li>
             <li><b><Initialism>UMGAP</Initialism> Tryptic Precision</b>: Made for fast analyses on your laptop. Fewer results, but accurate.</li>
@@ -287,9 +287,3 @@ const functions = [
     },
 ];
 </script>
-
-<style>
-.fs {
-    font-size: 90%;
-}
-</style>
