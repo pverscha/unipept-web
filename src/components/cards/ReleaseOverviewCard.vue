@@ -18,38 +18,25 @@
 
                         <v-spacer />
 
-                        <v-chip v-if="item.version"
-                            class="ma-2 mb-0 justify-left"
+                        <v-chip v-if="recentDate(item.date, 250)"
+                            class="recent-release my-2 mb-0 px-2 justify-left"
                             small
                             label
-                            color="primary"
+                            color="green"
                         >
-                            {{ item.version }}
+                            <v-icon class="white--text me-2">
+                                mdi-flag
+                            </v-icon>
                         </v-chip>
 
-                        <Tooltip :message="formatDateFull(item.date)">
-                            <v-chip v-if="recentDate(item.date, 120)"
-                                class="recent-release my-2 mb-0 px-2 justify-left"
+                        <Tooltip v-if="item.version" :message="formatDateFull(item.date)">
+                            <v-chip
+                                class="ma-2 mb-0 justify-left"
                                 small
                                 label
-                                color="green"
+                                color="primary"
                             >
-                                <v-icon class="white--text me-2">
-                                    mdi-flag
-                                </v-icon>
-                                <span>
-                                    {{ formatDate(item.date) }}
-                                </span>
-                            </v-chip>
-
-                            <v-chip v-else-if="item.version"
-                                class="my-2 mb-0 px-2 justify-left"
-                                small
-                                label
-                            >
-                                <span>
-                                    {{ formatDate(item.date) }}
-                                </span>
+                                {{ item.version }}
                             </v-chip>
                         </Tooltip>
 
@@ -97,15 +84,6 @@ const months = [
     "December"
 ];
 
-const leadingZero = (number: number) => {
-    return number < 10 ? `0${number}` : number;
-}
-
-const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return `${leadingZero(date.getDate())}-${leadingZero(date.getMonth() + 1)}-${date.getFullYear()}`;
-}
-
 const formatDateFull = (dateString: string) => {
     const date = new Date(dateString);
     return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
@@ -134,11 +112,8 @@ const recentDate = (dateString: string, maxDays: number) => {
 }
 
 .recent-release:after {
-    content: "New release" !important;
+    content: "New" !important;
+    font-weight: bold;
     color: white;
-}
-
-.recent-release:hover:after {
-    content: none !important;
 }
 </style>
