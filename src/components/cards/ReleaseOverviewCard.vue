@@ -27,31 +27,31 @@
                             {{ item.version }}
                         </v-chip>
 
-                        <v-chip v-if="recentDate(item.date, 120)"
-                            class="recent-release my-2 mb-0 px-2 justify-left"
-                            small
-                            label
-                            color="green"
-                        >
-                            <v-icon class="white--text me-2">
-                                mdi-flag
-                            </v-icon>
-                            <span>
-                                {{ formatDate(item.date) }}
-                            </span>
-                        </v-chip>
+                        <Tooltip :message="formatDateFull(item.date)">
+                            <v-chip v-if="recentDate(item.date, 120)"
+                                class="recent-release my-2 mb-0 px-2 justify-left"
+                                small
+                                label
+                                color="green"
+                            >
+                                <v-icon class="white--text me-2">
+                                    mdi-flag
+                                </v-icon>
+                                <span>
+                                    {{ formatDate(item.date) }}
+                                </span>
+                            </v-chip>
 
-                        <v-chip v-else-if="item.version"
-                            class="my-2 mb-0 px-2 justify-left"
-                            small
-                            label
-                        >
-                            <span>
-                                {{ formatDate(item.date) }}
-                            </span>
-                        </v-chip>
-
-                        <v-spacer />
+                            <v-chip v-else-if="item.version"
+                                class="my-2 mb-0 px-2 justify-left"
+                                small
+                                label
+                            >
+                                <span>
+                                    {{ formatDate(item.date) }}
+                                </span>
+                            </v-chip>
+                        </Tooltip>
 
                         <v-list-item-icon>
                             <v-icon>mdi-chevron-right</v-icon>
@@ -64,6 +64,7 @@
 </template>
 
 <script setup lang="ts">
+import { Tooltip } from "unipept-web-components";
 import { defineProps } from "vue";
 import HeaderBodyCard from "./HeaderBodyCard.vue";
 
@@ -81,9 +82,33 @@ export interface Props {
 
 const { services } = defineProps<Props>();
 
+const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+];
+
+const leadingZero = (number: number) => {
+    return number < 10 ? `0${number}` : number;
+}
+
 const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+    return `${leadingZero(date.getDate())}-${leadingZero(date.getMonth() + 1)}-${date.getFullYear()}`;
+}
+
+const formatDateFull = (dateString: string) => {
+    const date = new Date(dateString);
+    return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
 }
 
 const recentDate = (dateString: string, maxDays: number) => {
