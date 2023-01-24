@@ -4,6 +4,7 @@
             height="300"
             :src="asset"
             :alt="asset"
+            :contain="contain"
         />
 
         <v-card-title class="feature-title">{{ title }}</v-card-title>
@@ -23,7 +24,8 @@ export default defineComponent({
     props: {
         title: String,
         asset: String,
-        hover: Boolean
+        hover: Boolean,
+        contain: Boolean
     }
 });
 </script>
