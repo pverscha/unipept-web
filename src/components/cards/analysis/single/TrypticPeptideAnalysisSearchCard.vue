@@ -32,11 +32,12 @@
 
                     <v-row>
                         <v-col class="py-0" cols=12 md=6>
-                            <v-switch
-                                v-model="equate_il"
-                                label="Equate I and L?"
-                                inset
-                            ></v-switch>
+                            <Tooltip message="Equate isoleucine (I) and leucine (L) when matching peptides to UniProt entries.">
+                                <v-checkbox
+                                    v-model="equate_il"
+                                    label="Equate I and L?"
+                                ></v-checkbox>
+                            </Tooltip>
                         </v-col>
 
                         <v-col class="d-flex" cols=12 md=6>
@@ -57,6 +58,7 @@
 </template>
 
 <script setup lang="ts">
+import { Tooltip } from 'unipept-web-components';
 import { ref } from 'vue';
 
 const validForm = ref(false);
