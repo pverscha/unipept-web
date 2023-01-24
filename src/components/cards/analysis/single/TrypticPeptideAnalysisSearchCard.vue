@@ -13,12 +13,19 @@
             <router-link
                 :to="{
                     name: 'tpaResult',
-                    params: { sequence: sequence },
+                    params: { sequence: sequence.toUpperCase() },
                     query: { equate: equate_il }
                 }"
                 v-slot="{ navigate }"
             >
                 <v-form v-model="validForm" @submit="navigate">
+                    <v-row>
+                        <v-col>
+                            <p class="mb-0">
+                                Search for a single tryptic peptide (e.g. AALTER) by entering the sequence below.
+                            </p>
+                        </v-col>
+                    </v-row>
                     <v-row>
                         <v-col class="pb-0" cols=12>
                             <v-text-field
