@@ -14,7 +14,7 @@
                 :to="{
                     name: 'tpaResult',
                     params: { sequence: sequence.toUpperCase() },
-                    query: { equate: equate_il }
+                    query: { equate: equateIl }
                 }"
                 v-slot="{ navigate }"
             >
@@ -41,7 +41,7 @@
                         <v-col class="py-0" cols=12 md=6>
                             <Tooltip message="Equate isoleucine (I) and leucine (L) when matching peptides to UniProt entries.">
                                 <v-checkbox
-                                    v-model="equate_il"
+                                    v-model="equateIl"
                                     label="Equate I and L?"
                                 ></v-checkbox>
                             </Tooltip>
@@ -70,7 +70,7 @@ import { ref } from 'vue';
 
 const validForm = ref(false);
 const sequence = ref("");
-const equate_il = ref(true);
+const equateIl = ref(true);
 
 const sequenceRules = [
     (value: string) => /^[A-Z]+$/.test(value.toUpperCase()) || "Peptide can only consist of letters",
