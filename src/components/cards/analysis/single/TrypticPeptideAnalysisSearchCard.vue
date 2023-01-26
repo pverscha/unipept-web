@@ -22,7 +22,7 @@
                     <v-row>
                         <v-col>
                             <p class="mb-0">
-                                Search for a single tryptic peptide (e.g. <ResourceLink to="/tpa/AALTER?equate=true" router>AALTER</ResourceLink>) by entering the sequence below. Note that your input should only consist of <b>5</b> to <b>50</b> amino acids. 
+                                Search for a single tryptic peptide (e.g. <ResourceLink to="/tpa/MDGTEYIIVK?equate=true" router>MDGTEYIIVK</ResourceLink>) by entering the sequence below. Note that your input should only consist of <b>5</b> to <b>50</b> amino acids. 
                                 Lowercase letters are allowed, but will be converted to their uppercase counterpart.
                             </p>
                         </v-col>
