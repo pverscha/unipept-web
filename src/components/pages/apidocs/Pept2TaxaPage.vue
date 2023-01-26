@@ -16,7 +16,7 @@
         <HeaderBodyCard id="request" title="Request">
             <p>
                 The pept2taxa method can be used by doing a <Initialism>HTTP POST</Initialism>-request (preferred) or <Initialism>GET</Initialism>-request to 
-                <Code>http://api.unipept.ugent.be/api/v1/pept2taxa</Code>. <RLink to="#parameters" router>Parameters</RLink> can be included in the request body 
+                <Code>https://api.unipept.ugent.be/api/v1/pept2taxa</Code>. <RLink to="#parameters" router>Parameters</RLink> can be included in the request body 
                 (<Initialism>POST</Initialism>) or in the query string (<Initialism>GET</Initialism>). The only required parameter is <Code>input[]</Code>, which 
                 takes one or more tryptic peptides.
             </p>
@@ -230,7 +230,7 @@
                 curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/pept2taxa -d 'input[]=AIPQLEVARPADAYETAEAYR'
             </template>
             <template v-slot:get>
-                http://api.unipept.ugent.be/api/v1/pept2taxa.json?input[]=AIPQLEVARPADAYETAEAYR
+                https://api.unipept.ugent.be/api/v1/pept2taxa.json?input[]=AIPQLEVARPADAYETAEAYR
             </template>
         </ExampleCard>
 
@@ -249,7 +249,7 @@
                 curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/pept2taxa -d 'input[]=AIPQLEVARPADAYETAEAYR' -d 'input[]=APVLSDSSCK'
             </template>
             <template v-slot:get>
-                http://api.unipept.ugent.be/api/v1/pept2taxa.json?input[]=AIPQLEVARPADAYETAEAYR&input[]=APVLSDSSCK
+                https://api.unipept.ugent.be/api/v1/pept2taxa.json?input[]=AIPQLEVARPADAYETAEAYR&input[]=APVLSDSSCK
             </template>
         </ExampleCard>
 
@@ -267,7 +267,7 @@
                 curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/pept2taxa -d 'input[]=APVISDSSCK' -d 'equate_il=true'
             </template>
             <template v-slot:get>
-                http://api.unipept.ugent.be/api/v1/pept2taxa.json?input[]=APVISDSSCK&equate_il=true
+                https://api.unipept.ugent.be/api/v1/pept2taxa.json?input[]=APVISDSSCK&equate_il=true
             </template>
         </ExampleCard>
 
@@ -284,7 +284,7 @@
                 curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/pept2taxa -d 'input[]=AIPQLEVARPADAYETAEAYR' -d 'extra=true'
             </template>
             <template v-slot:get>
-                http://api.unipept.ugent.be/api/v1/pept2taxa.json?input[]=AIPQLEVARPADAYETAEAYR&extra=true
+                https://api.unipept.ugent.be/api/v1/pept2taxa.json?input[]=AIPQLEVARPADAYETAEAYR&extra=true
             </template>
         </ExampleCard>
 
@@ -302,7 +302,7 @@
                 curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/pept2taxa -d 'input[]=AIPQLEVARPADAYETAEAYR' -d 'extra=true' -d 'names=true'
             </template>
             <template v-slot:get>
-                http://api.unipept.ugent.be/api/v1/pept2taxa.json?input[]=AIPQLEVARPADAYETAEAYR&extra=true&names=true
+                https://api.unipept.ugent.be/api/v1/pept2taxa.json?input[]=AIPQLEVARPADAYETAEAYR&extra=true&names=true
             </template>
         </ExampleCard>
 
