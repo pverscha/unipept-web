@@ -70,7 +70,7 @@
                 <router-link to="/apidocs">
                     <v-hover>
                         <template v-slot:default="{ hover }">
-                            <HomePageCard :hover="hover" title="API Documentation" :asset="require('@/assets/homepage/home-feature-api.svg')">
+                            <HomePageCard :hover="hover" title="API Documentation" :asset="require('@/assets/homepage/home-feature-api.svg')" contain>
                                 Unipept offers most of its peptide analysis features as a <span class='font-weight-bold'>web service</span>. This enables 
                                 the integration of Unipept functionality into other applications and the creation of batch processing scripts. These 
                                 <span class='font-weight-bold'>documentation pages</span> describe the available features of the API, how to access them and 
@@ -86,7 +86,7 @@
                 <router-link to="/clidocs">
                     <v-hover>
                         <template v-slot:default="{ hover }">
-                            <HomePageCard :hover="hover" title="CLI Documentation" :asset="require('@/assets/homepage/home-feature-cli.svg')">
+                            <HomePageCard :hover="hover" title="CLI Documentation" :asset="require('@/assets/homepage/home-feature-cli.svg')" contain>
                                 The Unipept <span class='font-weight-bold'>command line interface</span> (CLI) is a wrapper around the Unipept API that 
                                 offers an easy way to <span class='font-weight-bold'>integrate Unipept</span> functionality into your data processing 
                                 <span class='font-weight-bold'>pipelines and scripts</span>. These pages cover installation and usage instructions, an 
@@ -102,7 +102,7 @@
                 <router-link to="/umgap">
                     <v-hover>
                         <template v-slot:default="{ hover }">
-                            <HomePageCard :hover="hover" title="UMGAP" :asset="require('@/assets/homepage/home-feature-umgap.svg')">
+                            <HomePageCard :hover="hover" title="UMGAP" :asset="require('@/assets/homepage/home-feature-umgap.svg')" contain>
                                 Use the Unipept MetaGenomics Analysis Pipeline to assign taxonomic labels to your <span class='font-weight-bold'>shotgun 
                                 metagenomics reads</span>. The results are available as taxonomic frequency tables and interactive visualizations. UMGAP 
                                 is a collection of CLI tools that can be combined to identify shotgun metagenomics reads.
