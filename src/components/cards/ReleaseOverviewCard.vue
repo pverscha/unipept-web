@@ -69,24 +69,9 @@ export interface Props {
 
 const { services } = defineProps<Props>();
 
-const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-];
-
 const formatDateFull = (dateString: string) => {
     const date = new Date(dateString);
-    return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+    return `${date.getDate()} ${date.toLocaleString('en', { month: 'long' })} ${date.getFullYear()}`;
 }
 
 const recentDate = (dateString: string, maxDays: number) => {
