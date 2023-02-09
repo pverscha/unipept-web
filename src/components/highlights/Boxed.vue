@@ -3,7 +3,7 @@
 </template>
 
 <style>
-pre .boxed {
+.boxed {
     display: block;
     border: 1px solid #cccccc;
     border-radius: 2px;
