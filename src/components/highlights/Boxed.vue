@@ -2,17 +2,17 @@
     <pre class="boxed"><slot></slot></pre>
 </template>
 
-<style>
+<style scoped>
 .boxed {
-    display: block;
-    border: 1px solid #cccccc;
-    border-radius: 2px;
-    padding: 8px;
-    background-color: #f5f5f5;
-    overflow: auto;
-    line-height: 1.5;
-    margin-bottom: 12px;
-    max-height: 350px;
-    font-size: 90%;
+    display: block !important;
+    border: 1px solid #cccccc !important;
+    border-radius: 2px !important;
+    padding: 8px !important;
+    background-color: #f5f5f5 !important;
+    overflow: auto !important;
+    line-height: 1.5 !important;
+    margin-bottom: 12px !important;
+    max-height: 350px !important;
+    font-size: 90% !important;
 }
 </style>
