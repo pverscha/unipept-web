@@ -127,10 +127,9 @@ const dirty = () => {
 
 const reprocess = () => {
     if(dirty()) {
-        multiAnalysisStore.analyse(
-            multiAnalysisStore.activeAssayStatus?.assay!, 
-            equateIl.value, filterDuplicates.value, cleavageHandling.value
-        )
+        const active = multiAnalysisStore.activeAssayStatus?.assay!;
+        multiAnalysisStore.resetAssay(active);
+        multiAnalysisStore.analyse(active, equateIl.value, filterDuplicates.value, cleavageHandling.value)
     }
 }
 
