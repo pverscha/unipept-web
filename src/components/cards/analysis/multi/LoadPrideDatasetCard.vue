@@ -14,13 +14,15 @@
                     @keyup.enter="fetchPrideDataset"
                 />
 
-                <v-btn
-                    class="text-center mt-2"
-                    :disabled="!validInputForm || loading"
-                    type="submit"
-                >
-                    <v-icon left>mdi-cloud-download</v-icon> Fetch PRIDE dataset
-                </v-btn>
+                <div class="d-flex justify-center mt-2">
+                    <v-btn
+                        class="text-center"
+                        :disabled="!validInputForm || loading"
+                        type="submit"
+                    >
+                        <v-icon left>mdi-cloud-download</v-icon> Fetch PRIDE dataset
+                    </v-btn>
+                </div>
             </v-form>
         </v-card-text>
 
@@ -61,13 +63,15 @@
                     />
                 </Tooltip>
 
-                <v-btn
-                    class="text-center mt-2"
-                    :disabled="!validForm"
-                    type="submit"
-                >
-                    <v-icon left>mdi-plus</v-icon> Add to selected datasets
-                </v-btn>
+                <div class="d-flex justify-center mt-2">
+                    <v-btn
+                        class="text-center"
+                        :disabled="!validForm"
+                        type="submit"
+                    >
+                        <v-icon left>mdi-plus</v-icon> Add to selected datasets
+                    </v-btn>
+                </div>
             </v-form>
         </v-card-text>
     </v-card>
