@@ -12,7 +12,9 @@
                 </Boxed>
 
                 <Initialism><b>get</b></Initialism>
-                <pre class="request"><slot name="get"></slot></pre>
+                <Boxed>
+                    <slot name="get"></slot>
+                </Boxed>
             </v-card-text>
 
             <v-divider />
@@ -40,20 +42,8 @@ defineProps<Props>();
 </script>
 
 <style scoped>
-.request {
-    display: block;
-    border: 1px solid #cccccc;
-    border-radius: 2px;
-    padding: 8px;
-    background-color: #f5f5f5;
-    overflow: auto;
-    line-height: 0;
-    padding: 20px 10px;
-    margin-bottom: 12px;
-}
-
-.sentinel {
-    color: #c65d09;
+h4 {
+    font-size: 16px;
 }
 
 .limited {

@@ -13,8 +13,10 @@
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
+      "node",
       "webpack-env",
-      "vuetify"
+      "vuetify",
+      "unipept-web-components"
     ],
     "paths": {
       "@/*": [

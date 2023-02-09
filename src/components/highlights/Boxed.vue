@@ -1,9 +1,9 @@
 <template>
-    <pre id="boxed"><slot></slot></pre>
+    <pre><slot></slot></pre>
 </template>
 
 <style scoped>
-#boxed {
+pre {
     display: block;
     border: 1px solid #cccccc;
     border-radius: 2px;
@@ -13,5 +13,6 @@
     line-height: 1.5;
     margin-bottom: 12px;
     max-height: 350px;
+    font-size: 90%;
 }
 </style>

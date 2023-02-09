@@ -4,15 +4,15 @@
             <v-col cols=12 md=5>
                 <h1 class="font-weight-light">About Unipept</h1>
                 <p>
-                    The Unipept web application supports biodiversity and functional analysis of large and complex metaproteome samples. Its underlying index structure is designed to 
-                    quickly retrieve all occurrences of a tryptic peptide in UniProt entries. Taxon-specificity of the tryptic peptide is successively derived from these occurrences using a 
-                    novel lowest common ancestor approach that is robust against taxonomic misarrangements, misidentifications and inaccuracies. This application consists of two separate 
+                    The Unipept web application supports biodiversity and functional analysis of large and complex metaproteome samples. Its underlying index structure is designed to
+                    quickly retrieve all occurrences of a tryptic peptide in UniProt entries. Taxon-specificity of the tryptic peptide is successively derived from these occurrences using a
+                    novel lowest common ancestor approach that is robust against taxonomic misarrangements, misidentifications and inaccuracies. This application consists of two separate
                     functionalities: the <RLink to="/tpa" router>Tryptic Peptide Analysis</RLink> and the <RLink to="/mpa" router>Metaproteomics Analysis</RLink>.
                 </p>
                 <p>
-                    The initial Unipept publication can be found at <RLink to="https://pubs.acs.org/doi/10.1021/pr300576s">Unipept: tryptic peptide-based biodiversity analysis of metaproteome 
-                    samples</RLink>, a follow up publication can be found at <RLink to="https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/pmic.201400361">The Unipept 
-                    Metaproteomics Analysis Pipeline</RLink>. The API was published as <RLink to="https://academic.oup.com/bioinformatics/article/32/11/1746/1742840?login=false">Unipept Web 
+                    The initial Unipept publication can be found at <RLink to="https://pubs.acs.org/doi/10.1021/pr300576s">Unipept: tryptic peptide-based biodiversity analysis of metaproteome
+                    samples</RLink>, a follow up publication can be found at <RLink to="https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/pmic.201400361">The Unipept
+                    Metaproteomics Analysis Pipeline</RLink>. The API was published as <RLink to="https://academic.oup.com/bioinformatics/article/32/11/1746/1742840?login=false">Unipept Web
                     Services for Metaproteomics Analysis</RLink>.
                 </p>
             </v-col>

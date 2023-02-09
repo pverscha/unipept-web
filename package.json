@@ -3,12 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --mode development",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@vueuse/core": "^9.3.0",
     "core-js": "^3.8.3",
+    "pinia": "^2.0.21",
+    "unipept-web-components": "^2.0.0-alpha.2",
+    "uuid": "^9.0.0",
     "vue": "^2.7.8",
     "vue-router": "^3.5.4",
     "vuetify": "^2.6.0"
@@ -16,6 +20,8 @@
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@types/node": "^18.7.23",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "@vue/cli-plugin-babel": "~5.0.0",
@@ -45,7 +51,8 @@
       "parser": "@typescript-eslint/parser"
     },
     "rules": {
-      "vue/multi-word-component-names": 0
+      "vue/multi-word-component-names": 0,
+      "vue/valid-v-slot": 0
     }
   },
   "browserslist": [

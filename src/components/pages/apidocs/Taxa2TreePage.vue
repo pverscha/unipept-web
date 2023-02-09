@@ -15,7 +15,7 @@
         <HeaderBodyCard id="request" title="Request">
             <p>
                 The taxa2tree method can be used by doing a <Initialism>HTTP POST</Initialism>-request (preferred) or <Initialism>GET</Initialism>-request to 
-                <Code>http://api.unipept.ugent.be/api/v1/taxa2tree</Code>. <RLink to="#parameters" router>Parameters</RLink> can be included in the request body 
+                <Code>https://api.unipept.ugent.be/api/v1/taxa2tree</Code>. <RLink to="#parameters" router>Parameters</RLink> can be included in the request body 
                 (<Initialism>POST</Initialism>) or in the query string (<Initialism>GET</Initialism>). The only required parameter is <Code>input[]</Code>, which 
                 takes one or more tryptic peptides.
             </p>
@@ -170,7 +170,7 @@
                 curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/taxa2tree -d 'input[]=817' -d 'input[]=329854' -d 'input[]=1099853'
             </template>
             <template v-slot:get>
-                http://api.unipept.ugent.be/api/v1/taxa2tree.json?input[]=817&input[]=329854&input[]=1099853
+                https://api.unipept.ugent.be/api/v1/taxa2tree.json?input[]=817&input[]=329854&input[]=1099853
             </template>
         </ExampleCard>
 
@@ -209,7 +209,7 @@
                 curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/taxa2tree -d 'input[]=817' -d 'input[]=329854' -d 'input[]=1099853' -d 'link=true'
             </template>
             <template v-slot:get>
-                http://api.unipept.ugent.be/api/v1/taxa2tree.json?input[]=817&input[]=329854&input[]=1099853&link=true
+                https://api.unipept.ugent.be/api/v1/taxa2tree.json?input[]=817&input[]=329854&input[]=1099853&link=true
             </template>
         </ExampleCard>
 

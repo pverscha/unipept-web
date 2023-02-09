@@ -1,5 +1,5 @@
 <template>
-    <pre v-html="jsonParser.parseAndHighlight(object)"></pre>
+    <pre class="fs" v-html="jsonParser.parseAndHighlight(object)"></pre>
 </template>
 
 <script setup lang="ts">
@@ -16,8 +16,7 @@ const jsonParser = new JsonParser();
 </script>
 
 <style scoped>
-span {
-    text-transform: uppercase;
+.fs {
     font-size: 90%;
 };
 </style>

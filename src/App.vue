@@ -81,27 +81,24 @@
     </v-app>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { QueueManager } from 'unipept-web-components';
 
-export default defineComponent({
-    name: "App",
-    data() {
-        return {
-            navItems: [
-                { name: "Tryptic Peptide Analysis", path: "/tpa" },
-                { name: "Metaproteomics Analysis", path: "/mpa" },
-                { name: "API", path: "/apidocs" },
-                { name: "CLI", path: "/clidocs" },
-                { name: "Metagenomics", path: "/umgap" },
-                { name: "Unipept Desktop", path: "/desktop" }
-            ]
-        }
-    }
-});
+const navItems = [
+    { name: "Tryptic Peptide Analysis", path: "/tpa" },
+    { name: "Metaproteomics Analysis", path: "/mpa" },
+    { name: "API", path: "/apidocs" },
+    { name: "CLI", path: "/clidocs" },
+    { name: "Metagenomics", path: "/umgap" },
+    { name: "Unipept Desktop", path: "/desktop" }
+];
+
+QueueManager.initializeQueue(4);
 </script>
 
+
 <style lang="scss">
+@import "~unipept-web-components/dist/unipept-web-components.css";
 @import '~vuetify/src/styles/settings/_variables';
 
 @media #{map-get($display-breakpoints, 'md-and-down')} {
@@ -114,6 +111,10 @@ export default defineComponent({
     .main-container {
         width: 75% !important;
     }
+}
+
+body {
+    font-size: 16px;
 }
 
 .homepage-title {
@@ -139,22 +140,17 @@ export default defineComponent({
     color: #333333 !important;
 }
 
-li {
-    line-height: 1.8;
-}
-
-.v-card__text p {
-    font-size: 100%;
-}
-
-.v-card__content p {
-    font-size: 100%;
-}
-
 p {
     color: #333333 !important;
-    font-size: 90%;
     margin-bottom: 8px !important;
+}
+
+li {
+    font-size: 16px;
+}
+
+td {
+    font-size: 16px !important;
 }
 
 .v-card h3 {

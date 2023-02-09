@@ -45,7 +45,7 @@
                 </li>
             </ul>
 
-            <h3>Physical representation</h3>
+            <h3 class="mt-3">Physical representation</h3>
             <p>
                 As described above, a single project will correspond to one root folder on your hard drive and will
                 always contain at least the following files and folders:
