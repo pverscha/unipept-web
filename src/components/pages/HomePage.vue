@@ -138,7 +138,7 @@ onBeforeMount(async () => {
     services.value = [
         { name: "API", icon: "mdi-api", version: API.tag_name.replace(/^v/, ""), date: API.published_at, to: "/news/api" },
         { name: "CLI", icon: "mdi-console", version: CLI.tag_name.replace(/^v/, ""), date: CLI.published_at, to: "/news/cli" },
-        { name: "Web app", icon: "mdi-web", version: Web.tag_name, date: Web.published_at, to: "/news/web" },
+        { name: "Web app", icon: "mdi-web", version: Web.tag_name.replace(/^v/, ""), date: Web.published_at, to: "/news/web" },
         { name: "Desktop app", icon: "mdi-desktop-tower-monitor", version: Desktop.tag_name.replace(/^v/, ""), date: Desktop.published_at, to: "/news/desktop" }
     ];
 
