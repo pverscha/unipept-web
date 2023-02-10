@@ -35,7 +35,7 @@
         </v-card-text>
 
         <v-card-text v-else class="pt-0">
-            <v-form v-model="validForm" @submit="createAssay">
+            <v-form ref="form" v-model="validForm">
                 <v-row class="my-1">
                     <v-col class="pb-0" cols=12>
                         <v-textarea
@@ -67,7 +67,7 @@
                     <v-btn
                         class="text-center"
                         :disabled="!validForm"
-                        type="submit"
+                        @click="createAssay"
                     >
                         <v-icon left>mdi-plus</v-icon> Add to selected datasets
                     </v-btn>
@@ -97,6 +97,7 @@ const error = ref<string>("");
 const validInputForm = ref<boolean>(false);
 const prideId = ref<string>("");
 
+const form = ref(null);
 const validForm = ref(false);
 const peptideList = ref("");
 const datasetName = ref("");
@@ -153,5 +154,7 @@ const createAssay = () => {
 
     assayStore.add(assay);
     multiAnalysisStore.addAssay(assay);
+    // @ts-ignore
+    form.value.reset();
 }
 </script>
