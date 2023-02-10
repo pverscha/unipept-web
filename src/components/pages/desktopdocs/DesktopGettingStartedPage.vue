@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <h1 class="font-weight-light">
-            Unipept Desktop documentation <small>v2.0.0-alpha.11</small>
+            Unipept Desktop documentation <small>v2.0.0</small>
         </h1>
         <h3 class="font-weight-light mb-2">
             The Unipept Desktop application allows, in contrast to the web application, to analyse much larger samples,
@@ -74,7 +74,7 @@
                     <v-btn
                         style="width: 100%;"
                         color="primary"
-                        href="https://github.com/unipept/unipept-desktop/releases/latest/download/Unipept-Desktop.exe">
+                        href="https://github.com/unipept/unipept-desktop/releases/latest/download/Unipept-Desktop-x64.exe">
                         <div class="d-flex align-center">
                             <v-icon class="mr-1">mdi-microsoft-windows</v-icon>
                             <span>Download for Windows</span>
@@ -109,7 +109,7 @@
                     <v-btn
                         style="width: 100%;"
                         color="primary"
-                        href="https://github.com/unipept/unipept-desktop/releases/latest/download/Unipept-Desktop.AppImage">
+                        href="https://github.com/unipept/unipept-desktop/releases/latest/download/Unipept-Desktop-x86_64.AppImage">
                         <div class="d-flex align-center">
                             <v-icon class="mr-1">mdi-linux</v-icon>
                             <span>Download for Linux</span>
