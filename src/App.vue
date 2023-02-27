@@ -77,7 +77,7 @@
                         <router-link class="link ml-5" to="/publications">Publications</router-link>
                     </div>
                     <div class="text-center grey--text mt-3 mt-md-0">
-                        Unipept 5.0.5 using UniProt 2021.3
+                        Unipept {{ unipeptVersion }} using UniProt {{ uniprotVersion }}
                     </div>
                 </div>
             </div>
@@ -87,6 +87,12 @@
 
 <script setup lang="ts">
 import { QueueManager } from 'unipept-web-components';
+import { onBeforeMount, ref } from 'vue';
+import UnipeptCommunicator from './logic/communicators/unipept/UnipeptCommunicator';
+import { GithubCommunicator } from './logic/communicators/github/GithubCommunicator';
+
+const unipeptVersion = ref<string>("");
+const uniprotVersion = ref<string>("");
 
 const navItems = [
     { name: "Tryptic Peptide Analysis", path: "/tpa" },
@@ -98,6 +104,15 @@ const navItems = [
 ];
 
 QueueManager.initializeQueue(4);
+
+const githubCommunicator = new GithubCommunicator();
+const unipeptCommunicator = new UnipeptCommunicator();
+
+onBeforeMount(async () => {
+    const web = await githubCommunicator.latestRelease("https://api.github.com/repos/unipept/unipept-web/releases");
+    unipeptVersion.value = web.tag_name.replace("v", "");
+    uniprotVersion.value = await unipeptCommunicator.uniprotVersion();
+});
 </script>
 
 
