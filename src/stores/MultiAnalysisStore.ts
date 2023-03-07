@@ -353,6 +353,26 @@ const useMultiAnalysis = defineStore('multi-analysis', () => {
         }
     }
 
+    const resetAssay = (assay: Assay) => {
+        const assayIndex = findAssayIndex(assay.id);
+
+        if(assayIndex !== -1) {
+            const filterProgress = ProgressUtils.constructProgressObject(filterSteps);
+            filterProgress.currentStep = FilterSteps.COMPLETED;
+
+            assayStatuses.value[assayIndex] = {
+                assay: assay,
+
+                progress: ProgressUtils.constructProgressObject(progressSteps),
+                filterProgress: filterProgress
+            } as MultiProteomicsAnalysisStatus
+
+            if (activeAssayStatus.value?.assay.id === assay.id) {
+                activeAssayStatus.value = assayStatuses.value[assayIndex];
+            }
+        }
+    }
+
     const removeAssay = (assay: Assay) => {
         const index = findAssayIndex(assay.id);
 
@@ -409,6 +429,7 @@ const useMultiAnalysis = defineStore('multi-analysis', () => {
         analysisCompleted,
 
         addAssay,
+        resetAssay,
         removeAssay,
         removeAllAssays,
         activateAssay,

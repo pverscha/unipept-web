@@ -1,6 +1,6 @@
 {
   "name": "unipept-web",
-  "version": "0.1.0",
+  "version": "5.0.5",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --mode development",
@@ -11,7 +11,7 @@
     "@vueuse/core": "^9.3.0",
     "core-js": "^3.8.3",
     "pinia": "^2.0.21",
-    "unipept-web-components": "^2.0.0-alpha.0",
+    "unipept-web-components": "^2.0.3",
     "uuid": "^9.0.0",
     "vue": "^2.7.8",
     "vue-router": "^3.5.4",

@@ -15,7 +15,7 @@
         <HeaderBodyCard id="request" title="Request">
             <p>
                 The taxonomy method can be used by doing a <Initialism>HTTP POST</Initialism>-request (preferred) or <Initialism>GET</Initialism>-request to 
-                <Code>http://api.unipept.ugent.be/api/v1/taxonomy</Code>. <RLink to="#parameters" router>Parameters</RLink> can be included in the request body 
+                <Code>https://api.unipept.ugent.be/api/v1/taxonomy</Code>. <RLink to="#parameters" router>Parameters</RLink> can be included in the request body 
                 (<Initialism>POST</Initialism>) or in the query string (<Initialism>GET</Initialism>). The only required parameter is <Code>input[]</Code>, which 
                 takes one or more tryptic peptides.
             </p>
@@ -207,7 +207,7 @@
                 curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/taxonomy -d 'input[]=817'
             </template>
             <template v-slot:get>
-                http://api.unipept.ugent.be/api/v1/taxonomy.json?input[]=817
+                https://api.unipept.ugent.be/api/v1/taxonomy.json?input[]=817
             </template>
         </ExampleCard>
 
@@ -226,7 +226,7 @@
                 curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/taxa2lca -d 'input[]=817' -d 'input[]=329854'
             </template>
             <template v-slot:get>
-                http://api.unipept.ugent.be/api/v1/taxa2lca.json?input[]=817&input[]=329854
+                https://api.unipept.ugent.be/api/v1/taxa2lca.json?input[]=817&input[]=329854
             </template>
         </ExampleCard>
 
@@ -244,7 +244,7 @@
                 curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/taxonomy -d 'input[]=817' -d 'extra=true'
             </template>
             <template v-slot:get>
-                http://api.unipept.ugent.be/api/v1/taxonomy.json?input[]=817&extra=true
+                https://api.unipept.ugent.be/api/v1/taxonomy.json?input[]=817&extra=true
             </template>
         </ExampleCard>
 
@@ -262,7 +262,7 @@
                 curl -X POST -H 'Accept: application/json' api.unipept.ugent.be/api/v1/taxonomy -d 'input[]=817' -d 'extra=true' -d 'names=true'
             </template>
             <template v-slot:get>
-                http://api.unipept.ugent.be/api/v1/taxonomy.json?input[]=817&extra=true&names=true
+                https://api.unipept.ugent.be/api/v1/taxonomy.json?input[]=817&extra=true&names=true
             </template>
         </ExampleCard>
 
@@ -352,7 +352,7 @@ onBeforeMount(async () => {
     response1.value = await unipeptCommunicator.taxonomy(["817"]);
     response2.value = await unipeptCommunicator.taxonomy(["817", "329854"]);
     response3.value = await unipeptCommunicator.taxonomy(["817"], true, undefined);
-    response3.value = await unipeptCommunicator.taxonomy(["817"], true, true);
+    response4.value = await unipeptCommunicator.taxonomy(["817"], true, true);
 })
 </script>
 

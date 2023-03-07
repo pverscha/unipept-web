@@ -23,7 +23,7 @@
 
             <div v-else>
                 <div class="subtitle-1">Peptide list</div>
-                <v-textarea 
+                <v-textarea
                     v-model="peptides"
                     :readonly="true"
                 />
@@ -51,7 +51,7 @@
                     </Tooltip>
                 </div>
 
-                <div class="card-actions d-flex flex-wrap">
+                <div class="card-actions d-flex flex-wrap justify-center">
                     <tooltip message="Restart search with selected samples using the settings chosen above.">
                         <v-btn class="mr-3 mb-2" :disabled="!dirty()" @click="reprocess()" color="primary">
                             <v-icon left>
@@ -71,7 +71,7 @@
                     <v-divider class="my-3"></v-divider>
 
                     <span class="peptide-match-text">
-                        We managed to match {{ multiAnalysisStore.activeAssayStatus.data.trust.matchedPeptides }} of your 
+                        We managed to match {{ multiAnalysisStore.activeAssayStatus.data.trust.matchedPeptides }} of your
                         {{ multiAnalysisStore.activeAssayStatus.data.trust.searchedPeptides }} peptides. Unfortunately,
                         <a style="cursor: pointer;" @click="showMissedPeptides = true">
                             {{ multiAnalysisStore.activeAssayStatus.data.trust.missedPeptides.length }}
@@ -127,16 +127,14 @@ const dirty = () => {
 }
 
 const reprocess = () => {
-    if(multiAnalysisStore.activeAssayStatus && dirty()) {
-        const assay = multiAnalysisStore.activeAssayStatus.assay;
+    if(dirty()) {
+        const active = multiAnalysisStore.activeAssayStatus?.assay!;
 
         // Log the search to the analytics server
-        new AnalyticsCommunicator().logSearchMpa(assay.amountOfPeptides, equateIl.value, filterDuplicates.value, cleavageHandling.value, true);
+        new AnalyticsCommunicator().logSearchMpa(active.amountOfPeptides, equateIl.value, filterDuplicates.value, cleavageHandling.value, true);
 
-        multiAnalysisStore.analyse(
-            multiAnalysisStore.activeAssayStatus?.assay!, 
-            equateIl.value, filterDuplicates.value, cleavageHandling.value
-        )
+        multiAnalysisStore.resetAssay(active);
+        multiAnalysisStore.analyse(active, equateIl.value, filterDuplicates.value, cleavageHandling.value)
     }
 }
 

@@ -9,10 +9,5 @@
 <script setup lang="ts">
 import SinglePeptideAnalysisyWrapper from "../../wrappers/SinglePeptideAnalysisWrapper.vue";
 
-const equate = (equate: string | (string | null)[]): boolean => {
-    if(equate === "true") {
-        return true;
-    }
-    return false;
-}
+const equate = (equate: string | (string | null)[]): boolean => { return equate ? true : false };
 </script>

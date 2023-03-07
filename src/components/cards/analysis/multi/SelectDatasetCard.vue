@@ -65,7 +65,7 @@
                     </Tooltip>
                 </div>
 
-                <div>
+                <div class="d-flex justify-center">
                     <v-btn class="text-center" @click="search" color="primary">
                         <v-icon left>mdi-magnify</v-icon> Search
                     </v-btn>

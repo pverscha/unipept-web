@@ -2,8 +2,6 @@ import { Route } from "vue-router";
 
 declare const window: any;
 
-// TODO: How to remove Unipept pageviews from Google Analytics?
-
 export default class AnalyticsCommunicator {
     public async logRoute(route: Route) {
         // Log the path of the route

@@ -1,7 +1,7 @@
 <template>
     <v-card flat>
         <v-card-text>
-            <v-form v-model="validForm" @submit="createAssay">
+            <v-form ref="form" v-model="validForm" lazy-validation>
                 <v-row class="my-1">
                     <v-col class="pb-0" cols=12>
                         <v-textarea
@@ -27,13 +27,15 @@
                     />
                 </Tooltip>
 
-                <v-btn
-                    class="text-center mt-2"
-                    :disabled="!validForm"
-                    type="submit"
-                >
-                    <v-icon left>mdi-plus</v-icon> Add to selected datasets
-                </v-btn>
+                <div class="d-flex justify-center mt-2">
+                    <v-btn
+                        class="text-center"
+                        :disabled="!validForm"
+                        @click="createAssay"
+                    >
+                        <v-icon left>mdi-plus</v-icon> Add to selected datasets
+                    </v-btn>
+                </div>
             </v-form>
         </v-card-text>
     </v-card>
@@ -51,6 +53,7 @@ const multiAnalysisStore = useMultiAnalysis();
 
 const { id } = useId();
 
+const form = ref(null);
 const validForm = ref(false);
 const peptideList = ref("");
 const datasetName = ref("");
@@ -76,5 +79,7 @@ const createAssay = () => {
 
     assayStore.add(assay);
     multiAnalysisStore.addAssay(assay);
+    // @ts-ignore
+    form.value.reset();
 }
 </script>
