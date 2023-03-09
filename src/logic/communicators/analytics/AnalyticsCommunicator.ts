@@ -16,13 +16,13 @@ export default class AnalyticsCommunicator {
 
     public logSearchMpa(sequenceAmount: number, equateIl: boolean, filterDuplicates: boolean, missedCleavages: boolean, reprocessed: boolean) {
         // search_mpa is the event_name as defined in the Google Analytics dashboard
-        this.logEvent('search_mpa', { 
-            event_name: 'mpa', 
-            sequenceAmount: sequenceAmount, 
-            equateIl: equateIl, 
-            filterDuplicates: filterDuplicates, 
-            missedCleavages: missedCleavages, 
-            reprocessed: reprocessed 
+        this.logEvent('search_mpa', {
+            event_name: 'mpa',
+            sequenceAmount: sequenceAmount,
+            equateIl: equateIl,
+            filterDuplicates: filterDuplicates,
+            missedCleavages: missedCleavages,
+            reprocessed: reprocessed
         });
     }
 
@@ -33,7 +33,7 @@ export default class AnalyticsCommunicator {
 
     public logDownloadVisualization(analysis: string, format: string, visualisation: string) {
         // download_visualisation is the event_name as defined in the Google Analytics dashboard
-        this.logEvent('download_visualisation', { 
+        this.logEvent('download_visualisation', {
             event_name: 'visualisation',
             analysis: analysis,
             download_format: format,
@@ -42,6 +42,15 @@ export default class AnalyticsCommunicator {
     }
 
     private logEvent(event_name: string, event_params: any) {
+        if (process.env.NODE_ENV !== 'production') {
+            // We are running the app in development mode and we don't want to log any requests...
+            return;
+        }
+
+        // @ts-ignore
+        this.gtag('config', 'G-P3VRXFGD5B', {
+            'send_page_view': false
+        });
         // @ts-ignore
         this.gtag('event', event_name, event_params);
     }

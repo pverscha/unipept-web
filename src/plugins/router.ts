@@ -142,11 +142,11 @@ const routes = [
         component: TrypticPeptideAnalysisPage,
         meta: tpaMeta
     },
-    { 
-        path: "/tpa/:sequence", 
+    {
+        path: "/tpa/:sequence",
         name: "tpaResult",
-        component: TrypticPeptideAnalysisResultPage, 
-        meta: tpaMeta 
+        component: TrypticPeptideAnalysisResultPage,
+        meta: tpaMeta
     },
     {
         path: "/mpa",
@@ -298,7 +298,6 @@ const router = new VueRouter({
 });
 
 router.afterEach((to, from) => {
-    console.log(to)
     new AnalyticsCommunicator().logRoute(to);
 });
 
