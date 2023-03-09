@@ -16,13 +16,13 @@
                     </v-btn>
                 </template>
                 <v-list>
-                    <v-list-item @click="downloadCsv()">
+                    <v-list-item @click="downloadCsv('csv (,)')">
                         <v-list-item-title>Comma-separated (international)</v-list-item-title>
                     </v-list-item>
-                    <v-list-item @click="downloadCsv(';', ',')">
+                    <v-list-item @click="downloadCsv('csv (;)', ';', ',')">
                         <v-list-item-title>Semi-colon-separated (Europe)</v-list-item-title>
                     </v-list-item>
-                    <v-list-item @click="downloadCsv('\t', ';')">
+                    <v-list-item @click="downloadCsv('tsv', '\t', ';')">
                         <v-list-item-title>Tab-separated</v-list-item-title>
                     </v-list-item>
                 </v-list>
@@ -33,6 +33,7 @@
 
 <script setup lang="ts">
 import { MultiProteomicsAnalysisStatus, PeptideUtils, Tooltip, useCsvDownload } from 'unipept-web-components';
+import AnalyticsCommunicator from '@/logic/communicators/analytics/AnalyticsCommunicator';
 import { ref } from 'vue';
 
 export interface Props {
@@ -48,7 +49,7 @@ const exportLoading = ref<boolean>(false);
 
 const { downloadString } = useCsvDownload();
 
-const downloadCsv = (separator = ',', functionalSeparator = ';') => {
+const downloadCsv = (name: string, separator = ',', functionalSeparator = ';') => {
     if(!props.assayStatus.analysisInProgress) {
         exportLoading.value = true;
 
@@ -63,6 +64,8 @@ const downloadCsv = (separator = ',', functionalSeparator = ';') => {
             functionalSeparator
         );
         downloadString(csvString, `${props.assayStatus.assay.name}_mpa.csv`);
+
+        new AnalyticsCommunicator().logDownloadMpa(name);
 
         exportLoading.value = false;
     }

@@ -94,6 +94,7 @@ import { computed, ref, watch } from 'vue';
 import { Tooltip } from 'unipept-web-components';
 import MissingPeptidesModal from '@/components/modals/MissingPeptidesModal.vue';
 import PeptideExportButton from '@/components/buttons/PeptideExportButton.vue';
+import AnalyticsCommunicator from '@/logic/communicators/analytics/AnalyticsCommunicator';
 
 const multiAnalysisStore = useMultiAnalysis();
 
@@ -128,6 +129,10 @@ const dirty = () => {
 const reprocess = () => {
     if(dirty()) {
         const active = multiAnalysisStore.activeAssayStatus?.assay!;
+
+        // Log the search to the analytics server
+        new AnalyticsCommunicator().logSearchMpa(active.amountOfPeptides, equateIl.value, filterDuplicates.value, cleavageHandling.value, true);
+
         multiAnalysisStore.resetAssay(active);
         multiAnalysisStore.analyse(active, equateIl.value, filterDuplicates.value, cleavageHandling.value)
     }

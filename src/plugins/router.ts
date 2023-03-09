@@ -94,6 +94,7 @@ import APINewsPage from "@/components/pages/news/APINewsPage.vue";
 import CLINewsPage from "@/components/pages/news/CLINewsPage.vue";
 import WebNewsPage from "@/components/pages/news/WebNewsPage.vue";
 import DesktopNewsPage from "@/components/pages/news/DesktopNewsPage.vue";
+import AnalyticsCommunicator from "@/logic/communicators/analytics/AnalyticsCommunicator";
 
 Vue.use(VueRouter);
 
@@ -141,11 +142,11 @@ const routes = [
         component: TrypticPeptideAnalysisPage,
         meta: tpaMeta
     },
-    { 
-        path: "/tpa/:sequence", 
+    {
+        path: "/tpa/:sequence",
         name: "tpaResult",
-        component: TrypticPeptideAnalysisResultPage, 
-        meta: tpaMeta 
+        component: TrypticPeptideAnalysisResultPage,
+        meta: tpaMeta
     },
     {
         path: "/mpa",
@@ -275,7 +276,7 @@ const routes = [
     },
 ];
 
-export default new VueRouter({
+const router = new VueRouter({
     routes,
     mode: "history",
     base: process.env.BASE_URL,
@@ -295,3 +296,9 @@ export default new VueRouter({
         }
     }
 });
+
+router.afterEach((to, from) => {
+    new AnalyticsCommunicator().logRoute(to);
+});
+
+export default router;
