@@ -1,4 +1,5 @@
 const base = "https://api.unipept.ugent.be/api/v1/";
+const privateBase = "https://api.unipept.ugent.be/private_api/"
 
 export default class UnipeptCommunicator {
     public async pept2prot(input: string[], equate_il = false, extra = false): Promise<string[]> {
@@ -147,6 +148,11 @@ export default class UnipeptCommunicator {
         }
 
         return await fetch(this.prepareURL(base, "taxonomy.json", params)).then(r => r.json());
+    }
+
+    public async uniprotVersion(): Promise<string> {
+        const response = await fetch(this.prepareURL(privateBase, "metadata", new URLSearchParams())).then(r => r.json());
+        return response.db_version;
     }
 
     private prepareURL(base: string, extra: string, parameters: URLSearchParams): string {
